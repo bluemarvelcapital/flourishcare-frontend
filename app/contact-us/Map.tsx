@@ -4,7 +4,7 @@ import React from "react"
 export function Map() {
   return (
     // Important! Always set the container height explicitly
-    <div className="w-full h-[250px] md:h-[500px]">
+    <div className="w-full hero-h h-[250px] md:h-[500px] mb-[60px]">
       <iframe
         width="100%"
         height="100%"

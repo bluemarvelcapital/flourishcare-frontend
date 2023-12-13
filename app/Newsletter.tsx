@@ -4,7 +4,7 @@ import React from "react"
 
 export const Newsletter = () => {
   return (
-    <div className="bg-primary md:p-[100px] p-[20px] my-[3rem] text-center text-white">
+    <div className="bg-primary md:p-[100px] p-[20px] mt-[3rem] text-center text-white">
       <h3 className="md:text-[20px] text-[18px] mb-[16px] uppercase font-[600]">
         subscribe now
       </h3>

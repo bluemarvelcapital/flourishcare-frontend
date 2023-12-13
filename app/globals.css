@@ -18,3 +18,22 @@
 .PhoneInputInput {
   outline: none;
 }
+
+@media (min-width: 3000px) {
+  .container_xl {
+    width: 60% !important;
+    margin: auto !important;
+  }
+  .ml {
+    margin-left: 20% !important;
+  }
+  .mr {
+    margin-right: 20% !important;
+  }
+  .mr-xl {
+    margin-right: 11% !important;
+  }
+  .hero-h {
+    height: 50rem !important;
+  }
+}

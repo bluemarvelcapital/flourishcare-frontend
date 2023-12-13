@@ -9,7 +9,7 @@ export const ServiceCovered = () => {
         Services Covered
       </h3>
 
-      <div className="grid md:grid-cols-4 grid-cols-2 md:gap-[28px] gap-[18px] mt-[1.5rem] xl:max-w-[80%] xl:mx-auto">
+      <div className="grid md:grid-cols-4 grid-cols-2 md:gap-[28px] gap-[18px] mt-[1.5rem] container_xl">
         <Link href="/our-services">
           <div className="w-full">
             <div className="relative w-full md:h-[300px] h-[200px]">

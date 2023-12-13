@@ -13,7 +13,7 @@ const AboutUs = () => {
   return (
     <div>
       <Hero />
-      <div className="md:w-[80%] md:mx-auto">
+      <div className="container_xl">
         <Mission />
       </div>
       <CoreValues />

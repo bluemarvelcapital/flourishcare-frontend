@@ -16,7 +16,8 @@
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-phone-number-input": "^3.3.7"
+    "react-phone-number-input": "^3.3.7",
+    "react-reveal": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "^20",

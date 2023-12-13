@@ -3,12 +3,12 @@ import React from "react"
 
 export const TopQuality = () => {
   return (
-    <div className="md:p-[60px] p-[20px] md:w-[80%] md:mx-auto">
+    <div className="md:p-[60px] p-[20px] container_xl">
       <h3 className="md:text-[51px] text-[24px] text-primary font-bold md:mb-[110px] mb-[30px]">
         Top quality Care services
       </h3>
-      <div className="grid xxl:grid-cols-3 md:grid-cols-2 md-grid-cols-1 md:gap-[32px] gap-[16px]">
-        <div>
+      <div className="grid xxl:grid-cols-3 md:grid-cols-2 md-grid-cols-1 md:gap-[32px] gap-[16px] items-stretch">
+        <div className="h-full">
           <div className="relative w-full h-[255px]">
             <Image
               src={"/img6.svg"}
@@ -19,7 +19,7 @@ export const TopQuality = () => {
             />
           </div>
 
-          <div className="p-[24px] border-[1px] border-[#D3D3D3]">
+          <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
             <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
               Home Care - Domiciliary
             </h3>
@@ -33,7 +33,7 @@ export const TopQuality = () => {
           </div>
         </div>
 
-        <div>
+        <div className="h-full">
           <div className="relative w-full h-[255px]">
             <Image
               src={"/img7.svg"}
@@ -44,7 +44,7 @@ export const TopQuality = () => {
             />
           </div>
 
-          <div className="p-[24px] border-[1px] border-[#D3D3D3]">
+          <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
             <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
               Respite care
             </h3>
@@ -59,7 +59,7 @@ export const TopQuality = () => {
           </div>
         </div>
 
-        <div>
+        <div className="h-full">
           <div className="relative w-full h-[255px]">
             <Image
               src={"/img8.svg"}
@@ -70,7 +70,7 @@ export const TopQuality = () => {
             />
           </div>
 
-          <div className="p-[24px] border-[1px] border-[#D3D3D3]">
+          <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
             <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
               Companionship Care
             </h3>
@@ -84,7 +84,7 @@ export const TopQuality = () => {
           </div>
         </div>
 
-        <div>
+        <div className="h-full">
           <div className="relative w-full h-[255px]">
             <Image
               src={"/img9.svg"}
@@ -95,7 +95,7 @@ export const TopQuality = () => {
             />
           </div>
 
-          <div className="p-[24px] border-[1px] border-[#D3D3D3]">
+          <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
             <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
               Dementia Care
             </h3>
@@ -110,7 +110,7 @@ export const TopQuality = () => {
           </div>
         </div>
 
-        <div>
+        <div className="h-full">
           <div className="relative w-full h-[255px]">
             <Image
               src={"/img10.svg"}
@@ -121,7 +121,7 @@ export const TopQuality = () => {
             />
           </div>
 
-          <div className="p-[24px] border-[1px] border-[#D3D3D3]">
+          <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
             <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
               Live-in Care
             </h3>
@@ -135,7 +135,7 @@ export const TopQuality = () => {
           </div>
         </div>
 
-        <div>
+        <div className="h-full">
           <div className="relative w-full h-[255px]">
             <Image
               src={"/img11.svg"}
@@ -146,7 +146,7 @@ export const TopQuality = () => {
             />
           </div>
 
-          <div className="p-[24px] border-[1px] border-[#D3D3D3]">
+          <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
             <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
               Rehabilitation Services
             </h3>

@@ -16,7 +16,7 @@ export const Hero = () => {
       </div>
       <div className="absolute top-0 left-0 w-full h-full bg-[#00000080] z-[-1]"></div>
 
-      <div className="md:w-[670px] md:py-[104px] md:px-[64px] py-[1.5rem] px-[16px]">
+      <div className="md:w-[670px] md:py-[104px] md:px-[64px] py-[1.5rem] px-[16px] ml xl:w-[900px]">
         <p className="text-white md:text-[22px]">
           <span className="text-[#82B04D]">Flourish Advanced Care Limited</span>
           provides domiciliary care to community members in their homes. We

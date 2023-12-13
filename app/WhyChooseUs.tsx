@@ -19,7 +19,7 @@ export const WhyChooseUs = () => {
       </p>
 
       <div className="grid md:grid-cols-2 grid-cols-1 md:gap-[34px] gap-[16px] md:mt-10 mt-5">
-        <div className="relative w-full md:h-full h-[300px]">
+        <div className="relative w-full md:h-full h-[300px] puff-in-center">
           <Image
             src={"/img5.svg"}
             alt="Image"

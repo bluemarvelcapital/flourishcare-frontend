@@ -17,7 +17,7 @@ const Home = () => {
     <div>
       <Hero />
       <ServiceCovered />
-      <div className="md:w-[80%] md:mx-auto">
+      <div className="container_xl">
         <WhyChooseUs />
       </div>
       <AppointmentForm />

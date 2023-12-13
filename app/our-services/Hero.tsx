@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export const Hero = () => {
   return (
-    <div className="relative w-full md:h-[670px] h-[30vh]">
+    <div className="relative w-full md:h-[670px] h-[30vh] hero-h">
       <div className="absolute w-full h-full top-0 left-0 z-[-2]">
         <Image
           src={"/services-hero.svg"}
@@ -16,7 +16,7 @@ export const Hero = () => {
       </div>
       <div className="absolute top-0 left-0 w-full h-full bg-[#00000026] z-[-1]"></div>
 
-      <div className="md:w-[870px] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
+      <div className="md:w-[870px] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px] ml">
         <h1 className="md:text-[64px] text-[28px] text-primary">
           Our Services
         </h1>
