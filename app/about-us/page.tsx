@@ -13,7 +13,9 @@ const AboutUs = () => {
   return (
     <div>
       <Hero />
-      <Mission />
+      <div className="md:w-[80%] md:mx-auto">
+        <Mission />
+      </div>
       <CoreValues />
       <AppointmentForm />
     </div>

@@ -5,8 +5,8 @@ import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "./Icons"
 
 export const Footer = () => {
   return (
-    <div className="md:px-[144px] px-[20px] py-[40px] flex md:flex-row flex-col md:gap-[140px] gap-[30px]">
-      <div className="md:w-[23%]">
+    <div className="md:px-[144px] px-[20px] py-[40px] flex md:flex-row md:justify-between flex-col md:gap-[140px] gap-[30px]">
+      <div className="md:w-[21%]">
         <Logo />
         <p className="md:text-[17px] font-[500]">
           Dedicated to providing the highest level of domiciliary care to

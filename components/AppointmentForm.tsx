@@ -6,7 +6,7 @@ import { Button } from "./Button"
 export const AppointmentForm = () => {
   return (
     <div className="md:mb-[60px] mb-[24px] text-white">
-      <div className="relative md:px-[60px] px-[16px] md:py-[80px] py-[20px]">
+      <div className="relative md:px-[140px] px-[16px] md:py-[80px] py-[20px]">
         <div className="absolute z-[-1] top-0 left-0 w-full md:h-[300px] h-[150px]">
           <Image
             src={"/bluebg.svg"}
@@ -19,7 +19,7 @@ export const AppointmentForm = () => {
         <p className="md:text-[38px] md:leading-[141%]">Priority</p>
       </div>
 
-      <div className="md:flex md:justify-end md:mt-[-11rem] md:mr-[60px]">
+      <div className="md:flex md:justify-end md:mt-[-11rem] md:mr-[100px] ">
         <div className="bg-white md:w-[753px] w-[90%] mx-[auto] md:mx-[inherit] border-[1px] rounded-[4px] border-[#AFB1B0] md:p-[34px] p-[20px] flex flex-col md:gap-[30px] gap-[20px]">
           <Input
             placeholder="Your Name"
