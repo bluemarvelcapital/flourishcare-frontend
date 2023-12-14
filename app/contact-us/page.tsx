@@ -13,7 +13,13 @@ const ContactUS = () => {
     <div>
       <div className="flex gap-[64px] items-center justify-center md:p-[64px] p-[20px]">
         <div className="relative md:w-[576px] md:h-[700px] md:block hidden">
-          <Image src={"/img13.svg"} fill alt="Image" objectFit="cover" />
+          <Image
+            src={"/img13.svg"}
+            fill
+            alt="Image"
+            objectFit="cover"
+            className="puff-in-center"
+          />
         </div>
         <ContactForm />
       </div>

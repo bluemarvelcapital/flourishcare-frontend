@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google"
 import "./globals.css"
 import "./keyframes.css"
+import "animate.css/animate.min.css"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 

@@ -1,5 +1,7 @@
+"use client"
 import Image from "next/image"
 import React from "react"
+import Fade from "react-reveal/Fade"
 
 const headers = [
   "KINDNESS BUILDS GENUINE RELATIONSHIPS",
@@ -19,29 +21,33 @@ export const CoreValues = () => {
   return (
     <div className="bg-primary md:p-[60px] p-[20px] text-white mb-[40px]">
       <div className="container_xl md:mx-auto flex md:flex-row flex-col gap-[30px] justify-between">
-        <div>
-          <h3 className="md:w-[80%] md:text-[64px] mb-[20px] text-[24px]">
-            Our Core Values
-          </h3>
-          <div className="relative md:w-[500px] w-full md:h-[625px] h-[360px]">
-            <Image fill src={"/img12.svg"} alt="Family" objectFit="cover" />
-          </div>
-        </div>
-
-        <div className="px-[10px] py-[60px] flex flex-col md:gap-[40px] gap-[20px] md:w-[55%]">
-          {content.map((item, index) => (
-            <div
-              key={index}
-              className="flex md:gap-[49px] gap-[10px] justify-start items-start"
-            >
-              <div className="min-w-[29px] h-[8px] rounded-[11px] bg-[#fff]"></div>
-              <div className="text-[16px] md:text-[22px]">
-                <h3 className="font-[600] mb-[10px]">{headers[index]}</h3>
-                <p>{item}</p>
-              </div>
+        <Fade left>
+          <div>
+            <h3 className="md:w-[80%] md:text-[64px] mb-[20px] text-[24px]">
+              Our Core Values
+            </h3>
+            <div className="relative md:w-[500px] w-full md:h-[625px] h-[360px]">
+              <Image fill src={"/img12.svg"} alt="Family" objectFit="cover" />
             </div>
-          ))}
-        </div>
+          </div>
+        </Fade>
+
+        <Fade right>
+          <div className="px-[10px] py-[60px] flex flex-col md:gap-[40px] gap-[20px] md:w-[55%]">
+            {content.map((item, index) => (
+              <div
+                key={index}
+                className="flex md:gap-[49px] gap-[10px] justify-start items-start"
+              >
+                <div className="min-w-[29px] h-[8px] rounded-[11px] bg-[#fff]"></div>
+                <div className="text-[16px] md:text-[22px]">
+                  <h3 className="font-[600] mb-[10px]">{headers[index]}</h3>
+                  <p>{item}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Fade>
       </div>
     </div>
   )

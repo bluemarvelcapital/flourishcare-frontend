@@ -1,8 +1,10 @@
+"use client"
 import React from "react"
 import { Accordion } from "@/components/Accordion"
 import Image from "next/image"
 import { Button } from "@/components/Button"
 import Link from "next/link"
+import RubberBand from "react-reveal/RubberBand"
 
 const accordionItems = [
   {
@@ -54,19 +56,23 @@ export const FAQS = () => {
         </div>
       </div>
       <div className="bg-baseLight p-[32px] flex flex-col justify-center items-center gap-[24px] md:w-[85%] w-[90%] mx-auto mb-[3rem] rounded-[16px]">
-        <Image
-          src={"/avatar_group.svg"}
-          alt="Avatar Group"
-          width={120}
-          height={56}
-        />
+        <RubberBand>
+          <Image
+            src={"/avatar_group.svg"}
+            alt="Avatar Group"
+            width={120}
+            height={56}
+          />
+        </RubberBand>
         <p className="text-[20px] font-[600]">Still have questions?</p>
         <p>
           Can’t find the answer you’re looking for? Please get in touch with us
         </p>
-        <Link href={"/contact-us"}>
-          <Button className="rounded-[8px]">Get in Touch</Button>
-        </Link>
+        <RubberBand>
+          <Link href={"/contact-us"}>
+            <Button className="rounded-[8px]">Get in Touch</Button>
+          </Link>
+        </RubberBand>
       </div>
     </div>
   )
