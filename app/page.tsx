@@ -1,6 +1,6 @@
 import React from "react"
-// import { Hero } from "./Hero"
-import { Hero } from "@/components/Hero"
+import { Hero } from "./Hero"
+// import { Hero } from "@/components/Hero"
 import { ServiceCovered } from "./ServiceCovered"
 import type { Metadata } from "next"
 import { WhyChooseUs } from "./WhyChooseUs"
@@ -26,7 +26,8 @@ const Home = () => {
   }
   return (
     <div>
-      <Hero {...hero_props} />
+      {/* <Hero {...hero_props} /> */}
+      <Hero />
       <ServiceCovered />
       <div className="container_xl">
         <WhyChooseUs />
