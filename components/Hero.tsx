@@ -14,12 +14,12 @@ export const Hero: React.FC<{
   image: string
 }> = ({ heading, text, image, btn_text, btn_link }) => {
   return (
-    <div className="relative md:h-[85vh] w-full glass">
+    <div className="relative md:h-[85vh] w-full glass pb-[2rem] md:pb-[0]">
       <div className="md:w-[70%] w-[90%] mx-auto pt md:pt-[2rem] pt-[2rem] text-[#2C2C34] relative">
         <h2 className="capitalize md:text-[4.5rem] text-[1.5rem] font-[500] mb-[1rem] text-center">
           <Zoom top>{heading}</Zoom>
         </h2>
-        <p className="text-[1.5rem] md:w-[70%] md:mx-auto mb-[1.5rem] text-center">
+        <p className="md:text-[1.5rem] md:w-[70%] md:mx-auto mb-[1.5rem] text-center">
           <Zoom top>{text}</Zoom>
         </p>
         <div className="text-center">
@@ -32,7 +32,7 @@ export const Hero: React.FC<{
           )}
         </div>
         <Zoom top>
-          <div className="relative w-full md:h-[50vh] mt-[2rem]">
+          <div className="relative w-full md:h-[50vh] mt-[2rem] hidden md:block">
             <Image
               src={image}
               alt="Hero Image"

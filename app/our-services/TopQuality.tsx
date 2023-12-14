@@ -5,7 +5,7 @@ import Fade from "react-reveal/Fade"
 
 export const TopQuality = () => {
   return (
-    <div className="md:p-[60px] p-[20px] container_xl">
+    <div className="md:p-[60px] p-[20px] container_xl md:w-[80%] md:mx-auto">
       <h3 className="md:text-[51px] text-[24px] text-primary font-bold md:mb-[110px] mb-[30px]">
         Top quality Care services
       </h3>
