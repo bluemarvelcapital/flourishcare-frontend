@@ -34,7 +34,7 @@ export const ServiceCovered = () => {
           </Link>
           <Link
             href="/our-services"
-            className="hover:mt-[-0.8rem] transition-all md:mt-[5rem]"
+            className="hover:mt-[-0.8rem] transition-all "
           >
             <div className="w-full">
               <div className="relative w-full md:h-[300px] h-[200px]">
@@ -72,7 +72,7 @@ export const ServiceCovered = () => {
           </Link>
           <Link
             href="/our-services"
-            className="hover:mt-[-0.8rem] transition-all md:mt-[5rem]"
+            className="hover:mt-[-0.8rem] transition-all "
           >
             <div className="w-full">
               <div className="relative w-full md:h-[300px] h-[200px]">
