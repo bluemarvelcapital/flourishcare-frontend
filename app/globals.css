@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 @import url("/fonts/fonts.css");
 
 :root {
@@ -19,6 +20,19 @@
   outline: none;
 }
 
+.glow-btn {
+  box-shadow: 0 5px 15px rgba(135, 207, 57, 0.521);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  border: 1px solid rgba(255, 255, 255, 0.01);
+}
+
 @media (min-width: 3000px) {
   .container_xl {
     width: 60% !important;
@@ -35,5 +49,8 @@
   }
   .hero-h {
     height: 50rem !important;
+  }
+  .pt {
+    padding-top: 13rem !important;
   }
 }

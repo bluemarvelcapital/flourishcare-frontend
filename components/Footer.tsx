@@ -102,8 +102,8 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[1px] bg-baseLight container_xl md:mt-[100px] mt-[30px] w-[85%] mx-auto" />
-      <div className="md:py-[100px] py-[30px] text-center">
+      <div className="w-[90%] h-[1px] bg-baseLight container_xl md:mt-[30px] mt-[30px] w-[85%] mx-auto" />
+      <div className="md:py-[50px] py-[30px] text-center">
         <p className="font-[500] text-center">
           © Copyright Flourish Advanced Care. All Rights Reserved
         </p>

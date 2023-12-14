@@ -12,23 +12,23 @@ export const Tab: FC<Props> = ({ items }) => {
   const contents = items?.map(({ content }) => content)
   return (
     <div className="flex md:justify-between flex-col gap-[30px] md:flex-row w-full md:items-center">
-      <Fade top cascade>
-        <div className="flex md:gap-[80px] md:items-start md:flex-col flex-row">
-          {titles.map((title, index) => (
-            <h2
-              key={index}
-              onClick={() => setActiveTab(index)}
-              className={`cursor-pointer md:text-[55px] md:leading-[55px] text-primary px-[10px] ${
-                activeTab === index
-                  ? "opacity-1 md:border-l-[6px] md:border-b-[0px] border-l-[0px] border-b-[6px] border-[#82B04D]"
-                  : "opacity-[0.5]"
-              }`}
-            >
+      <div className="flex md:gap-[80px] md:items-start md:flex-col flex-row">
+        {titles.map((title, index) => (
+          <h2
+            key={index}
+            onClick={() => setActiveTab(index)}
+            className={`cursor-pointer md:text-[55px] md:leading-[55px] text-primary px-[10px] md:hover:border-l-[6px] hover:border-[#82B04D] hover:opacity-[1] transition-all ${
+              activeTab === index
+                ? "opacity-[1] md:border-l-[6px] md:border-b-[0px] border-l-[0px] border-b-[6px] border-[#82B04D]"
+                : "opacity-[0.5]"
+            }`}
+          >
+            <Fade top cascade>
               {title}
-            </h2>
-          ))}
-        </div>
-      </Fade>
+            </Fade>
+          </h2>
+        ))}
+      </div>
 
       <div className="md:w-[50%]">
         {contents.map((content, index) => (

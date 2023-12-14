@@ -6,7 +6,7 @@ import Fade from "react-reveal/Fade"
 const MissionTabContent: FC<{ content: string[] }> = ({ content }) => {
   return (
     <Fade cascade top>
-      <div className="bg-white px-[30px] py-[60px] md:rounded-tl-[80px] md:rounded-br-[80px] flex flex-col md:gap-[40px] gap-[20px]">
+      <div className="bg-white px-[30px] py-[60px] md:rounded-tl-[80px] md:rounded-br-[80px] flex flex-col md:gap-[40px] gap-[20px]  md:h-[27rem]">
         {content.map((item, index) => (
           <div
             key={index}
