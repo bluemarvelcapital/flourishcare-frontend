@@ -28,7 +28,7 @@ export const Footer = () => {
           <TwitterOutlined className="text-white text-[40px]" />
         </Link>
       </div>
-      <div className="">
+      <div className="bg-white">
         <div className="md:px-[144px] px-[20px] py-[40px] container_xl bg-[#fff]">
           <div>
             <div className="flex md:flex-row flex-col justify-between md:gap-[70px] gap-[30px]">
@@ -101,8 +101,8 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#F9FAF9]">
-          <div className="w-[90%] h-[1px] bg-[#C9C9C9] container_xl md:mt-[30px] mt-[30px] w-[85%] mx-auto" />
+        <div className="bg-[#F9FAF9] pt-[2rem]">
+          <div className="w-[90%] h-[1px] bg-[#C9C9C9] container_xl w-[85%] mx-auto" />
           <div className="md:py-[30px] py-[30px] text-center">
             <p className="font-[500] text-center px-[1rem]">
               © Copyright Flourish Advanced Care. All Rights Reserved
