@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${open_Sans.className} bg-baseLight`}>
+      <body className={`font-myriad-pro bg-baseLight`}>
         <Header />
         {children}
         <Footer />

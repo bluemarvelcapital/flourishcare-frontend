@@ -8,6 +8,7 @@ import { AppointmentForm } from "@/components/AppointmentForm"
 import { FAQS } from "./FAQS"
 import { Newsletter } from "./Newsletter"
 import { text } from "stream/consumers"
+import { LicensedBy } from "./LicensedBy"
 
 export const metadata: Metadata = {
   title: "Flourish Care",
@@ -28,13 +29,14 @@ const Home = () => {
     <div>
       {/* <Hero {...hero_props} /> */}
       <Hero />
+      <LicensedBy />
       <ServiceCovered />
       <div className="container_xl">
         <WhyChooseUs />
       </div>
       <AppointmentForm />
       <FAQS />
-      <Newsletter />
+      {/* <Newsletter /> */}
     </div>
   )
 }

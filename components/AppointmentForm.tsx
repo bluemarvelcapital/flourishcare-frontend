@@ -4,6 +4,7 @@ import React from "react"
 import { Input } from "./Input"
 import { Button } from "./Button"
 import Fade from "react-reveal/Fade"
+import { TextArea } from "./TextArea"
 
 export const AppointmentForm = () => {
   return (
@@ -17,18 +18,17 @@ export const AppointmentForm = () => {
             objectFit="cover"
           />
         </div>
-        <Fade left>
-          <div className="ml">
-            <p className=" md:text-[38px] md:leading-[141%]">
-              Your Care is Our
-            </p>
-            <p className="md:text-[38px] md:leading-[141%]">Priority</p>
-          </div>
-        </Fade>
       </div>
 
-      <Fade right>
-        <div className="md:flex md:justify-end md:mt-[-11rem] md:mr-[50px] z-[3000] mr-xl">
+      <div className="flex flex-col justify-center items-center md:mt-[-5rem] md:mr-[50px] z-[3000] gap-[30px]">
+        <Fade left>
+          <div className="">
+            <p className="text-center md:text-[38px] md:leading-[141%]">
+              Your Care is Our Priority
+            </p>
+          </div>
+        </Fade>
+        <Fade right>
           <div className="bg-white md:w-[753px] w-[90%] mx-[auto] md:mx-[inherit] border-[1px] rounded-[4px] border-[#AFB1B0] md:p-[34px] p-[20px] flex flex-col md:gap-[30px] gap-[20px]">
             <Input
               placeholder="Your Name"
@@ -56,10 +56,14 @@ export const AppointmentForm = () => {
                 *Pick a date
               </p>
             </div>
+            <TextArea
+              placeholder="Your Message "
+              className="w-full border-[1px] border-[#AFB1B0] min-h-[222px]"
+            />
             <Button className="rounded-[4px]">Submit</Button>
           </div>
-        </div>
-      </Fade>
+        </Fade>
+      </div>
     </div>
   )
 }

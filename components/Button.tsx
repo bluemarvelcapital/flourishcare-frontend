@@ -10,8 +10,8 @@ export const Button: React.FC<Props> = ({ className, variant, ...props }) => {
     <button
       {...props}
       className={classNames(
-        `md:px-[56px] px-[20px] md:py-[16px] py-[10px] rounded-[8px] text-[#fff] glow-btn inline-block ${
-          variant === "primary" ? "bg-[#82B04D]" : "bg-[#82B04D]"
+        `md:px-[56px] px-[20px] md:py-[16px] py-[10px] rounded-[8px] text-[#fff] inline-block ${
+          variant === "primary" ? "bg-[#04BD4B]" : "bg-[#04BD4B]"
         }`,
         className
       )}

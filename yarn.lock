@@ -2612,6 +2612,13 @@ react-dom@^18:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-flags@^0.1.18:
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/react-flags/-/react-flags-0.1.18.tgz#d763d7e802692a08e15d1802a51933a173f388fd"
+  integrity sha512-fa8D6DIZS6DWRqLcmKGIHVT13r4viHAfIRth9cFO7cDyxEPfTBbZei6p0Xeao6of4C/K4XU/j35aMjPC15ePIg==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"

@@ -28,6 +28,10 @@ const config: Config = {
           700: "#607FBC",
           800: "#4C6FB4",
         },
+        success: "#04BD4B",
+      },
+      fontFamily: {
+        "myriad-pro": "Myriad Pro, sans-serif",
       },
     },
   },
