@@ -11,7 +11,7 @@ export const Reviews = () => {
       </h3>
       <Carousel autoplay dots={true} dotPosition="left">
         <div>
-          <div className="grid md:grid-cols-3 grid-cols-2 md:gap-[3rem] gap-[1rem]">
+          <div className="grid md:grid-cols-3 grid-cols-1 md:gap-[3rem] gap-[1rem]">
             <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
               <div className="flex gap-[30px] items-center mb-[30px]">
                 <Avatar src="/avatar.png" size={64} />
@@ -59,7 +59,7 @@ export const Reviews = () => {
           </div>
         </div>
         <div>
-          <div className="grid md:grid-cols-3 grid-cols-2 md:gap-[3rem] gap-[1rem]">
+          <div className="grid md:grid-cols-3 grid-cols-1 md:gap-[3rem] gap-[1rem]">
             <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
               <div className="flex gap-[30px] items-center mb-[30px]">
                 <Avatar src="/avatar.svg" size={64} />
