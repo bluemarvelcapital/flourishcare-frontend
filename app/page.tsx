@@ -9,6 +9,7 @@ import { FAQS } from "./FAQS"
 import { Newsletter } from "./Newsletter"
 import { text } from "stream/consumers"
 import { LicensedBy } from "./LicensedBy"
+import { Reviews } from "./Reviews"
 
 export const metadata: Metadata = {
   title: "Flourish Care",
@@ -33,6 +34,7 @@ const Home = () => {
       <ServiceCovered />
       <div className="container_xl">
         <WhyChooseUs />
+        <Reviews />
       </div>
       <AppointmentForm />
       <FAQS />
