@@ -21,15 +21,17 @@ export const Hero = () => {
 
       <Fade left>
         <div className="text-center md:w-[70%] w-[90%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
-          <h1 className="md:text-[96px] text-[28px] text-white font-[800]">
+          <h1 className="md:text-[65px] text-[28px] text-white font-[800]">
             About Us
           </h1>
-          <p className="md:text-[32px] md:leading-[141%] text-white mt-[1rem] md:w-[85%] mx-[auto]">
-            Flourish Advanced Care Limited provides domiciliary care to
-            community members in their homes. We provide dignified, respectful,
-            and compassionate personal care to service users to achieve the best
-            results for our customers. We will focus on providing dignified and
-            gratifying care based on the individual’s needs and routines.
+          <h1 className="md:text-[55px] text-[28px] text-white font-[800]">
+            Your Trusted Care Partner
+          </h1>
+          <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
+            Flourished Advanced Care is rooted in the mission to deliver care
+            with integrity and compassion. Our team is carefully selected and
+            trained to match the needs of our clients with the utmost respect
+            and professionalism.
           </p>
 
           <Link href="/contact-us">

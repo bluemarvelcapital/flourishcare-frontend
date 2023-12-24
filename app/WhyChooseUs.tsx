@@ -42,11 +42,10 @@ export const WhyChooseUs = () => {
               </div>
               <div>
                 <h3 className="text-primary mb-[11px] text-[24px] font-[600]">
-                  Holistic Caring
+                  Trust in Care
                 </h3>
                 <p className="text-[#707371] text-[18px]">
-                  Our approach is holistic, aiming to enhance the wellbeing of
-                  our clients on all levels—physical, mental, and spiritual.
+                  Tailored services meeting the highest quality standards.
                 </p>
               </div>
             </div>
@@ -57,11 +56,11 @@ export const WhyChooseUs = () => {
               </div>
               <div>
                 <h3 className="text-primary mb-[11px] text-[24px] font-[600]">
-                  Personalised Care
+                  24/7 Support
                 </h3>
                 <p className="text-[#707371] text-[18px]">
-                  Tailored to your specific needs based on what is important to
-                  you and your unique strengths and needs.
+                  Our caring team is available around the clock for any needs
+                  that arise.
                 </p>
               </div>
             </div>
@@ -72,12 +71,11 @@ export const WhyChooseUs = () => {
               </div>
               <div>
                 <h3 className="text-primary mb-[11px] text-[24px] font-[600]">
-                  Quality Care
+                  Individual Focus
                 </h3>
                 <p className="text-[#707371] text-[18px]">
-                  As a baseline, we will use the KLOEs safe, effective, caring,
-                  responsive, and well-led to ensure that our service meets the
-                  required quality standards.
+                  Every care plan is personalized, respecting the unique
+                  preferences and needs of our clients.
                 </p>
               </div>
             </div>

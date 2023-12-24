@@ -27,28 +27,19 @@ const tabItems = [
     content: (
       <MissionTabContent
         content={[
-          `To adopt the safest recruitment guidelines and procedures with commitment
-and compassion to care`,
-          `To match and assess the needs of the individuals
-concerned with caregiver’s experiences
-for greater outcome of service delivery.`,
-          `To offer care, compassion, good communication
-skills, competencies, commitments and
-collaborate to support families , patients in their 
-comfort homes, in the communities such as care
-homes and respite homes.`,
+          `To provide safe, personalized care and enrich the lives of our clients and 
+their families.`,
         ]}
       />
     ),
   },
   {
-    title: "Our Aim",
+    title: "Our Values",
     content: (
       <MissionTabContent
         content={[
-          `Work in line and with consideration to policies in place for an effective and efficient result outcome`,
-          `Promoting independence of patient with respect while maintaining dignity`,
-          `Achieving excellent care services`,
+          `Kindness, respect, and a commitment to building genuine relationships with 
+those we care for`,
         ]}
       />
     ),
@@ -58,7 +49,8 @@ homes and respite homes.`,
     content: (
       <MissionTabContent
         content={[
-          `Flourish advanced care limited is committed to promoting and safeguarding of adults and referring their care needs where necessary where positive decisions will be met to maintain the activities of patients daily living.`,
+          `Your Care is Our Priority: Ensuring that every moment counts and every client feels at 
+home with our services`,
         ]}
       />
     ),
