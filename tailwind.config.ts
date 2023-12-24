@@ -33,6 +33,9 @@ const config: Config = {
       fontFamily: {
         "myriad-pro": "Myriad Pro, sans-serif",
       },
+      screens: {
+        md: { min: "1200px", max: "1400px" },
+      },
     },
   },
   plugins: [],
