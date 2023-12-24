@@ -8,7 +8,7 @@ import { Avatar } from "antd"
 
 export const Hero = () => {
   return (
-    <div className="relative w-full md:h-[95vh] h-[50vh] hero-h font-myriad-pro">
+    <div className="relative w-full md:h-[95vh] h-[60vh] hero-h font-myriad-pro">
       <div className="absolute w-full h-full top-0 left-0 z-[-2] ">
         <Image
           src={"/home-hero.svg"}
@@ -21,10 +21,10 @@ export const Hero = () => {
 
       <Fade left>
         <div className="text-center md:w-[85%] w-[95%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
-          <h1 className="md:text-[65px] text-[28px] text-white font-[800]">
+          <h1 className="md:text-[65px] text-[24px] text-white font-[800]">
             Welcome to Flourished Advanced
           </h1>
-          <h1 className="md:text-[55px] text-[28px] text-white font-[800]">
+          <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
             Compassionate In-Home Elderly Care
           </h1>
           <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
