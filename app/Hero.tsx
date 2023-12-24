@@ -8,7 +8,7 @@ import { Avatar } from "antd"
 
 export const Hero = () => {
   return (
-    <div className="relative w-full md:h-[95vh] h-[50vh] hero-h font-myriad-pro">
+    <div className="relative w-full md:h-[95vh] h-[60vh] hero-h font-myriad-pro">
       <div className="absolute w-full h-full top-0 left-0 z-[-2] ">
         <Image
           src={"/home-hero.svg"}
@@ -20,14 +20,20 @@ export const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-[#0000009d] z-[-1]"></div>
 
       <Fade left>
-        <div className="text-center md:w-[80%] w-[90%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
-          <h1 className="md:text-[96px] text-[28px] text-white font-[800]">
-            Professional Homecare
+        <div className="text-center md:w-[85%] w-[95%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
+          <h1 className="md:text-[65px] text-[24px] text-white font-[800]">
+            Welcome to Flourished Advanced
           </h1>
-          <p className="md:text-[32px] md:leading-[141%] text-white mt-[1rem] md:w-[70%] mx-[auto]">
-            Dedicated to providing the highest level of domiciliary care to
-            residential, nursing homes, and dementia care for older people in
-            the comfort of their homes throughout the UK.{" "}
+          <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
+            Compassionate In-Home Elderly Care
+          </h1>
+          <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
+            At Flourished Advanced Care, we understand the value of independence
+            and comfort for your loved ones. Our team is dedicated to providing
+            exceptional domiciliary care that respects the personal choices and
+            routines of those we serve. With a commitment to enhancing
+            life&apos;s moments through quality care, we are here for you and
+            your family every step of the way.
           </p>
 
           <Link href="/contact-us">

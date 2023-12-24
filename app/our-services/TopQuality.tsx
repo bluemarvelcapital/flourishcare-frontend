@@ -6,11 +6,11 @@ import Fade from "react-reveal/Fade"
 export const TopQuality = () => {
   return (
     <div className="md:p-[60px] p-[20px] container_xl md:w-[80%] md:mx-auto">
-      <h3 className="md:text-[51px] text-[24px] text-primary font-bold md:mb-[110px] mb-[30px]">
+      <h3 className="md:text-[51px] text-[24px] text-center text-primary font-bold md:mb-[110px] mb-[30px]">
         Top quality Care services
       </h3>
       <Fade cascade bottom>
-        <div className="grid xxl:grid-cols-3 md:grid-cols-2 md-grid-cols-1 md:gap-[32px] gap-[16px] items-stretch">
+        <div className="grid xxl:grid-cols-3 md:grid-cols-3 md-grid-cols-1 md:gap-[32px] gap-[16px] items-stretch">
           <Fade left>
             <div className="h-full">
               <div className="relative w-full h-[255px]">
@@ -18,22 +18,16 @@ export const TopQuality = () => {
                   src={"/img6.svg"}
                   alt="Image"
                   fill
-                  className="md:rounded-t-[39px]"
+                  className="md:rounded-t-[12px]"
                   objectFit="cover"
                 />
               </div>
 
-              <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
                   Home Care - Domiciliary
                 </h3>
-                <p>
-                  Our home care service assists with bathing, dressing, and
-                  bedtime. We tailor a Personal Care plan to your needs and
-                  preferences, whether it&apos;s personal cleanlines or catheter
-                  changes. Our professionally trained Care Workers always
-                  provide compassionate, sensitive, and respectful care.
-                </p>
+                <p>Addressing daily living needs with respect and dignity.</p>
               </div>
             </div>
           </Fade>
@@ -45,23 +39,16 @@ export const TopQuality = () => {
                   src={"/img7.svg"}
                   alt="Image"
                   fill
-                  className="md:rounded-t-[39px]"
+                  className="md:rounded-t-[12px]"
                   objectFit="cover"
                 />
               </div>
 
-              <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
-                  Respite care
+                  Companionship Care
                 </h3>
-                <p>
-                  Respite care refers to any sort of care provided when a
-                  primary carer takes regular breaks from the individual they
-                  regularly care for. The care is still delivered in the
-                  individual&apos;s residence; the only difference is the carer.
-                  Our respite care is for regular assistance – provided at home
-                  by our professional carers.
-                </p>
+                <p>Keeping your loved ones socially engaged and active.</p>
               </div>
             </div>
           </Fade>
@@ -73,21 +60,18 @@ export const TopQuality = () => {
                   src={"/img8.svg"}
                   alt="Image"
                   fill
-                  className="md:rounded-t-[39px]"
+                  className="md:rounded-t-[12px]"
                   objectFit="cover"
                 />
               </div>
 
-              <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
-                  Companionship Care
+                  Respite Care
                 </h3>
                 <p>
-                  Companion care is different for each person. We can help you
-                  find someone to hang out with at home or to go out with.
-                  Companion care is based on your needs and where you are in
-                  life. For example, hobbies and activities, social events,
-                  running errands, managing household tasks, etc.
+                  Providing primary caregivers with the relief they need to
+                  recharge.
                 </p>
               </div>
             </div>
@@ -100,22 +84,18 @@ export const TopQuality = () => {
                   src={"/img9.svg"}
                   alt="Image"
                   fill
-                  className="md:rounded-t-[39px]"
+                  className="md:rounded-t-[12px]"
                   objectFit="cover"
                 />
               </div>
 
-              <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
                   Dementia Care
                 </h3>
                 <p>
-                  We can help with dementia symptoms and needs. To build trust,
-                  we treat all clients with compassion, respect, and patience.
-                  We establish a professional connection to learn medical needs,
-                  habits, and preferences to create a personalised dementia care
-                  plan. Our crew is trained to recognise mood and behaviour
-                  changes and respond quickly to alleviate discomfort
+                  Specialist support tailored to the unique challenges of living
+                  with
                 </p>
               </div>
             </div>
@@ -128,21 +108,18 @@ export const TopQuality = () => {
                   src={"/img10.svg"}
                   alt="Image"
                   fill
-                  className="md:rounded-t-[39px]"
+                  className="md:rounded-t-[12px]"
                   objectFit="cover"
                 />
               </div>
 
-              <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
                   Live-in Care
                 </h3>
                 <p>
-                  Our home care service assists with bathing, dressing, and
-                  bedtime. We tailor a Personal Care plan to your needs and
-                  preferences, whether it&apos;s personal cleanlines or catheter
-                  changes. Our professionally trained Care Workers always
-                  provide compassionate, sensitive, and respectful care.
+                  Continuous support to maintain a safe and independent
+                  lifestyle at home.
                 </p>
               </div>
             </div>
@@ -155,21 +132,18 @@ export const TopQuality = () => {
                   src={"/img11.svg"}
                   alt="Image"
                   fill
-                  className="md:rounded-t-[39px]"
+                  className="md:rounded-t-[12px]"
                   objectFit="cover"
                 />
               </div>
 
-              <div className="md:h-[255px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
                   Rehabilitation Services
                 </h3>
                 <p>
-                  Our home care service assists with bathing, dressing, and
-                  bedtime. We tailor a Personal Care plan to your needs and
-                  preferences, whether it&apos;s personal cleanlines or catheter
-                  changes. Our professionally trained Care Workers always
-                  provide compassionate, sensitive, and respectful care.
+                  Assisting with recovery and wellness to enhance quality of
+                  life.
                 </p>
               </div>
             </div>
