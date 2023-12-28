@@ -6,10 +6,11 @@ export const Logo = () => {
   return (
     <div>
       <Link href="/">
-        <img
+        <Image
           src={"/logo.png"}
           alt="Flourish Care Logo"
-          style={{ width: "164px", height: "63px" }}
+          width={164}
+          height={63}
         />
       </Link>
     </div>
