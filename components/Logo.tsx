@@ -7,7 +7,7 @@ export const Logo = () => {
     <div>
       <Link href="/">
         <Image
-          src={"/logo.svg"}
+          src={"/logo2.png"}
           alt="Flourish Care Logo"
           width={164}
           height={63}
