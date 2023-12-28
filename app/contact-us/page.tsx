@@ -5,7 +5,6 @@ import { Map } from "./Map"
 
 export const metadata = {
   title: "Flourish Care - Contact Us",
-  description: "Flourish Advanced Care",
 }
 
 const ContactUS = () => {

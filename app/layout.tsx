@@ -9,9 +9,6 @@ export const metadata: Metadata = {
   title: "Flourish Advanced Care",
   description:
     "Flourished Advanced Care is rooted in the mission to deliver care with integrity and compassion. Our team is carefully selected and trained to match the needs of our clients with the utmost respect and professionalism.",
-  icons: {
-    icon: "/favicon.ico",
-  },
 }
 
 export default function RootLayout({

@@ -13,7 +13,6 @@ import { Reviews } from "./Reviews"
 
 export const metadata: Metadata = {
   title: "Flourish Care",
-  description: "Flourish Advanced Care",
 }
 
 const Home = () => {

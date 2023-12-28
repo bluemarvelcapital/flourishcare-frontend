@@ -5,7 +5,6 @@ import { TopQuality } from "./TopQuality"
 
 export const metadata = {
   title: "Flourish Care - Our Services",
-  description: "Flourish Advanced Care",
 }
 
 const Services = () => {
