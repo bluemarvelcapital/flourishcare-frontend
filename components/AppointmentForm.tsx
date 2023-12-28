@@ -20,7 +20,7 @@ export const AppointmentForm = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center items-center md:mt-[-5rem] md:mr-[50px] z-[3000] gap-[30px]">
+      <div className="flex flex-col justify-center items-center md:mt-[-5rem] z-[3000] gap-[30px]">
         <Fade left>
           <div className="">
             <p className="text-center md:text-[38px] md:leading-[141%]">

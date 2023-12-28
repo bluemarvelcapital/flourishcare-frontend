@@ -10,7 +10,7 @@ export const TopQuality = () => {
         Top quality Care services
       </h3>
       <Fade cascade bottom>
-        <div className="grid xxl:grid-cols-3 md:grid-cols-3 md-grid-cols-1 md:gap-[32px] gap-[16px] items-stretch">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 md-grid-cols-1 md:gap-[32px] gap-[16px] items-stretch">
           <Fade left>
             <div className="h-full">
               <div className="relative w-full h-[255px]">
@@ -23,8 +23,8 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
-                <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
+              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+                <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Home Care - Domiciliary
                 </h3>
                 <p>Addressing daily living needs with respect and dignity.</p>
@@ -44,8 +44,8 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
-                <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
+              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+                <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Companionship Care
                 </h3>
                 <p>Keeping your loved ones socially engaged and active.</p>
@@ -65,8 +65,8 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
-                <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
+              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+                <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Respite Care
                 </h3>
                 <p>
@@ -89,8 +89,8 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
-                <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
+              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+                <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Dementia Care
                 </h3>
                 <p>
@@ -113,8 +113,8 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
-                <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
+              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+                <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Live-in Care
                 </h3>
                 <p>
@@ -137,8 +137,8 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
-                <h3 className="md:text-[32px] text-[20px] text-primary mb-[20px]">
+              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+                <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Rehabilitation Services
                 </h3>
                 <p>

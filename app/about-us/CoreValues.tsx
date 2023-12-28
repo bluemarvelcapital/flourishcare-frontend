@@ -20,20 +20,20 @@ const content = [
 export const CoreValues = () => {
   return (
     <div className="bg-primary md:p-[60px] p-[20px] text-white mb-[40px]">
-      <div className="container_xl md:mx-auto flex md:flex-row flex-col gap-[30px] justify-between w-[80%]">
+      <div className="container_xl md:mx-auto flex xl:flex-row flex-col gap-[30px] justify-between w-[80%]">
         <Fade left>
           <div>
             <h3 className="md:w-[80%] md:text-[64px] mb-[20px] text-[24px]">
               Our Core Values
             </h3>
-            <div className="relative md:w-[500px] w-full md:h-[625px] h-[360px]">
+            <div className="relative xl:w-[500px] w-full md:h-[625px] h-[360px]">
               <Image fill src={"/img12.svg"} alt="Family" objectFit="cover" />
             </div>
           </div>
         </Fade>
 
         <Fade right>
-          <div className="px-[10px] py-[60px] flex flex-col md:gap-[40px] gap-[20px] md:w-[55%]">
+          <div className="px-[10px] py-[60px] flex flex-col md:gap-[40px] gap-[20px] xl:w-[55%]">
             {content.map((item, index) => (
               <div
                 key={index}

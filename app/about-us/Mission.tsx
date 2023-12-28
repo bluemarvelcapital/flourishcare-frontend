@@ -59,7 +59,7 @@ home with our services`,
 
 export const Mission = () => {
   return (
-    <div className="md:p-[60px] p-[20px] ">
+    <div className="lg:p-[60px] p-[20px] ">
       <Tab items={tabItems} />
     </div>
   )

@@ -34,7 +34,8 @@ const config: Config = {
         "myriad-pro": "Myriad Pro, sans-serif",
       },
       screens: {
-        md: { min: "900px", max: "1200px" },
+        md: { min: "880px" },
+        lg: { min: "1350px" },
       },
     },
   },

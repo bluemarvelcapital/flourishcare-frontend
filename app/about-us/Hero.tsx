@@ -20,7 +20,7 @@ export const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-[#0000009d] z-[-1]"></div>
 
       <Fade left>
-        <div className="text-center md:w-[70%] w-[90%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
+        <div className="text-center lg:w-[70%] w-[90%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
           <h1 className="md:text-[65px] text-[24px] text-white font-[800]">
             About Us
           </h1>
