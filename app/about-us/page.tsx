@@ -6,7 +6,6 @@ import { CoreValues } from "./CoreValues"
 
 export const metadata = {
   title: "Flourish Care - About Us",
-  description: "Flourish Advanced Care",
 }
 
 const AboutUs = () => {

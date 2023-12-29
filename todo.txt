@@ -1,0 +1,2 @@
+- Use high quality log for landing page
+- Reduce the text content in the HERO section for the landing page

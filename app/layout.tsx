@@ -1,4 +1,3 @@
-import { Inter, Open_Sans } from "next/font/google"
 import "./globals.css"
 import "./keyframes.css"
 import "animate.css/animate.min.css"
@@ -13,6 +12,13 @@ const open_Sans = Open_Sans({
     subsets: ["latin"],
     weight: ["300", "500", "400", "700"],
 })
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Flourish Advanced Care",
+  description:
+    "Flourished Advanced Care is rooted in the mission to deliver care with integrity and compassion. Our team is carefully selected and trained to match the needs of our clients with the utmost respect and professionalism.",
+}
 
 export default function RootLayout({
     children,

@@ -59,7 +59,7 @@ export const AppointmentForm = () => {
                     />
                 </div>
             </div>
-            <div className="flex flex-col justify-center items-center md:mt-[-5rem] md:mr-[50px] z-[3000] gap-[30px]">
+            <div className="flex flex-col justify-center items-center md:mt-[-5rem] z-[3000] gap-[30px]">
                 <Fade left>
                     <div className="">
                         <p className="text-center md:text-[38px] md:leading-[141%]">
@@ -70,6 +70,7 @@ export const AppointmentForm = () => {
                 <Fade right>
                     <form onSubmit={handleSubmit}>
                         <div className="bg-white md:w-[753px] w-[90%] mx-[auto] md:mx-[inherit] border-[1px] rounded-[4px] border-[#AFB1B0] md:p-[34px] p-[20px] flex flex-col md:gap-[30px] gap-[20px]">
+
                             <Input
                                 name="name"
                                 placeholder="Your Name"
@@ -112,7 +113,7 @@ export const AppointmentForm = () => {
                             <TextArea
                                 name="message"
                                 placeholder="Your Message "
-                                className="w-full border-[1px] border-[#AFB1B0] min-h-[222px]"
+                                className="w-full border-[1px] border-[#AFB1B0]]"
                                 value={formData.message}
                                 onChange={handleChange}
                             />
