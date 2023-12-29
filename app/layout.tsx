@@ -6,12 +6,6 @@ import { Footer } from "@/components/Footer"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-const inter = Inter({ subsets: ["latin"] })
-const open_Sans = Open_Sans({
-    style: "normal",
-    subsets: ["latin"],
-    weight: ["300", "500", "400", "700"],
-})
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
