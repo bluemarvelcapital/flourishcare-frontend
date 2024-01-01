@@ -35,13 +35,13 @@ export const Hero = () => {
           <Link href="/contact-us">
             <Button className="md:my-[52px] my-3">Contact Us</Button>
           </Link>
-          <div className="flex items-center gap-[20px] justify-center text-white">
+          {/* <div className="flex items-center gap-[20px] justify-center text-white">
             <Avatar src="/avatar.svg" className="w-[63px] h-[63px]" />
             <div>
               <p className="text-start md:text-[19px]">Call Helen:</p>
               <p className="text-start md:text-[19px]">(+44)00000000</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </Fade>
     </div>
