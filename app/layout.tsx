@@ -3,6 +3,9 @@ import "./keyframes.css"
 import "animate.css/animate.min.css"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -12,17 +15,18 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={`font-myriad-pro bg-baseLight`}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <body className={`font-myriad-pro bg-baseLight`}>
+                <Header />
+                <ToastContainer position={'top-center'} />
+                {children}
+                <Footer />
+            </body>
+        </html>
+    )
 }
