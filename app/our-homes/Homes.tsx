@@ -8,7 +8,7 @@ const houses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 export const Homes = () => {
   return (
-    <div className="mb-[3rem]">
+    <div className="mb-[3rem] px-[1rem]">
       <h2 className="py-[2rem]">
         <Divider orientation="left">
           <h2 className="text-success text-[28px] font-semibold">Houses</h2>
