@@ -10,6 +10,9 @@ import jsonp from "jsonp"
 import { toast } from "react-toastify"
 import { MAILCHIMP_FORM_URL, CALENDLY_SCHEDULE_URL } from "@/constants/config"
 import { SuccessModal } from "./SuccessModal"
+import { InlineWidget } from "react-calendly"
+import { Modal } from "antd"
+import { CloseCircleFilled } from "@ant-design/icons"
 
 export const AppointmentForm = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +23,7 @@ export const AppointmentForm = () => {
     message: "",
   })
   const [open, setOpen] = useState(false)
+  const [openCalendly, setOpenCalendly] = useState(false)
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -131,7 +135,36 @@ export const AppointmentForm = () => {
         setOpen={setOpen}
         link={CALENDLY_SCHEDULE_URL}
         text="Submitted Successfully"
+        onOk={() => setOpenCalendly(true)}
       />
+
+      {/* Calendly Modal */}
+      <Modal
+        open={openCalendly}
+        onCancel={() => setOpenCalendly(false)}
+        closeIcon={
+          <CloseCircleFilled className="text-black md:text-black text-[1.5rem]" />
+        }
+        className="md:min-w-[70rem]"
+        classNames={{
+          content: "p-0",
+          body: "p-0",
+        }}
+        styles={{
+          content: {
+            boxShadow: "none",
+            background: "transparent",
+          },
+        }}
+        footer={false}
+      >
+        <div className="">
+          <InlineWidget
+            url={CALENDLY_SCHEDULE_URL}
+            styles={{ height: "45rem" }}
+          />
+        </div>
+      </Modal>
     </div>
   )
 }

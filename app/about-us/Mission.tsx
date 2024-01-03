@@ -28,7 +28,7 @@ export const Mission = () => {
         Mission, Aim and Commitment
       </h3>
       <Fade right>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-[20px]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-[20px] px-[2rem] md:px-[1rem]">
           {statements.map((statement) => (
             <MissionCard key={statement.heading} {...statement} />
           ))}
