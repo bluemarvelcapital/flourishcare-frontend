@@ -9,24 +9,24 @@ import "react-toastify/dist/ReactToastify.css"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Flourish Advanced Care",
-  description:
-    "Flourished Advanced Care is rooted in the mission to deliver care with integrity and compassion. Our team is carefully selected and trained to match the needs of our clients with the utmost respect and professionalism.",
+    title: "Flourish Advanced Care",
+    description:
+        "Flourish Advanced Care is rooted in the mission to deliver care with integrity and compassion. Our team is carefully selected and trained to match the needs of our clients with the utmost respect and professionalism.",
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={`font-myriad-pro bg-baseLight`}>
-        <Header />
-        <ToastContainer position={"top-center"} />
-        <div className="overflow-hidden">{children}</div>
-        <Footer />
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <body className={`font-myriad-pro bg-baseLight`}>
+                <Header />
+                <ToastContainer position={"top-center"} />
+                <div className="overflow-hidden">{children}</div>
+                <Footer />
+            </body>
+        </html>
+    )
 }
