@@ -15,18 +15,18 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) {
-    return (
-        <html lang="en">
-            <body className={`font-myriad-pro bg-baseLight`}>
-                <Header />
-                <ToastContainer position={'top-center'} />
-                {children}
-                <Footer />
-            </body>
-        </html>
-    )
+  return (
+    <html lang="en">
+      <body className={`font-myriad-pro bg-baseLight`}>
+        <Header />
+        <ToastContainer position={"top-center"} />
+        <div className="overflow-hidden">{children}</div>
+        <Footer />
+      </body>
+    </html>
+  )
 }

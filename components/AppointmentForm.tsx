@@ -9,6 +9,7 @@ import axios from "axios"
 import jsonp from "jsonp"
 import { toast } from "react-toastify"
 import { MAILCHIMP_FORM_URL, CALENDLY_SCHEDULE_URL } from "@/constants/config"
+import { SuccessModal } from "./SuccessModal"
 
 export const AppointmentForm = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ export const AppointmentForm = () => {
     date: "",
     message: "",
   })
+  const [open, setOpen] = useState(false)
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -39,9 +41,10 @@ export const AppointmentForm = () => {
         `${MAILCHIMP_FORM_URL}&EMAIL=${email}&NAME=${name}&PHONE=${phone}&DATE=${date}&MESSAGE=${message}`,
         { param: "c" },
         (_: any, data: any) => {
-          toast.success("Submitted Successfully")
+          // toast.success("Submitted Successfully")
 
-          window.location.href = CALENDLY_SCHEDULE_URL
+          // window.location.href = CALENDLY_SCHEDULE_URL
+          setOpen(true)
         }
       )
     } catch (error: any) {
@@ -71,7 +74,7 @@ export const AppointmentForm = () => {
         </Fade>
         <Fade right>
           <form onSubmit={handleSubmit}>
-            <div className="bg-white md:w-[753px] w-[90%] mx-[auto] md:mx-[inherit] border-[1px] rounded-[4px] border-[#AFB1B0] md:p-[34px] p-[20px] flex flex-col md:gap-[30px] gap-[20px]">
+            <div className="bg-white md:w-[753px] w-[85vw] mx-[auto] md:mx-[inherit] border-[1px] rounded-[4px] border-[#AFB1B0] md:p-[34px] p-[20px] flex flex-col md:gap-[30px] gap-[20px]">
               <Input
                 name="name"
                 placeholder="Your Name"
@@ -123,6 +126,12 @@ export const AppointmentForm = () => {
           </form>
         </Fade>
       </div>
+      <SuccessModal
+        open={open}
+        setOpen={setOpen}
+        link={CALENDLY_SCHEDULE_URL}
+        text="Submitted Successfully"
+      />
     </div>
   )
 }
