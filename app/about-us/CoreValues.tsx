@@ -19,29 +19,40 @@ const content = [
 
 export const CoreValues = () => {
   return (
-    <div className="bg-primary md:p-[60px] p-[20px] text-white mb-[40px]">
-      <div className="container_xl md:mx-auto flex md:flex-row flex-col gap-[30px] justify-between w-[80%]">
+    <div className="md:p-[60px] p-[20px] mb-[40px]">
+      <div className="container_xl md:mx-auto flex xl:flex-row flex-col gap-[30px] justify-between lg:w-[80%]">
         <Fade left>
-          <div>
-            <h3 className="md:w-[80%] md:text-[64px] mb-[20px] text-[24px]">
-              Our Core Values
-            </h3>
-            <div className="relative md:w-[500px] w-full md:h-[625px] h-[360px]">
-              <Image fill src={"/img12.svg"} alt="Family" objectFit="cover" />
+          <div className="">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="md:w-[80%] md:text-[64px] mb-[20px] text-[24px] text-primary">
+                Our Core Values
+              </h3>
+              <Image src={"/star.svg"} width={80} height={80} alt="star" />
+            </div>
+            <div className="relative xl:w-[550px] w-full md:h-[625px] h-[360px]">
+              <Image
+                fill
+                src={"/img12.jpeg"}
+                alt="Family"
+                objectFit="cover"
+                className="md:rounded-tr-[50px] md:rounded-bl-[50px] w-full"
+              />
             </div>
           </div>
         </Fade>
 
         <Fade right>
-          <div className="px-[10px] py-[60px] flex flex-col md:gap-[40px] gap-[20px] md:w-[55%]">
+          <div className="px-[10px] py-[60px] flex flex-col md:gap-[40px] gap-[20px] xl:w-[55%]">
             {content.map((item, index) => (
               <div
                 key={index}
                 className="flex md:gap-[49px] gap-[10px] justify-start items-start"
               >
-                <div className="min-w-[29px] h-[8px] rounded-[11px] bg-[#fff]"></div>
+                <div className="min-w-[29px] h-[8px] rounded-[11px] bg-primary"></div>
                 <div className="text-[16px] md:text-[22px]">
-                  <h3 className="font-[600] mb-[10px]">{headers[index]}</h3>
+                  <h3 className="font-[600] mb-[10px] text-primary">
+                    {headers[index]}
+                  </h3>
                   <p>{item}</p>
                 </div>
               </div>

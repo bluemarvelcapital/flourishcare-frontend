@@ -10,7 +10,7 @@ export const WhyChooseUs = () => {
         <h3 className="text-[20px] md:text-[26px] text-center font-bold">
           Why choose Us?
         </h3>
-        <p className="md:text-[18px] text-center md:mt-[14px] md:w-[50%] md:mx-[auto]">
+        <p className="md:text-[18px] text-center md:mt-[14px] md:w-[90%] md:mx-[auto]">
           Our individualized approach to care allows us to help our clients live
           fulfilling and meaningful lives with as much or as little assistance
           as they desire. One of the greatest anxieties of the elderly is losing
@@ -22,7 +22,7 @@ export const WhyChooseUs = () => {
         </p>
       </Fade>
 
-      <div className="grid md:grid-cols-2 grid-cols-1 md:gap-[34px] gap-[16px] md:mt-10 mt-5 md:w-[70%] md:mx-[auto]">
+      <div className="grid md:grid-cols-2 grid-cols-1 md:gap-[34px] gap-[16px] md:mt-10 mt-5 md:w-[100%] md:mx-[auto]">
         <Fade cascade left>
           <div className="relative w-full md:h-full h-[300px]">
             <Image

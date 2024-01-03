@@ -1,16 +1,18 @@
-import { Inter, Open_Sans } from "next/font/google"
 import "./globals.css"
 import "./keyframes.css"
 import "animate.css/animate.min.css"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
-const inter = Inter({ subsets: ["latin"] })
-const open_Sans = Open_Sans({
-  style: "normal",
-  subsets: ["latin"],
-  weight: ["300", "500", "400", "700"],
-})
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Flourish Advanced Care",
+  description:
+    "Flourished Advanced Care is rooted in the mission to deliver care with integrity and compassion. Our team is carefully selected and trained to match the needs of our clients with the utmost respect and professionalism.",
+}
 
 export default function RootLayout({
   children,
@@ -21,7 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-myriad-pro bg-baseLight`}>
         <Header />
-        {children}
+        <ToastContainer position={"top-center"} />
+        <div className="overflow-hidden">{children}</div>
         <Footer />
       </body>
     </html>

@@ -11,6 +11,7 @@ const paths = [
   { path: "/", name: "Home" },
   { path: "/about-us", name: "About Us" },
   { path: "/our-services", name: "Our Services" },
+  { path: "/our-homes", name: "Our Homes" },
   // { path: "/contact-us", name: "Contact Us" },
 ]
 export const Header = () => {

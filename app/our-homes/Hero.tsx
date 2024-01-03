@@ -11,7 +11,7 @@ export const Hero = () => {
     <div className="relative w-full md:h-[95vh] h-[45vh] hero-h">
       <div className="absolute w-full h-full top-0 left-0 z-[-2] ">
         <Image
-          src={"/home-hero3.svg"}
+          src={"/our-homes.png"}
           alt="Flourish Care Hero"
           fill={true}
           objectFit="cover"
@@ -22,14 +22,15 @@ export const Hero = () => {
       <Fade left>
         <div className="text-center md:w-[70%] w-[90%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
           <h1 className="md:text-[65px] text-[24px] text-white font-[800]">
-            Our Services
+            Our Homes
           </h1>
-          <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
+          {/* <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
             Caring for the Whole Person
-          </h1>
+          </h1> */}
           <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
-            We offer a range of in-home care services that ensure your loved
-            ones receive the care they need in the environment they love
+            Our specialised services ensure that all of our clients receive
+            attention and assistance suited to their individual requirements.
+            Services of Care with a Difference
           </p>
 
           <Link href="/contact-us">
