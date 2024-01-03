@@ -1,6 +1,7 @@
 import React from "react"
 import { Hero } from "./Hero"
 import { AppointmentForm } from "@/components/AppointmentForm"
+// import { Mission } from "./Mission_old"
 import { Mission } from "./Mission"
 import { CoreValues } from "./CoreValues"
 
@@ -13,6 +14,7 @@ const AboutUs = () => {
     <div>
       <Hero />
       <div className="container_xl md:w-[80%] md:mx-auto">
+        {/* <Mission /> */}
         <Mission />
       </div>
       <CoreValues />

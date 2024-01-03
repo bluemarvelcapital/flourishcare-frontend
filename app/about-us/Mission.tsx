@@ -1,66 +1,39 @@
 "use client"
-import React, { FC } from "react"
-import { Tab } from "@/components/Tab"
+import { MissionCard } from "@/components/MissionCard"
+import React from "react"
 import Fade from "react-reveal/Fade"
 
-const MissionTabContent: FC<{ content: string[] }> = ({ content }) => {
-  return (
-    <Fade cascade top>
-      <div className="bg-white px-[30px] py-[60px] md:rounded-tl-[80px] md:rounded-br-[80px] flex flex-col md:gap-[40px] gap-[20px]  lg:min-h-[30rem]">
-        {content.map((item, index) => (
-          <div
-            key={index}
-            className="flex md:gap-[49px] gap-[20px] justify-start items-start"
-          >
-            <div className="min-w-[29px] h-[8px] rounded-[11px] bg-[#82B04D]"></div>
-            <p className="text-[#000] text-[16px] md:text-[22px]">{item}</p>
-          </div>
-        ))}
-      </div>
-    </Fade>
-  )
-}
-
-const tabItems = [
+const statements = [
   {
-    title: "Our Mission",
-    content: (
-      <MissionTabContent
-        content={[
-          `To provide safe, personalized care and enrich the lives of our clients and 
-their families.`,
-        ]}
-      />
-    ),
+    heading: "Mission",
+    body: "To provide safe, personalized care and enrich the lives of our clients and their families",
+    background: "#66ACDC",
   },
   {
-    title: "Our Values",
-    content: (
-      <MissionTabContent
-        content={[
-          `Kindness, respect, and a commitment to building genuine relationships with 
-those we care for`,
-        ]}
-      />
-    ),
+    heading: "Aim",
+    body: "Kindness, respect, and a commitment to building genuine relationships with those we care for",
+    background: "#04BD4B",
   },
   {
-    title: "Our Commitment",
-    content: (
-      <MissionTabContent
-        content={[
-          `Your Care is Our Priority: Ensuring that every moment counts and every client feels at 
-home with our services`,
-        ]}
-      />
-    ),
+    heading: "Commitment",
+    body: "We are committed to promoting and safeguarding of adults and referring their care needs where necessary ",
+    background: "#66ACDC",
   },
 ]
 
 export const Mission = () => {
   return (
-    <div className="lg:p-[60px] p-[20px] ">
-      <Tab items={tabItems} />
+    <div className="lg:p-[60px] p-[20px]">
+      <h3 className="text-base text-center md:text-[35px] text-[25px] font-bold mb-[2.5rem]">
+        Mission, Aim and Commitment
+      </h3>
+      <Fade right>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-[20px]">
+          {statements.map((statement) => (
+            <MissionCard key={statement.heading} {...statement} />
+          ))}
+        </div>
+      </Fade>
     </div>
   )
 }
