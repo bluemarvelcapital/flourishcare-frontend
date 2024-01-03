@@ -28,7 +28,7 @@ export const Hero = () => {
                         Your Trusted Care Partner
                     </h1>
                     <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
-                        Flourished Advanced Care is rooted in the mission to deliver care
+                        Flourish Advanced Care is rooted in the mission to deliver care
                         with integrity and compassion. Our team is carefully selected and
                         trained to match the needs of our clients with the utmost respect
                         and professionalism.
