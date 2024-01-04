@@ -9,6 +9,7 @@ import {
   PhoneFilled,
   MailFilled,
 } from "@ant-design/icons"
+import Home from '../public/home-hero.svg'
 import { Avatar } from "antd"
 
 export const Footer = () => {
@@ -85,15 +86,27 @@ export const Footer = () => {
                 <ul className="flex flex-col gap-[18px]">
                   <li className="font-[500] flex gap-[20px] items-center">
                     <Avatar className="bg-primary" icon={<PhoneFilled />} />
-                    <span className="">+1 305 603 7528</span>
+                    <span className="">+44 7459 4933 83</span>
+                  </li>
+                  <li className="font-[500] flex gap-[20px] items-center">
+                    <Avatar className="bg-primary" icon={<PhoneFilled />} />
+                    <span className="">+44 1582 2831 72</span>
                   </li>
                   <li className="font-[500] flex gap-[20px] items-center">
                     <Avatar className="bg-primary" icon={<MailFilled />} />
                     <Link
-                      href="mailto:flourishadvancedcare@gmail.com"
+                      href="mailto:info@flourishadvancedcare.co.uk"
                       className=" font-[500]"
                     >
-                      flourishadvancedcare@gmail.com
+                      info@flourishadvancedcare.co.uk
+                    </Link>
+                  </li>
+                  <li className="font-[500] flex gap-[20px] items-center">
+                    <Link
+                      href="mailto:info@flourishadvancedcare.co.uk"
+                      className=" font-[500]"
+                    >
+                      39 Priestleys, Luton, England, LU1 5QL
                     </Link>
                   </li>
                 </ul>
