@@ -7,6 +7,7 @@ import {
 } from "@mui/icons-material"
 import React, { useState } from "react"
 import { RegistrationForm } from "./RegistrationForm"
+import { HealthForm } from "./HealthForm"
 
 export const FormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -20,7 +21,7 @@ export const FormSteps = () => {
     {
       title: "Complete Pre-Employment Health Questionnaire Form",
       icon: <MedicalInformation />,
-      content: "Interview with our recruitment team",
+      content: <HealthForm next={next} />,
     },
     {
       title: "Complete New Employee Form",
