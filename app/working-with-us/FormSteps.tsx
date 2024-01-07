@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react"
 import { RegistrationForm } from "./RegistrationForm"
 import { HealthForm } from "./HealthForm"
+import { EmployeeForm } from "./EmployeeForm"
 
 export const FormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -26,7 +27,7 @@ export const FormSteps = () => {
     {
       title: "Complete New Employee Form",
       icon: <BadgeOutlined />,
-      content: "Complete the onboarding process",
+      content: <EmployeeForm next={next} />,
     },
     {
       title: "Complete Non-Disclosure Form",

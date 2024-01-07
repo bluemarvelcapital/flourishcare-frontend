@@ -24,6 +24,10 @@
   font-size: 1rem !important;
 }
 
+.ant-select-selector {
+  border-color: #00000060 !important;
+}
+
 .glow-btn {
   box-shadow: 0 5px 15px rgba(135, 207, 57, 0.521);
 }

@@ -1,14 +1,5 @@
 "use client"
-import {
-  Button as AntButton,
-  DatePicker,
-  Form,
-  Input,
-  Radio,
-  Select,
-  Space,
-  Upload,
-} from "antd"
+import { DatePicker, Form, Input, Radio, Select } from "antd"
 import React from "react"
 import { countries } from "@/constants/countries"
 import { UploadOutlined } from "@ant-design/icons"
@@ -25,12 +16,12 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
       <h3 className="text-2xl font-semibold mb-4">Personal Details</h3>
       <Form layout="vertical" onFinish={next}>
         <Form.Item label="Post Applied For:" required className="font-semibold">
-          <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+          <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
         </Form.Item>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Form.Item label="Title" required className="font-semibold">
             <Select
-              className="border-[#EBEBEB] h-[2rem] w-full focus:border-success hover:border-success"
+              className="border-[#00000060] h-[2rem] w-full focus:border-success hover:border-success"
               style={{ height: "3.1rem" }}
               size="large"
               placeholder="Select"
@@ -43,10 +34,10 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
             />
           </Form.Item>
           <Form.Item label="First Name" required className="font-semibold">
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
           <Form.Item label="Last Name" required className="font-semibold">
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
         </div>
 
@@ -57,7 +48,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
             className="font-semibold"
           >
             <Input
-              className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success"
+              className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
               type="number"
             />
           </Form.Item>
@@ -67,13 +58,13 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
             className="font-semibold"
           >
             <Input
-              className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success"
+              className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
               type="number"
             />
           </Form.Item>
           <Form.Item label="Email" required className="font-semibold">
             <Input
-              className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success"
+              className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
               type="email"
             />
           </Form.Item>
@@ -81,10 +72,10 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Form.Item label="Sex" required className="font-semibold">
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
           <Form.Item label="Date of Birth" required className="font-semibold ">
-            <DatePicker className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <DatePicker className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
           <Form.Item
             label="Are you aged 18 years or over?"
@@ -105,13 +96,13 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
             className="font-semibold"
           >
             <Input
-              className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success"
+              className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
               type="number"
             />
           </Form.Item>
           <Form.Item label="Nationality" required className="font-semibold ">
             <Select
-              className="border-[#EBEBEB] h-[2rem] w-full focus:border-success hover:border-success"
+              className="border-[#00000060] h-[2rem] w-full focus:border-success hover:border-success"
               style={{ height: "3.1rem" }}
               size="large"
               placeholder="Select"
@@ -131,23 +122,23 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
             required
             className="font-semibold"
           >
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
+          </Form.Item>
+          <Form.Item label="Address" required className="font-semibold">
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
           <Form.Item label="Street Address" required className="font-semibold">
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
-          </Form.Item>
-          <Form.Item label="Street Address" required className="font-semibold">
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Form.Item label="City" required className="font-semibold ">
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
           <Form.Item label="Country" required className="font-semibold ">
             <Select
-              className="border-[#EBEBEB] h-[2rem] w-full focus:border-success hover:border-success"
+              className="border-[#00000060] h-[2rem] w-full focus:border-success hover:border-success"
               style={{ height: "3.1rem" }}
               size="large"
               placeholder="Select"
@@ -156,7 +147,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
             />
           </Form.Item>
           <Form.Item label="Zip/Postal Code" required className="font-semibold">
-            <Input className="border-[#EBEBEB] p-[0.8rem] w-full focus:border-success hover:border-success" />
+            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
           </Form.Item>
         </div>
 
