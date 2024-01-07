@@ -36,8 +36,8 @@ export const FormSteps = () => {
     },
   ]
   return (
-    <div className="p-10 mt-10 form-steps">
-      <div className="grid grid-cols-4 gap-[2rem] justify-items-center">
+    <div className="mt-10 form-steps">
+      <div className="md:p-10 p-5 grid md:grid-cols-4 grid-cols-1 gap-[2rem] justify-items-center">
         {items.map((item, index) => (
           <div
             onClick={() => setActiveStep(index)}
@@ -55,7 +55,7 @@ export const FormSteps = () => {
           </div>
         ))}
       </div>
-      <div className="my-[2rem]">{items[activeStep].content}</div>
+      <div className="md:p-10 my-[2rem]">{items[activeStep].content}</div>
     </div>
   )
 }

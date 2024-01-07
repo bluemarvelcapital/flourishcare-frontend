@@ -187,7 +187,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
           </Form.Item>
         </div>
 
-        <div className="flex md:flex-row flex-col gap-8 justify-between items-center">
+        <div className="flex md:flex-row flex-col gap-8 justify-between md:items-center">
           <Form.Item
             label="Do you have a current full driving license?"
             required
