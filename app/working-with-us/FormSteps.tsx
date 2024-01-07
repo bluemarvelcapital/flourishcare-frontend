@@ -9,6 +9,7 @@ import React, { useState } from "react"
 import { RegistrationForm } from "./RegistrationForm"
 import { HealthForm } from "./HealthForm"
 import { EmployeeForm } from "./EmployeeForm"
+import { NonDisclosureForm } from "./NonDisclosureForm"
 
 export const FormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -32,7 +33,7 @@ export const FormSteps = () => {
     {
       title: "Complete Non-Disclosure Form",
       icon: <EditNoteOutlined />,
-      content: "Start working with us",
+      content: <NonDisclosureForm />,
     },
   ]
   return (
