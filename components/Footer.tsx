@@ -9,7 +9,7 @@ import {
   PhoneFilled,
   MailFilled,
 } from "@ant-design/icons"
-import Home from '../public/home-hero.svg'
+import Home from "../public/home-hero.svg"
 import { Avatar } from "antd"
 
 export const Footer = () => {
@@ -25,9 +25,9 @@ export const Footer = () => {
         <Link href="">
           <InstagramOutlined className="text-white text-[40px]" />
         </Link>
-        <Link href="">
+        {/* <Link href="">
           <TwitterOutlined className="text-white text-[40px]" />
-        </Link>
+        </Link> */}
       </div>
       <div className="bg-white">
         <div className="md:px-[144px] px-[20px] py-[40px] container_xl bg-[#fff]">
