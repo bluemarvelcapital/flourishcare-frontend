@@ -20,7 +20,8 @@ interface RegistrationFormProps {
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
-  const [isOverAged18, setIsOverAged18] = React.useState<"yes" | "no" | "">("")
+  const [isOverAge18, setIsOverAge18] = React.useState<"yes" | "no" | "">("")
+  const [canWorkInUK, setCanWorkInUK] = React.useState<"yes" | "no" | "">("")
 
   return (
     <div className="py-10 px-6 bg-white transition-all">
