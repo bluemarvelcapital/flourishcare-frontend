@@ -58,7 +58,7 @@ export const NonDisclosureForm = () => {
             className="w-full rounded-[100px] text-xl"
             style={{ borderRadius: "100px" }}
           >
-            Next
+            Submit Form
           </Button>
         </div>
       </Form>

@@ -13,6 +13,7 @@ import { InternationalStep1 } from "./InternationalStep1"
 import { InternationalStep2 } from "./InternationalStep2"
 import { InternationalStep3 } from "./InternationalStep3"
 import { InternationalStep4 } from "./InternationalStep4"
+import { InternationalStep5 } from "./InternationalStep5"
 
 export const InternationFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -29,6 +30,9 @@ export const InternationFormSteps = () => {
     },
     {
       content: <InternationalStep4 next={next} />,
+    },
+    {
+      content: <InternationalStep5 submit={() => null} />,
     },
   ]
   return (
