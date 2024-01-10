@@ -1,5 +1,6 @@
 import React from "react"
-import { FormSteps } from "./FormSteps"
+import { NationalFormSteps } from "./NationalFormSteps"
+import { CandidateForm } from "./CandidateForm"
 
 export const RecruitmentProcess = () => {
   return (
@@ -7,7 +8,7 @@ export const RecruitmentProcess = () => {
       <h2 className="text-center text-xl md:text-[48px] text-bold">
         Our Registration Process For Recruitment
       </h2>
-      <FormSteps />
+      <CandidateForm />
     </div>
   )
 }

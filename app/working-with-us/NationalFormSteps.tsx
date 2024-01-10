@@ -11,7 +11,7 @@ import { HealthForm } from "./HealthForm"
 import { EmployeeForm } from "./EmployeeForm"
 import { NonDisclosureForm } from "./NonDisclosureForm"
 
-export const FormSteps = () => {
+export const NationalFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
   let next = () => setActiveStep((prev) => prev + 1)
   const items = [
