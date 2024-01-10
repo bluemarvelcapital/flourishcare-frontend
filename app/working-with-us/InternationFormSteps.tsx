@@ -10,6 +10,7 @@ import { HealthForm } from "./HealthForm"
 import { EmployeeForm } from "./EmployeeForm"
 import { NonDisclosureForm } from "./NonDisclosureForm"
 import { InternationalStep1 } from "./InternationalStep1"
+import { InternationalStep2 } from "./InternationalStep2"
 
 export const InternationFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -19,7 +20,7 @@ export const InternationFormSteps = () => {
       content: <InternationalStep1 next={next} />,
     },
     {
-      content: <HealthForm next={next} />,
+      content: <InternationalStep2 next={next} />,
     },
     {
       content: <EmployeeForm next={next} />,
