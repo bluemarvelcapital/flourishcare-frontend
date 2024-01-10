@@ -12,6 +12,7 @@ import { NonDisclosureForm } from "./NonDisclosureForm"
 import { InternationalStep1 } from "./InternationalStep1"
 import { InternationalStep2 } from "./InternationalStep2"
 import { InternationalStep3 } from "./InternationalStep3"
+import { InternationalStep4 } from "./InternationalStep4"
 
 export const InternationFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -27,7 +28,7 @@ export const InternationFormSteps = () => {
       content: <InternationalStep3 next={next} />,
     },
     {
-      content: <NonDisclosureForm />,
+      content: <InternationalStep4 next={next} />,
     },
   ]
   return (
