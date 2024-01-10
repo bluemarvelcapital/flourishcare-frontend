@@ -99,7 +99,7 @@ export const InternationalStep2: FC<{ next: () => void }> = ({ next }) => {
               <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
             </Form.Item>
             <Form.Item
-              label="Examinations taken & grades*"
+              label="Examinations taken & grades"
               required
               className="font-semibold"
             >
