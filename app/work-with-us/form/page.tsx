@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 import { RecruitmentProcess } from "./RecruitmentProcess"
-import { Hero } from "../Hero"
+import { Hero } from "./Hero"
 
 const WorkingWithUs = () => {
   return (
@@ -9,7 +9,7 @@ const WorkingWithUs = () => {
       <div>
         <Hero />
       </div>
-      <div className="container_xl">
+      <div className="container_xl" id="form">
         <RecruitmentProcess />
       </div>
     </div>
