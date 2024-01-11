@@ -22,7 +22,7 @@ export const Hero = () => {
       <Fade left>
         <div className="text-center lg:w-[70%] w-[90%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
           <h1 className="md:text-[65px] text-[24px] text-white font-[800]">
-            Working with Us
+            Work with Us
           </h1>
           {/* <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
                         Your Trusted Care Partner
