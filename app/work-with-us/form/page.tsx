@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
-import { Hero } from "./Hero"
 import { RecruitmentProcess } from "./RecruitmentProcess"
+import { Hero } from "../Hero"
 
 const WorkingWithUs = () => {
   return (
