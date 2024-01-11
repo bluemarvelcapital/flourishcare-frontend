@@ -10,6 +10,7 @@ export const LicensedBy = () => {
         <img src="/license1.svg" alt="" />
         <img src="/license2.svg" alt="" />
         <img src="/license3.svg" alt="" />
+        <img src="/license.png" alt="" />
       </div>
     </div>
   )

@@ -70,8 +70,8 @@ export const TopQuality = () => {
                   Respite Care
                 </h3>
                 <p>
-                  Providing primary caregivers with the relief they need to
-                  recharge.
+                  Respite care provided to clients at home and in the supported
+                  living accommodation who requires temporal care and support.
                 </p>
               </div>
             </div>
@@ -89,7 +89,7 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[330px] xl:h-[300px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Dementia Care
                 </h3>
@@ -113,7 +113,7 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[330px] xl:h-[300px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                   Live-in Care
                 </h3>
@@ -137,13 +137,17 @@ export const TopQuality = () => {
                 />
               </div>
 
-              <div className="md:h-[220px] xl:h-[200px] p-[24px] border-[1px] border-[#D3D3D3]">
+              <div className="md:h-[330px] xl:h-[300px] p-[24px] border-[1px] border-[#D3D3D3]">
                 <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
-                  Rehabilitation Services
+                  Supported Living Accommodation
                 </h3>
                 <p>
-                  Assisting with recovery and wellness to enhance quality of
-                  life.
+                  Flourish provides support to those with mental health
+                  conditions to become more independent and achieve their goals
+                  in a safe and comfortable living environment. This could be
+                  for long term, short term, and respite support care. Our
+                  supported living models ensures that that the quality of
+                  support provided is consistently high.
                 </p>
               </div>
             </div>
