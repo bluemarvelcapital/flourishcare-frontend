@@ -22,15 +22,13 @@ export const Hero = () => {
       <Fade left>
         <div className="text-center md:w-[70%] w-[90%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
           <h1 className="md:text-[65px] text-[24px] text-white font-[800]">
-            Our Homes
+            Our Home
           </h1>
           {/* <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
             Caring for the Whole Person
           </h1> */}
           <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
-            Our specialised services ensure that all of our clients receive
-            attention and assistance suited to their individual requirements.
-            Services of Care with a Difference
+            Greater wellbeing care and greater outcome
           </p>
 
           <Link href="/contact-us">
