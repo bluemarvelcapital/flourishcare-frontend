@@ -26,7 +26,7 @@ export const WhyChooseUs = () => {
         <Fade cascade left>
           <div className="relative w-full md:h-full h-[300px]">
             <Image
-              src={"/img5.svg"}
+              src={"/trust.jpg"}
               alt="Image"
               fill
               objectFit="cover"
