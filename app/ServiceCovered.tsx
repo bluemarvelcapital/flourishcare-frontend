@@ -7,8 +7,8 @@ import Fade from "react-reveal/Fade"
 export const ServiceCovered = () => {
   return (
     <div className="mt-[24px] md:mt-[50px] bg-light py-[40px] md:px-[28px] px-[18px]">
-      <h3 className="text-[24px] md:text-[24px] text-center font-bold mb-[24px]">
-        Services Covered
+      <h3 className="text-[24px] md:text-[34px] text-center font-bold mb-[24px]">
+        Our Services
       </h3>
 
       <Fade left cascade>
@@ -47,7 +47,7 @@ export const ServiceCovered = () => {
                 />
               </div>
               <p className="text-center md:text-[20px] mt-[20px]">
-                Nursing Care
+                Respite Care
               </p>
             </div>
           </Link>
@@ -66,7 +66,7 @@ export const ServiceCovered = () => {
                 />
               </div>
               <p className="text-center md:text-[20px] mt-[20px]">
-                Companionship
+                Companionship Care
               </p>
             </div>
           </Link>
@@ -77,7 +77,7 @@ export const ServiceCovered = () => {
             <div className="w-full">
               <div className="relative w-full md:h-[300px] h-[200px]">
                 <Image
-                  src={"/img4.svg"}
+                  src={"/housekeeping.jpg"}
                   fill
                   alt="Service Rendered"
                   objectFit="cover"
@@ -85,7 +85,7 @@ export const ServiceCovered = () => {
                 />
               </div>
               <p className="text-center md:text-[20px] mt-[20px]">
-                Housekeeping
+                Housekeeping care
               </p>
             </div>
           </Link>

@@ -72,7 +72,7 @@ export const AppointmentForm = () => {
         <Fade left>
           <div className="">
             <p className="text-center md:text-[38px] md:leading-[141%]">
-              Your Care is Our Priority
+              Book a Free Consultation
             </p>
           </div>
         </Fade>

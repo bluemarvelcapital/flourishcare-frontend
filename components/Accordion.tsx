@@ -15,11 +15,14 @@ export const Accordion: FC<Props> = ({ items }) => {
   const lastItem = items.length - 1
   return (
     <Fade top cascade>
-      <div>
+      <div className="transition ease-in-out delay-[5s]">
         {items.map((item, index) => (
-          <div key={index} className="my-[32px]">
+          <div
+            key={index}
+            className="my-[32px] transition ease-in-out delay-[5s]"
+          >
             <div
-              className="flex justify-between mb-[8px] cursor-pointer"
+              className="flex justify-between mb-[8px] cursor-pointer transition ease-in-out delay-[5s]"
               onClick={() =>
                 setActiveIndex(() => (activeIndex === index ? null : index))
               }
@@ -33,7 +36,11 @@ export const Accordion: FC<Props> = ({ items }) => {
                 )}
               </p>
             </div>
-            {activeIndex === index && <Fade top>{item.content}</Fade>}
+            {activeIndex === index && (
+              <div className="transition ease-in-out delay-[5s]">
+                {item.content}
+              </div>
+            )}
             {index !== lastItem && <hr className="my-[32px]" />}
           </div>
         ))}
