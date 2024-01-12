@@ -1,5 +1,9 @@
 "use client"
-import { CreditCardOutlined, RightOutlined } from "@ant-design/icons"
+import {
+  CreditCardOutlined,
+  MailOutlined,
+  RightOutlined,
+} from "@ant-design/icons"
 import { CallOutlined } from "@mui/icons-material"
 import { Divider } from "antd"
 import Image from "next/image"
@@ -56,6 +60,15 @@ export const Homes = () => {
             <p>
               <CallOutlined />
               <span className="ml-3">+44 1582 2831 72</span>
+            </p>
+            <p className="m">
+              <MailOutlined />
+              <a
+                href="mailto:info@flourishadvancedcare.co.uk"
+                className="ml-3 text-success"
+              >
+                info@flourishadvancedcare.co.uk
+              </a>
             </p>
           </div>
           <div>
