@@ -36,7 +36,7 @@ export const Homes = () => {
         </div>
         <div className="md:text-lg my-7">
           <p className="font-semibold mb-1">TYPES OF LIVING</p>
-          <ul className="list-disc px-5 mb-3">
+          <ul className="coloured-disc px-5 mb-3">
             <li>Mental health clients</li>
             <li>Respite care clients</li>
           </ul>

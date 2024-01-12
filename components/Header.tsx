@@ -13,6 +13,8 @@ const paths = [
   { path: "/our-services", name: "Our Services" },
   { path: "/work-with-us", name: "Work With Us" },
   { path: "/our-home", name: "Our Home" },
+  { path: "/faqs", name: "FAQs" },
+
   // { path: "/contact-us", name: "Contact Us" },
 ]
 export const Header = () => {

@@ -6,10 +6,10 @@ import {
   InstagramOutlined,
   LinkedinFilled,
   TwitterOutlined,
-  PhoneFilled,
-  MailFilled,
+  PhoneOutlined,
+  MailOutlined,
+  HomeOutlined,
 } from "@ant-design/icons"
-import Home from "../public/home-hero.svg"
 import { Avatar } from "antd"
 
 export const Footer = () => {
@@ -85,15 +85,15 @@ export const Footer = () => {
                 </h3>
                 <ul className="flex flex-col gap-[18px]">
                   <li className="font-[500] flex gap-[20px] items-center">
-                    <Avatar className="bg-primary" icon={<PhoneFilled />} />
+                    <Avatar className="bg-primary" icon={<PhoneOutlined />} />
                     <span className="">+44 7459 4933 83</span>
                   </li>
                   <li className="font-[500] flex gap-[20px] items-center">
-                    <Avatar className="bg-primary" icon={<PhoneFilled />} />
+                    <Avatar className="bg-primary" icon={<PhoneOutlined />} />
                     <span className="">+44 1582 2831 72</span>
                   </li>
                   <li className="font-[500] flex gap-[20px] items-center">
-                    <Avatar className="bg-primary" icon={<MailFilled />} />
+                    <Avatar className="bg-primary" icon={<MailOutlined />} />
                     <Link
                       href="mailto:info@flourishadvancedcare.co.uk"
                       className=" font-[500]"
@@ -102,6 +102,7 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li className="font-[500] flex gap-[20px] items-center">
+                    <Avatar className="bg-primary" icon={<HomeOutlined />} />
                     <Link
                       href="mailto:info@flourishadvancedcare.co.uk"
                       className=" font-[500]"
