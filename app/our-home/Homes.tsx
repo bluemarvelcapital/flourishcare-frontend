@@ -19,30 +19,30 @@ export const Homes = () => {
       <HomesImages />
       {/* Description */}
       <div>
-        <h2 className="md:text-3xl text-xl p-5 border-l-[2px] border-success font-semibold">
+        <h2 className="md:text-3xl lg:text-[3rem] text-xl md:p-7 p-5 border-l-[3px] border-success font-normal">
           Flourish at Priestleys
         </h2>
-        <p className="my-5 md:text-lg">
+        <p className="my-7 md:text-lg">
           Our community offer supported living accommodation services that
           ensure your loved ones receive the care they need in the environment
           they love.
         </p>
         <div className="md:text-lg">
-          <p className="font-semibold">PRICING</p>
+          <p className="font-semibold mb-1">PRICING</p>
           <p>
             <CreditCardOutlined />
-            <span className="ml-3">Room rates starts at £X/month</span>
+            <span className="ml-4">Room rates starts at £X/month</span>
           </p>
         </div>
-        <div className="md:text-lg my-5">
-          <p className="font-semibold">TYPES OF LIVING</p>
-          <ul className="list-disc px-5 mb-2">
+        <div className="md:text-lg my-7">
+          <p className="font-semibold mb-1">TYPES OF LIVING</p>
+          <ul className="list-disc px-5 mb-3">
             <li>Mental health clients</li>
             <li>Respite care clients</li>
           </ul>
           <Link
             href="/contact-us"
-            className="hover:text-success transition-all text-md"
+            className="text-primary transition-all text-md"
           >
             Not sure which care type you need?
             <span className="text-success">
@@ -50,9 +50,9 @@ export const Homes = () => {
             </span>
           </Link>
         </div>
-        <div className="md:text-lg my-5 grid-cols-1 md:grid-cols-2 grid gap-[2rem]">
+        <div className="md:text-lg my-7 grid-cols-1 md:grid-cols-2 grid gap-[2rem]">
           <div>
-            <p className="font-semibold mb-3">Contact</p>
+            <p className="font-semibold mb-4">Contact</p>
             <p className="mb-2">
               <CallOutlined />
               <span className="ml-3">+44 7459 4933 83</span>
@@ -65,7 +65,7 @@ export const Homes = () => {
               <MailOutlined />
               <a
                 href="mailto:info@flourishadvancedcare.co.uk"
-                className="ml-3 text-success"
+                className="ml-3 text-primary"
               >
                 info@flourishadvancedcare.co.uk
               </a>
@@ -79,7 +79,7 @@ export const Homes = () => {
             <p className="mb-2">LU1 5QL</p>
             <Link
               href="/contact-us"
-              className="hover:text-success transition-all text-md"
+              className="hover:text-success transition-all text-md text-primary"
             >
               Map and Directions
               <span className="text-success">

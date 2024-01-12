@@ -22,7 +22,7 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[220px]">
               <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                 Home Care - Domiciliary
               </h3>
@@ -41,7 +41,7 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[220px]">
               <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                 Companionship Care
               </h3>
@@ -60,7 +60,7 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[220px]">
               <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                 Respite Care
               </h3>
@@ -82,7 +82,7 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[380px]">
               <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                 Dementia Care
               </h3>
@@ -104,7 +104,7 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[400px] lg:h-[380px]">
               <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                 Live-in Care
               </h3>
@@ -126,7 +126,7 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[400px] lg:h-[380px]">
               <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
                 Supported Living Accommodation
               </h3>
