@@ -16,30 +16,21 @@ export const metadata: Metadata = {
 }
 
 const Home = () => {
-    const hero_props = {
-        heading: "the future of professional healthcare",
-        text: `Dedicated to providing the highest level of domiciliary care to
-            residential, nursing homes, and dementia care for older people in
-            the comfort of their homes throughout the UK.`,
-        btn_link: "/contact-us",
-        btn_text: "Contact Us",
-        image: "/hero-img1.jpg",
-    }
-    return (
-        <div>
-            {/* <Hero {...hero_props} /> */}
-            <Hero />
-            <LicensedBy />
-            <ServiceCovered />
-            <div className="container_xl">
-                <WhyChooseUs />
-                <Reviews />
-            </div>
-            <AppointmentForm />
-            <FAQS />
-            {/* <Newsletter /> */}
-        </div>
-    )
+  return (
+    <div>
+      {/* <Hero {...hero_props} /> */}
+      <Hero />
+      <LicensedBy />
+      <ServiceCovered />
+      <div className="container_xl">
+        <WhyChooseUs />
+        <Reviews />
+      </div>
+      <AppointmentForm />
+      {/* <FAQS /> */}
+      {/* <Newsletter /> */}
+    </div>
+  )
 }
 
 export default Home

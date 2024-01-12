@@ -6,8 +6,8 @@ import { Carousel } from "antd"
 export const Reviews = () => {
   return (
     <div className="mt-[24px] md:mt-[50px] bg-light py-[40px] md:px-[2rem] px-[18px] w-full">
-      <h3 className="text-[24px] md:text-[24px] text-center font-bold mb-[24px]">
-        What Our Clients Say About Us
+      <h3 className="text-[24px] md:text-[34px] text-center font-bold mb-[24px]">
+        Our reviews
       </h3>
       <Carousel autoplay dots={true} dotPosition="left">
         <div>
