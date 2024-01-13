@@ -12,7 +12,7 @@ export const ServiceCovered = () => {
       </h3>
 
       <Fade left cascade>
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 md:gap-[28px] gap-[18px] mt-[1.5rem] container_xl">
+        <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 md:gap-[28px] gap-[18px] mt-[1.5rem] container_xl ">
           <Link
             href="/our-services"
             className="hover:mt-[-0.8rem] transition-all "
