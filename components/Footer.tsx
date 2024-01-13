@@ -39,22 +39,22 @@ export const Footer = () => {
                 </h3>
                 <ul className="flex flex-col gap-[18px]">
                   <li>
-                    <Link href="" className=" font-[500]">
+                    <Link href="/about-us" className=" font-[500]">
                       Our Aim
                     </Link>
                   </li>
                   <li>
-                    <Link href="" className=" font-[500]">
+                    <Link href="/about-us" className=" font-[500]">
                       Our Mission
                     </Link>
                   </li>
                   <li>
-                    <Link href="" className=" font-[500]">
+                    <Link href="/about-us" className=" font-[500]">
                       Our Commitment
                     </Link>
                   </li>
                   <li>
-                    <Link href="" className=" font-[500]">
+                    <Link href="/about-us" className=" font-[500]">
                       Our Core Values
                     </Link>
                   </li>
@@ -67,13 +67,8 @@ export const Footer = () => {
                 </h3>
                 <ul className="flex flex-col gap-[18px]">
                   <li>
-                    <Link href="" className=" font-[500]">
+                    <Link href="/privacy-policy" className=" font-[500]">
                       Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="" className=" font-[500]">
-                      Terms of Use
                     </Link>
                   </li>
                 </ul>
