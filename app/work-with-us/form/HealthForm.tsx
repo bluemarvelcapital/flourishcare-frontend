@@ -14,7 +14,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
   return (
     <div className="py-10 px-6 bg-white transition-all">
       <h3 className="text-2xl font-semibold mb-4">Personal Details</h3>
-      <Form layout="vertical" onFinish={next}>
+      <div>
         <Form.Item label="Post Applied For:" required className="font-semibold">
           <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
         </Form.Item>
@@ -160,7 +160,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
             Next
           </Button>
         </div>
-      </Form>
+      </div>
     </div>
   )
 }

@@ -35,7 +35,7 @@ export const NonDisclosureForm = () => {
         the manner of such termination, and shall be binding upon my heirs,
         executors and administrators.
       </p>
-      <Form layout="vertical">
+      <div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Form.Item label="Signed" required className="font-semibold">
             <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
@@ -61,7 +61,7 @@ export const NonDisclosureForm = () => {
             Submit Form
           </Button>
         </div>
-      </Form>
+      </div>
     </div>
   )
 }

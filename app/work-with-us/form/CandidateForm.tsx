@@ -2,16 +2,24 @@
 import React from "react"
 import { NationalFormSteps } from "./NationalFormSteps"
 import { InternationFormSteps } from "./InternationFormSteps"
-import { Divider } from "antd"
+import { Divider, Form } from "antd"
 
 const tabs = [
   {
     text: "National Candidates Registration Form",
-    content: <NationalFormSteps />,
+    content: (
+      <Form layout="vertical">
+        <NationalFormSteps />
+      </Form>
+    ),
   },
   {
     text: "International Candidates Registration Form",
-    content: <InternationFormSteps />,
+    content: (
+      <Form layout="vertical">
+        <InternationFormSteps />
+      </Form>
+    ),
   },
 ]
 

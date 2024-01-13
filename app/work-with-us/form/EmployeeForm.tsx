@@ -23,7 +23,7 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
   return (
     <div className="py-10 px-6 bg-white transition-all">
-      <Form layout="vertical" onFinish={next}>
+      <div>
         <h3 className="text-ll font-semibold mb-4">
           Employer: Flourish Advanced Care Limited
         </h3>
@@ -263,7 +263,7 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
             Submit Details
           </Button>
         </div>
-      </Form>
+      </div>
     </div>
   )
 }
