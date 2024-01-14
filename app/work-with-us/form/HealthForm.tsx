@@ -153,7 +153,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
 
         <div className="md:w-[60%] md:mx-auto my-10">
           <Button
-            type="submit"
+            onClick={next}
             className="w-full rounded-[100px] text-xl"
             style={{ borderRadius: "100px" }}
           >

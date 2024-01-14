@@ -294,9 +294,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
 
         <div className="md:w-[60%] md:mx-auto">
           <Button
-            type="submit"
             className="w-full rounded-[100px] text-xl"
             style={{ borderRadius: "100px" }}
+            onClick={next}
           >
             Next
           </Button>
