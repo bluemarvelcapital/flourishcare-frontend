@@ -3,7 +3,7 @@ import { Hero } from "./Hero"
 import { Faqs } from "./Faqs"
 
 export const metadata = {
-  title: "Flourish Care - About Us",
+  title: "Flourish Care - FAQs",
 }
 
 const AboutUs = () => {
