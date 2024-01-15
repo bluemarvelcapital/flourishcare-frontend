@@ -2,6 +2,7 @@
 import { Button } from "@/components/Button"
 import { Checkbox, Form, Input, Select } from "antd"
 import TextArea from "antd/es/input/TextArea"
+import Link from "next/link"
 import React, { useState } from "react"
 import PhoneInput from "react-phone-number-input"
 import "react-phone-number-input/style.css"
@@ -90,7 +91,10 @@ export const ContactForm = () => {
             <div>
               <Checkbox />{" "}
               <span className="text-[#667085] pl-[12px]">
-                You agree to our friendly privacy policy.
+                You agree to our friendly{" "}
+                <Link className="text-primary" href="/privacy-policy">
+                  Privacy Policy
+                </Link>
               </span>
             </div>
             <Button className="mt-[8px]">Send Message</Button>
