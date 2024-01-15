@@ -6,7 +6,7 @@ import Fade from "react-reveal/Fade"
 export const TopQuality = () => {
   return (
     <div className="md:p-[60px] p-[20px] container_xl md:w-[80%] md:mx-auto">
-      <h3 className="md:text-[51px] text-[24px] text-center text-primary font-bold md:mb-[110px] mb-[30px]">
+      <h3 className="md:text-[51px] text-[24px] text-center text-primary font-bold md:mb-[70px] mb-[30px]">
         Top quality Care services
       </h3>
       <Fade cascade right>
@@ -22,8 +22,8 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[220px]">
-              <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] ">
+              <h3 className="lg:text-[24px] text-[20px] text-primary mb-[20px]">
                 Home Care - Domiciliary
               </h3>
               <p>Addressing daily living needs with respect and dignity.</p>
@@ -41,8 +41,8 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[220px]">
-              <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] ">
+              <h3 className="lg:text-[24px] text-[20px] text-primary mb-[20px]">
                 Companionship Care
               </h3>
               <p>Keeping your loved ones socially engaged and active.</p>
@@ -60,14 +60,19 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[220px]">
-              <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] ">
+              <h3 className="lg:text-[24px] text-[20px] text-primary mb-[20px]">
                 Respite Care
               </h3>
-              <p>
-                Respite care provided to clients at home and in the supported
-                living accommodation who requires temporal care and support.
-              </p>
+              {`Respite care provided to clients at home and in the supported
+                living accommodation who requires temporal care and support.`.slice(
+                0,
+                90
+              )}
+              ...{" "}
+              <span className="text-primary underline cursor-pointer">
+                Read more
+              </span>
             </div>
           </div>
 
@@ -82,8 +87,8 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[220px] lg:h-[380px]">
-              <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+              <h3 className="lg:text-[24px] text-[20px] text-primary mb-[20px]">
                 Dementia Care
               </h3>
               <p>
@@ -104,8 +109,8 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[400px] lg:h-[380px]">
-              <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3]">
+              <h3 className="lg:text-[24px] text-[20px] text-primary mb-[20px]">
                 Live-in Care
               </h3>
               <p>
@@ -126,17 +131,21 @@ export const TopQuality = () => {
               />
             </div>
 
-            <div className=" p-[24px] border-[1px] border-[#D3D3D3] md:h-[400px] lg:h-[380px]">
-              <h3 className="lg:text-[32px] text-[20px] text-primary mb-[20px]">
+            <div className=" p-[24px] border-[1px] border-[#D3D3D3] ">
+              <h3 className="lg:text-[20px] text-[20px] text-primary mb-[20px]">
                 Supported Living Accommodation
               </h3>
               <p>
-                Flourish provides support to those with mental health conditions
+                {`Flourish provides support to those with mental health conditions
                 to become more independent and achieve their goals in a safe and
                 comfortable living environment. This could be for long term,
                 short term, and respite support care. Our supported living
                 models ensures that that the quality of support provided is
-                consistently high.
+                consistently high.`.slice(0, 90)}
+                ...{" "}
+                <span className="text-primary underline cursor-pointer">
+                  Read more
+                </span>
               </p>
             </div>
           </div>

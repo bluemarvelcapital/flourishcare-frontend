@@ -24,9 +24,9 @@ export const Hero = () => {
           <h1 className="md:text-[65px] text-[24px] text-white font-[800]">
             Our Services
           </h1>
-          <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
+          {/* <h1 className="md:text-[55px] text-[18px] text-white font-[800]">
             Caring for the Whole Person
-          </h1>
+          </h1> */}
           <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
             We offer a range of in-home care services that ensure your loved
             ones receive the care they need in the environment they love
