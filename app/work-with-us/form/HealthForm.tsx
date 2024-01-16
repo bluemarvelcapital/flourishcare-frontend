@@ -296,7 +296,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
                   {errors.general_pactitioner &&
                     touched.general_pactitioner &&
                     errors.general_pactitioner}
-                </span>{" "}
+                </span>
               </Form.Item>
               <Form.Item label="Address" required className="font-semibold">
                 <Input
@@ -308,7 +308,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
                 />
                 <span className="text-error">
                   {errors.address && touched.address && errors.address}
-                </span>{" "}
+                </span>
               </Form.Item>
               <Form.Item
                 label="Street Address"

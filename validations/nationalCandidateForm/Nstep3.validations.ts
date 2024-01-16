@@ -74,6 +74,9 @@ export const Nstep3 = (values: Nstep3I) => {
   if (/^$/.test(values.emergency_contact_relationship)) {
     errors.emergency_contact_relationship = "Required"
   }
+  if (/^$/.test(values.bank_name)) {
+    errors.bank_name = "Required"
+  }
   if (/^$/.test(values.bank_account_name)) {
     errors.bank_account_name = "Required"
   }
