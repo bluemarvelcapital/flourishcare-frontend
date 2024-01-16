@@ -29,6 +29,7 @@ const config: Config = {
           800: "#4C6FB4",
         },
         success: "#04BD4B",
+        error: "#E5625E",
       },
       fontFamily: {
         "myriad-pro": "Myriad Pro, sans-serif",

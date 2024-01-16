@@ -7,11 +7,7 @@ import { Divider, Form } from "antd"
 const tabs = [
   {
     text: "National Candidates Registration Form",
-    content: (
-      <Form layout="vertical">
-        <NationalFormSteps />
-      </Form>
-    ),
+    content: <NationalFormSteps />,
   },
   {
     text: "International Candidates Registration Form",

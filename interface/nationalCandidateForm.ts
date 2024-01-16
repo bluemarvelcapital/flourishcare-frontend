@@ -9,12 +9,14 @@ export interface NationalFormI {
   email: string
   sex: string
   dob: string
-  over_18: boolean
+  over_18: string
   national_insurance_number: string
   nationality: string
   eligible_to_work_in_uk: boolean
   right_to_work_in_uk: string
   dbs_certified: string
+  driving_license: boolean
+  own_transport: boolean
   address: string
   street_address: string
   city: string
@@ -49,12 +51,14 @@ export interface Nstep1I {
   email: string
   sex: string
   dob: string
-  over_18: boolean
+  over_18: string
   national_insurance_number: string
   nationality: string
-  eligible_to_work_in_uk: boolean
+  eligible_to_work_in_uk: string
   right_to_work_in_uk: string
   dbs_certified: string
+  driving_license: string
+  own_transport: string
   address: string
   street_address: string
   city: string
