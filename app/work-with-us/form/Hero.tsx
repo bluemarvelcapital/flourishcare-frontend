@@ -11,7 +11,7 @@ export const Hero = () => {
     <div className="relative w-full md:h-[95vh] h-[60vh] hero-h font-myriad-pro flex justify-center items-center flex-col">
       <div className="absolute w-full h-full top-0 left-0 z-[-2] ">
         <Image
-          src={"/img14.png"}
+          src={"/form.jpg"}
           alt="Flourish Care Hero"
           fill={true}
           objectFit="cover"
@@ -33,6 +33,10 @@ export const Hero = () => {
                         trained to match the needs of our clients with the utmost respect
                         and professionalism.
                     </p> */}
+          <p className="md:text-[26px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
+            Fill out either of the forms below to apply for a job with us. We
+            will get back to you as soon as possible.
+          </p>
 
           <Link href="#form">
             <Button className="md:my-[52px] my-3">Continue to Form</Button>

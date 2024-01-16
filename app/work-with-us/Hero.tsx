@@ -11,7 +11,7 @@ export const Hero = () => {
     <div className="relative w-full md:h-[95vh] h-[60vh] hero-h font-myriad-pro flex justify-center items-center flex-col">
       <div className="absolute w-full h-full top-0 left-0 z-[-2] ">
         <Image
-          src={"/img14.png"}
+          src={"/work_with_us.jpg"}
           alt="Flourish Care Hero"
           fill={true}
           objectFit="cover"
