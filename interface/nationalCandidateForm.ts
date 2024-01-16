@@ -26,6 +26,7 @@ export interface NationalFormI {
   proof_of_address2: string
   general_pactitioner: string
   paye_reference: string
+  payroll_number: string
   emergency_contact_name: string
   emergency_contact_relationship: string
   emergency_contact_phone: string
@@ -86,4 +87,35 @@ export interface Nstep2I {
   country: string
   zip_code: string
   general_pactitioner: string
+}
+
+export interface Nstep3I {
+  title: string
+  first_name: string
+  last_name: string
+  mobile_phone: string
+  email: string
+  sex: string
+  dob: string
+  national_insurance_number: string
+  nationality: string
+  address: string
+  street_address: string
+  city: string
+  country: string
+  zip_code: string
+  paye_reference: string
+  payroll_number: string
+  emergency_contact_name: string
+  emergency_contact_relationship: string
+  emergency_contact_phone: string
+  bank_name: string
+  bank_account_number: string
+  bank_account_name: string
+  sort_code: string
+  job_status: string
+  student_loan: string
+  employment_start_date: string
+  sign_full_name: string
+  sign_date: string
 }

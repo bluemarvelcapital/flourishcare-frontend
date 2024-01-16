@@ -6,12 +6,13 @@ import { UploadOutlined } from "@ant-design/icons"
 import { Button } from "@/components/Button"
 import { Formik } from "formik"
 import { Nstep2 } from "@/validations/nationalCandidateForm/Nstep2.validation"
+import { Nstep2I } from "@/interface/nationalCandidateForm"
 
 interface HealthFormProps {
   next: () => void
 }
 
-const initialValues = {
+const initialValues: Nstep2I = {
   post_applied: "",
   title: "",
   first_name: "",

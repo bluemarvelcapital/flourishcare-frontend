@@ -8,22 +8,51 @@ import {
   Radio,
   Select,
   Space,
-  Upload,
 } from "antd"
 import React from "react"
-import { countries } from "@/constants/countries"
-import { UploadOutlined } from "@ant-design/icons"
+
 import { Button } from "@/components/Button"
 
 interface HealthFormProps {
   next: () => void
 }
 
+const initialValues = {
+  title: "",
+  first_name: "",
+  last_name: "",
+  mobile_phone: "",
+  email: "",
+  sex: "",
+  dob: "",
+  national_insurance_number: "",
+  nationality: "",
+  address: "",
+  street_address: "",
+  city: "",
+  country: "",
+  zip_code: "",
+  paye_reference: "",
+  payroll_number: "",
+  emergency_contact_name: "",
+  emergency_contact_relationship: "",
+  emergency_contact_phone: "",
+  bank_name: "",
+  bank_account_number: "",
+  bank_account_name: "",
+  sort_code: "",
+  job_status: "",
+  student_loan: "",
+  employment_start_date: "",
+  sign_full_name: "",
+  sign_date: "",
+}
+
 export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
   return (
     <div className="py-10 px-6 bg-white transition-all">
-      <div>
+      <Form layout="vertical">
         <h3 className="text-ll font-semibold mb-4">
           Employer: Flourish Advanced Care Limited
         </h3>
@@ -263,7 +292,7 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
             Next
           </Button>
         </div>
-      </div>
+      </Form>
     </div>
   )
 }
