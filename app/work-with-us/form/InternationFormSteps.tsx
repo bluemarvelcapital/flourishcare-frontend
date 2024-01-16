@@ -18,21 +18,23 @@ import { InternationalStep5 } from "./InternationalStep5"
 export const InternationFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
   let next = () => setActiveStep((prev) => prev + 1)
+  let back = () => setActiveStep((prev) => prev - 1)
+
   const items = [
     {
       content: <InternationalStep1 next={next} />,
     },
     {
-      content: <InternationalStep2 next={next} />,
+      content: <InternationalStep2 next={next} back={back} />,
     },
     {
-      content: <InternationalStep3 next={next} />,
+      content: <InternationalStep3 next={next} back={back} />,
     },
     {
-      content: <InternationalStep4 next={next} />,
+      content: <InternationalStep4 next={next} back={back} />,
     },
     {
-      content: <InternationalStep5 submit={() => null} />,
+      content: <InternationalStep5 submit={() => null} back={back} />,
     },
   ]
   return (
