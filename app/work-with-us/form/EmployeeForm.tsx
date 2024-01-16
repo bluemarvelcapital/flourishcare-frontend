@@ -348,6 +348,8 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
                 className="font-semibold "
               >
                 <Input
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   value={values.emergency_contact_relationship}
                   name="emergency_contact_relationship"
@@ -365,6 +367,8 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
                 className="font-semibold"
               >
                 <Input
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   type="number"
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   value={values.emergency_contact_phone}
@@ -386,6 +390,8 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
                 className="font-semibold "
               >
                 <Input
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   value={values.bank_name}
                   name="bank_name"
@@ -401,6 +407,8 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
                 className="font-semibold "
               >
                 <Input
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   value={values.bank_account_name}
                   name="bank_account_name"
@@ -418,6 +426,8 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
                 className="font-semibold"
               >
                 <Input
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   type="number"
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   value={values.bank_account_number}
@@ -435,6 +445,8 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
             <div>
               <Form.Item label="Sort Code" required className="font-semibold">
                 <Input
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   type="number"
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   value={values.sort_code}
@@ -551,6 +563,8 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({ next }) => {
                 className="font-semibold"
               >
                 <Input
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   value={values.sign_full_name}
                   name="sign_full_name"

@@ -119,3 +119,8 @@ export interface Nstep3I {
   sign_full_name: string
   sign_date: string
 }
+
+export interface Nstep4I {
+  sign_full_name: string
+  sign_date: string
+}

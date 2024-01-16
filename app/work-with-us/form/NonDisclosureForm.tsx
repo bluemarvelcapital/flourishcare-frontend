@@ -1,6 +1,13 @@
 import { Button } from "@/components/Button"
+import { Nstep4 } from "@/validations/nationalCandidateForm/Nstep4.validation"
 import { DatePicker, Form, Input } from "antd"
+import { Formik } from "formik"
 import React from "react"
+
+const initialValues = {
+  sign_full_name: "",
+  sign_date: "",
+}
 
 export const NonDisclosureForm = () => {
   return (
@@ -35,33 +42,89 @@ export const NonDisclosureForm = () => {
         the manner of such termination, and shall be binding upon my heirs,
         executors and administrators.
       </p>
-      <div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Form.Item label="Signed" required className="font-semibold">
-            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
-          </Form.Item>
-          <Form.Item label="Name" required className="font-semibold">
-            <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
-            <p>
-              <small>Printed Name as the signature.</small>
-            </p>
-          </Form.Item>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Form.Item label="Date" required className="font-semibold">
-            <DatePicker className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
-          </Form.Item>
-        </div>
-        <div className="md:w-[60%] md:mx-auto my-5">
-          <Button
-            type="submit"
-            className="w-full rounded-[100px] text-xl"
-            style={{ borderRadius: "100px" }}
-          >
-            Submit Form
-          </Button>
-        </div>
-      </div>
+      <Formik
+        initialValues={initialValues}
+        validate={Nstep4}
+        onSubmit={(values, { setSubmitting }) => {
+          console.log(values)
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          setValues,
+          isValid,
+
+          /* and other goodies */
+        }) => (
+          <Form layout="vertical" onFinish={handleSubmit}>
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <Form.Item label="Signed" required className="font-semibold">
+                  <Input
+                    className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
+                    value={values.sign_full_name}
+                    name="sign_full_name"
+                    onChange={handleChange}
+                  />
+
+                  <span className="text-error">
+                    {errors.sign_full_name &&
+                      touched.sign_full_name &&
+                      errors.sign_full_name}
+                  </span>
+                </Form.Item>
+                <Form.Item label="Name" required className="font-semibold">
+                  <Input
+                    className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
+                    value={values.sign_full_name}
+                    name="sign_full_name"
+                    onBlur={handleBlur}
+                  />
+
+                  <p>
+                    <small>Printed Name as the signature.</small>
+                  </p>
+                  <span className="text-error">
+                    {errors.sign_full_name &&
+                      touched.sign_full_name &&
+                      errors.sign_full_name}
+                  </span>
+                </Form.Item>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <Form.Item label="Date" required className="font-semibold">
+                  <DatePicker
+                    className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
+                    onChange={(value) =>
+                      setValues({ ...values, sign_date: value as any })
+                    }
+                    onBlur={handleBlur}
+                    value={values.sign_date as any}
+                  />
+                  <span className="text-error">
+                    {errors.sign_date && touched.sign_date && errors.sign_date}
+                  </span>
+                </Form.Item>
+              </div>
+              <div className="md:w-[60%] md:mx-auto my-5">
+                <Button
+                  type="submit"
+                  className="w-full rounded-[100px] text-xl"
+                  style={{ borderRadius: "100px" }}
+                >
+                  Submit Form
+                </Button>
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   )
 }
