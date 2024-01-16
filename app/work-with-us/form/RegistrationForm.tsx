@@ -32,7 +32,6 @@ const initialValues: Nstep1I = {
   nationality: "",
   right_to_work_in_uk: "",
   dbs_certified: "",
-  address: "",
   street_address: "",
   city: "",
   country: "",
@@ -531,7 +530,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
                   onChange={(e) =>
                     setValues({
                       ...values,
-                      proof_of_address1: e.target.files![0] as any,
+                      proof_of_address1: e.target.value,
                     })
                   }
                 />
@@ -555,7 +554,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
                   onChange={(e) =>
                     setValues({
                       ...values,
-                      proof_of_address2: e.target.files![0] as any,
+                      proof_of_address2: e.target.value,
                     })
                   }
                 />
@@ -571,7 +570,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
               <Button
                 className="w-full rounded-[100px] text-xl"
                 style={{ borderRadius: "100px" }}
-                disabled={!isValid}
+                // disabled={!isValid}
               >
                 Next
               </Button>

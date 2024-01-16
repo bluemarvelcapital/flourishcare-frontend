@@ -59,11 +59,31 @@ export interface Nstep1I {
   dbs_certified: string
   driving_license: string
   own_transport: string
-  address: string
   street_address: string
   city: string
   country: string
   zip_code: string
   proof_of_address1: string
   proof_of_address2: string
+}
+
+export interface Nstep2I {
+  post_applied: string
+  title: string
+  first_name: string
+  last_name: string
+  home_phone: string
+  mobile_phone: string
+  email: string
+  sex: string
+  dob: string
+  over_18: string
+  national_insurance_number: string
+  nationality: string
+  address: string
+  street_address: string
+  city: string
+  country: string
+  zip_code: string
+  general_pactitioner: string
 }
