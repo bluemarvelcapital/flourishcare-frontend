@@ -64,4 +64,6 @@ export interface Nstep1I {
   city: string
   country: string
   zip_code: string
+  proof_of_address1: string
+  proof_of_address2: string
 }

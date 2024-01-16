@@ -41,6 +41,8 @@ const initialValues: Nstep1I = {
   driving_license: "",
   own_transport: "",
   eligible_to_work_in_uk: "",
+  proof_of_address1: "",
+  proof_of_address2: "",
 }
 
 interface RegistrationFormProps {
@@ -57,6 +59,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
         initialValues={initialValues}
         validate={Nstep1}
         onSubmit={(values, { setSubmitting }) => {
+          console.log(values)
+
           next()
         }}
       >
@@ -518,30 +522,48 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
                 required
                 className="font-semibold"
               >
-                <Upload accept=".pdf, .docx, .doc">
-                  <AntButton
-                    icon={<UploadOutlined />}
-                    size="large"
-                    className="border-[#00000060] w-full focus:border-success hover:border-success"
-                  >
-                    Click to Upload
-                  </AntButton>
-                </Upload>
+                <input
+                  accept=".pdf, .docx, .doc"
+                  type="file"
+                  className="p-3 border-[1px] rounded-md"
+                  name="proof_of_address1"
+                  value={values.proof_of_address1}
+                  onChange={(e) =>
+                    setValues({
+                      ...values,
+                      proof_of_address1: e.target.files![0] as any,
+                    })
+                  }
+                />
+                <p className="text-error">
+                  {errors.proof_of_address1 &&
+                    touched.proof_of_address1 &&
+                    errors.proof_of_address1}
+                </p>
               </Form.Item>
               <Form.Item
                 label="Proof of address 2"
                 required
                 className="font-semibold"
               >
-                <Upload accept=".pdf, .docx, .doc">
-                  <AntButton
-                    icon={<UploadOutlined />}
-                    size="large"
-                    className="border-[#00000060] w-full focus:border-success hover:border-success"
-                  >
-                    Click to Upload
-                  </AntButton>
-                </Upload>
+                <input
+                  accept=".pdf, .docx, .doc"
+                  type="file"
+                  className="p-3 border-[1px] rounded-md"
+                  name="proof_of_address2"
+                  value={values.proof_of_address2}
+                  onChange={(e) =>
+                    setValues({
+                      ...values,
+                      proof_of_address2: e.target.files![0] as any,
+                    })
+                  }
+                />
+                <p className="text-error">
+                  {errors.proof_of_address2 &&
+                    touched.proof_of_address2 &&
+                    errors.proof_of_address2}
+                </p>
               </Form.Item>
             </div>
 

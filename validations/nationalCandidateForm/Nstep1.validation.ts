@@ -67,6 +67,12 @@ export const Nstep1 = (values: Nstep1I) => {
   if (/^$/.test(values.zip_code)) {
     errors.zip_code = "Required"
   }
+  if (/^$/.test(`${values.proof_of_address1}`)) {
+    errors.proof_of_address1 = "Required"
+  }
+  if (/^$/.test(`${values.proof_of_address2}`)) {
+    errors.proof_of_address2 = "Required"
+  }
 
   return errors
 }
