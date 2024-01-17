@@ -16,33 +16,9 @@ import { Button } from "@/components/Button"
 import { Formik } from "formik"
 import { Nstep1 } from "@/validations/nationalCandidateForm/Nstep1.validation"
 import { Nstep1I } from "@/interface/nationalCandidateForm"
-
-const initialValues: Nstep1I = {
-  post_applied: "",
-  title: "",
-  first_name: "",
-  last_name: "",
-  other_names: "",
-  home_phone: "",
-  mobile_phone: "",
-  email: "",
-  sex: "",
-  dob: "",
-  national_insurance_number: "",
-  nationality: "",
-  right_to_work_in_uk: "",
-  dbs_certified: "",
-  street_address: "",
-  city: "",
-  country: "",
-  zip_code: "",
-  over_18: "",
-  driving_license: "",
-  own_transport: "",
-  eligible_to_work_in_uk: "",
-  proof_of_address1: "",
-  proof_of_address2: "",
-}
+import { useNationalFormData } from "@/hooks/useNationalFormData"
+import moment from "moment"
+import dayjs from "dayjs"
 
 interface RegistrationFormProps {
   next: () => void
@@ -50,16 +26,15 @@ interface RegistrationFormProps {
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
-
+  const { formData, setFormData } = useNationalFormData()
   return (
     <div className="py-10 px-6 bg-white transition-all">
       <h3 className="text-2xl font-semibold mb-4">Personal Details</h3>
       <Formik
-        initialValues={initialValues}
+        initialValues={formData}
         validate={Nstep1}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values)
-
+          setFormData((prev) => ({ ...prev, ...values }))
           next()
         }}
       >
@@ -161,7 +136,13 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
                   label="Enter Other Names"
                   className="font-semibold md:col-span-2"
                 >
-                  <Input className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success" />
+                  <Input
+                    className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
+                    value={values.other_names}
+                    onChange={handleChange}
+                    name="other_names"
+                    onBlur={handleBlur}
+                  />
                 </Form.Item>
               )}
             </div>
@@ -239,11 +220,15 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
                 <DatePicker
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   name="dob"
-                  onChange={(value) =>
-                    setValues({ ...values, dob: value as any })
-                  }
+                  onChange={(date, dateStr) => {
+                    console.log(date, dateStr)
+                    setValues((prev) => ({
+                      ...prev,
+                      dob: dateStr,
+                    }))
+                  }}
                   onBlur={handleBlur}
-                  value={values.dob as any}
+                  // value={dayjs(values.dob)}
                 />
                 <span className="text-error">
                   {errors.dob && touched.dob && errors.dob}
@@ -526,7 +511,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
                   type="file"
                   className="p-3 border-[1px] rounded-md"
                   name="proof_of_address1"
-                  value={values.proof_of_address1}
+                  // value={values.proof_of_address1}
                   onChange={(e) =>
                     setValues({
                       ...values,
@@ -550,7 +535,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
                   type="file"
                   className="p-3 border-[1px] rounded-md"
                   name="proof_of_address2"
-                  value={values.proof_of_address2}
+                  // value={values.proof_of_address2}
                   onChange={(e) =>
                     setValues({
                       ...values,

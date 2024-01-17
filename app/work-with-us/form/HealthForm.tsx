@@ -7,43 +7,24 @@ import { Button } from "@/components/Button"
 import { Formik } from "formik"
 import { Nstep2 } from "@/validations/nationalCandidateForm/Nstep2.validation"
 import { Nstep2I } from "@/interface/nationalCandidateForm"
+import { useNationalFormData } from "@/hooks/useNationalFormData"
 
 interface HealthFormProps {
   next: () => void
 }
 
-const initialValues: Nstep2I = {
-  post_applied: "",
-  title: "",
-  first_name: "",
-  last_name: "",
-  home_phone: "",
-  mobile_phone: "",
-  email: "",
-  sex: "",
-  dob: "",
-  over_18: "",
-  national_insurance_number: "",
-  nationality: "",
-  address: "",
-  street_address: "",
-  city: "",
-  country: "",
-  zip_code: "",
-  general_pactitioner: "",
-}
-
 export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
+  const { formData, setFormData } = useNationalFormData()
+
   return (
     <div className="py-10 px-6 bg-white transition-all">
       <h3 className="text-2xl font-semibold mb-4">Personal Details</h3>
       <Formik
-        initialValues={initialValues}
+        initialValues={formData}
         validate={Nstep2}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values)
-
+          setFormData((prev) => ({ ...prev, ...values }))
           next()
         }}
       >
@@ -203,7 +184,7 @@ export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
                     setValues({ ...values, dob: value as any })
                   }
                   onBlur={handleBlur}
-                  value={values.dob as any}
+                  // value={values.dob as any}
                 />
                 <span className="text-error">
                   {errors.dob && touched.dob && errors.dob}

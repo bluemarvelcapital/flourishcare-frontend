@@ -1,15 +1,14 @@
+"use client"
 import { Button } from "@/components/Button"
+import { useNationalFormData } from "@/hooks/useNationalFormData"
 import { Nstep4 } from "@/validations/nationalCandidateForm/Nstep4.validation"
 import { DatePicker, Form, Input } from "antd"
 import { Formik } from "formik"
 import React from "react"
 
-const initialValues = {
-  sign_full_name: "",
-  sign_date: "",
-}
-
 export const NonDisclosureForm = () => {
+  const { formData, setFormData } = useNationalFormData()
+
   return (
     <div className="py-10 px-6 bg-white transition-all">
       <h3 className="text-2xl font-semibold mb-4">Non-Disclosure Form</h3>
@@ -43,10 +42,11 @@ export const NonDisclosureForm = () => {
         executors and administrators.
       </p>
       <Formik
-        initialValues={initialValues}
+        initialValues={formData}
         validate={Nstep4}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values)
+          setFormData((prev) => ({ ...prev, ...values }))
         }}
       >
         {({
@@ -105,7 +105,7 @@ export const NonDisclosureForm = () => {
                       setValues({ ...values, sign_date: value as any })
                     }
                     onBlur={handleBlur}
-                    value={values.sign_date as any}
+                    // value={values.sign_date as any}
                   />
                   <span className="text-error">
                     {errors.sign_date && touched.sign_date && errors.sign_date}

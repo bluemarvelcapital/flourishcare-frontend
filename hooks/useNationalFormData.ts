@@ -1,7 +1,8 @@
-// @ts-ignore
-import { useLocalStorage } from "usehooks-ts"
+import { NationalFormI } from "@/interface/nationalCandidateForm"
+import dayjs from "dayjs"
+import { useSessionStorage } from "usehooks-ts"
 
-const initialData = {
+const initialData: NationalFormI = {
   post_applied: "",
   title: "",
   first_name: "",
@@ -12,10 +13,10 @@ const initialData = {
   email: "",
   sex: "",
   dob: "",
-  over_18: true,
+  over_18: "",
   national_insurance_number: "",
   nationality: "",
-  eligible_to_work_in_uk: false,
+  eligible_to_work_in_uk: "",
   right_to_work_in_uk: "",
   dbs_certified: "",
   address: "",
@@ -39,14 +40,18 @@ const initialData = {
   employment_start_date: "",
   sign_full_name: "",
   sign_date: "",
+  driving_license: "",
+  payroll_number: "",
+  own_transport: "",
 }
 
-const useInputData = (initialValue: string) => {
-  const [value, setValue] = useLocalStorage("inputData", initialValue)
+export const useNationalFormData = () => {
+  const [formData, setFormData] = useSessionStorage<NationalFormI>(
+    "NationalFormData",
+    initialData
+  )
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
-  }
+  // setFormData(initialData)
 
-  return { value, onChange }
+  return { formData, setFormData }
 }
