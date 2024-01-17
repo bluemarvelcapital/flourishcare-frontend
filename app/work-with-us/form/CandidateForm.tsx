@@ -11,11 +11,7 @@ const tabs = [
   },
   {
     text: "International Candidates Registration Form",
-    content: (
-      <Form layout="vertical">
-        <InternationFormSteps />
-      </Form>
-    ),
+    content: <InternationFormSteps />,
   },
 ]
 

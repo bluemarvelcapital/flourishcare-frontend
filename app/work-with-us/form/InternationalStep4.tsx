@@ -223,18 +223,18 @@ export const InternationalStep4: FC<{ next: () => void; back: () => void }> = ({
         </div>
         <div>
           <Form.Item label="Upload CV " required className="font-semibold">
-            <Upload accept=".pdf, .docx, .doc">
-              <AntButton
-                icon={<UploadOutlined />}
-                size="large"
-                className="border-[#00000060] w-full focus:border-success hover:border-success"
-              >
-                Click to Upload
-              </AntButton>
-            </Upload>
-            <small>
-              Accepted file types: pdf, doc, docx, jpg, Max. file size: 5 MB
-            </small>
+            <input
+              accept=".pdf, .docx, .doc"
+              type="file"
+              className="p-3 border-[1px] rounded-md"
+              name="proof_of_address2"
+              // value={values.proof_of_address2}
+            />
+            <p>
+              <small>
+                Accepted file types: pdf, doc, docx, jpg, Max. file size: 5 MB
+              </small>
+            </p>
           </Form.Item>
         </div>
       </section>
