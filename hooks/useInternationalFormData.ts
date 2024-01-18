@@ -73,7 +73,7 @@ const initialData: InternationalCandidateFormI = {
 export const useInternationalFormData = () => {
   const [formData, setFormData] =
     useSessionStorage<InternationalCandidateFormI>(
-      "NationalFormData",
+      "internationalFormData",
       initialData
     )
 

@@ -1,6 +1,6 @@
-import { Nstep1I } from "@/interface/nationalCandidateForm"
+import { InternationalCandidateFormI } from "@/interface/internationalCandidateForm"
 
-export const Nstep1 = (values: Nstep1I) => {
+export const step1Validation = (values: InternationalCandidateFormI) => {
   const errors: Record<string, string> = {}
   if (/^$/.test(values.post_applied)) {
     errors.post_applied = "Required"
@@ -34,26 +34,20 @@ export const Nstep1 = (values: Nstep1I) => {
   if (/^$/.test(`${values.over_18}`)) {
     errors.over_18 = "Required"
   }
-  if (/^$/.test(values.national_insurance_number)) {
-    errors.national_insurance_number = "Required"
+  if (/^$/.test(values.take_on_other_employement)) {
+    errors.take_on_other_employement = "Required"
   }
   if (/^$/.test(values.nationality)) {
     errors.nationality = "Required"
   }
-  if (/^$/.test(`${values.right_to_work_in_uk}`)) {
-    errors.right_to_work_in_uk = "Required"
+  if (/^$/.test(`${values.need_disability_related_adjustments}`)) {
+    errors.need_disability_related_adjustments = "Required"
   }
-  if (/^$/.test(`${values.eligible_to_work_in_uk}`)) {
-    errors.eligible_to_work_in_uk = "Required"
+  if (/^$/.test(`${values.health_support_needs}`)) {
+    errors.health_support_needs = "Required"
   }
-  if (/^$/.test(values.dbs_certified)) {
-    errors.dbs_certified = "Required"
-  }
-  if (/^$/.test(`${values.driving_license}`)) {
+  if (!values.driving_license) {
     errors.driving_license = "Required"
-  }
-  if (/^$/.test(`${values.own_transport}`)) {
-    errors.own_transport = "Required"
   }
   if (/^$/.test(values.street_address)) {
     errors.street_address = "Required"
@@ -67,11 +61,20 @@ export const Nstep1 = (values: Nstep1I) => {
   if (/^$/.test(values.zip_code)) {
     errors.zip_code = "Required"
   }
-  if (!values.proof_of_address1) {
-    errors.proof_of_address1 = "Required"
+  if (!values.passport) {
+    errors.passport = "Required"
   }
-  if (!values.proof_of_address2) {
-    errors.proof_of_address2 = "Required"
+  if (!values.photo_passport) {
+    errors.photo_passport = "Required"
+  }
+  if (!values.ielts_result) {
+    errors.ielts_result = "Required"
+  }
+  if (!values.proof_of_covid_vaccination) {
+    errors.proof_of_covid_vaccination = "Required"
+  }
+  if (!values.evidence_of_TB_test_result) {
+    errors.evidence_of_TB_test_result = "Required"
   }
 
   return errors
