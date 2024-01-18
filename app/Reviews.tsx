@@ -18,7 +18,7 @@ export const Reviews = () => {
                 <Avatar size={44}>DF</Avatar>
                 <div>
                   <h3 className="capitalize text-[18px] font-semibold mb-[-6px]">
-                    Desmond F
+                    Desmond F.
                   </h3>
                   <p>12 January 2024</p>
                 </div>
@@ -40,7 +40,7 @@ export const Reviews = () => {
                 <Avatar size={44}>NS</Avatar>
                 <div>
                   <h3 className="capitalize text-[18px] font-semibold mb-[-6px]">
-                    Norleen S
+                    Norleen S.
                   </h3>
                   <p>29 November 2023</p>
                 </div>
@@ -63,7 +63,7 @@ export const Reviews = () => {
                 <Avatar size={44}>NW</Avatar>
                 <div>
                   <h3 className="capitalize text-[18px] font-semibold mb-[-6px]">
-                    Nicola W
+                    Nicola W.
                   </h3>
                   <p>21 November 2023</p>
                 </div>

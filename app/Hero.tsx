@@ -23,11 +23,11 @@ export const Hero = () => {
         <Fade left>
           <div className="text-center md:w-[85%] w-[95%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
             <h1 className="md:text-[50px] text-[24px] text-white font-[800]">
-              Welcome to Flourish Advanced Care
+              Professional Home Care
             </h1>
-            <h1 className="md:text-[40px] text-[18px] text-white font-[800]">
+            {/* <h1 className="md:text-[40px] text-[18px] text-white font-[800]">
               Compassionate In-Home Elderly Care
-            </h1>
+            </h1> */}
             <p className="md:text-[20px] md:leading-[141%] text-white mt-[1rem] md:w-[80%] mx-[auto]">
               Dedicated and on a mission to providing the highest level of
               personal care to Clients, making the service a more enjoyable and
