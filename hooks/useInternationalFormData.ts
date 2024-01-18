@@ -1,0 +1,81 @@
+import dayjs from "dayjs"
+import { useSessionStorage } from "usehooks-ts"
+import { InternationalCandidateFormI } from "@/interface/internationalCandidateForm"
+
+const initialData: InternationalCandidateFormI = {
+  take_on_other_employement: "",
+  need_disability_related_adjustments: "",
+  health_support_needs: "",
+  post_applied: "",
+  title: "",
+  first_name: "",
+  last_name: "",
+  other_names: "",
+  home_phone: "",
+  mobile_phone: "",
+  email: "",
+  sex: "",
+  dob: "",
+  over_18: "",
+  nationality: "",
+  driving_license: "",
+  street_address: "",
+  city: "",
+  country: "",
+  zip_code: "",
+  passport: "",
+  photo_passport: "",
+  ielts_result: "",
+  proof_of_covid_vaccination: "",
+  evidence_of_TB_test_result: "",
+  ever_convicted_of_a_criminal_offence: "",
+  pending_prosecutions: "",
+  registered_disabled: "",
+  education_date_obtained: "",
+  education_place_of_study: "",
+  education_grade: "",
+  other_qualification_date_obtained: "",
+  other_qualification_place_of_study: "",
+  other_qualification_grade: "",
+  prev_name_of_employer: "",
+  prev_employer_address: "",
+  prev_employment_length: "",
+  prev_employment_salary: "",
+  prev_employement_start_date: "",
+  prev_employement_end_date: "",
+  prev_employment_duties: "",
+  prev_employment_required_weeks_notice: "",
+  prev_employment_reason_for_leaving: "",
+  referee_name1: "",
+  referee_job_title1: "",
+  referee_company_name1: "",
+  referee_address_1: "",
+  referee_email_1: "",
+  referee_phone_1: "",
+  can_contact_reference1: "",
+  referee_name_2: "",
+  referee_job_title_2: "",
+  referee_company_name_2: "",
+  referee_address_2: "",
+  referee_email_2: "",
+  referee_phone_2: "",
+  can_contact_reference_2: "",
+  personal_attributes: "",
+  sign_full_name: "",
+  sign_date: "",
+  can_hold_details: "",
+  cv: "",
+  ethnicity: "",
+  gender: "",
+  age_group: "",
+}
+
+export const useInternationalFormData = () => {
+  const [formData, setFormData] =
+    useSessionStorage<InternationalCandidateFormI>(
+      "NationalFormData",
+      initialData
+    )
+
+  return { formData, setFormData }
+}
