@@ -33,15 +33,15 @@ export interface InternationalCandidateFormI {
   other_qualification_date_obtained: string
   other_qualification_place_of_study: string
   other_qualification_grade: string
-  prev_name_of_employer: string
-  prev_employer_address: string
-  prev_employment_length: string
-  prev_employment_salary: string
-  prev_employement_start_date: string
-  prev_employement_end_date: string
-  prev_employment_duties: string
-  prev_employment_required_weeks_notice: string
-  prev_employment_reason_for_leaving: string
+  previous_name_of_employer: string
+  previous_employer_address: string
+  previous_employment_length: string
+  previous_employment_salary: string
+  previous_employement_start_date: string
+  previous_employement_end_date: string
+  previous_employment_duties: string
+  previous_employment_required_weeks_notice: string
+  previous_employment_reason_for_leaving: string
   referee_name1: string
   referee_job_title1: string
   referee_company_name1: string

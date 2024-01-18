@@ -2,7 +2,6 @@ import { InternationalCandidateFormI } from "@/interface/internationalCandidateF
 
 export const step2Validation = (values: InternationalCandidateFormI) => {
   const errors: Record<string, string> = {}
-
   if (!values.ever_convicted_of_a_criminal_offence) {
     errors.ever_convicted_of_a_criminal_offence = "Required"
   }
