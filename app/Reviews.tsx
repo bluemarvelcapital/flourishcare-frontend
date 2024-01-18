@@ -31,7 +31,7 @@ export const Reviews = () => {
                 categories.”
               </p>
             </div>
-            <Rate value={5} className="text-primary" />
+            <Rate disabled value={5} className="text-primary" />
           </div>
 
           <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px] flex flex-col justify-between">
@@ -54,7 +54,7 @@ export const Reviews = () => {
                 other than those from Flourish Advanced Ltd.”
               </p>
             </div>
-            <Rate value={4} className="text-primary" />
+            <Rate disabled value={4} className="text-primary" />
           </div>
 
           <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px] flex flex-col justify-between">
@@ -79,7 +79,7 @@ export const Reviews = () => {
                 questions.”
               </p>
             </div>
-            <Rate value={5} className="text-primary" />
+            <Rate disabled value={5} className="text-primary" />
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/Button"
 import Link from "next/link"
 import RubberBand from "react-reveal/RubberBand"
+import { RightOutlined } from "@ant-design/icons"
 
 const accordionItems = [
   {
@@ -28,8 +29,21 @@ const accordionItems = [
     content: (
       <ul className="coloured-disc px-5 mb-3">
         <li>Call us on 07459493383 or 01582283172.</li>
-        <li>Send us an email to info@flourishadvancedcare.co.uk</li>
-        <li>Book a Free Consultation (with a link to direct them there)</li>
+        <li>
+          Send us an email to{" "}
+          <a
+            href="mailto:info@flourishadvancedcare.co.uk"
+            className="text-primary"
+          >
+            info@flourishadvancedcare.co.uk
+          </a>
+        </li>
+        <li>
+          <Link href={"/#book-consultation"} className="text-primary">
+            <span>Book a Free Consultation</span>{" "}
+            <RightOutlined className="underline" />
+          </Link>
+        </li>
       </ul>
     ),
   },

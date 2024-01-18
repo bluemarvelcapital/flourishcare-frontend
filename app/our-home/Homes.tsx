@@ -34,7 +34,7 @@ export const Homes = () => {
             <span className="ml-4">Room rates starts at £X/month</span>
           </p>
         </div>
-        <div className="md:text-lg my-7">
+        <div className="md:text-lg my-[3rem]">
           <p className="font-semibold mb-1">TYPES OF LIVING</p>
           <ul className="coloured-disc px-5 mb-3">
             <li>Mental health clients</li>
@@ -50,7 +50,7 @@ export const Homes = () => {
             </span>
           </Link>
         </div>
-        <div className="md:text-lg my-7 grid-cols-1 md:grid-cols-2 grid gap-[2rem]">
+        <div className="md:text-lg my-[3rem] flex md:flex-row flex-col gap-[2rem] justify-between">
           <div>
             <p className="font-semibold mb-4">Contact</p>
             <p className="mb-2">
