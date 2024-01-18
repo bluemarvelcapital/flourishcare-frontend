@@ -2,22 +2,22 @@ import { Nstep1I } from "@/interface/nationalCandidateForm"
 
 export const Nstep1 = (values: Nstep1I) => {
   const errors: Record<string, string> = {}
-  if (/^$/.test(values.post_applied)) {
+  if (/^\s*$/.test(values.post_applied)) {
     errors.post_applied = "Required"
   }
-  if (/^$/.test(values.title)) {
+  if (/^\s*$/.test(values.title)) {
     errors.title = "Required"
   }
-  if (/^$/.test(values.first_name)) {
+  if (/^\s*$/.test(values.first_name)) {
     errors.first_name = "Required"
   }
-  if (/^$/.test(values.last_name)) {
+  if (/^\s*$/.test(values.last_name)) {
     errors.last_name = "Required"
   }
-  if (/^$/.test(values.home_phone)) {
+  if (/^\s*$/.test(values.home_phone)) {
     errors.home_phone = "Required"
   }
-  if (/^$/.test(values.mobile_phone)) {
+  if (/^\s*$/.test(values.mobile_phone)) {
     errors.mobile_phone = "Required"
   }
   if (!values.email) {
@@ -25,46 +25,46 @@ export const Nstep1 = (values: Nstep1I) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     errors.email = "Invalid email address"
   }
-  if (/^$/.test(values.sex)) {
+  if (/^\s*$/.test(values.sex)) {
     errors.sex = "Required"
   }
-  if (/^$/.test(values.dob)) {
+  if (/^\s*$/.test(values.dob)) {
     errors.dob = "Required"
   }
-  if (/^$/.test(`${values.over_18}`)) {
+  if (/^\s*$/.test(`${values.over_18}`)) {
     errors.over_18 = "Required"
   }
-  if (/^$/.test(values.national_insurance_number)) {
+  if (/^\s*$/.test(values.national_insurance_number)) {
     errors.national_insurance_number = "Required"
   }
-  if (/^$/.test(values.nationality)) {
+  if (/^\s*$/.test(values.nationality)) {
     errors.nationality = "Required"
   }
-  if (/^$/.test(`${values.right_to_work_in_uk}`)) {
+  if (/^\s*$/.test(`${values.right_to_work_in_uk}`)) {
     errors.right_to_work_in_uk = "Required"
   }
-  if (/^$/.test(`${values.eligible_to_work_in_uk}`)) {
+  if (/^\s*$/.test(`${values.eligible_to_work_in_uk}`)) {
     errors.eligible_to_work_in_uk = "Required"
   }
-  if (/^$/.test(values.dbs_certified)) {
+  if (/^\s*$/.test(values.dbs_certified)) {
     errors.dbs_certified = "Required"
   }
-  if (/^$/.test(`${values.driving_license}`)) {
+  if (/^\s*$/.test(`${values.driving_license}`)) {
     errors.driving_license = "Required"
   }
-  if (/^$/.test(`${values.own_transport}`)) {
+  if (/^\s*$/.test(`${values.own_transport}`)) {
     errors.own_transport = "Required"
   }
-  if (/^$/.test(values.street_address)) {
+  if (/^\s*$/.test(values.street_address)) {
     errors.street_address = "Required"
   }
-  if (/^$/.test(values.city)) {
+  if (/^\s*$/.test(values.city)) {
     errors.city = "Required"
   }
-  if (/^$/.test(values.country)) {
+  if (/^\s*$/.test(values.country)) {
     errors.country = "Required"
   }
-  if (/^$/.test(values.zip_code)) {
+  if (/^\s*$/.test(values.zip_code)) {
     errors.zip_code = "Required"
   }
   if (!values.proof_of_address1) {

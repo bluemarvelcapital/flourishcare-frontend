@@ -2,22 +2,22 @@ import { Nstep3I } from "@/interface/nationalCandidateForm"
 
 export const Nstep3 = (values: Nstep3I) => {
   const errors: Record<string, string> = {}
-  if (/^$/.test(values.paye_reference)) {
+  if (/^\s*$/.test(values.paye_reference)) {
     errors.paye_reference = "Required"
   }
-  if (/^$/.test(values.title)) {
+  if (/^\s*$/.test(values.title)) {
     errors.title = "Required"
   }
-  if (/^$/.test(values.first_name)) {
+  if (/^\s*$/.test(values.first_name)) {
     errors.first_name = "Required"
   }
-  if (/^$/.test(values.last_name)) {
+  if (/^\s*$/.test(values.last_name)) {
     errors.last_name = "Required"
   }
-  if (/^$/.test(values.payroll_number)) {
+  if (/^\s*$/.test(values.payroll_number)) {
     errors.payroll_number = "Required"
   }
-  if (/^$/.test(values.mobile_phone)) {
+  if (/^\s*$/.test(values.mobile_phone)) {
     errors.mobile_phone = "Required"
   }
   if (!values.email) {
@@ -25,74 +25,74 @@ export const Nstep3 = (values: Nstep3I) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     errors.email = "Invalid email address"
   }
-  if (/^$/.test(values.sex)) {
+  if (/^\s*$/.test(values.sex)) {
     errors.sex = "Required"
   }
-  if (/^$/.test(values.dob)) {
+  if (/^\s*$/.test(values.dob)) {
     errors.dob = "Required"
   }
 
-  if (/^$/.test(`${values.sign_date}`)) {
+  if (/^\s*$/.test(`${values.sign_date}`)) {
     errors.sign_date = "Required"
   }
-  if (/^$/.test(values.national_insurance_number)) {
+  if (/^\s*$/.test(values.national_insurance_number)) {
     errors.national_insurance_number = "Required"
   }
-  if (/^$/.test(values.nationality)) {
+  if (/^\s*$/.test(values.nationality)) {
     errors.nationality = "Required"
   }
 
-  if (/^$/.test(values.sign_full_name)) {
+  if (/^\s*$/.test(values.sign_full_name)) {
     errors.sign_full_name = "Required"
   }
 
-  if (/^$/.test(values.address)) {
+  if (/^\s*$/.test(values.address)) {
     errors.address = "Required"
   }
 
-  if (/^$/.test(values.street_address)) {
+  if (/^\s*$/.test(values.street_address)) {
     errors.street_address = "Required"
   }
-  if (/^$/.test(values.city)) {
+  if (/^\s*$/.test(values.city)) {
     errors.city = "Required"
   }
-  if (/^$/.test(values.country)) {
+  if (/^\s*$/.test(values.country)) {
     errors.country = "Required"
   }
-  if (/^$/.test(values.zip_code)) {
+  if (/^\s*$/.test(values.zip_code)) {
     errors.zip_code = "Required"
   }
-  if (/^$/.test(values.emergency_contact_name)) {
+  if (/^\s*$/.test(values.emergency_contact_name)) {
     errors.emergency_contact_name = "Required"
   }
-  if (/^$/.test(values.emergency_contact_phone)) {
+  if (/^\s*$/.test(values.emergency_contact_phone)) {
     errors.emergency_contact_phone = "Required"
   }
-  if (/^$/.test(values.zip_code)) {
+  if (/^\s*$/.test(values.zip_code)) {
     errors.zip_code = "Required"
   }
-  if (/^$/.test(values.emergency_contact_relationship)) {
+  if (/^\s*$/.test(values.emergency_contact_relationship)) {
     errors.emergency_contact_relationship = "Required"
   }
-  if (/^$/.test(values.bank_name)) {
+  if (/^\s*$/.test(values.bank_name)) {
     errors.bank_name = "Required"
   }
-  if (/^$/.test(values.bank_account_name)) {
+  if (/^\s*$/.test(values.bank_account_name)) {
     errors.bank_account_name = "Required"
   }
-  if (/^$/.test(values.bank_account_number)) {
+  if (/^\s*$/.test(values.bank_account_number)) {
     errors.bank_account_number = "Required"
   }
-  if (/^$/.test(values.sort_code)) {
+  if (/^\s*$/.test(values.sort_code)) {
     errors.sort_code = "Required"
   }
-  if (/^$/.test(values.job_status)) {
+  if (/^\s*$/.test(values.job_status)) {
     errors.job_status = "Required"
   }
-  if (/^$/.test(values.student_loan)) {
+  if (/^\s*$/.test(values.student_loan)) {
     errors.student_loan = "Required"
   }
-  if (/^$/.test(values.employment_start_date)) {
+  if (/^\s*$/.test(values.employment_start_date)) {
     errors.employment_start_date = "Required"
   }
 
