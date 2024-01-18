@@ -2,12 +2,13 @@
 import { Button } from "@/components/Button"
 import { useNationalFormData } from "@/hooks/useNationalFormData"
 import { Nstep4 } from "@/validations/nationalCandidateForm/Nstep4.validation"
-import { DatePicker, Form, Input } from "antd"
+import { DatePicker, Form, Input, Result, Modal } from "antd"
 import { Formik } from "formik"
 import React from "react"
 
 export const NonDisclosureForm = () => {
   const { formData, setFormData } = useNationalFormData()
+  const [open, setOpen] = React.useState(false)
 
   return (
     <div className="py-10 px-6 bg-white transition-all">
@@ -47,6 +48,7 @@ export const NonDisclosureForm = () => {
         onSubmit={(values, { setSubmitting }) => {
           console.log(values)
           setFormData((prev) => ({ ...prev, ...values }))
+          setOpen(true)
         }}
       >
         {({
@@ -125,6 +127,14 @@ export const NonDisclosureForm = () => {
           </Form>
         )}
       </Formik>
+      <Modal open={open} onCancel={() => setOpen(false)} footer={false}>
+        <Result
+          status="success"
+          title="Successfully Applied"
+          subTitle="Your details has been recieved, we will get back to you soon."
+          extra={[<Button key="buy">Okay</Button>]}
+        />
+      </Modal>
     </div>
   )
 }
