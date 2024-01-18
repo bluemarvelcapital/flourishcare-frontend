@@ -53,7 +53,7 @@ export const NationalFormSteps = () => {
           const active = activeStep === index
           const isCompleted = completedSteps["nationalForm"][index]
           const disabledClass =
-            "text-grey-400 border-grey-400 hover:border-grey-400 hover:text-grey-400"
+            "text-grey-200 border-grey-200 hover:border-grey-200 hover:text-grey-200"
           return (
             <div
               onClick={() => {
@@ -72,7 +72,7 @@ export const NationalFormSteps = () => {
                   : disabledClass
               } 
                ${
-                 !active && !isCompleted ? "cursor-not-allowed opacity-50" : ""
+                 !active && !isCompleted ? "cursor-not-allowed opacity-40" : ""
                }`}
             >
               <div className="rounded-[5px] flex items-center justify-center p-[5px] border-[1px] border-base">

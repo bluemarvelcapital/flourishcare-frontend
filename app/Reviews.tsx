@@ -9,104 +9,81 @@ export const Reviews = () => {
       <h3 className="text-[24px] md:text-[34px] text-center font-bold mb-[24px]">
         Our reviews
       </h3>
-      <Carousel autoplay dots={true} dotPosition="left">
-        <div>
-          <div className="grid md:grid-cols-3 grid-cols-1  gap-[1rem]">
-            <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
+      {/* <Carousel dots={true} dotPosition="left"> */}
+      <div>
+        <div className="grid md:grid-cols-3 grid-cols-1  gap-[1rem]">
+          <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px] flex flex-col justify-between">
+            <div>
               <div className="flex gap-[30px] items-center mb-[30px]">
-                <Avatar src="/avatar.png" size={64} />
-                <h3 className="capitalize text-[18px] font-semibold">
-                  dara loju james
-                </h3>
+                <Avatar size={44}>DF</Avatar>
+                <div>
+                  <h3 className="capitalize text-[18px] font-semibold mb-[-6px]">
+                    Desmond F
+                  </h3>
+                  <p>12 January 2024</p>
+                </div>
               </div>
-              <p className="text-[#707371] md:text-[18px] text-[16px] mb-[30px]">
-                “Grateful for the peace of mind flourish care gave us. The
-                caregivers were not just skilled; they brought joy and
-                companionship to my grandmother.”
+              <p className="text-[#707371] md:text-[16px] text-[14px] mb-[30px]">
+                “The ongoing care and customer service provided by Flourish
+                Advanced Care to my father has been excellent. The staff and
+                management have been very courteous and responsive to my
+                father&apos;s needs and have visited on time. Five stars in all
+                categories.”
               </p>
-              <Rate value={5} className="text-primary" />
             </div>
+            <Rate value={5} className="text-primary" />
+          </div>
 
-            <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
+          <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px] flex flex-col justify-between">
+            <div>
               <div className="flex gap-[30px] items-center mb-[30px]">
-                <Avatar src="/avatar.png" size={64} />
-                <h3 className="capitalize text-[18px] font-semibold">
-                  dara loju james
-                </h3>
+                <Avatar size={44}>NS</Avatar>
+                <div>
+                  <h3 className="capitalize text-[18px] font-semibold mb-[-6px]">
+                    Norleen S
+                  </h3>
+                  <p>29 November 2023</p>
+                </div>
               </div>
-              <p className="text-[#707371] md:text-[18px] text-[16px] mb-[30px]">
-                “Grateful for the peace of mind flourish care gave us. The
-                caregivers were not just skilled; they brought joy and
-                companionship to my grandmother.”
+              <p className="text-[#707371] md:text-[16px] text-[14px] mb-[30px]">
+                “Professional expertise. The CEO goes well above the required
+                remit of the services within your range. It is a good caring
+                home care agency that one can rely on. The carers are
+                professionals with the right skills and are easy to correct if
+                they practise wrongly. I wouldn&apos;t ask for better carers
+                other than those from Flourish Advanced Ltd.”
               </p>
-              <Rate value={5} className="text-primary" />
             </div>
+            <Rate value={4} className="text-primary" />
+          </div>
 
-            <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
+          <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px] flex flex-col justify-between">
+            <div>
               <div className="flex gap-[30px] items-center mb-[30px]">
-                <Avatar src="/avatar.png" size={64} />
-                <h3 className="capitalize text-[18px] font-semibold">
-                  dara loju james
-                </h3>
+                <Avatar size={44}>NW</Avatar>
+                <div>
+                  <h3 className="capitalize text-[18px] font-semibold mb-[-6px]">
+                    Nicola W
+                  </h3>
+                  <p>21 November 2023</p>
+                </div>
               </div>
-              <p className="text-[#707371] md:text-[18px] text-[16px] mb-[30px]">
-                “Grateful for the peace of mind flourish care gave us. The
-                caregivers were not just skilled; they brought joy and
-                companionship to my grandmother.”
+              <p className="text-[#707371] md:text-[16px] text-[14px] mb-[30px]">
+                “Flourish have been truly outstanding in the care they provide,
+                their communication and the support in place for my mother. My
+                mother presented some challenges in the beginning but I found
+                Flourish to be patient with her and supportive, which was
+                reassuring for my family. They continue to impress with their
+                dedication and approach to ensure my mother is comfortable and
+                happy in her home. I would recommend their services without any
+                questions.”
               </p>
-              <Rate value={5} className="text-primary" />
             </div>
+            <Rate value={5} className="text-primary" />
           </div>
         </div>
-        <div>
-          <div className="grid md:grid-cols-3 grid-cols-1  gap-[1rem]">
-            <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
-              <div className="flex gap-[30px] items-center mb-[30px]">
-                <Avatar src="/avatar.svg" size={64} />
-                <h3 className="capitalize text-[18px] font-semibold">
-                  dara loju james
-                </h3>
-              </div>
-              <p className="text-[#707371] md:text-[18px] text-[16px] mb-[30px]">
-                “Grateful for the peace of mind flourish care gave us. The
-                caregivers were not just skilled; they brought joy and
-                companionship to my grandmother.”
-              </p>
-              <Rate value={5} className="text-primary" />
-            </div>
-
-            <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
-              <div className="flex gap-[30px] items-center mb-[30px]">
-                <Avatar src="/avatar.svg" size={64} />
-                <h3 className="capitalize text-[18px] font-semibold">
-                  dara loju james
-                </h3>
-              </div>
-              <p className="text-[#707371] md:text-[18px] text-[16px] mb-[30px]">
-                “Grateful for the peace of mind flourish care gave us. The
-                caregivers were not just skilled; they brought joy and
-                companionship to my grandmother.”
-              </p>
-              <Rate value={5} className="text-primary" />
-            </div>
-
-            <div className="bg-white rounded-[20px] md:px-[40px] px-[20px] py-[20px]">
-              <div className="flex gap-[30px] items-center mb-[30px]">
-                <Avatar src="/avatar.svg" size={64} />
-                <h3 className="capitalize text-[18px] font-semibold">
-                  dara loju james
-                </h3>
-              </div>
-              <p className="text-[#707371] md:text-[18px] text-[16px] mb-[30px]">
-                “Grateful for the peace of mind flourish care gave us. The
-                caregivers were not just skilled; they brought joy and
-                companionship to my grandmother.”
-              </p>
-              <Rate value={5} className="text-primary" />
-            </div>
-          </div>
-        </div>
-      </Carousel>
+      </div>
+      {/* </Carousel> */}
     </div>
   )
 }
