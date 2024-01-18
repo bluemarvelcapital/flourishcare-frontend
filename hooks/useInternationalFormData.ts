@@ -68,6 +68,11 @@ const initialData: InternationalCandidateFormI = {
   ethnicity: "",
   gender: "",
   age_group: "",
+  emergency_contact_first_name: "",
+  emergency_contact_last_name: "",
+  emergency_contact_phone: "",
+  emergency_contact_email: "",
+  emergency_contact_address: "",
 }
 
 export const useInternationalFormData = () => {
