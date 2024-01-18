@@ -10,7 +10,7 @@ const OurHomes = () => {
   return (
     <div>
       <Hero />
-      <div className="container_xl md:w-[80%] md:mx-auto">
+      <div className="container_xl md:w-[93%] md:mx-auto">
         <Homes />
       </div>
     </div>

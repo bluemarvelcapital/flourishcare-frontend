@@ -87,6 +87,12 @@
   margin-bottom: 1.25em;
 }
 
+@media (min-width: 1000px) {
+  img.ant-image-preview-img {
+    width: 70rem !important;
+  }
+}
+
 @media (min-width: 2500px) {
   .container_xl {
     width: 60% !important;

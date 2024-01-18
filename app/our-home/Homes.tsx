@@ -4,7 +4,7 @@ import {
   MailOutlined,
   RightOutlined,
 } from "@ant-design/icons"
-import { CallOutlined } from "@mui/icons-material"
+import { CallOutlined, MailOutline } from "@mui/icons-material"
 import { Divider } from "antd"
 import Image from "next/image"
 import Link from "next/link"
@@ -57,12 +57,12 @@ export const Homes = () => {
               <CallOutlined />
               <span className="ml-3">+44 7459 4933 83</span>
             </p>
-            <p>
+            <p className="mb-2">
               <CallOutlined />
               <span className="ml-3">+44 1582 2831 72</span>
             </p>
-            <p className="m">
-              <MailOutlined />
+            <p className="">
+              <MailOutline />
               <a
                 href="mailto:info@flourishadvancedcare.co.uk"
                 className="ml-3 text-primary"

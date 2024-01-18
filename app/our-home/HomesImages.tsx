@@ -1,13 +1,13 @@
 "use client"
 import React from "react"
 import { Image } from "antd"
-const houses = [2, 3, 4, 5, 6]
+const houses = [2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 12, 13, 14, 15]
 
 export const HomesImages = () => {
   return (
-    <div>
+    <div className="homes-images">
       <div>
-        <Image width={"100%"} src="/house1.svg" alt="House 1" preview />
+        <Image width={"100%"} src="/house11.svg" alt="House 1" preview />
       </div>
       <Image.PreviewGroup
         preview={{
@@ -15,7 +15,7 @@ export const HomesImages = () => {
             console.log(`current index: ${current}, prev index: ${prev}`),
         }}
       >
-        <div className="grid grid-cols-6 xxl:grid-cols-6 gap-[1rem]">
+        <div className="grid grid-cols-4 md:grid-cols-6 xxl:grid-cols-6 gap-[1rem] justify-items-between">
           {houses.map((house) => (
             <div className="relative w-full" key={house}>
               <Image
@@ -27,7 +27,7 @@ export const HomesImages = () => {
               />
             </div>
           ))}
-          <Image.PreviewGroup
+          {/* <Image.PreviewGroup
             items={[
               "/house7.svg",
               "/house8.svg",
@@ -47,7 +47,7 @@ export const HomesImages = () => {
               height={100}
               style={{ objectFit: "cover" }}
             />
-          </Image.PreviewGroup>
+          </Image.PreviewGroup> */}
         </div>
       </Image.PreviewGroup>
       {/*  */}
