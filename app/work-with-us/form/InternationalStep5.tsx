@@ -30,10 +30,21 @@ export const InternationalStep5: FC<{
       <Formik
         initialValues={formData}
         validate={step5Validation}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting }) => {
           setFormData((prev) => ({ ...prev, ...values }))
           setOpen(true)
           console.log(values)
+          try {
+            const res = await fetch("/api/email", {
+              body: JSON.stringify({ email: "Hi" }),
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+            })
+            const response = await res.json()
+            console.log(response)
+          } catch (error) {
+            console.log("error")
+          }
         }}
       >
         {({
