@@ -18,7 +18,9 @@ import { step4Validation } from "@/validations/internationalCandidateForm/step4.
 export const InternationalStep4: FC<{
   next: () => void
   back: () => void
-  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+  setAttachments: React.Dispatch<
+    React.SetStateAction<{ filename: string; content: File }[]>
+  >
 }> = ({ next, back, setAttachments }) => {
   const { formData, setFormData } = useInternationalFormData()
 
@@ -536,10 +538,6 @@ export const InternationalStep4: FC<{
                     type="file"
                     className="p-3 border-[1px] rounded-md"
                     onChange={async (e) => {
-                      // const reader = new FileReader()
-                      // const file = new Uint8Array()
-                      const file = await e.target.files![0].arrayBuffer()
-                      const file_ = new Uint8Array(file)
                       setValues({
                         ...values,
                         cv: e.target.value,

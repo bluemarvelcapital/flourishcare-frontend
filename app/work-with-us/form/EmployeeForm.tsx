@@ -567,9 +567,14 @@ export const EmployeeForm: React.FC<HealthFormProps> = ({
 
             <div className="md:w-[60%] md:mx-auto my-10">
               <Button
+                className={`w-full rounded-[100px] text-xl ${
+                  !isValid && "cursor-not-allowed"
+                }`}
+                style={{
+                  borderRadius: "100px",
+                  background: !isValid ? "gray" : "",
+                }}
                 type="submit"
-                className="w-full rounded-[100px] text-xl"
-                style={{ borderRadius: "100px" }}
               >
                 Next
               </Button>

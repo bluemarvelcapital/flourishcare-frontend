@@ -516,12 +516,19 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                   className="p-3 border-[1px] rounded-md"
                   name="proof_of_address1"
                   // value={values.proof_of_address1}
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setValues({
                       ...values,
                       proof_of_address1: e.target.value,
                     })
-                  }
+                    setAttachments((prev) => [
+                      ...prev,
+                      {
+                        filename: "Proof of address 1",
+                        content: e.target.files![0],
+                      },
+                    ])
+                  }}
                 />
                 <p className="text-error">
                   {errors.proof_of_address1 &&
@@ -540,12 +547,19 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                   className="p-3 border-[1px] rounded-md"
                   name="proof_of_address2"
                   // value={values.proof_of_address2}
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setValues({
                       ...values,
                       proof_of_address2: e.target.value,
                     })
-                  }
+                    setAttachments((prev) => [
+                      ...prev,
+                      {
+                        filename: "Proof of address 2",
+                        content: e.target.files![0],
+                      },
+                    ])
+                  }}
                 />
                 <p className="text-error">
                   {errors.proof_of_address2 &&
@@ -557,9 +571,14 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
             <div className="md:w-[60%] md:mx-auto">
               <Button
-                className="w-full rounded-[100px] text-xl"
-                style={{ borderRadius: "100px" }}
-                // disabled={!isValid}
+                className={`w-full rounded-[100px] text-xl ${
+                  !isValid && "cursor-not-allowed"
+                }`}
+                style={{
+                  borderRadius: "100px",
+                  background: !isValid ? "gray" : "",
+                }}
+                type="submit"
               >
                 Next
               </Button>

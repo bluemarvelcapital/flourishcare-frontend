@@ -19,9 +19,11 @@ import { useInternationalFormData } from "@/hooks/useInternationalFormData"
 import { step5Validation } from "@/validations/internationalCandidateForm/step5.validation"
 
 export const InternationalStep5: FC<{
-  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+  setAttachments: React.Dispatch<
+    React.SetStateAction<{ filename: string; content: File }[]>
+  >
   back: () => void
-  attachments: any[]
+  attachments: { filename: string; content: File }[]
 }> = ({ setAttachments, back, attachments }) => {
   const { formData, setFormData } = useInternationalFormData()
   const [open, setOpen] = React.useState(false)
@@ -37,29 +39,63 @@ export const InternationalStep5: FC<{
         validate={step5Validation}
         onSubmit={async (values, { setSubmitting }) => {
           setFormData((prev) => ({ ...prev, ...values }))
-          let fd = new FormData()
-          fd.append("attachments", attachments as any)
-          console.log(attachments)
+
+          const parseData = Object.entries(values).map(([key, value]) => {
+            const datumShape = [key.replaceAll("_", " "), String(value)] as [
+              string,
+              string
+            ]
+            return datumShape
+          })
+          const withoutPaths = parseData.filter((item) => {
+            if (!item[1].includes("fakepath")) {
+              return true
+            }
+          })
+          const questions = withoutPaths.map((item) => item[0]).join(":::")
+          const answers = withoutPaths.map((item) => item[1]).join(":::")
+          console.log(questions, answers)
 
           try {
             setLoading(true)
-            const res = await fetch("/api/email", {
-              body: JSON.stringify({
-                body: { region: "international", ...values },
-                attachments: fd,
-              }),
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-            })
+            const formdata = new FormData()
+            formdata.append("type", "international")
+            formdata.append("questions", questions)
+            formdata.append("answers", answers)
+            for (let value of attachments) {
+              formdata.append("attachments", value.content, value.filename)
+            }
+
+            const res = await fetch(
+              "https://bluemarvel-mail-server.onrender.com/job-application/new",
+              {
+                method: "POST",
+                body: formdata,
+                redirect: "follow",
+              }
+            )
             const response = await res.json()
-            setMessage(response.message)
-            setHead(response.head)
+            console.log(response)
+
+            setMessage(
+              response.message ||
+                "Your details has been recieved, we will get back to you soon."
+            )
+            setHead(
+              response.status === "success"
+                ? "Application sent Successfully"
+                : "Application not sent"
+            )
             setStatus(response.status)
             setLoading(false)
             setOpen(true)
-            console.log(response)
-          } catch (error) {
-            console.log("error")
+          } catch (error: any) {
+            setMessage(error.message)
+            setHead("Application not sent")
+            setStatus("error")
+            setLoading(false)
+            setOpen(true)
+            console.log(error)
           }
         }}
       >

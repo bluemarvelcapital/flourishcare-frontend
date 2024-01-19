@@ -2,6 +2,7 @@
 import { Button } from "@/components/Button"
 import { useNationalFormData } from "@/hooks/useNationalFormData"
 import { Nstep4 } from "@/validations/nationalCandidateForm/Nstep4.validation"
+import { LoadingOutlined } from "@ant-design/icons"
 import { DatePicker, Form, Input, Result, Modal } from "antd"
 import { Formik } from "formik"
 import React from "react"
@@ -54,29 +55,63 @@ export const NonDisclosureForm: React.FC<{
         validate={Nstep4}
         onSubmit={async (values, { setSubmitting }) => {
           setFormData((prev) => ({ ...prev, ...values }))
-          let fd = new FormData()
-          fd.append("attachments", attachments as any)
-          console.log(attachments)
+
+          const parseData = Object.entries(values).map(([key, value]) => {
+            const datumShape = [key.replaceAll("_", " "), String(value)] as [
+              string,
+              string
+            ]
+            return datumShape
+          })
+          const withoutPaths = parseData.filter((item) => {
+            if (!item[1].includes("fakepath")) {
+              return true
+            }
+          })
+          const questions = withoutPaths.map((item) => item[0]).join(":::")
+          const answers = withoutPaths.map((item) => item[1]).join(":::")
+          console.log(questions, answers)
 
           try {
             setLoading(true)
-            const res = await fetch("/api/email", {
-              body: JSON.stringify({
-                body: { region: "international", ...values },
-                attachments: fd,
-              }),
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-            })
+            const formdata = new FormData()
+            formdata.append("type", "national")
+            formdata.append("questions", questions)
+            formdata.append("answers", answers)
+            for (let value of attachments) {
+              formdata.append("attachments", value.content, value.filename)
+            }
+
+            const res = await fetch(
+              "https://bluemarvel-mail-server.onrender.com/job-application/new",
+              {
+                method: "POST",
+                body: formdata,
+                redirect: "follow",
+              }
+            )
             const response = await res.json()
-            setMessage(response.message)
-            setHead(response.head)
+            console.log(response)
+
+            setMessage(
+              response.message ||
+                "Your details has been recieved, we will get back to you soon."
+            )
+            setHead(
+              response.status === "success"
+                ? "Application sent Successfully"
+                : "Application not sent"
+            )
             setStatus(response.status)
             setLoading(false)
             setOpen(true)
-            console.log(response)
-          } catch (error) {
-            console.log("error")
+          } catch (error: any) {
+            setMessage(error.message)
+            setHead("Application not sent")
+            setStatus("error")
+            setLoading(false)
+            setOpen(true)
+            console.log(error)
           }
         }}
       >
@@ -146,10 +181,16 @@ export const NonDisclosureForm: React.FC<{
               <div className="md:w-[60%] md:mx-auto my-5">
                 <Button
                   type="submit"
-                  className="w-full rounded-[100px] text-xl"
-                  style={{ borderRadius: "100px" }}
+                  className={`w-full rounded-[100px] text-xl ${
+                    !isValid && "cursor-not-allowed"
+                  }`}
+                  style={{
+                    borderRadius: "100px",
+                    background: !isValid ? "gray" : "",
+                  }}
+                  disabled={loading}
                 >
-                  Submit Form
+                  {loading ? <LoadingOutlined /> : "Submit Form"}
                 </Button>
               </div>
             </div>

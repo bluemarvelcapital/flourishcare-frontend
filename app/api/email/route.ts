@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Email } from "@/components/Email"
 import nodemailer from "nodemailer"
+// @ts-ignore
 import { render } from "@react-email/render"
 // import multer from "multer"
+import nc from "next-connect"
 
 export const dynamic = "force-dynamic" // defaults to auto
 export async function POST(request: NextRequest) {
@@ -36,7 +38,7 @@ export async function POST(request: NextRequest) {
       to: ["osaretin.frank10@gmail.com", "molunorichie@gmail.com"],
       subject: "Job Application Notification - Flourish Advanced Care",
       html: emailHtml,
-      // attachments,
+      attachments,
     }
     await transporter.sendMail(options)
     const response = {

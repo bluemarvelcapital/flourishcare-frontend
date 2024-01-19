@@ -19,7 +19,9 @@ export const InternationFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
   let next = () => setActiveStep((prev) => prev + 1)
   let back = () => setActiveStep((prev) => prev - 1)
-  const [attachments, setAttachments] = useState<any[]>([])
+  const [attachments, setAttachments] = useState<
+    { filename: string; content: File }[]
+  >([])
 
   const items = [
     {
