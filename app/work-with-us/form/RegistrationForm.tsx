@@ -516,11 +516,13 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                   className="p-3 border-[1px] rounded-md"
                   name="proof_of_address1"
                   // value={values.proof_of_address1}
-                  onChange={(e) =>
-                    setValues({
-                      ...values,
-                      proof_of_address1: e.target.value,
-                    })
+                  onChange={(e) =>{
+                    console.log(e.target.value)
+                      setValues({
+                        ...values,
+                        proof_of_address1: e.target.value,
+                      })
+                  }
                   }
                 />
                 <p className="text-error">
