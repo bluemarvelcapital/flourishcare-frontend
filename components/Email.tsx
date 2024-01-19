@@ -24,10 +24,16 @@ export function Email(data: [string, string][], name: string, region: string) {
             {data.map((item, index) => {
               return (
                 <Container key={index} className="mb-5">
-                  <Text className="capitalize mb-0 text-lg">{item[0]}</Text>
-                  <Text className="capitalize italic font-semibold">
-                    {item[1]}
-                  </Text>
+                  {!item[1].includes("fakepath") && (
+                    <>
+                      <Text className="capitalize mb-[-1rem] text-lg">
+                        {item[0]}
+                      </Text>
+                      <Text className="capitalize italic font-semibold">
+                        {item[1]}
+                      </Text>
+                    </>
+                  )}
                 </Container>
               )
             })}

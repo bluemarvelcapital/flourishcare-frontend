@@ -15,10 +15,11 @@ import { Formik } from "formik"
 import { useInternationalFormData } from "@/hooks/useInternationalFormData"
 import { step4Validation } from "@/validations/internationalCandidateForm/step4.validation"
 
-export const InternationalStep4: FC<{ next: () => void; back: () => void }> = ({
-  next,
-  back,
-}) => {
+export const InternationalStep4: FC<{
+  next: () => void
+  back: () => void
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+}> = ({ next, back, setAttachments }) => {
   const { formData, setFormData } = useInternationalFormData()
 
   return (
@@ -534,12 +535,23 @@ export const InternationalStep4: FC<{ next: () => void; back: () => void }> = ({
                     accept=".pdf, .docx, .doc"
                     type="file"
                     className="p-3 border-[1px] rounded-md"
-                    onChange={(e) =>
+                    onChange={async (e) => {
+                      // const reader = new FileReader()
+                      // const file = new Uint8Array()
+                      const file = await e.target.files![0].arrayBuffer()
+                      const file_ = new Uint8Array(file)
                       setValues({
                         ...values,
                         cv: e.target.value,
                       })
-                    }
+                      setAttachments((prev) => [
+                        ...prev,
+                        {
+                          filename: "CV",
+                          content: e.target.files![0],
+                        },
+                      ])
+                    }}
                     name="cv"
                     // value={values.cv}
                   />

@@ -17,7 +17,10 @@ import { Formik } from "formik"
 import { useInternationalFormData } from "@/hooks/useInternationalFormData"
 import { step1Validation } from "@/validations/internationalCandidateForm/step1.validation"
 
-export const InternationalStep1: FC<{ next: () => void }> = ({ next }) => {
+export const InternationalStep1: FC<{
+  next: () => void
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+}> = ({ next, setAttachments }) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
   const { formData, setFormData } = useInternationalFormData()
 
@@ -465,12 +468,19 @@ export const InternationalStep1: FC<{ next: () => void }> = ({ next }) => {
                       accept=".pdf, .docx, .doc"
                       type="file"
                       className="p-3 border-[1px] rounded-md"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setValues({
                           ...values,
                           passport: e.target.value,
                         })
-                      }
+                        setAttachments((prev) => [
+                          ...prev,
+                          {
+                            filename: "Valid Passport",
+                            content: e.target.files![0],
+                          },
+                        ])
+                      }}
                       name="passport"
                       // value={values.passport}
                     />
@@ -488,12 +498,19 @@ export const InternationalStep1: FC<{ next: () => void }> = ({ next }) => {
                       accept=".pdf, .docx, .doc"
                       type="file"
                       className="p-3 border-[1px] rounded-md"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setValues({
                           ...values,
                           photo_passport: e.target.value,
                         })
-                      }
+                        setAttachments((prev) => [
+                          ...prev,
+                          {
+                            filename: "Passport Photograph",
+                            content: e.target.files![0],
+                          },
+                        ])
+                      }}
                       name="photo_passport"
                       // value={values.photo_passport}
                     />
@@ -513,12 +530,19 @@ export const InternationalStep1: FC<{ next: () => void }> = ({ next }) => {
                       accept=".pdf, .docx, .doc"
                       type="file"
                       className="p-3 border-[1px] rounded-md"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setValues({
                           ...values,
                           ielts_result: e.target.value,
                         })
-                      }
+                        setAttachments((prev) => [
+                          ...prev,
+                          {
+                            filename: "IELTS Result And Grade",
+                            content: e.target.files![0],
+                          },
+                        ])
+                      }}
                       name="ielts_result"
                       // value={values.ielts_result}
                     />
@@ -540,12 +564,19 @@ export const InternationalStep1: FC<{ next: () => void }> = ({ next }) => {
                       accept=".pdf, .docx, .doc"
                       type="file"
                       className="p-3 border-[1px] rounded-md"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setValues({
                           ...values,
                           proof_of_covid_vaccination: e.target.value,
                         })
-                      }
+                        setAttachments((prev) => [
+                          ...prev,
+                          {
+                            filename: "Proof Of Covid Vaccination",
+                            content: e.target.files![0],
+                          },
+                        ])
+                      }}
                       name="proof_of_covid_vaccination"
                       // value={values.proof_of_covid_vaccination}
                     />
@@ -565,12 +596,19 @@ export const InternationalStep1: FC<{ next: () => void }> = ({ next }) => {
                       accept=".pdf, .docx, .doc"
                       type="file"
                       className="p-3 border-[1px] rounded-md"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setValues({
                           ...values,
                           evidence_of_TB_test_result: e.target.value,
                         })
-                      }
+                        setAttachments((prev) => [
+                          ...prev,
+                          {
+                            filename: "TB Test Result",
+                            content: e.target.files![0],
+                          },
+                        ])
+                      }}
                       name="evidence_of_TB_test_result"
                       // value={values.evidence_of_TB_test_result}
                     />

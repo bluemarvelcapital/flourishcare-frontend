@@ -19,22 +19,49 @@ export const InternationFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
   let next = () => setActiveStep((prev) => prev + 1)
   let back = () => setActiveStep((prev) => prev - 1)
+  const [attachments, setAttachments] = useState<any[]>([])
 
   const items = [
     {
-      content: <InternationalStep1 next={next} />,
+      content: (
+        <InternationalStep1 next={next} setAttachments={setAttachments} />
+      ),
     },
     {
-      content: <InternationalStep2 next={next} back={back} />,
+      content: (
+        <InternationalStep2
+          next={next}
+          back={back}
+          setAttachments={setAttachments}
+        />
+      ),
     },
     {
-      content: <InternationalStep3 next={next} back={back} />,
+      content: (
+        <InternationalStep3
+          next={next}
+          back={back}
+          setAttachments={setAttachments}
+        />
+      ),
     },
     {
-      content: <InternationalStep4 next={next} back={back} />,
+      content: (
+        <InternationalStep4
+          next={next}
+          back={back}
+          setAttachments={setAttachments}
+        />
+      ),
     },
     {
-      content: <InternationalStep5 submit={() => null} back={back} />,
+      content: (
+        <InternationalStep5
+          setAttachments={setAttachments}
+          back={back}
+          attachments={attachments}
+        />
+      ),
     },
   ]
   return (

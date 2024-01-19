@@ -19,9 +19,10 @@ import { useInternationalFormData } from "@/hooks/useInternationalFormData"
 import { step5Validation } from "@/validations/internationalCandidateForm/step5.validation"
 
 export const InternationalStep5: FC<{
-  submit: () => null
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
   back: () => void
-}> = ({ submit, back }) => {
+  attachments: any[]
+}> = ({ setAttachments, back, attachments }) => {
   const { formData, setFormData } = useInternationalFormData()
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
@@ -36,10 +37,17 @@ export const InternationalStep5: FC<{
         validate={step5Validation}
         onSubmit={async (values, { setSubmitting }) => {
           setFormData((prev) => ({ ...prev, ...values }))
+          let fd = new FormData()
+          fd.append("attachments", attachments as any)
+          console.log(attachments)
+
           try {
             setLoading(true)
             const res = await fetch("/api/email", {
-              body: JSON.stringify({ region: "international", ...values }),
+              body: JSON.stringify({
+                body: { region: "international", ...values },
+                attachments: fd,
+              }),
               method: "POST",
               headers: { "Content-Type": "application/json" },
             })
@@ -337,7 +345,8 @@ export const InternationalStep5: FC<{
           subTitle={message}
           extra={[
             <Button
-              key="buy"
+              onClick={() => setOpen(false)}
+              key="click"
               className={status === "error" ? "bg-error" : "bg-success"}
             >
               {status === "error" ? "Retry" : "Okay"}

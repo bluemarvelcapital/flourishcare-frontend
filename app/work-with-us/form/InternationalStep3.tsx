@@ -6,10 +6,11 @@ import { Formik } from "formik"
 import { useInternationalFormData } from "@/hooks/useInternationalFormData"
 import { step3Validation } from "@/validations/internationalCandidateForm/step3.validation"
 
-export const InternationalStep3: FC<{ next: () => void; back: () => void }> = ({
-  next,
-  back,
-}) => {
+export const InternationalStep3: FC<{
+  next: () => void
+  back: () => void
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+}> = ({ next, back, setAttachments }) => {
   const { formData, setFormData } = useInternationalFormData()
 
   return (

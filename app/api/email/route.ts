@@ -2,10 +2,15 @@ import { NextRequest, NextResponse } from "next/server"
 import { Email } from "@/components/Email"
 import nodemailer from "nodemailer"
 import { render } from "@react-email/render"
-import { message } from "antd"
+import multer from "multer"
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+})
 
 export const dynamic = "force-dynamic" // defaults to auto
 export async function POST(request: NextRequest) {
+  upload.array("attachments")
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -17,7 +22,10 @@ export async function POST(request: NextRequest) {
   })
 
   try {
-    const body = (await request.json()) as Record<string, string>
+    const { body, attachments } = (await request.json()) as {
+      body: Record<string, string>
+      attachments: any[]
+    }
     const parseData = Object.entries(body).map(([key, value]) => {
       const datumShape = [key.replaceAll("_", " "), String(value)] as [
         string,
@@ -33,6 +41,7 @@ export async function POST(request: NextRequest) {
       to: "osaretin.frank10@gmail.com",
       subject: "Job Application Notification - Flourish Advanced Care",
       html: emailHtml,
+      // attachments,
     }
     await transporter.sendMail(options)
     const response = {
@@ -40,6 +49,8 @@ export async function POST(request: NextRequest) {
       head: "Application sent Successfully",
       parseData,
       message: "Your details has been recieved, we will get back to you soon.",
+      attachments: JSON.stringify(attachments),
+      // attachments
     }
 
     return NextResponse.json(response)
@@ -47,7 +58,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       error: error.message,
       head: "Application not sent",
-      message: "Your details has not been recieved, please try again.",
+      message: error.message,
       status: "error",
     })
   }
