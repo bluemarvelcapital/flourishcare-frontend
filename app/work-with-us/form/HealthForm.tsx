@@ -11,9 +11,13 @@ import { useNationalFormData } from "@/hooks/useNationalFormData"
 
 interface HealthFormProps {
   next: () => void
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
 }
 
-export const HealthForm: React.FC<HealthFormProps> = ({ next }) => {
+export const HealthForm: React.FC<HealthFormProps> = ({
+  next,
+  setAttachments,
+}) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
   const { formData, setFormData } = useNationalFormData()
 

@@ -15,6 +15,7 @@ import { useCompletedSteps } from "@/hooks/useCompletedSteps"
 export const NationalFormSteps = () => {
   const [activeStep, setActiveStep] = useState(0)
   const { completeStep, completedSteps } = useCompletedSteps()
+  const [attachments, setAttachments] = useState<any[]>([])
 
   let next = () =>
     setActiveStep((prev) => {
@@ -28,22 +29,27 @@ export const NationalFormSteps = () => {
     {
       title: "Complete Application/Registration Form",
       icon: <AppRegistrationOutlined />,
-      content: <RegistrationForm next={next} />,
+      content: <RegistrationForm next={next} setAttachments={setAttachments} />,
     },
     {
       title: "Complete Pre-Employment Health Questionnaire Form",
       icon: <MedicalInformation />,
-      content: <HealthForm next={next} />,
+      content: <HealthForm next={next} setAttachments={setAttachments} />,
     },
     {
       title: "Complete New Employee Form",
       icon: <BadgeOutlined />,
-      content: <EmployeeForm next={next} />,
+      content: <EmployeeForm next={next} setAttachments={setAttachments} />,
     },
     {
       title: "Complete Non-Disclosure Form",
       icon: <EditNoteOutlined />,
-      content: <NonDisclosureForm />,
+      content: (
+        <NonDisclosureForm
+          setAttachments={setAttachments}
+          attachments={attachments}
+        />
+      ),
     },
   ]
   return (

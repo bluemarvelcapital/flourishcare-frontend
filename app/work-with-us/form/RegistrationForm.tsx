@@ -22,9 +22,13 @@ import dayjs from "dayjs"
 
 interface RegistrationFormProps {
   next: () => void
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
 }
 
-export const RegistrationForm: React.FC<RegistrationFormProps> = ({ next }) => {
+export const RegistrationForm: React.FC<RegistrationFormProps> = ({
+  next,
+  setAttachments,
+}) => {
   const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
   const { formData, setFormData } = useNationalFormData()
   return (

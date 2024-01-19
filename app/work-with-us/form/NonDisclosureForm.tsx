@@ -6,9 +6,16 @@ import { DatePicker, Form, Input, Result, Modal } from "antd"
 import { Formik } from "formik"
 import React from "react"
 
-export const NonDisclosureForm = () => {
+export const NonDisclosureForm: React.FC<{
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+  attachments: any[]
+}> = ({ setAttachments, attachments }) => {
   const { formData, setFormData } = useNationalFormData()
   const [open, setOpen] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
+  const [head, setHead] = React.useState("")
+  const [message, setMessage] = React.useState("")
+  const [status, setStatus] = React.useState("")
 
   return (
     <div className="py-10 px-6 bg-white transition-all">
@@ -45,10 +52,32 @@ export const NonDisclosureForm = () => {
       <Formik
         initialValues={formData}
         validate={Nstep4}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log(values)
+        onSubmit={async (values, { setSubmitting }) => {
           setFormData((prev) => ({ ...prev, ...values }))
-          setOpen(true)
+          let fd = new FormData()
+          fd.append("attachments", attachments as any)
+          console.log(attachments)
+
+          try {
+            setLoading(true)
+            const res = await fetch("/api/email", {
+              body: JSON.stringify({
+                body: { region: "international", ...values },
+                attachments: fd,
+              }),
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+            })
+            const response = await res.json()
+            setMessage(response.message)
+            setHead(response.head)
+            setStatus(response.status)
+            setLoading(false)
+            setOpen(true)
+            console.log(response)
+          } catch (error) {
+            console.log("error")
+          }
         }}
       >
         {({
@@ -129,10 +158,18 @@ export const NonDisclosureForm = () => {
       </Formik>
       <Modal open={open} onCancel={() => setOpen(false)} footer={false}>
         <Result
-          status="success"
-          title="Successfully Applied"
-          subTitle="Your details has been recieved, we will get back to you soon."
-          extra={[<Button key="buy">Okay</Button>]}
+          status={status as any}
+          title={head}
+          subTitle={message}
+          extra={[
+            <Button
+              onClick={() => setOpen(false)}
+              key="click"
+              className={status === "error" ? "bg-error" : "bg-success"}
+            >
+              {status === "error" ? "Retry" : "Okay"}
+            </Button>,
+          ]}
         />
       </Modal>
     </div>

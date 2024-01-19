@@ -2,15 +2,10 @@ import { NextRequest, NextResponse } from "next/server"
 import { Email } from "@/components/Email"
 import nodemailer from "nodemailer"
 import { render } from "@react-email/render"
-import multer from "multer"
-
-const upload = multer({
-  storage: multer.memoryStorage(),
-})
+// import multer from "multer"
 
 export const dynamic = "force-dynamic" // defaults to auto
 export async function POST(request: NextRequest) {
-  upload.array("attachments")
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -38,7 +33,7 @@ export async function POST(request: NextRequest) {
     )
     const options = {
       from: "osaretinfrank.developer@gmail.com",
-      to: "osaretin.frank10@gmail.com",
+      to: ["osaretin.frank10@gmail.com", "molunorichie@gmail.com"],
       subject: "Job Application Notification - Flourish Advanced Care",
       html: emailHtml,
       // attachments,
