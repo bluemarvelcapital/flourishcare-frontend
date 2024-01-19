@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "@/components/Button"
-import { UploadOutlined } from "@ant-design/icons"
+import { LoadingOutlined, UploadOutlined } from "@ant-design/icons"
 import {
   DatePicker,
   Form,
@@ -24,6 +24,10 @@ export const InternationalStep5: FC<{
 }> = ({ submit, back }) => {
   const { formData, setFormData } = useInternationalFormData()
   const [open, setOpen] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
+  const [head, setHead] = React.useState("")
+  const [message, setMessage] = React.useState("")
+  const [status, setStatus] = React.useState("")
 
   return (
     <>
@@ -32,15 +36,19 @@ export const InternationalStep5: FC<{
         validate={step5Validation}
         onSubmit={async (values, { setSubmitting }) => {
           setFormData((prev) => ({ ...prev, ...values }))
-          setOpen(true)
-          console.log(values)
           try {
+            setLoading(true)
             const res = await fetch("/api/email", {
-              body: JSON.stringify({ email: "Hi" }),
+              body: JSON.stringify({ region: "international", ...values }),
               method: "POST",
               headers: { "Content-Type": "application/json" },
             })
             const response = await res.json()
+            setMessage(response.message)
+            setHead(response.head)
+            setStatus(response.status)
+            setLoading(false)
+            setOpen(true)
             console.log(response)
           } catch (error) {
             console.log("error")
@@ -311,8 +319,9 @@ export const InternationalStep5: FC<{
                       borderRadius: "100px",
                       background: !isValid ? "gray" : "",
                     }}
+                    disabled={loading}
                   >
-                    Submit Form
+                    {loading ? <LoadingOutlined /> : "Submit Form"}
                   </Button>
                 </div>
               </section>
@@ -323,10 +332,17 @@ export const InternationalStep5: FC<{
 
       <Modal open={open} onCancel={() => setOpen(false)} footer={false}>
         <Result
-          status="success"
-          title="Successfully Applied"
-          subTitle="Your details has been recieved, we will get back to you soon."
-          extra={[<Button key="buy">Okay</Button>]}
+          status={status as any}
+          title={head}
+          subTitle={message}
+          extra={[
+            <Button
+              key="buy"
+              className={status === "error" ? "bg-error" : "bg-success"}
+            >
+              {status === "error" ? "Retry" : "Okay"}
+            </Button>,
+          ]}
         />
       </Modal>
     </>

@@ -13,12 +13,7 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-const emailHtml = render(
-  <Email
-    url="osaretinfrank.developer@gmail.com
-"
-  />
-)
+const emailHtml = render(<Email />)
 
 const options = {
   from: "osaretinfrank.developer@gmail.com",
