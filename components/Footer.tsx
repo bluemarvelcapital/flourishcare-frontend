@@ -1,6 +1,6 @@
-import React from "react"
-import Link from "next/link"
-import { Logo } from "./Logo"
+import React from "react";
+import Link from "next/link";
+import { Logo } from "./Logo";
 import {
   FacebookFilled,
   InstagramOutlined,
@@ -9,20 +9,21 @@ import {
   PhoneOutlined,
   MailOutlined,
   HomeOutlined,
-} from "@ant-design/icons"
-import { Avatar } from "antd"
+} from "@ant-design/icons";
+import { Avatar } from "antd";
 
 export const Footer = () => {
   return (
     <div className="font-myriad-pro">
       <div className="bg-primary py-[4rem] flex justify-center items-center md:gap-[50px] gap-[20px]">
-        <Link href="">
+        <Link href="https://www.facebook.com/people/Flourish-Advanced-Care/61554189911700/">
           <FacebookFilled className="text-white text-[40px]" />
         </Link>
-        <Link href="">
+        <Link href="
+https://www.linkedin.com/company/flourish-advanced-care/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BtAogmRPpRTidyt%2B5bJObWA%3D%3D">
           <LinkedinFilled className="text-white text-[40px]" />
         </Link>
-        <Link href="">
+        <Link href="https://www.instagram.com/flourishadvancedcare/">
           <InstagramOutlined className="text-white text-[40px]" />
         </Link>
         {/* <Link href="">
@@ -120,5 +121,5 @@ export const Footer = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
