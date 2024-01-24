@@ -27,7 +27,7 @@ export const CoreValues = () => {
               <h3 className="md:w-[80%] md:text-[64px] mb-[20px] text-[24px] text-primary">
                 Our Core Values
               </h3>
-              <Image src={"/star.svg"} width={80} height={80} alt="star" />
+              <Image src={"/star_.svg"} width={80} height={80} alt="star" />
             </div>
             <div className="relative xl:w-[550px] w-full md:h-[625px] h-[360px]">
               <Image
