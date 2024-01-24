@@ -11,51 +11,24 @@ import { toast } from "react-toastify"
 import { MAILCHIMP_FORM_URL, CALENDLY_SCHEDULE_URL } from "@/constants/config"
 import { SuccessModal } from "./SuccessModal"
 import { InlineWidget } from "react-calendly"
-import { Modal } from "antd"
-import { CloseCircleFilled } from "@ant-design/icons"
+import { Modal, Button as AntButton } from "antd"
+import { CloseCircleFilled, LoadingOutlined } from "@ant-design/icons"
+import { Formik } from "formik"
+import { appointmentFormValidation } from "@/validations/appointment.validation"
+
+const initialData = {
+  name: "",
+  email: "",
+  phone: "",
+  date: "",
+  message: "",
+}
 
 export const AppointmentForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    date: "",
-    message: "",
-  })
+  const [isLoading, setIsLoading] = useState(false)
   const [open, setOpen] = useState(false)
   const [openCalendly, setOpenCalendly] = useState(false)
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
-
-    // Assuming you are using the 'axios' library for HTTP requests
-    // Make sure to install it by running: npm install axios
-    try {
-      console.log(formData)
-      const { email, name, phone, date, message } = formData
-      jsonp(
-        `${MAILCHIMP_FORM_URL}&EMAIL=${email}&NAME=${name}&PHONE=${phone}&DATE=${date}&MESSAGE=${message}`,
-        { param: "c" },
-        (_: any, data: any) => {
-          // toast.success("Submitted Successfully")
-
-          // window.location.href = CALENDLY_SCHEDULE_URL
-          setOpen(true)
-        }
-      )
-    } catch (error: any) {
-      console.log(error)
-      toast.error("An error occurred while submitting the form")
-    }
-  }
   return (
     <div className="md:mb-[60px] mb-[24px] text-white" id="book-consultation">
       <div className="relative md:px-[140px] px-[16px] md:py-[80px] py-[20px]">
@@ -77,57 +50,131 @@ export const AppointmentForm = () => {
           </div>
         </Fade>
         <Fade right>
-          <form onSubmit={handleSubmit}>
-            <div className="bg-white md:w-[753px] w-[85vw] mx-[auto] md:mx-[inherit] border-[1px] rounded-[4px] border-[#AFB1B0] md:p-[34px] p-[20px] flex flex-col md:gap-[30px] gap-[20px]">
-              <Input
-                name="name"
-                placeholder="Your Name"
-                className="w-full border-[1px] border-[#AFB1B0]"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-              />
-              <Input
-                name="email"
-                placeholder="Email Address"
-                className="w-full border-[1px] border-[#AFB1B0]"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
+          <Formik
+            initialValues={initialData}
+            validate={appointmentFormValidation}
+            onSubmit={(value) => {
+              try {
+                setIsLoading(true)
+                const { email, name, phone, date, message } = value
+                jsonp(
+                  `${MAILCHIMP_FORM_URL}&EMAIL=${email}&NAME=${name}&PHONE=${phone}&DATE=${date}&MESSAGE=${message}`,
+                  { param: "c" },
+                  (_: any, data: any) => {
+                    // toast.success("Submitted Successfully")
 
-              <Input
-                name="phone"
-                placeholder="Phone Number"
-                className="w-full border-[1px] border-[#AFB1B0]"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-              <div>
-                <Input
-                  name="date"
-                  className="w-full border-[1px] border-[#AFB1B0]"
-                  type="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                />
-                <p
-                  className="text-[#4A4A4A] text-primary"
-                  style={{ fontStyle: "italic" }}
-                >
-                  *Pick a date
-                </p>
-              </div>
-              <TextArea
-                name="message"
-                placeholder="Your Message "
-                className="w-full border-[1px] border-[#AFB1B0]]"
-                value={formData.message}
-                onChange={handleChange}
-              />
-              <Button className="rounded-[4px]">Submit</Button>
-            </div>
-          </form>
+                    // window.location.href = CALENDLY_SCHEDULE_URL
+                    setOpen(true)
+                    setIsLoading(false)
+                  }
+                )
+              } catch (error: any) {
+                console.log(error)
+                toast.error("An error occurred while submitting the form")
+                setIsLoading(false)
+              }
+            }}
+          >
+            {({
+              values,
+              handleChange,
+              handleSubmit,
+              errors,
+              touched,
+              handleBlur,
+              isSubmitting,
+              isValid,
+            }) => {
+              return (
+                <form onSubmit={handleSubmit}>
+                  <div className="bg-white md:w-[753px] w-[85vw] mx-[auto] md:mx-[inherit] border-[1px] rounded-[4px] border-[#AFB1B0] md:p-[34px] p-[20px] flex flex-col md:gap-[30px] gap-[20px]">
+                    <div>
+                      <Input
+                        name="name"
+                        placeholder="Your Name"
+                        className="w-full border-[1px] border-[#AFB1B0]"
+                        type="text"
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      <p className="text-error">
+                        {errors.name && touched.name && errors.name}
+                      </p>
+                    </div>
+                    <div>
+                      <Input
+                        name="email"
+                        placeholder="Email Address"
+                        className="w-full border-[1px] border-[#AFB1B0]"
+                        type="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      <p className="text-error">
+                        {errors.email && touched.email && errors.email}
+                      </p>
+                    </div>
+
+                    <div>
+                      <Input
+                        name="phone"
+                        placeholder="Phone Number"
+                        className="w-full border-[1px] border-[#AFB1B0]"
+                        value={values.phone}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        type="number"
+                      />
+                      <p className="text-error">
+                        {errors.phone && touched.phone && errors.phone}
+                      </p>
+                    </div>
+                    <div>
+                      <Input
+                        name="date"
+                        className="w-full border-[1px] border-[#AFB1B0]"
+                        type="date"
+                        value={values.date}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      <p
+                        className="text-[#4A4A4A] text-primary"
+                        style={{ fontStyle: "italic" }}
+                      >
+                        {values.date ? "" : "*Pick a date"}
+                      </p>
+                      <p className="text-error">
+                        {errors.date && touched.date && errors.date}
+                      </p>
+                    </div>
+                    <div>
+                      <TextArea
+                        name="message"
+                        placeholder="Your Message "
+                        className="w-full border-[1px] border-[#AFB1B0]]"
+                        value={values.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      <p className="text-error">
+                        {errors.message && touched.message && errors.message}
+                      </p>
+                    </div>
+                    <Button
+                      className="rounded-[4px] bg-success"
+                      type="submit"
+                      disabled={isLoading || !isValid}
+                    >
+                      {isLoading ? <LoadingOutlined /> : "Submit"}
+                    </Button>
+                  </div>
+                </form>
+              )
+            }}
+          </Formik>
         </Fade>
       </div>
       <SuccessModal

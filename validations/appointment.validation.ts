@@ -9,7 +9,7 @@ interface ContactFormDetails {
 export const appointmentFormValidation = (values: ContactFormDetails) => {
   const errors: Record<string, string> = {}
   if (/^\s*$/.test(values.name)) {
-    errors.name = "Required, please select an option above"
+    errors.name = "Required"
   }
   if (!values.email) {
     errors.email = "Required"
