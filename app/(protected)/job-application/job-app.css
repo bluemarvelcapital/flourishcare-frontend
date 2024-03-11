@@ -1,0 +1,11 @@
+.ant-tabs .ant-tabs-ink-bar {
+  background-color: #04bd4b !important;
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #0b0e0c !important;
+}
+
+.ant-tabs .ant-tabs-tab-btn {
+  color: #6a6b6c !important;
+  padding: 0 0.5rem;
+}
