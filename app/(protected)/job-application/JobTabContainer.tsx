@@ -2,12 +2,13 @@
 import React from "react"
 import { Tabs } from "antd"
 import type { TabsProps } from "antd"
+import { Jobs } from "./Jobs"
 
 const items: TabsProps["items"] = [
   {
     key: "1",
     label: "View Jobs",
-    children: "Content of Tab Pane 1",
+    children: <Jobs />,
   },
   {
     key: "2",

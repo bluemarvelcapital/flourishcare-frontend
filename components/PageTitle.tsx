@@ -20,7 +20,7 @@ export const PageTitle: React.FC<props> = ({ ...props }) => {
         <p className="text-primary">{title}</p>
       </div>
 
-      <h2 className="text-[1.5rem] md:text-[2.3rem] lg:text-[40px] capitalize">
+      <h2 className="text-[1.5rem] md:text-[2.3rem] lg:text-[40px] capitalize font-[500]">
         {title}
       </h2>
     </div>
