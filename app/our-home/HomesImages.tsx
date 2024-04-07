@@ -10,7 +10,7 @@ export const HomesImages = () => {
         <Image
           width={"100%"}
           height={"100%"}
-          src="/house-front.jpg"
+          src="/house4.svg"
           alt="House 1"
           preview
           style={{ objectFit: "cover" }}
@@ -23,6 +23,16 @@ export const HomesImages = () => {
         }}
       >
         <div className="grid grid-cols-4 md:grid-cols-6 xxl:grid-cols-6 gap-[1rem] justify-items-between">
+          <div className="relative w-full">
+            <Image
+              src={`/house-front.jpg`}
+              alt="House"
+              width={"100%"}
+              height={100}
+              style={{ objectFit: "cover" }}
+              preview
+            />
+          </div>
           {houses.map((house) => (
             <div className="relative w-full" key={house}>
               <Image
