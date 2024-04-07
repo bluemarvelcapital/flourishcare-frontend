@@ -13,6 +13,7 @@ const paths = [
   { path: "/our-services", name: "Our Services" },
   { path: "/work-with-us", name: "Work With Us" },
   { path: "/our-home", name: "Our Home" },
+  // { path: "/blog", name: "Blog" },
   { path: "/faqs", name: "FAQs" },
 
   // { path: "/contact-us", name: "Contact Us" },
@@ -21,7 +22,7 @@ export const Header = () => {
   const pathname = usePathname()
   const [open, setOpen] = React.useState(false)
   return (
-    <header className="flex justify-between items-center md:px-[60px] md:py-[24px] px-[16px] py-[10px] container_xl flex-wrap">
+    <header className="flex justify-between items-center md:px-[60px] md:py-[24px] px-[16px] py-[10px] container_xl flex-wrap shadow-md">
       <Logo />
       <nav>
         <ul className="p-0 md:flex justifiy-between hidden items-center flex-wrap">

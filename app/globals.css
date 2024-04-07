@@ -90,6 +90,7 @@
 @media (min-width: 1000px) {
   img.ant-image-preview-img {
     width: 70rem !important;
+    object-fit: cover !important;
   }
 }
 

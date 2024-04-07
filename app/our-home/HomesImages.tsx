@@ -6,8 +6,15 @@ const houses = [2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 12, 13, 14, 15]
 export const HomesImages = () => {
   return (
     <div className="homes-images">
-      <div>
-        <Image width={"100%"} src="/house11.svg" alt="House 1" preview />
+      <div className="md:h-[45rem] mb-3">
+        <Image
+          width={"100%"}
+          height={"100%"}
+          src="/house-front.jpg"
+          alt="House 1"
+          preview
+          style={{ objectFit: "cover" }}
+        />
       </div>
       <Image.PreviewGroup
         preview={{
@@ -27,6 +34,26 @@ export const HomesImages = () => {
               />
             </div>
           ))}
+          <div className="relative w-full">
+            <Image
+              src={`/parlour.jpg`}
+              alt="House"
+              width={"100%"}
+              height={100}
+              style={{ objectFit: "cover" }}
+              preview
+            />
+          </div>
+          <div className="relative w-full">
+            <Image
+              src={`/dining.jpg`}
+              alt="House"
+              width={"100%"}
+              height={100}
+              style={{ objectFit: "cover" }}
+              preview
+            />
+          </div>
           {/* <Image.PreviewGroup
             items={[
               "/house7.svg",
