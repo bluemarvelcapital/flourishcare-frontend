@@ -2,12 +2,9 @@
 import React from "react"
 import { Hero } from "../Hero"
 import { usePathname } from "next/navigation"
-import { useGetBlogPostByIdQuery, useGetBlogPostsQuery } from "@/services/blog.service"
-import { data } from "../dummyData"
+import { useGetBlogPostsQuery } from "@/services/blog.service"
 import { IoIosDocument } from "react-icons/io"
 import Image from "next/image"
-import Markdown from 'markdown-parser-react';
-import ReactHtmlParser from 'react-html-parser';
 import { useSelector } from "react-redux"
 import { RootState } from "@/context/store"
 import { PiSpinner } from "react-icons/pi"
@@ -15,7 +12,6 @@ import { BlogCard } from "@/components/BlogCard"
 import { BlogCardI } from "@/interface/blogCard"
 import { List, Select } from "antd"
 import DomPurify from 'dompurify';
-import { JSDOM } from 'jsdom'
 
 
 const RelatedPosts = ({ currentPostId }: { currentPostId?: string }) => {
@@ -109,7 +105,6 @@ const BlogPostPage = () => {
                             <p className="text-gray-500">{postToShow.description}</p>
                         </div>
 
-                        {/* Display the content of the blog post */}
                         <div className="md:px-[40px] md:py-[38px] p-[24px]" dangerouslySetInnerHTML={{ __html: DomPurify.sanitize(postToShow.content) }}>
                         </div>
                     </div>

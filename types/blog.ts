@@ -12,3 +12,17 @@ export interface BlogI {
     author?: string
     status: 'draft' | 'published' | 'hidden'
 }
+
+
+export interface GetBlogPostsResponse {
+    status: 'success',
+    data: {
+        blogPosts: (BlogI & { status: 'draft' | 'published' | 'hidden' })[]
+    }
+}
+export interface GetBlogPostResponse {
+    status: 'success',
+    data: {
+        blogPost: (BlogI & { status: 'draft' | 'published' | 'hidden' })
+    }
+}

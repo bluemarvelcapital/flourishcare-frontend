@@ -1,31 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { BlogI } from "@/types/blog"
+import { GetBlogPostResponse, GetBlogPostsResponse } from "@/types/blog"
 import { API_URL } from "@/constants/config"
 
-interface GetBlogPostsResponse {
-    status: 'success',
-    data: {
-        blogPosts: (BlogI & { status: 'draft' | 'published' | 'hidden' })[]
-    }
-}
-interface GetBlogPostResponse {
-    status: 'success',
-    data: {
-        blogPost: (BlogI & { status: 'draft' | 'published' | 'hidden' })
-    }
-}
-
-interface UpdateBlogPostResponse {
-    status: 'success',
-    data: {
-        blogPost: BlogI & { status: 'draft' | 'published' | 'hidden' }
-    }
-}
-
-const mappedKeys = {
-    preview_image: 'previewImage',
-    cover_image: 'coverImage',
-}
+console.log({ API_URL })
 
 export const blogApi = createApi({
     reducerPath: "createApi",
