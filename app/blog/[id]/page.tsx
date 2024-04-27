@@ -12,70 +12,60 @@ import { BlogCard } from "@/components/BlogCard"
 import { BlogCardI } from "@/interface/blogCard"
 import { List, Select } from "antd"
 import DomPurify from 'dompurify';
+import BlogQueryApi from "@/db/query/blog"
 
 
-const RelatedPosts = ({ currentPostId }: { currentPostId?: string }) => {
-    // TODO: Fetch related posts similar to the current post
-    currentPostId
-    const { data: blogData, isLoading: blogPostsInfoIsLoading } = useGetBlogPostsQuery(undefined)
-
+const RelatedPosts = ({ currentPostId }: { currentPostId: string }) => {
+    const blogPosts = BlogQueryApi.getSimilarPosts(currentPostId)
+    blogPosts.slice(0, 3)
     return (
-        <div className="md:px-[2rem] px-[1.5rem]">
-            <div className="py-5 pt-9 flex justify-between items-center">
-                <h2 className="md:text-[32px] text-[24px] font-[500] mb-[20px]">
-                    Related Posts
-                </h2>
-            </div>
-            <div className="mb-6">
-                {
-                    blogData?.data.blogPosts
-                        ? <>
-                            <List
-                                grid={{ gutter: [24, 16], column: 3, md: 2, sm: 1, xs: 1 }}
-                                dataSource={blogData.data.blogPosts.slice(2).map(post => ({
-                                    title: post.title,
-                                    description: post.description,
-                                    coverImage: post.cover_image,
-                                    previewImage: post.preview_image,
-                                    image: post.cover_image,
-                                    tag: post.tags[0],
-                                    content: post.content,
-                                    href: `/blog/${post.id}`,
-                                    createdAt: post.createdAt,
-                                    updatedAt: post.updatedAt,
-                                    id: post.id,
-                                    status: post.status
-                                }))}
-                                pagination={{ pageSize: 3 }}
-                                renderItem={(item: BlogCardI) => {
-                                    return (
-                                        <List.Item>
-                                            <BlogCard {...item} />
-                                        </List.Item>
-                                    )
-                                }}
-                            />
-                        </>
-                        : blogPostsInfoIsLoading
-                            ? <div className="flex justify-center items-center h-[400px]">
-                                <PiSpinner className="text-[40px] text-primary" />
-                            </div>
-                            : <div className="flex justify-center items-center h-[400px]">
-                                <h2 className="text-[24px] text-gray-500">No blog post found</h2>
-                            </div>
-                }
-
-            </div>
-        </div>
+        <>
+            {
+                blogPosts.length &&
+                <div className="md:px-[2rem] px-[1.5rem]">
+                    <div className="py-5 pt-9 flex justify-between items-center">
+                        <h2 className="md:text-[32px] text-[24px] font-[500] mb-[20px]">
+                            Related Posts
+                        </h2>
+                    </div>
+                    <div className="mb-6">
+                        <List
+                            grid={{ gutter: [24, 16], column: 3, md: 2, sm: 1, xs: 1 }}
+                            dataSource={blogPosts.slice(0, 3).map(post => ({
+                                title: post.title,
+                                description: post.description,
+                                coverImage: post.cover_image,
+                                previewImage: post.preview_image,
+                                image: post.cover_image,
+                                tag: post.tags[0],
+                                content: post.content,
+                                href: `/blog/${post.id}`,
+                                createdAt: post.createdAt,
+                                updatedAt: post.updatedAt,
+                                id: post.id,
+                                status: post.status
+                            }))}
+                            pagination={{ pageSize: 3 }}
+                            renderItem={(item: BlogCardI) => {
+                                return (
+                                    <List.Item>
+                                        <BlogCard {...item} />
+                                    </List.Item>
+                                )
+                            }}
+                        />
+                    </div>
+                </div >
+            }
+        </>
     )
 }
 
 const BlogPostPage = () => {
     const pathname = usePathname()
     const blogPostId = pathname.split("/").pop()
-    const { postToShow } = useSelector((state: RootState) => state.blog)
+    const postToShow = BlogQueryApi.getBlogPostById(blogPostId ?? '')
 
-    console.log({ postToShow })
     return (
         <div>
             <Hero />
@@ -109,7 +99,7 @@ const BlogPostPage = () => {
                         </div>
                     </div>
 
-                    <RelatedPosts />
+                    <RelatedPosts currentPostId={blogPostId ?? ''} />
                 </div>
             }
         </div>

@@ -1,22 +1,18 @@
 "use client"
 import React from "react"
-import { Select, List, Col, Row } from "antd"
+import { Select, List } from "antd"
 import { BlogCard } from "@/components/BlogCard"
 import { BlogCardI } from "@/interface/blogCard"
-import { data } from "./dummyData"
-import { useGetBlogPostsQuery } from "@/services/blog.service"
-import { PiSpinner } from "react-icons/pi"
-
+import _blogPosts from '../../db/data/posts.json'
+import BlogQueryApi from "@/db/query/blog"
 const filterOptions = [
-    { label: "Most Recent", value: "recent" },
-    { label: "Oldest", value: "oldest" },
-    { label: "Most Popular", value: "most-popular" },
+    { label: "Most Recent", value: "creatdAt" },
 ]
 
-export const Content = () => {
-    const { data: blogData, isLoading: blogPostsInfoIsLoading } = useGetBlogPostsQuery(undefined)
 
-    console.log({ blogData })
+export const Content = () => {
+    const blogPosts = BlogQueryApi.getAllBlogPosts()
+
     return (
         <div className="md:px-[2rem] px-[1.5rem]">
             <div className="py-5 pt-9 flex justify-between items-center">
@@ -33,11 +29,11 @@ export const Content = () => {
             </div>
             <div className="mb-6">
                 {
-                    blogData?.data.blogPosts
+                    blogPosts.length > 0
                         ? <>
                             <List
                                 grid={{ gutter: [24, 16], column: 3, md: 2, sm: 1, xs: 1 }}
-                                dataSource={blogData.data.blogPosts.map(post => ({
+                                dataSource={blogPosts.map(post => ({
                                     title: post.title,
                                     description: post.description,
                                     coverImage: post.cover_image,
@@ -62,21 +58,11 @@ export const Content = () => {
                             />
                         </>
                         : <>
-                            <PiSpinner className="animate-spin text-[#1E1E1E] text-5xl mx-auto" />
+                            <p className="text-[#1E1E1E] text-2xl">No blog posts currently</p>
+                            {/* <PiSpinner className="animate-spin text-[#1E1E1E] text-5xl mx-auto" /> */}
                         </>
                 }
 
-                {/* If no blog posts show no blog posts currently */}
-                <div className="flex justify-center items-center h-[300px]">
-                    {
-                        blogPostsInfoIsLoading && <PiSpinner className="animate-spin text-[#1E1E1E] text-5xl mx-auto" />
-                    }
-
-                    {
-                        !blogPostsInfoIsLoading && !blogData?.data.blogPosts.length && <p className="text-[#1E1E1E] text-2xl">No blog posts currently</p>
-                    }
-
-                </div>
             </div>
         </div>
     )
