@@ -4,4 +4,11 @@ export interface BlogCardI {
   image: string
   tag: string
   href: string
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+  status: string
+  coverImage: string,
+  previewImage: string,
 }
