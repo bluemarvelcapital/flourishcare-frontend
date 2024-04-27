@@ -13,7 +13,7 @@ const paths = [
   { path: "/our-services", name: "Our Services" },
   { path: "/work-with-us", name: "Work With Us" },
   { path: "/our-home", name: "Our Home" },
-  // { path: "/blog", name: "Blog" },
+  { path: "/blog", name: "Blog" },
   { path: "/faqs", name: "FAQs" },
 
   // { path: "/contact-us", name: "Contact Us" },

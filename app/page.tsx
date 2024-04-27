@@ -12,25 +12,25 @@ import { LicensedBy } from "./LicensedBy"
 import { Reviews } from "./Reviews"
 
 export const metadata: Metadata = {
-  title: "Flourish Care",
+    title: "Flourish Care",
 }
 
 const Home = () => {
-  return (
-    <div>
-      {/* <Hero {...hero_props} /> */}
-      <Hero />
-      <LicensedBy />
-      <ServiceCovered />
-      <div className="container_xl">
-        <WhyChooseUs />
-        <Reviews />
-      </div>
-      <AppointmentForm />
-      {/* <FAQS /> */}
-      {/* <Newsletter /> */}
-    </div>
-  )
+    return (
+        <div>
+            {/* <Hero {...hero_props} /> */}
+            <Hero />
+            <LicensedBy />
+            <ServiceCovered />
+            <div className="container_xl">
+                <WhyChooseUs />
+                <Reviews />
+            </div>
+            <AppointmentForm />
+            {/* <FAQS /> */}
+            {/* <Newsletter /> */}
+        </div>
+    )
 }
 
 export default Home
