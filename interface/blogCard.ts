@@ -9,4 +9,6 @@ export interface BlogCardI {
   updatedAt: string;
   id: string;
   status: string
+  coverImage: string,
+  previewImage: string,
 }

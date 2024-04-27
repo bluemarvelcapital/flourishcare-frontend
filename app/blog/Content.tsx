@@ -40,6 +40,8 @@ export const Content = () => {
                                 dataSource={blogData.data.blogPosts.map(post => ({
                                     title: post.title,
                                     description: post.description,
+                                    coverImage: post.cover_image,
+                                    previewImage: post.preview_image,
                                     image: post.cover_image,
                                     tag: post.tags[0],
                                     content: post.content,
@@ -49,7 +51,7 @@ export const Content = () => {
                                     id: post.id,
                                     status: post.status
                                 }))}
-                                pagination={{ pageSize: 4 }}
+                                pagination={{ pageSize: 9 }}
                                 renderItem={(item: BlogCardI) => {
                                     return (
                                         <List.Item>

@@ -17,11 +17,11 @@ export const BlogCard: React.FC<BlogCardI> = ({ ...props }) => {
                 dispatch(setPostToShow({
                     title,
                     description,
-                    cover_image: image,
+                    cover_image: props.coverImage,
                     category: 'Health',
                     createdAt: props.createdAt,
                     id: props.id,
-                    preview_image: image,
+                    preview_image: props.previewImage,
                     status: props.status as any,
                     tags: [props.tag],
                     updatedAt: props.updatedAt,
@@ -33,7 +33,7 @@ export const BlogCard: React.FC<BlogCardI> = ({ ...props }) => {
         >
             <div className="relative w-full h-[284px] overflow-hidden">
                 <Image
-                    src={image}
+                    src={props.previewImage}
                     alt={title}
                     className="w-full h-full object-cover rounded-t-xl"
                     fill
@@ -47,8 +47,8 @@ export const BlogCard: React.FC<BlogCardI> = ({ ...props }) => {
                     <span className="text-[14px] uppercase">{tag}</span>
                 </div>
 
-                <h1 className="text-[24px] text-gray-700 font-[500]">{title}</h1>
-                <p className="text-gray-500">{description}</p>
+                <h2 className="text-[20px] text-gray-700 font-[500]">{title}</h2>
+                <p className="text-gray-500">{description.length > 30 ? description.slice(30) + ' ...' : description}</p>
             </div>
         </Link>
     )
