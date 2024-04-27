@@ -38,4 +38,10 @@ next-env.d.ts
 # Local Netlify folder
 .netlify
 
+./.env
+
+./db/data/posts.json
+
 .env
+db/data/posts.json
+
