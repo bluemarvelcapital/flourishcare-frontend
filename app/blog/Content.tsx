@@ -42,7 +42,12 @@ export const Content = () => {
                                     description: post.description,
                                     image: post.cover_image,
                                     tag: post.tags[0],
+                                    content: post.content,
                                     href: `/blog/${post.id}`,
+                                    createdAt: post.createdAt,
+                                    updatedAt: post.updatedAt,
+                                    id: post.id,
+                                    status: post.status
                                 }))}
                                 pagination={{ pageSize: 4 }}
                                 renderItem={(item: BlogCardI) => {
@@ -58,6 +63,18 @@ export const Content = () => {
                             <PiSpinner className="animate-spin text-[#1E1E1E] text-5xl mx-auto" />
                         </>
                 }
+
+                {/* If no blog posts show no blog posts currently */}
+                <div className="flex justify-center items-center h-[300px]">
+                    {
+                        blogPostsInfoIsLoading && <PiSpinner className="animate-spin text-[#1E1E1E] text-5xl mx-auto" />
+                    }
+
+                    {
+                        !blogPostsInfoIsLoading && !blogData?.data.blogPosts.length && <p className="text-[#1E1E1E] text-2xl">No blog posts currently</p>
+                    }
+
+                </div>
             </div>
         </div>
     )

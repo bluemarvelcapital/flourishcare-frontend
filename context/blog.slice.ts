@@ -7,7 +7,8 @@ interface BlogState {
     published: number,
     draft: number,
     hidden: number,
-    views: number
+    views: number,
+    postToShow?: BlogI
 }
 
 const initialState: BlogState = {
@@ -45,8 +46,11 @@ export const blogSlice = createSlice({
             state.published = state.posts.filter(post => post.status === 'published').length
             state.draft = state.posts.filter(post => post.status === 'draft').length
             state.hidden = state.posts.filter(post => post.status === 'hidden').length
+        },
+        setPostToShow: (state, action: PayloadAction<BlogI>) => {
+            state.postToShow = action.payload
         }
     }
 })
 
-export const { setPosts, addPosts, updatePost } = blogSlice.actions
+export const { setPosts, addPosts, updatePost, setPostToShow } = blogSlice.actions

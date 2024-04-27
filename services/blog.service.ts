@@ -8,6 +8,12 @@ interface GetBlogPostsResponse {
         blogPosts: (BlogI & { status: 'draft' | 'published' | 'hidden' })[]
     }
 }
+interface GetBlogPostResponse {
+    status: 'success',
+    data: {
+        blogPost: (BlogI & { status: 'draft' | 'published' | 'hidden' })
+    }
+}
 
 interface UpdateBlogPostResponse {
     status: 'success',
@@ -33,8 +39,16 @@ export const blogApi = createApi({
                     }
                 },
             }),
+            getBlogPostById: builder.query<GetBlogPostResponse, string>({
+                query: (id) => {
+                    return {
+                        url: `/info`,
+                        params: { blogPostId: id }
+                    }
+                },
+            }),
         }
     },
 })
 
-export const { useGetBlogPostsQuery } = blogApi
+export const { useGetBlogPostsQuery, useGetBlogPostByIdQuery } = blogApi
