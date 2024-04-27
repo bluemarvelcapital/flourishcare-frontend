@@ -1,3 +1,4 @@
+require('dotenv').config();
 const SeedBlogPostScript = require("./fetchBlogPosts.js");
 
 async function startScripts() {
