@@ -10,7 +10,7 @@ module.exports = class SeedBlogPostScript {
 
         const jsonPath = __dirname + '/../db/data/posts.json'
         // Create a new file if it doesn't exist
-        
+
         if (!fs.existsSync(jsonPath)) {
             // Create directory
             fs.mkdirSync(__dirname + '/../db/data', { recursive: true })
