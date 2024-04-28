@@ -9,6 +9,13 @@ module.exports = class SeedBlogPostScript {
         const sortedBlogPostsById = response.data.data.blogPosts.sort((a, b) => a.id - b.id)
 
         const jsonPath = __dirname + '/../db/data/posts.json'
+        // Create a new file if it doesn't exist
+        
+        if (!fs.existsSync(jsonPath)) {
+            // Create directory
+            fs.mkdirSync(__dirname + '/../db/data', { recursive: true })
+        }
+
         fs.writeFileSync(jsonPath, JSON.stringify({ blogPosts: sortedBlogPostsById }))
     }
 }
