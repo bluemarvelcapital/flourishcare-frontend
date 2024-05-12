@@ -13,9 +13,11 @@ export const PageTitle: React.FC<props> = ({ ...props }) => {
   return (
     <div className="p-[24px] bg-white rounded-[10px] md:mb-[2.5rem] mb-[1.5rem]">
       <div className="flex items-center gap-2 text-sm mb-[1.5rem]">
-        <CiHome className="text-[16px]" />
+        <Link href={"/"}>
+          <CiHome className="text-[16px]" />
+        </Link>
         <PiCaretRightThin style={{ color: "#D1D5DB" }} />
-        <p>Account</p>
+        <Link href={"/account"}>Account</Link>
         <PiCaretRightThin style={{ color: "#D1D5DB" }} />
         <p className="text-primary">{title}</p>
       </div>
