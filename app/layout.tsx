@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 import { Metadata } from "next"
+import { AntProvider } from "@/components/AntProvider"
 
 export const metadata: Metadata = {
   title: "Flourish Advanced Care",
@@ -24,7 +25,9 @@ export default function RootLayout({
       <body className={`font-myriad-pro bg-baseLight`}>
         <Header />
         <ToastContainer position={"top-center"} />
-        <div className="overflow-hidden">{children}</div>
+        <div className="overflow-hidden">
+          <AntProvider>{children}</AntProvider>
+        </div>
         <Footer />
       </body>
     </html>
