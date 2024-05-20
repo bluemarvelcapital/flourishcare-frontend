@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+@import url("/fonts/fonts.css");
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.PhoneInputInput {
+  outline: none;
+}
+
+.form-steps .ant-form-item-label > label {
+  font-size: 1rem !important;
+}
+
+.ant-select-selector {
+  border-color: #00000060 !important;
+}
+
+.glow-btn {
+  box-shadow: 0 5px 15px rgba(135, 207, 57, 0.521);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  border: 1px solid rgba(255, 255, 255, 0.01);
+}
+
+.coloured-disc {
+  list-style: none; /* Remove default bullets */
+}
+
+.coloured-disc li::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #04bd4b; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.prose-sm :where(h2):not(:where([class~="not-prose"] *)) {
+  font-size: 1.4285714em;
+  margin-top: 1.6em;
+  margin-bottom: 0.8em;
+  line-height: 1.4;
+  scroll-margin-top: 1.6em;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  color: var(--tw-prose-headings);
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+}
+
+.prose-sm :where(.prose-sm > :first-child):not(:where([class~="not-prose"] *)) {
+  margin-top: 0;
+}
+
+.prose-sm :where(p):not(:where([class~="not-prose"] *)) {
+  margin-top: 1.1428571em;
+  margin-bottom: 1.1428571em;
+}
+.prose :where(.prose > :first-child):not(:where([class~="not-prose"] *)) {
+  margin-top: 0;
+}
+.prose :where(p):not(:where([class~="not-prose"] *)) {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+@media (min-width: 1000px) {
+  img.ant-image-preview-img {
+    width: 70rem !important;
+    object-fit: cover !important;
+  }
+}
+
+@media (min-width: 2500px) {
+  .container_xl {
+    width: 60% !important;
+    margin: auto !important;
+  }
+  .ml {
+    margin-left: 20% !important;
+  }
+  .mr {
+    margin-right: 20% !important;
+  }
+  .mr-xl {
+    margin-right: 11% !important;
+  }
+  .hero-h {
+    height: 50rem !important;
+  }
+  .pt {
+    padding-top: 13rem !important;
+  }
+}

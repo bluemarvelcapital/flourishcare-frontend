@@ -30,7 +30,7 @@ export const Service = () => {
           <p className="text-[14px] md:text-[16px] text-[#6A6B6C] mb-5">
             {service?.description}
           </p>
-          <Link href={"/"}>
+          <Link href={"/book-appointment"}>
             <Button>Book Appointment</Button>
           </Link>
           <div className="mt-7">

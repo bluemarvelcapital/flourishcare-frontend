@@ -6,7 +6,7 @@ import { OurServices } from "./Services"
 
 const Services = () => {
   return (
-    <div className="py-[2rem] md:py-[3rem] lg:py-[6rem]">
+    <div className="">
       <Container>
         <PageTitle title="Our services" />
         <OurServices />
