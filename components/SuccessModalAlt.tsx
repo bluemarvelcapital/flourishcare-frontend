@@ -30,7 +30,7 @@ export const SuccessModalAlt: FC<{
           </h2>
           <div>{content}</div>
           {link ? (
-            <Link href={link} target="_blank" rel="noreferrer">
+            <Link href={link}>
               <Button
                 className="bg-success px-10 h-[2.5rem] w-[243px]"
                 type="primary"

@@ -83,7 +83,7 @@ export const BookingForm = () => {
       </div>
       <SuccessModalAlt
         open={open}
-        link={`/appointment/${1}`}
+        link={`/care-plan/${1}`}
         text="View Appointment"
         setOpen={setOpen}
         content={

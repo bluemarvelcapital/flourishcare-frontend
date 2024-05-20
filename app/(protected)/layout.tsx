@@ -28,7 +28,6 @@ export default function RootLayout({
         <div className="overflow-hidden">
           <SuccessAntProvider>{children}</SuccessAntProvider>
         </div>
-        <Footer />
       </body>
     </html>
   )
