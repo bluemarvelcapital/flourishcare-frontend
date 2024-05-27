@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  flourishcare-admin-web:
+    image: flourishcare-frontend
+    container_name: flourishcare-frontend
+    env_file: .env
+    ports:
+      - "3001:3001"
+    depends_on:
+      - flourishcare-api
+    command: npm run dev
+    networks:
+      - flourishcare-network
+
+networks:
+  flourishcare-network:
+    external: true
