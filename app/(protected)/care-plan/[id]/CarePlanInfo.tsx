@@ -1,5 +1,6 @@
 "use client"
 import { Button, Divider } from "antd"
+import Link from "next/link"
 import React from "react"
 
 export const CarePlanInfo = () => {
@@ -96,9 +97,11 @@ export const CarePlanInfo = () => {
           </div>
         </div>
         <div className="md:w-[50%] mx-auto w-full md:mt-10">
-          <Button className="bg-success h-[2.5rem] w-full" type="primary">
-            Proceed To Accept
-          </Button>
+          <Link href={`/care-plan/${1}/contract`}>
+            <Button className="bg-success h-[2.5rem] w-full" type="primary">
+              Proceed To Accept
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
