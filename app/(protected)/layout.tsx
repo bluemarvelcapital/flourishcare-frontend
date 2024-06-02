@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 import { Metadata } from "next"
 import { SuccessAntProvider } from "./SuccessAntProvider"
+import ReduxProvider from "@/components/ReduxProvider"
 
 export const metadata: Metadata = {
   title: "Flourish Advanced Care",
@@ -23,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-myriad-pro bg-baseLight`}>
-        <Header />
-        <ToastContainer position={"top-center"} />
-        <div className="overflow-hidden">
-          <SuccessAntProvider>{children}</SuccessAntProvider>
-        </div>
+        <ReduxProvider>
+          <Header />
+          <ToastContainer position={"top-center"} />
+          <div className="overflow-hidden">
+            <SuccessAntProvider>{children}</SuccessAntProvider>
+          </div>
+        </ReduxProvider>
       </body>
     </html>
   )

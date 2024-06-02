@@ -11,7 +11,8 @@ export const SuccessModalAlt: FC<{
   content: React.ReactNode
   text: string
   onOk?: () => void
-}> = ({ open, setOpen, content, link, onOk, text }) => {
+  minWidth?: string
+}> = ({ open, setOpen, content, link, onOk, text, minWidth }) => {
   return (
     <div>
       <Modal
@@ -19,7 +20,11 @@ export const SuccessModalAlt: FC<{
         onCancel={() => setOpen(false)}
         footer={false}
         // width={"auto"}
-        classNames={{ content: "md:min-w-[733px] mx-auto" }}
+        classNames={{
+          content: `${
+            minWidth ? `md:min-w-[${minWidth}]` : "md:min-w-[733px]"
+          } mx-auto`,
+        }}
       >
         <div className="flex flex-col justify-center items-center gap-[1rem] max-w-[433px] mx-auto py-[2rem]">
           <h2>
