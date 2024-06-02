@@ -8,10 +8,35 @@ import { BiLock } from "react-icons/bi"
 import { MdEmail } from "react-icons/md"
 import Link from "next/link"
 import { FcGoogle } from "react-icons/fc"
+import { useToastify } from "@/hooks/useToastify"
+import { useLoginMutation } from "@/services/auth.service"
+import { LoadingOutlined } from "@ant-design/icons"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/hooks/useAuth"
 
 export const LoginForm = () => {
+  const router = useRouter()
   const [form] = useForm<LoginRequestI>()
-  const onLogin = () => {}
+  const [login, { isLoading }] = useLoginMutation()
+  const { errorToast, successToast } = useToastify()
+  const { setAuth } = useAuth()
+  const onLogin = async () => {
+    try {
+      const response = await login(form.getFieldsValue()).unwrap()
+      successToast("Sign In successful")
+      form.resetFields()
+      setAuth({
+        accessToken: response.accessToken,
+        roleId: response.user.roleId,
+        role: response.user.role.name,
+        email: response.user.email,
+        refreshToken: response.refreshToken,
+      })
+      // router.replace("/")
+    } catch (error: any) {
+      errorToast(error?.data?.message || error?.message || "An Error Occured")
+    }
+  }
 
   return (
     <div className="md:min-w-[455px] min-w-[90%] mx-auto">
@@ -21,7 +46,12 @@ export const LoginForm = () => {
           Welcome Back | LogIn
         </h3>
       </div>
-      <Form form={form} onFinish={onLogin} layout="vertical">
+      <Form
+        form={form}
+        onFinish={onLogin}
+        layout="vertical"
+        disabled={isLoading}
+      >
         <Form.Item
           name={"email"}
           label="Email"
@@ -45,9 +75,7 @@ export const LoginForm = () => {
                     new Error("Password should not be less than 6 characters")
                   )
                 }
-                if (
-                  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/.test(value)
-                ) {
+                if (/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/.test(value)) {
                   return Promise.resolve()
                 }
                 return Promise.reject(
@@ -77,8 +105,9 @@ export const LoginForm = () => {
           type="primary"
           size="large"
           htmlType="submit"
+          disabled={isLoading}
         >
-          Log In
+          {isLoading ? <LoadingOutlined /> : "Log In"}
         </Button>
       </Form>
       <div className="text-center mt-3">

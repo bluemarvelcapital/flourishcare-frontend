@@ -23,7 +23,7 @@ export const SignUpForm = () => {
   const onSignUp = async () => {
     try {
       const response = await signup(form.getFieldsValue()).unwrap()
-      // successToast("Sign up successfull")
+      // successToast("Sign up successful")
       form.resetFields()
       setOpenModal(true)
     } catch (error: any) {

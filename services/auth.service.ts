@@ -40,13 +40,13 @@ export const authApi = createApi({
         return res.data
       },
     }),
-    getUserData: builder.query<UserI, { authToken: string }>({
-      query({ authToken }) {
+    getUserData: builder.query<UserI, { accessToken: string }>({
+      query({ accessToken }) {
         return {
           url: "/user",
           method: "GET",
           headers: {
-            authorization: `Bearer ${authToken}`,
+            authorization: `Bearer ${accessToken}`,
           },
         }
       },
