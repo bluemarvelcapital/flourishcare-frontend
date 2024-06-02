@@ -10,6 +10,9 @@ export const PrivateRoutes = ({ children }: { children: ReactNode }) => {
   const { isError } = useGetUserDataQuery({ accessToken })
   const router = useRouter()
   useEffect(() => {
+    if (!accessToken) {
+      return router.replace("/login")
+    }
     if (isError) {
       setAuth({
         accessToken: "",
@@ -18,10 +21,6 @@ export const PrivateRoutes = ({ children }: { children: ReactNode }) => {
         email: "",
         refreshToken: "",
       })
-      return router.replace("/login")
-    }
-
-    if (!accessToken) {
       return router.replace("/login")
     }
   }, [isError, accessToken])
