@@ -68,7 +68,7 @@ export const LoginForm = () => {
           />
         </Form.Item>
         <div className="text-end -mt-[1rem] mb-7 relative z-20">
-          <Link href={"/forgot-password"} className="text-end">
+          <Link href={"/forgot-password"} className="text-end text-success">
             Forgot Password?
           </Link>
         </div>
