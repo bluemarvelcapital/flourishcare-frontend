@@ -1,26 +1,31 @@
 "use client"
 import { Loader } from "@/components/Loader"
 import { services } from "@/constants/service_data"
+import { ServiceI } from "@/interface/service"
 import { useGetServicesQuery } from "@/services/services.service"
 import { Input, List, Modal, Rate } from "antd"
 import Image from "next/image"
 import Link from "next/link"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IoMdSearch } from "react-icons/io"
 import Fade from "react-reveal/Fade"
 
 export const OurServices = () => {
-  const [showMore, setShowMore] = useState(false)
-  const [index, setIndex] = useState(0)
   const { data, isLoading } = useGetServicesQuery({})
-  const [servicesState, setServicesState] = useState(services)
+
+  const [servicesState, setServicesState] = useState<ServiceI[]>([])
   const onSearch = (e: any) => {
     const value = e.target.value
-    const result = services.filter((service) => {
-      return service.title.toLowerCase().includes(value.toLowerCase())
+    const result = data?.filter((service) => {
+      return service.name.toLowerCase().includes(value.toLowerCase())
     })
-    setServicesState(result)
+    setServicesState(result as ServiceI[])
   }
+  useEffect(() => {
+    if (data) {
+      setServicesState(data)
+    }
+  }, [data])
   return (
     <div className="bg-white p-7 rounded-xl">
       <div className="md:my-7 my-5 md:px-5">
@@ -37,7 +42,7 @@ export const OurServices = () => {
       ) : (
         <>
           <List
-            dataSource={data || []}
+            dataSource={servicesState.slice().reverse() || []}
             grid={{ gutter: [22, 10], md: 2, sm: 2, xs: 1, column: 3 }}
             pagination={{ pageSize: 6, size: "small", align: "center" }}
             renderItem={(service, index) => (

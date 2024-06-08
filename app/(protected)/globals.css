@@ -87,6 +87,10 @@
   margin-bottom: 1.25em;
 }
 
+.ant-picker-ok .ant-btn {
+  background-color: #04bd4b !important;
+}
+
 @media (min-width: 1000px) {
   img.ant-image-preview-img {
     width: 70rem !important;

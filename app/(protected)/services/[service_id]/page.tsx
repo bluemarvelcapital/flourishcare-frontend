@@ -39,6 +39,7 @@ export async function generateMetadata({
   // Pass service data to the page via props
   return {
     title: service.name,
+    description: service.description,
   }
 }
 
