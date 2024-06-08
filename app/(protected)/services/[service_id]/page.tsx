@@ -3,7 +3,6 @@ import { PageTitle } from "@/components/PageTitle"
 import React from "react"
 import { Service } from "./Service"
 import { RatingsAndReviews } from "./RatingsAndReviews"
-import { Divider } from "antd"
 import { ServiceI } from "@/interface/service"
 import { API_URL } from "@/constants/config"
 import axios from "axios"
@@ -44,7 +43,7 @@ export async function generateMetadata({
 }
 
 // This also gets called at build time
-export async function fetchService(id: string) {
+async function fetchService(id: string) {
   // params contains the service `id`.
   // If the route is like /services/1, then params.id is 1
   const res = await axios.get(API_URL + `/service/info/?serviceId=${id}`)
@@ -54,11 +53,7 @@ export async function fetchService(id: string) {
   return service
 }
 
-const ServiceDetails = async ({
-  params,
-}: {
-  params: { service_id: string }
-}) => {
+const ServicePage = async ({ params }: { params: { service_id: string } }) => {
   const { service_id } = params
   const service = await fetchService(service_id)
   if (!service) {
@@ -77,4 +72,4 @@ const ServiceDetails = async ({
   )
 }
 
-export default ServiceDetails
+export default ServicePage

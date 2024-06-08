@@ -42,7 +42,7 @@ export async function generateMetadata({
 }
 
 // This also gets called at build time
-export async function fetchService(id: string) {
+async function fetchService(id: string) {
   // params contains the service `id`.
   // If the route is like /services/1, then params.id is 1
   const res = await axios.get(API_URL + `/service/info/?serviceId=${id}`)
