@@ -81,6 +81,14 @@ export const OurServices = () => {
                       />
                       {/* <span>2 Reviews</span> */}
                     </div>
+                    <div>
+                      <p className="mt-3 text-md">
+                        {Intl.NumberFormat("en-US", {
+                          currency: service.currency,
+                          style: "currency",
+                        }).format(service.price)}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               </List.Item>
