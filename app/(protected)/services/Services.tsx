@@ -1,5 +1,7 @@
 "use client"
+import { Loader } from "@/components/Loader"
 import { services } from "@/constants/service_data"
+import { useGetServicesQuery } from "@/services/services.service"
 import { Input, List, Modal, Rate } from "antd"
 import Image from "next/image"
 import Link from "next/link"
@@ -10,6 +12,7 @@ import Fade from "react-reveal/Fade"
 export const OurServices = () => {
   const [showMore, setShowMore] = useState(false)
   const [index, setIndex] = useState(0)
+  const { data, isLoading } = useGetServicesQuery({})
   const [servicesState, setServicesState] = useState(services)
   const onSearch = (e: any) => {
     const value = e.target.value
@@ -29,84 +32,62 @@ export const OurServices = () => {
           onChange={onSearch}
         />
       </div>
-      <Fade cascade right>
-        <List
-          dataSource={servicesState}
-          grid={{ gutter: [22, 10], md: 2, sm: 2, xs: 1, column: 3 }}
-          pagination={{ pageSize: 6, size: "small", align: "center" }}
-          renderItem={(service, index) => (
-            <List.Item>
-              <Link
-                href={`/services/${index}`}
-                className="flex flex-col min-h-[410px] shadow-md rounded-xl"
-                key={index}
-              >
-                <div className="relative w-full h-[255px]">
-                  <Image
-                    src={service.image}
-                    alt={`${service.title} Image`}
-                    fill
-                    className="rounded-t-[12px]"
-                    objectFit="cover"
-                  />
-                </div>
-
-                <div className=" p-[20px]">
-                  <h3 className="lg:text-[20px] text-[18px] text-primary mb-[10px]">
-                    {service.title}
-                  </h3>
-                  <p className="text-[14px]">
-                    {service.description.length > 80 ? (
-                      <>
-                        {service.description.slice(0, 80)}...{" "}
-                        <span
-                          className="text-primary underline cursor-pointer text-sm"
-                          onClick={() => {
-                            setIndex(index)
-                            setShowMore(true)
-                          }}
-                        >
-                          Read more
-                        </span>
-                      </>
-                    ) : (
-                      service.description
-                    )}
-                  </p>
-                  <div className="mt-2 flex gap-3 items-center text-[12px]">
-                    <Rate
-                      value={5}
-                      disabled
-                      className="text-[16px] text-[#FBA100]"
+      {isLoading ? (
+        <Loader name="services" />
+      ) : (
+        <>
+          <List
+            dataSource={data || []}
+            grid={{ gutter: [22, 10], md: 2, sm: 2, xs: 1, column: 3 }}
+            pagination={{ pageSize: 6, size: "small", align: "center" }}
+            renderItem={(service, index) => (
+              <List.Item>
+                <Link
+                  href={`/services/${service.id}`}
+                  className="flex flex-col min-h-[410px] shadow-md rounded-xl"
+                  key={index}
+                >
+                  <div className="relative w-full h-[255px]">
+                    <Image
+                      src={service.previewImage}
+                      alt={`${service.name} Image`}
+                      fill
+                      className="rounded-t-[12px]"
+                      objectFit="cover"
                     />
-                    <span>2 Reviews</span>
                   </div>
-                </div>
-              </Link>
-            </List.Item>
-          )}
-        />
-      </Fade>
-      <Modal footer={false} open={showMore} onCancel={() => setShowMore(false)}>
-        <div className="mt-10 shadow-sm flex flex-col">
-          <div className="relative w-full h-[255px]">
-            <Image
-              src={services[index].image}
-              alt={`${services[index].title} Image`}
-              fill
-              className="md:rounded-t-[12px]"
-              objectFit="cover"
-            />
-          </div>
 
-          <div className=" p-[20px] border-[1px] border-[#D3D3D3] ">
-            <h3 className="lg:text-[20px] text-[18px] text-primary mb-[10px]">
-              {services[index].title}
-            </h3>
-            <p className="text-[16px]">{services[index].description}</p>
-          </div>
-        </div>
-      </Modal>
+                  <div className=" p-[20px]">
+                    <h3 className="lg:text-[20px] text-[18px] text-primary mb-[10px]">
+                      {service.name}
+                    </h3>
+                    <p className="text-[14px]">
+                      {service.description?.length > 80 ? (
+                        <>
+                          {service.description?.slice(0, 80)}...{" "}
+                          <span className="text-primary underline cursor-pointer text-sm">
+                            Read more
+                          </span>
+                        </>
+                      ) : (
+                        service.description
+                      )}
+                    </p>
+                    <div className="mt-2 flex gap-3 items-center text-[12px]">
+                      <Rate
+                        value={5}
+                        disabled
+                        className="text-[16px] text-[#FBA100]"
+                      />
+                      {/* <span>2 Reviews</span> */}
+                    </div>
+                  </div>
+                </Link>
+              </List.Item>
+            )}
+          />
+        </>
+      )}
     </div>
   )
 }

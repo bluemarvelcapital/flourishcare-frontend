@@ -31,8 +31,11 @@ export const LoginForm = () => {
         role: response.user.role.name,
         email: response.user.email,
         refreshToken: response.refreshToken,
+        firstname: response.user.firstname,
+        lastname: response.user.lastname,
+        profilePicture: response.user.profilePicture,
       })
-      // router.replace("/")
+      router.replace("/")
     } catch (error: any) {
       errorToast(error?.data?.message || error?.message || "An Error Occured")
     }
@@ -80,7 +83,7 @@ export const LoginForm = () => {
                 }
                 return Promise.reject(
                   new Error(
-                    "password should contain atleast one number and one special character"
+                    "password should contain atleast one number, uppercase and lowercase"
                   )
                 )
               },

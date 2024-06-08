@@ -7,9 +7,9 @@ import Link from "next/link"
 import { Button } from "@/components/Button"
 
 export const Service = () => {
-  const { id } = useParams()
+  const { service_id } = useParams()
   const service = services.find(({ index }) => {
-    return String(index - 1) === String(id)
+    return String(index - 1) === String(service_id)
   })
 
   return (
@@ -30,7 +30,7 @@ export const Service = () => {
           <p className="text-[14px] md:text-[16px] text-[#6A6B6C] mb-5">
             {service?.description}
           </p>
-          <Link href={"/book-appointment"}>
+          <Link href={`/services/${service_id}/book-appointment`}>
             <Button>Book Appointment</Button>
           </Link>
           <div className="mt-7">

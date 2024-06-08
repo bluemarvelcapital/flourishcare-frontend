@@ -52,6 +52,9 @@ export const BookingForm = () => {
           <Form.Item label="Duration">
             <Select className="w-full" size="large" />
           </Form.Item>
+          <Form.Item label="Service">
+            <Select className="w-full" size="large" />
+          </Form.Item>
           <Form.Item label="Special Requests/Instructions:">
             <Input.TextArea
               className="w-full"
