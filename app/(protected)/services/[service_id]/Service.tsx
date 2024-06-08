@@ -5,19 +5,17 @@ import { useParams } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/Button"
+import { ServiceI } from "@/interface/service"
 
-export const Service = () => {
+export const Service = ({ service }: { service: ServiceI }) => {
   const { service_id } = useParams()
-  const service = services.find(({ index }) => {
-    return String(index - 1) === String(service_id)
-  })
 
   return (
     <div className="bg-white p-7 rounded-xl">
       <div className="grid md:grid-cols-2 md:gap-7 lg:gap-10 gap-5 items-center">
         <div className="relative w-full md:min-h-[628px] min-h-[340px]">
           <Image
-            src={service?.image as string}
+            src={service?.previewImage as string}
             alt=""
             fill
             className="w-full h-full rounded-xl object-cover"
@@ -25,7 +23,7 @@ export const Service = () => {
         </div>
         <div>
           <h2 className="lg:text-[2.5rem] md:text-[2rem] text-xl mb-7">
-            {service?.title}
+            {service?.name}
           </h2>
           <p className="text-[14px] md:text-[16px] text-[#6A6B6C] mb-5">
             {service?.description}
@@ -38,7 +36,7 @@ export const Service = () => {
             <ul className="list-disc px-6 py-4  text-[#6A6B6C]">
               <li>
                 <span className="font-semibold">Service Type: </span>{" "}
-                <span>{service?.title}</span>
+                <span>{service?.name}</span>
               </li>
               <li>
                 <span className="font-semibold">Duration: </span>{" "}
