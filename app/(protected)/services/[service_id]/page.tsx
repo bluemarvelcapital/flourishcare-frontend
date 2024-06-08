@@ -62,7 +62,7 @@ const ServiceDetails = async ({
   const { service_id } = params
   const service = await fetchService(service_id)
   if (!service) {
-    return notFound()
+    notFound()
   }
   return (
     <div>

@@ -20,6 +20,9 @@ export const PrivateRoutes = ({ children }: { children: ReactNode }) => {
         role: "",
         email: "",
         refreshToken: "",
+        firstname: "",
+        lastname: "",
+        profilePicture: "",
       })
       return router.replace("/login")
     }
