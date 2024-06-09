@@ -70,7 +70,7 @@ const BlogPage = async ({ params }: { params: { blog_id: string } }) => {
                 src={blogPost.cover_image}
                 alt={blogPost.description}
                 fill
-                className="object-cover"
+                className="object-cover rounded-lg"
               />
             </div>
             <div className="flex flex-col gap-4">
