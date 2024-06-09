@@ -38,6 +38,16 @@ export async function generateMetadata({
   return {
     title: `${blog.title} | Flourish Advanced Care Blog`,
     description: blog.description,
+    openGraph: {
+      title: blog.title,
+      siteName: "Flourish Advanced Care Blog",
+      description: blog.description,
+      images: [
+        {
+          url: blog.preview_image,
+        },
+      ],
+    },
   }
 }
 
