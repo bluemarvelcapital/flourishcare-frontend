@@ -18,3 +18,21 @@ export interface SignUpRequestI {
   confirm_password: string
   roleId: string
 }
+
+export interface GuestSignupI {
+  email: string
+  firstname: string
+  lastname: string
+  phone: string
+  has_registered: boolean
+}
+
+export interface GuestSignUpResponseI {
+  createdAt: string
+  id: string
+  email: string
+  firstname: string
+  lastname: string
+  phone: string
+  updatedAt: string
+}

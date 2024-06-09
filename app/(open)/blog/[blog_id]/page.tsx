@@ -59,6 +59,7 @@ const BlogPage = async ({ params }: { params: { blog_id: string } }) => {
     { bg: "bg-[#04BD4B1A]", text: "text-[#04BD4B]" },
     { bg: "bg-[#66ACDC1A]", text: "text-[#66ACDC]" },
   ]
+
   return (
     <div className="max-w-[1680px] mx-auto">
       <div>
@@ -99,7 +100,9 @@ const BlogPage = async ({ params }: { params: { blog_id: string } }) => {
             </div>
             <div className="px-6 py-10 leading-7">
               <div
-                dangerouslySetInnerHTML={{ __html: `${blogPost.content}` }}
+                dangerouslySetInnerHTML={{
+                  __html: blogPost.content,
+                }}
               ></div>
             </div>
           </div>

@@ -1,6 +1,12 @@
 import { API_URL } from "@/constants/config"
 import { UserI } from "@/interface/user"
-import { LoginRequestI, LoginResponse, SignUpRequestI } from "@/interface/auth"
+import {
+  GuestSignupI,
+  GuestSignUpResponseI,
+  LoginRequestI,
+  LoginResponse,
+  SignUpRequestI,
+} from "@/interface/auth"
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 export const authApi = createApi({
@@ -26,6 +32,25 @@ export const authApi = createApi({
       },
       transformResponse: (res: { data: LoginResponse }) => {
         return res.data
+      },
+    }),
+    guestSignup: builder.mutation<GuestSignUpResponseI, GuestSignupI>({
+      query: ({ email, phone, firstname, lastname }) => {
+        return {
+          url: "/signup/guest",
+          method: "POST",
+          body: {
+            email,
+            firstname,
+            lastname,
+            phone,
+          },
+        }
+      },
+      transformResponse: (res: {
+        data: { tempUser: GuestSignUpResponseI }
+      }) => {
+        return res.data.tempUser
       },
     }),
     login: builder.mutation<LoginResponse, LoginRequestI>({
@@ -57,5 +82,9 @@ export const authApi = createApi({
   }),
 })
 
-export const { useLoginMutation, useGetUserDataQuery, useSignupMutation } =
-  authApi
+export const {
+  useLoginMutation,
+  useGetUserDataQuery,
+  useSignupMutation,
+  useGuestSignupMutation,
+} = authApi

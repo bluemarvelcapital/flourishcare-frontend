@@ -39,3 +39,24 @@ export const useLogout = () => {
   }
   return { logout }
 }
+
+export const useGuestUser = () => {
+  const [guestUser, setGuestUser] = useLocalStorage<{
+    email: string
+    firstname: string
+    lastname: string
+    phone: string
+    has_registered: boolean
+    joined: string
+    id: string
+  }>("flourish-guest", {
+    email: "",
+    firstname: "",
+    lastname: "",
+    phone: "",
+    has_registered: false,
+    joined: "",
+    id: "",
+  })
+  return { guestUser, setGuestUser }
+}
