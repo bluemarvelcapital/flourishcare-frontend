@@ -1,6 +1,11 @@
 import React from "react"
 import { Hero } from "./Hero"
 import { Content } from "./Content"
+import { title } from "process"
+
+export const metadata = {
+  title: "Blog | Flourish Advanced Care",
+}
 
 const BlogPage = () => {
   return (
