@@ -7,7 +7,7 @@ import moment from "moment"
 import { BsClockHistory } from "react-icons/bs"
 
 export const BlogCard: React.FC<BlogI> = ({ ...props }) => {
-  const { title, description, cover_image, blogTags, id, createdAt } = props
+  const { title, description, preview_image, blogTags, id, createdAt } = props
   const colors = [
     { bg: "bg-[#04BD4B1A]", text: "text-[#04BD4B]" },
     { bg: "bg-[#66ACDC1A]", text: "text-[#66ACDC]" },
@@ -19,7 +19,7 @@ export const BlogCard: React.FC<BlogI> = ({ ...props }) => {
     >
       <div className="relative w-full h-[284px] overflow-hidden">
         <Image
-          src={cover_image}
+          src={preview_image}
           alt={title}
           className="w-full h-full object-cover rounded-t-xl"
           fill
