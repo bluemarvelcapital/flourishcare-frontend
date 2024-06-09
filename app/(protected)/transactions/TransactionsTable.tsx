@@ -1,11 +1,11 @@
 "use client"
-import React, { useEffect, useState } from "react"
-import { Input, Table } from "antd"
+import React from "react"
+import { Table } from "antd"
 import type { TableColumnsType, TableProps } from "antd"
 import { AppointmentI } from "@/interface/appointment"
 import moment from "moment"
 import { useAuth } from "@/hooks/useAuth"
-import { RiSearch2Line } from "react-icons/ri"
+import { useGetAppointmentsQuery } from "@/services/appointment.service"
 
 const columns: TableColumnsType<AppointmentI> = [
   {
@@ -18,10 +18,7 @@ const columns: TableColumnsType<AppointmentI> = [
     title: "Date",
     dataIndex: "date",
     render: (text, record) => (
-      <div>
-        <p>{moment(record.date).format("LL")}</p>
-        <p>{moment(record.date).format("LT")}</p>
-      </div>
+      <span>{moment(record.date).format("LL LT")}</span>
     ),
     sorter: (a, b) => Date.parse(a.date) - Date.parse(b.date),
     defaultSortOrder: "descend",
@@ -47,7 +44,6 @@ const columns: TableColumnsType<AppointmentI> = [
       )
     },
     sorter: (a, b) => a.services[0].price - b.services[0].price,
-    responsive: ["md", "lg", "xl", "xxl"],
   },
   {
     title: "Appointment ID",
@@ -55,7 +51,6 @@ const columns: TableColumnsType<AppointmentI> = [
     render: (value, record) => {
       return <span>{record.id}</span>
     },
-    responsive: ["md", "lg", "xl", "xxl"],
   },
   {
     title: "Status",
@@ -104,39 +99,19 @@ const onChange: TableProps<AppointmentI>["onChange"] = (
   console.log("params", pagination, filters, sorter, extra)
 }
 
-interface TableI {
-  isLoading: boolean
-  data: AppointmentI[]
-}
-
-export const AppointmentsTable: React.FC<TableI> = ({ data, isLoading }) => {
-  const [dataState, setDataState] = useState(data)
-  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    const newStata = data?.filter(
-      (entry) =>
-        entry.title.toLowerCase().includes(value) ||
-        entry.id.toLowerCase().includes(value)
-    )
-    setDataState(newStata)
-  }
-  useEffect(() => {
-    if (data) {
-      setDataState(data)
-    }
-  }, [data])
+export const TransactionsTable: React.FC = () => {
+  const { auth } = useAuth()
+  const { data, isLoading } = useGetAppointmentsQuery({
+    accessToken: auth.accessToken,
+  })
   return (
-    <div className="bg-white p-3 rounded-xl">
-      <div className="mb-5">
-        <Input
-          className="md:w-[350px] w-full"
-          size="large"
-          placeholder="Search name or id"
-          prefix={<RiSearch2Line />}
-          onChange={onSearch}
-        />
-      </div>
-      <Table columns={columns} dataSource={dataState} loading={isLoading} />
+    <div className="bg-white p-7 rounded-xl">
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        loading={isLoading}
+      />
     </div>
   )
 }

@@ -2,21 +2,21 @@ import React from "react"
 import { Metadata } from "next"
 import { Container } from "@/components/Container"
 import { PageTitle } from "@/components/PageTitle"
-import { AppointmentsTab } from "./AppointmentTab"
+import { TransactionsTable } from "./TransactionsTable"
 
 export const metadata: Metadata = {
-  title: "Appointments | Flourish Advanced Care",
+  title: "Transactions | Flourish Advanced Care",
 }
 
-const Appointments = () => {
+const Transactions = () => {
   return (
     <div>
       <Container>
-        <PageTitle title="Appointments" />
-        <AppointmentsTab />
+        <PageTitle title="Transactions" />
+        <TransactionsTable />
       </Container>
     </div>
   )
 }
 
-export default Appointments
+export default Transactions
