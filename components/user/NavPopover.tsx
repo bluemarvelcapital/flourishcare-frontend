@@ -102,8 +102,9 @@ export const NavPopover = () => {
       >
         <div className="flex gap-3 items-center cursor-pointer">
           <Avatar className="bg-success" src={auth.profilePicture} size={43}>
-            <span className="tracking-tighter font-semibold">
-              {auth.firstname[0]} {auth.lastname[0]}
+            <span className="font-semibold">
+              {auth.firstname[0]}
+              {auth.lastname[0]}
             </span>
           </Avatar>
           <p className="text-primary font-normal">{auth.firstname}</p>

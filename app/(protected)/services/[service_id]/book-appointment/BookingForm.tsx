@@ -14,7 +14,10 @@ import { SuccessModalAlt } from "@/components/SuccessModalAlt"
 import { useAuth } from "@/hooks/useAuth"
 import { useForm } from "antd/es/form/Form"
 import { ServiceI } from "@/interface/service"
-import { useCreateAppointmentMutation } from "@/services/appointment.service"
+import {
+  useCreateAppointmentMutation,
+  useGetAppointmentsQuery,
+} from "@/services/appointment.service"
 import { useToastify } from "@/hooks/useToastify"
 import moment from "moment"
 import dayjs from "dayjs"
@@ -22,6 +25,7 @@ import dayjs from "dayjs"
 export const BookingForm = ({ service }: { service: ServiceI }) => {
   const { auth } = useAuth()
   const [createAppointment, { isLoading }] = useCreateAppointmentMutation()
+  const { refetch } = useGetAppointmentsQuery({ accessToken: auth.accessToken })
   const [open, setOpen] = useState(false)
   const { errorToast, successToast } = useToastify()
   const handleSubmit = async () => {
@@ -36,7 +40,7 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
         duration: service.duration,
         serviceIds: [service.id],
       }).unwrap()
-      console.log(form.getFieldsValue())
+      await refetch()
       // successToast("Appointment Successfully booked.")
       setOpen(!open)
     } catch (error: any) {
