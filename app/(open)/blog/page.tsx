@@ -1,10 +1,21 @@
 import React from "react"
 import { Hero } from "./Hero"
 import { Content } from "./Content"
-import { title } from "process"
+import { Metadata } from "next"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog | Flourish Advanced Care",
+  keywords: ["Flourish Advanced Care", "Flourish", "Advanced Care", "Blog"],
+  publisher: "Flourish Advanced Care",
+  openGraph: {
+    title: "Blog | Flourish Advanced Caree",
+    siteName: "Flourish Advanced care",
+    images: [
+      {
+        url: "/opengraph-image.png",
+      },
+    ],
+  },
 }
 
 const BlogPage = () => {
