@@ -36,7 +36,7 @@ export async function generateMetadata({
   }
   // Pass blog data to the page via props
   return {
-    title: blog.title,
+    title: `${blog.title} | Flourish Advanced Care Blog`,
     description: blog.description,
   }
 }

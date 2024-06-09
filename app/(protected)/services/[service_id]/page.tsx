@@ -37,7 +37,7 @@ export async function generateMetadata({
   }
   // Pass service data to the page via props
   return {
-    title: service.name,
+    title: `${service.name} | Flourish Advanced Care`,
     description: service.description,
   }
 }
