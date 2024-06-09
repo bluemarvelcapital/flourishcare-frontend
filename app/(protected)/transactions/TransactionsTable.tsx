@@ -1,11 +1,13 @@
 "use client"
-import React from "react"
-import { Table } from "antd"
+import React, { useEffect, useState } from "react"
+import { Input, Table } from "antd"
 import type { TableColumnsType, TableProps } from "antd"
 import { AppointmentI } from "@/interface/appointment"
 import moment from "moment"
 import { useAuth } from "@/hooks/useAuth"
 import { useGetAppointmentsQuery } from "@/services/appointment.service"
+import { RiSearch2Line } from "react-icons/ri"
+import { BsDot } from "react-icons/bs"
 
 const columns: TableColumnsType<AppointmentI> = [
   {
@@ -16,11 +18,11 @@ const columns: TableColumnsType<AppointmentI> = [
   },
   {
     title: "Date",
-    dataIndex: "date",
+    dataIndex: "createdAt",
     render: (text, record) => (
-      <span>{moment(record.date).format("LL LT")}</span>
+      <span>{moment(record.createdAt).format("LL LT")}</span>
     ),
-    sorter: (a, b) => Date.parse(a.date) - Date.parse(b.date),
+    sorter: (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
     defaultSortOrder: "descend",
   },
   {
@@ -46,7 +48,7 @@ const columns: TableColumnsType<AppointmentI> = [
     sorter: (a, b) => a.services[0].price - b.services[0].price,
   },
   {
-    title: "Appointment ID",
+    title: "Transaction ID",
     dataIndex: "id",
     render: (value, record) => {
       return <span>{record.id}</span>
@@ -77,13 +79,14 @@ const columns: TableColumnsType<AppointmentI> = [
         <span
           className={`${
             record.status === "PENDING"
-              ? "text-yellow-500 bg-yellow-50"
+              ? "text-yellow-500 "
               : record.status === "Approved"
-              ? "text-green-500 bg-green-50"
-              : "text-red-500 bg-red-50"
-          } block text-center px-1 py-1 rounded-md capitalize`}
+              ? "text-green-500 "
+              : "text-red-500 "
+          } flex items-center px-1 py-1 rounded-md capitalize font-semibold`}
         >
-          {record.status.toLowerCase()}
+          <BsDot className="text-2xl" />{" "}
+          <span>{record.status.toLowerCase()}</span>
         </span>
       )
     },
@@ -104,8 +107,32 @@ export const TransactionsTable: React.FC = () => {
   const { data, isLoading } = useGetAppointmentsQuery({
     accessToken: auth.accessToken,
   })
+  const [dataState, setDataState] = useState(data)
+  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    const newStata = data?.filter(
+      (entry) =>
+        entry.title.toLowerCase().includes(value) ||
+        entry.id.toLowerCase().includes(value)
+    )
+    setDataState(newStata)
+  }
+  useEffect(() => {
+    if (data) {
+      setDataState(data)
+    }
+  }, [data])
   return (
     <div className="bg-white p-7 rounded-xl">
+      <div className="mb-5">
+        <Input
+          className="md:w-[350px] w-full"
+          size="large"
+          placeholder="Search name or id"
+          prefix={<RiSearch2Line />}
+          onChange={onSearch}
+        />
+      </div>
       <Table
         columns={columns}
         dataSource={data}
