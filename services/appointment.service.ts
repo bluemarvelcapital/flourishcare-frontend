@@ -23,7 +23,22 @@ export const appointmentApi = createApi({
         return res.data.appointment
       },
     }),
+    getAppointments: builder.query<AppointmentI[], { accessToken: string }>({
+      query: ({ accessToken }) => {
+        return {
+          url: "/",
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { appointments: AppointmentI[] } }) => {
+        return res.data.appointments
+      },
+    }),
   }),
 })
 
-export const { useCreateAppointmentMutation } = appointmentApi
+export const { useCreateAppointmentMutation, useGetAppointmentsQuery } =
+  appointmentApi

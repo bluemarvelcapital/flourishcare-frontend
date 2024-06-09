@@ -87,7 +87,8 @@
   margin-bottom: 1.25em;
 }
 
-.ant-picker-ok .ant-btn {
+.ant-picker-ok .ant-btn,
+.ant-table-filter-dropdown-btns .ant-btn-primary {
   background-color: #04bd4b !important;
 }
 
