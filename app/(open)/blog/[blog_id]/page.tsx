@@ -9,7 +9,7 @@ import { BsClockHistory } from "react-icons/bs"
 import moment from "moment"
 import { GoBack } from "@/components/GoBack"
 
-export const getStaticParams = async () => {
+export const generateStaticParams = async () => {
   const response = await axios.get(API_URL + "/blog")
   const blogs: BlogI[] = response.data.data.blogPosts
   return blogs.map((blog) => {
