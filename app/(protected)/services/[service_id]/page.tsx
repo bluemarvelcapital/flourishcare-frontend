@@ -61,7 +61,7 @@ const ServicePage = async ({ params }: { params: { service_id: string } }) => {
   }
   return (
     <div>
-      <div className="py-[2rem] md:py-[3rem] lg:py-[6rem]">
+      <div className="">
         <Container>
           <PageTitle title="Service details" />
           <Service service={service} />
