@@ -11,6 +11,7 @@ import { SuccessAntProvider } from "./SuccessAntProvider"
 import ReduxProvider from "@/components/ReduxProvider"
 import { PrivateRoutes } from "@/components/PrivateRoutes"
 import { Lato } from "next/font/google"
+import { InPageFooter } from "@/components/user/InPageFooter"
 
 export const metadata: Metadata = {
   title: "Flourish Advanced Care",
@@ -38,6 +39,7 @@ export default function RootLayout({
             <div className="overflow-hidden">
               <SuccessAntProvider>{children}</SuccessAntProvider>
             </div>
+            <InPageFooter />
           </PrivateRoutes>
         </ReduxProvider>
       </body>
