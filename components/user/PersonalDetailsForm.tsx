@@ -7,9 +7,7 @@ export const PersonalDetailsForm = () => {
   const [form] = useForm()
   return (
     <div className="bg-white rounded-md w-full border-[1px] border-gray-200 transition-all p-[24px] md:py-[32px]">
-      <h2 className="md:text-3xl text-lg font-semibold mb-1">
-        Personal Details
-      </h2>
+      <h2 className="md:text-3xl text-lg font-medium mb-1">Personal Details</h2>
       <p className="text-[#ACACAC]">Edit your personal details below</p>
       <div className="mt-5">
         <Form form={form} layout="vertical">
