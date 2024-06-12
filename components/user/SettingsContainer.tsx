@@ -11,9 +11,9 @@ export const SettingsContainer = ({
 }) => {
   return (
     <div>
-      <div className="grid md:grid-cols-3 gap-10 justify-start items-start content-start">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-start items-start content-start">
         <InPageNav {...{ paths }} />
-        <div className="md:col-span-2">{children}</div>
+        <div className="md:col-span-2 w-full">{children}</div>
       </div>
     </div>
   )
