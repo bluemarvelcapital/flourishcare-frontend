@@ -1,6 +1,6 @@
 "use client"
 import { Avatar, Collapse, Divider, Popover } from "antd"
-import React from "react"
+import React, { useState } from "react"
 import { useAuth, useLogout } from "@/hooks/useAuth"
 import { PiCaretDownBold } from "react-icons/pi"
 import Link from "next/link"
@@ -20,6 +20,8 @@ export const NavPopover = () => {
   const { auth } = useAuth()
   const { logout } = useLogout()
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+  const togglePopover = () => setOpen(!open)
 
   // Add Subusers view
   const profiles: CollapseProps["items"] = [
@@ -50,7 +52,9 @@ export const NavPopover = () => {
   return (
     <div>
       <Popover
+        open={open}
         trigger={"click"}
+        onOpenChange={togglePopover}
         arrow={false}
         content={
           <div className="min-w-[380px]">
@@ -64,6 +68,7 @@ export const NavPopover = () => {
                     className={`${
                       active ? "bg-[#66ACDC0D] text-primary" : ""
                     } px-4 py-3`}
+                    onClick={togglePopover}
                   >
                     <li>
                       <span className="text-[16px]">{name}</span>
@@ -85,6 +90,7 @@ export const NavPopover = () => {
                     ? "bg-[#66ACDC0D] text-primary"
                     : ""
                 } px-4 py-3`}
+                onClick={togglePopover}
               >
                 <li>
                   <span className="text-[16px]">Settings</span>

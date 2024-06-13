@@ -19,6 +19,10 @@
 body {
 }
 
+.ant-switch[aria-checked="false"] .ant-switch-inner {
+  background-color: #00000031 !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
