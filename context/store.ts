@@ -3,6 +3,7 @@ import { authApi } from "@/services/auth.service"
 import { blogApi } from "@/services/blog.service"
 import { roleApi } from "@/services/role.service"
 import { serviceApi } from "@/services/services.service"
+import { userApi } from "@/services/user.service"
 import { configureStore } from "@reduxjs/toolkit"
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     [serviceApi.reducerPath]: serviceApi.reducer,
     [appointmentApi.reducerPath]: appointmentApi.reducer,
     [blogApi.reducerPath]: blogApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -19,7 +21,8 @@ export const store = configureStore({
       roleApi.middleware,
       serviceApi.middleware,
       appointmentApi.middleware,
-      blogApi.middleware
+      blogApi.middleware,
+      userApi.middleware
     ),
 })
 

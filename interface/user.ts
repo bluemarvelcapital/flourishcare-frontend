@@ -18,8 +18,21 @@ export interface UserI {
   endUserId: string
   superAdminId: string
   accountManagerId: string
+  gender: string
+  address: string
+  phone: string
+  age: string
   adminId: string
   __v: number
   createdAt: string
   updatedAt: string
+}
+
+export interface UpdateProfileI {
+  gender: string
+  address: string
+  phone: string
+  age: string
+  userId?: string // Only required for Accountmanagers and Admins when updating data for another user
+  accessToken: string
 }
