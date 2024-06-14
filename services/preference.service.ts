@@ -59,9 +59,6 @@ export const preferenceApi = createApi({
           },
         }
       },
-      transformResponse: (res: { data: { preference: UserPreferenceI } }) => {
-        return res.data.preference
-      },
     }),
   }),
 })

@@ -33,9 +33,16 @@ export const ManageNotifications = () => {
         ) : (
           <div>
             {preferences?.map((pref, index) => {
+              const userPref = data?.find(
+                (userPref) => pref.id === userPref.preference.id
+              )
               return (
                 <>
-                  <PreferenceCard pref={pref} key={pref.id} />
+                  <PreferenceCard
+                    pref={pref}
+                    key={pref.id}
+                    userPref={userPref}
+                  />
                   {index !== preferences?.length - 1 && <Divider />}
                 </>
               )
@@ -49,11 +56,13 @@ export const ManageNotifications = () => {
 
 interface PrefCardProps {
   pref: PreferenceI
+  userPref?: UserPreferenceI
 }
 
-const PreferenceCard: React.FC<PrefCardProps> = ({ pref }) => {
+const PreferenceCard: React.FC<PrefCardProps> = ({ pref, userPref }) => {
   const { auth } = useAuth()
   const [mutate, { isLoading }] = useUpdateUserPreferenceMutation()
+  const active = userPref ? userPref.status === "ACTIVE" : false
   const { refetch } = useGetUserPreferencesQuery({
     accessToken: auth.accessToken,
   })
@@ -81,7 +90,7 @@ const PreferenceCard: React.FC<PrefCardProps> = ({ pref }) => {
         {isLoading ? (
           <LoadingOutlined />
         ) : (
-          <Switch onChange={updateUserPreference} />
+          <Switch value={active} onChange={updateUserPreference} />
         )}
       </div>
     </div>
