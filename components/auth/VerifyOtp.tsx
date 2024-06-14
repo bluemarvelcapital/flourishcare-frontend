@@ -6,17 +6,56 @@ import { Button, Form, Input } from "antd"
 import OtpInput from "react-otp-input"
 import Countdown from "react-countdown"
 import { useVerifyOtpEssenstial } from "@/hooks/useVerifyOtpEssenstial"
+import { SuccessModalAlt } from "../SuccessModalAlt"
+import { useVerifyEmailMutation } from "@/services/auth.service"
+import { useToastify } from "@/hooks/useToastify"
+import { LoadingOutlined } from "@ant-design/icons"
 
-export const VerifyOtpForm = () => {
+interface props {
+  action?: () => void
+  loading?: boolean
+}
+
+export const VerifyOtpForm: React.FC<props> = ({ action, loading }) => {
   const [form] = useForm()
+  const [openModal, setOpenModal] = useState(false)
   const [otp, setOtp] = useState("")
   const onVerify = () => {}
   const disable = otp.length !== 6
   const { otpVerifyEssentials } = useVerifyOtpEssenstial()
-  const { to_route, token } = otpVerifyEssentials
+  const { to_route, token, message } = otpVerifyEssentials
+  const [mutate, { isLoading }] = useVerifyEmailMutation()
+  const { successToast, errorToast } = useToastify()
+
+  const verifyOtp = async () => {
+    try {
+      action
+        ? await action()
+        : await mutate({ verificationCode: otp, accessToken: token }).unwrap()
+      form.resetFields()
+      setOpenModal(true)
+    } catch (error: any) {
+      errorToast(error?.data?.message || error?.message || "An Error Occured")
+    }
+  }
 
   return (
     <div className="md:max-w-[455px] md:mt-[-5rem]  mx-auto">
+      <SuccessModalAlt
+        open={openModal}
+        setOpen={setOpenModal}
+        link="/login"
+        text="Continue to Login"
+        minWidth="450px"
+        content={
+          <>
+            <div className="text-center">
+              <h3 className="text-lg text-center">{message.head}</h3>
+              <p className="text-zinc-400">{message.sub}</p>
+            </div>
+          </>
+        }
+      />
       <div className="flex justify-center items-center flex-col gap-3 mb-7 relative z-10">
         <Logo />
         <h3 className="md:text-2xl text-xl font-semibold text-center">
@@ -51,9 +90,10 @@ export const VerifyOtpForm = () => {
           type="primary"
           size="large"
           htmlType="submit"
-          disabled={disable}
+          disabled={disable || isLoading || loading}
+          onClick={verifyOtp}
         >
-          Continue
+          {isLoading || loading ? <LoadingOutlined /> : "Continue"}
         </Button>
       </Form>
     </div>

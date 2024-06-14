@@ -13,6 +13,8 @@ import { SuccessModalAlt } from "../SuccessModalAlt"
 import { useToastify } from "@/hooks/useToastify"
 import { LoadingOutlined } from "@ant-design/icons"
 import { useGetRolesQuery } from "@/services/role.service"
+import { useVerifyOtpEssenstial } from "@/hooks/useVerifyOtpEssenstial"
+import { useRouter } from "next/navigation"
 
 export const SignUpForm = () => {
   const [form] = useForm<SignUpRequestI>()
@@ -20,12 +22,23 @@ export const SignUpForm = () => {
   const [openModal, setOpenModal] = useState(false)
   const { errorToast, successToast } = useToastify()
   const [signup, { isLoading }] = useSignupMutation()
+  const { setOtpVerifyEssentials } = useVerifyOtpEssenstial()
+  const router = useRouter()
   const onSignUp = async () => {
     try {
       const response = await signup(form.getFieldsValue()).unwrap()
-      // successToast("Sign up successful")
+      successToast("Sign up successful")
+      setOtpVerifyEssentials({
+        token: response.accessToken,
+        to_route: "/login",
+        message: {
+          head: "Email Verification Successful",
+          sub: "Use the registered Email and Password to Login.",
+        },
+      })
       form.resetFields()
-      setOpenModal(true)
+      router.push("/verify-otp")
+      // setOpenModal(true)
     } catch (error: any) {
       errorToast(error?.data?.message || error?.message || "An Error Occured")
     }
@@ -33,23 +46,6 @@ export const SignUpForm = () => {
 
   return (
     <>
-      <SuccessModalAlt
-        open={openModal}
-        setOpen={setOpenModal}
-        link="/login"
-        text="Continue to Login"
-        minWidth="450px"
-        content={
-          <>
-            <div className="text-center">
-              <h3 className="text-lg text-center">Sign Up Successful</h3>
-              <p className="text-zinc-400">
-                Use the registered Email and Password to Login.
-              </p>
-            </div>
-          </>
-        }
-      />
       <div className="md:min-w-[455px] min-w-[90%] mx-auto">
         <div className="flex justify-center items-center flex-col gap-3 mb-7 relative z-10">
           <Logo />

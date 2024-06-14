@@ -12,24 +12,39 @@ export const preferenceApi = createApi({
     baseUrl: `${API_URL}/preference`,
   }),
   endpoints: (builder) => ({
-    getUserPreferences: builder.query<UserPreferenceI, { accessToken: string }>(
-      {
-        query({ accessToken }) {
-          return {
-            url: "/user",
-            method: "GET",
-            headers: {
-              authorization: `Bearer ${accessToken}`,
-            },
-          }
-        },
-        transformResponse: (res: {
-          data: { userPreferences: UserPreferenceI }
-        }) => {
-          return res.data.userPreferences
-        },
-      }
-    ),
+    getUserPreferences: builder.query<
+      UserPreferenceI[],
+      { accessToken: string }
+    >({
+      query({ accessToken }) {
+        return {
+          url: "/user",
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: {
+        data: { userPreferences: UserPreferenceI[] }
+      }) => {
+        return res.data.userPreferences
+      },
+    }),
+    getPreferences: builder.query<PreferenceI[], { accessToken: string }>({
+      query({ accessToken }) {
+        return {
+          url: "/",
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { preferences: PreferenceI[] } }) => {
+        return res.data.preferences
+      },
+    }),
     updateUserPreference: builder.mutation<
       UserPreferenceI,
       UpdateUserPreferenceI
@@ -51,5 +66,8 @@ export const preferenceApi = createApi({
   }),
 })
 
-export const { useUpdateUserPreferenceMutation, useGetUserPreferencesQuery } =
-  preferenceApi
+export const {
+  useUpdateUserPreferenceMutation,
+  useGetUserPreferencesQuery,
+  useGetPreferencesQuery,
+} = preferenceApi

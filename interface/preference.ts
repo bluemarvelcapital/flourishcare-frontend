@@ -22,5 +22,5 @@ export interface UserPreferenceI {
   updatedAt: string
   preferenceId: string
   user: UserI
-  preference: PreferenceI[]
+  preference: PreferenceI
 }

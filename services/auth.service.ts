@@ -34,6 +34,26 @@ export const authApi = createApi({
         return res.data
       },
     }),
+
+    verifyEmail: builder.mutation<
+      { accessToken: string },
+      { verificationCode: string; accessToken: string }
+    >({
+      query: ({ verificationCode, accessToken }) => {
+        return {
+          url: "/verifyemail",
+          method: "POST",
+          body: { verificationCode },
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { accessToken: string } }) => {
+        return res.data
+      },
+    }),
+
     guestSignup: builder.mutation<GuestSignUpResponseI, GuestSignupI>({
       query: ({ email, phone, firstname, lastname }) => {
         return {
@@ -53,6 +73,7 @@ export const authApi = createApi({
         return res.data.tempUser
       },
     }),
+
     login: builder.mutation<LoginResponse, LoginRequestI>({
       query: ({ email, password }) => {
         return {
@@ -65,6 +86,36 @@ export const authApi = createApi({
         return res.data
       },
     }),
+
+    forgotPassword: builder.mutation<
+      { message: string; data: { accessToken: string } },
+      { email: string }
+    >({
+      query: ({ email }) => {
+        return {
+          url: "/forgot-password",
+          method: "POST",
+          body: { email },
+        }
+      },
+    }),
+
+    resetPassword: builder.mutation<
+      { accessToken: string },
+      { passwordResetCode: string; newPassword: string }
+    >({
+      query: ({ passwordResetCode, newPassword }) => {
+        return {
+          url: "/reset-password",
+          method: "POST",
+          body: { passwordResetCode, newPassword },
+        }
+      },
+      transformResponse: (res: { data: { accessToken: string } }) => {
+        return res.data
+      },
+    }),
+
     getUserData: builder.query<UserI, { accessToken: string }>({
       query({ accessToken }) {
         return {
@@ -86,5 +137,8 @@ export const {
   useLoginMutation,
   useGetUserDataQuery,
   useSignupMutation,
+  useVerifyEmailMutation,
   useGuestSignupMutation,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
 } = authApi

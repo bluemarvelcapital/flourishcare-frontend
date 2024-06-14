@@ -2,6 +2,7 @@
 import { useAuth } from "@/hooks/useAuth"
 import { PreferenceI, UserPreferenceI } from "@/interface/preference"
 import {
+  useGetPreferencesQuery,
   useGetUserPreferencesQuery,
   useUpdateUserPreferenceMutation,
 } from "@/services/preference.service"
@@ -16,25 +17,26 @@ export const ManageNotifications = () => {
   const { data, isLoading } = useGetUserPreferencesQuery({
     accessToken: auth.accessToken,
   })
+  const { data: preferences, isLoading: loadingPrefs } = useGetPreferencesQuery(
+    {
+      accessToken: auth.accessToken,
+    }
+  )
   return (
     <div className="bg-white rounded-md w-full border-[1px] border-gray-200 transition-all p-[24px] md:py-[32px]">
       <h2 className="md:text-3xl text-lg font-medium mb-1">
         Manage Notifications
       </h2>
       <div className="my-5">
-        {isLoading ? (
+        {isLoading || loadingPrefs ? (
           <Loader name="preferences" />
         ) : (
           <div>
-            {data?.preference?.map((pref, index) => {
+            {preferences?.map((pref, index) => {
               return (
                 <>
-                  <PreferenceCard
-                    data={data as UserPreferenceI}
-                    pref={pref}
-                    key={pref.id}
-                  />
-                  {index !== data?.preference?.length - 1 && <Divider />}
+                  <PreferenceCard pref={pref} key={pref.id} />
+                  {index !== preferences?.length - 1 && <Divider />}
                 </>
               )
             })}
@@ -46,11 +48,10 @@ export const ManageNotifications = () => {
 }
 
 interface PrefCardProps {
-  data: UserPreferenceI
   pref: PreferenceI
 }
 
-const PreferenceCard: React.FC<PrefCardProps> = ({ pref, data }) => {
+const PreferenceCard: React.FC<PrefCardProps> = ({ pref }) => {
   const { auth } = useAuth()
   const [mutate, { isLoading }] = useUpdateUserPreferenceMutation()
   const { refetch } = useGetUserPreferencesQuery({
@@ -80,10 +81,7 @@ const PreferenceCard: React.FC<PrefCardProps> = ({ pref, data }) => {
         {isLoading ? (
           <LoadingOutlined />
         ) : (
-          <Switch
-            defaultChecked={data.status === "ACTIVE"}
-            onChange={updateUserPreference}
-          />
+          <Switch onChange={updateUserPreference} />
         )}
       </div>
     </div>

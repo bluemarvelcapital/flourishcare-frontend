@@ -4,10 +4,28 @@ import { Logo } from "../Logo"
 import { useForm } from "antd/es/form/Form"
 import { Button, Form, Input } from "antd"
 import { MdEmail } from "react-icons/md"
+import { useForgotPasswordMutation } from "@/services/auth.service"
+import { useResetAuth } from "@/hooks/useResetAuth"
+import { useToastify } from "@/hooks/useToastify"
+import { LoadingOutlined } from "@ant-design/icons"
 
 export const ForgotPasswordForm = () => {
   const [form] = useForm<{ email: string }>()
-  const onLogin = () => {}
+  const [mutate, { isLoading }] = useForgotPasswordMutation()
+  const { setResetAuth } = useResetAuth()
+  const { errorToast, successToast } = useToastify()
+  const onLogin = async () => {
+    try {
+      const response = await mutate(form.getFieldsValue()).unwrap()
+      successToast(response.message)
+      setResetAuth({
+        email: form.getFieldsValue().email,
+        accessToken: response.data.accessToken,
+      })
+    } catch (error: any) {
+      errorToast(error?.data?.message || error?.message || "An Error Occured")
+    }
+  }
 
   return (
     <div className="md:max-w-[455px] md:mt-[-5rem]  mx-auto">
@@ -21,7 +39,12 @@ export const ForgotPasswordForm = () => {
           to initiate the password reset process.
         </p>
       </div>
-      <Form form={form} onFinish={onLogin} layout="vertical">
+      <Form
+        form={form}
+        onFinish={onLogin}
+        layout="vertical"
+        disabled={isLoading}
+      >
         <Form.Item
           name={"email"}
           label="Email"
@@ -40,8 +63,9 @@ export const ForgotPasswordForm = () => {
           type="primary"
           size="large"
           htmlType="submit"
+          disabled={isLoading}
         >
-          Continue
+          {isLoading ? <LoadingOutlined /> : "Continue"}
         </Button>
       </Form>
     </div>

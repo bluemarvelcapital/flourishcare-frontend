@@ -13,6 +13,7 @@ import { useLoginMutation } from "@/services/auth.service"
 import { LoadingOutlined } from "@ant-design/icons"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/hooks/useAuth"
+import { useResetAuth } from "@/hooks/useResetAuth"
 
 export const LoginForm = () => {
   const router = useRouter()
@@ -20,6 +21,7 @@ export const LoginForm = () => {
   const [login, { isLoading }] = useLoginMutation()
   const { errorToast, successToast } = useToastify()
   const { setAuth } = useAuth()
+  const { setResetAuth } = useResetAuth()
   const onLogin = async () => {
     try {
       const response = await login(form.getFieldsValue()).unwrap()
@@ -35,6 +37,7 @@ export const LoginForm = () => {
         lastname: response.user.lastname,
         profilePicture: response.user.profilePicture,
       })
+      setResetAuth({ email: response.user.email, accessToken: "" })
       router.replace("/")
     } catch (error: any) {
       errorToast(error?.data?.message || error?.message || "An Error Occured")
