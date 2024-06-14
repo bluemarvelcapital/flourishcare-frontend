@@ -12,7 +12,7 @@ import { useToastify } from "@/hooks/useToastify"
 import { LoadingOutlined } from "@ant-design/icons"
 
 interface props {
-  action?: () => void
+  action?: (otp: string) => void
   loading?: boolean
 }
 
@@ -30,7 +30,7 @@ export const VerifyOtpForm: React.FC<props> = ({ action, loading }) => {
   const verifyOtp = async () => {
     try {
       action
-        ? await action()
+        ? await action(otp)
         : await mutate({ verificationCode: otp, accessToken: token }).unwrap()
       form.resetFields()
       setOpenModal(true)
@@ -40,7 +40,7 @@ export const VerifyOtpForm: React.FC<props> = ({ action, loading }) => {
   }
 
   return (
-    <div className="md:max-w-[455px] md:mt-[-5rem]  mx-auto">
+    <div className="md:max-w-[455px]  mx-auto">
       <SuccessModalAlt
         open={openModal}
         setOpen={setOpenModal}
@@ -57,7 +57,7 @@ export const VerifyOtpForm: React.FC<props> = ({ action, loading }) => {
         }
       />
       <div className="flex justify-center items-center flex-col gap-3 mb-7 relative z-10">
-        <Logo />
+        {!action && <Logo />}
         <h3 className="md:text-2xl text-xl font-semibold text-center">
           OTP Verification
         </h3>

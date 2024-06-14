@@ -8,13 +8,17 @@ import { useForgotPasswordMutation } from "@/services/auth.service"
 import { useResetAuth } from "@/hooks/useResetAuth"
 import { useToastify } from "@/hooks/useToastify"
 import { LoadingOutlined } from "@ant-design/icons"
+import { useRouter } from "next/navigation"
+import { useVerifyOtpEssenstial } from "@/hooks/useVerifyOtpEssenstial"
 
 export const ForgotPasswordForm = () => {
   const [form] = useForm<{ email: string }>()
+  const { setOtpVerifyEssentials } = useVerifyOtpEssenstial()
   const [mutate, { isLoading }] = useForgotPasswordMutation()
   const { setResetAuth } = useResetAuth()
   const { errorToast, successToast } = useToastify()
-  const onLogin = async () => {
+  const router = useRouter()
+  const forgetPassword = async () => {
     try {
       const response = await mutate(form.getFieldsValue()).unwrap()
       successToast(response.message)
@@ -22,6 +26,15 @@ export const ForgotPasswordForm = () => {
         email: form.getFieldsValue().email,
         accessToken: response.data.accessToken,
       })
+      setOtpVerifyEssentials({
+        token: response.data.accessToken,
+        to_route: "/login",
+        message: {
+          head: "Password Reset Successful",
+          sub: "Use the registered Email and new Password to Login.",
+        },
+      })
+      router.push("/reset-password")
     } catch (error: any) {
       errorToast(error?.data?.message || error?.message || "An Error Occured")
     }
@@ -41,7 +54,7 @@ export const ForgotPasswordForm = () => {
       </div>
       <Form
         form={form}
-        onFinish={onLogin}
+        onFinish={forgetPassword}
         layout="vertical"
         disabled={isLoading}
       >

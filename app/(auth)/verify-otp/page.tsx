@@ -23,7 +23,7 @@ const ForgotPasswordPage = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="w-full h-full p-7 flex justify-center items-center relative">
+      <div className="w-full h-full p-7 flex justify-center items-center relative md:mt-[-5rem]">
         <VerifyOtpForm />
       </div>
 

@@ -102,13 +102,16 @@ export const authApi = createApi({
 
     resetPassword: builder.mutation<
       { accessToken: string },
-      { passwordResetCode: string; newPassword: string }
+      { passwordResetCode: string; newPassword: string; accessToken: string }
     >({
-      query: ({ passwordResetCode, newPassword }) => {
+      query: ({ passwordResetCode, newPassword, accessToken }) => {
         return {
           url: "/reset-password",
           method: "POST",
           body: { passwordResetCode, newPassword },
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
         }
       },
       transformResponse: (res: { data: { accessToken: string } }) => {
