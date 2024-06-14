@@ -5,7 +5,6 @@ import { useForm } from "antd/es/form/Form"
 import { Button, Form, Input } from "antd"
 import { MdEmail } from "react-icons/md"
 import { useForgotPasswordMutation } from "@/services/auth.service"
-import { useResetAuth } from "@/hooks/useResetAuth"
 import { useToastify } from "@/hooks/useToastify"
 import { LoadingOutlined } from "@ant-design/icons"
 import { useRouter } from "next/navigation"
@@ -15,17 +14,13 @@ export const ForgotPasswordForm = () => {
   const [form] = useForm<{ email: string }>()
   const { setOtpVerifyEssentials } = useVerifyOtpEssenstial()
   const [mutate, { isLoading }] = useForgotPasswordMutation()
-  const { setResetAuth } = useResetAuth()
   const { errorToast, successToast } = useToastify()
   const router = useRouter()
   const forgetPassword = async () => {
     try {
       const response = await mutate(form.getFieldsValue()).unwrap()
       successToast(response.message)
-      setResetAuth({
-        email: form.getFieldsValue().email,
-        accessToken: response.data.accessToken,
-      })
+
       setOtpVerifyEssentials({
         token: response.data.accessToken,
         to_route: "/login",
