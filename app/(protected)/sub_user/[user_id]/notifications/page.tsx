@@ -2,7 +2,7 @@ import { ManageNotifications } from "@/components/user/ManageNotifications"
 import React from "react"
 
 export const metadata = {
-  title: "Settings - Manage Notifications",
+  title: "Manage Notifications - Sub User",
 }
 
 const NotificationsSettings = () => {

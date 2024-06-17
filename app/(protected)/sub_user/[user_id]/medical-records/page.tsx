@@ -1,3 +1,4 @@
+import { MedicalRecords } from "@/components/subuser/MedicalRecords"
 import React from "react"
 
 export const metadata = {
@@ -5,7 +6,11 @@ export const metadata = {
 }
 
 const MedicalRecordsPage = () => {
-  return <div className=""></div>
+  return (
+    <div className="">
+      <MedicalRecords />
+    </div>
+  )
 }
 
 export default MedicalRecordsPage
