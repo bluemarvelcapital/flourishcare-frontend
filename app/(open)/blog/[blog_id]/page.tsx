@@ -108,7 +108,7 @@ const BlogPage = async ({ params }: { params: { blog_id: string } }) => {
                 <p className="text-gray-500">{blogPost.description}</p>
               </div>
             </div>
-            <div className="px-6 py-10 leading-7">
+            <div className="md:px-6 py-10 leading-7">
               <div
                 dangerouslySetInnerHTML={{
                   __html: blogPost.content,
