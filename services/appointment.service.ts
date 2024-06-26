@@ -37,8 +37,29 @@ export const appointmentApi = createApi({
         return res.data.appointments
       },
     }),
+    getAppointment: builder.query<
+      AppointmentI,
+      { accessToken: string; appointmentId: string }
+    >({
+      query: ({ accessToken, appointmentId }) => {
+        return {
+          url: "/info",
+          method: "GET",
+          params: { appointmentId },
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { appointment: AppointmentI } }) => {
+        return res.data.appointment
+      },
+    }),
   }),
 })
 
-export const { useCreateAppointmentMutation, useGetAppointmentsQuery } =
-  appointmentApi
+export const {
+  useCreateAppointmentMutation,
+  useGetAppointmentsQuery,
+  useGetAppointmentQuery,
+} = appointmentApi

@@ -19,7 +19,11 @@ const columns: TableColumnsType<BookingI> = [
       return (
         <span>
           <Link
-            href={record.id ? `/care-plan/${record.id}` : ""}
+            href={
+              record.id
+                ? `/care-plan/${record.id}?appointment_id=${record.appointmentId}`
+                : ""
+            }
             className="underline text-success"
           >
             <span className="md:hidden block">

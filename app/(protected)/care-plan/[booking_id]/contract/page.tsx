@@ -7,7 +7,7 @@ import { UploadContract } from "./UploadContract"
 const CarePlanPage = () => {
   return (
     <Container>
-      <PageTitle title="Care Plan" />
+      <PageTitle title="Contract" />
       <UploadContract />
     </Container>
   )

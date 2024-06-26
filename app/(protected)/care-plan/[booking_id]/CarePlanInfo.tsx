@@ -5,11 +5,12 @@ import { useAcceptCarePlanMutation } from "@/services/bookings.service"
 import { LoadingOutlined } from "@ant-design/icons"
 import { Button, Divider } from "antd"
 import Link from "next/link"
-import { useParams, useRouter } from "next/navigation"
+import { useParams, useRouter, useSearchParams } from "next/navigation"
 import React, { useState } from "react"
 
 export const CarePlanInfo = () => {
   const { booking_id } = useParams()
+  const appointment_id = useSearchParams().get("appointment_id")
   const { auth } = useAuth()
   const [mutate, { isLoading }] = useAcceptCarePlanMutation()
   const [open, setOpen] = useState(false)
@@ -25,7 +26,9 @@ export const CarePlanInfo = () => {
         },
       }).unwrap()
       successToast("Care Plan Accepted.")
-      router.push(`/care-plan/${booking_id}/contract`)
+      router.push(
+        `/care-plan/${booking_id}/contract?appointment_id=${appointment_id}`
+      )
       setOpen(!open)
     } catch (error: any) {
       errorToast(error?.message || error?.data?.message || "An Error Occured")

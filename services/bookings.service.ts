@@ -22,6 +22,24 @@ export const bookingsApi = createApi({
         return res.data.bookings
       },
     }),
+    getBooking: builder.query<
+      BookingI,
+      { accessToken: string; bookingId: string }
+    >({
+      query: ({ accessToken, bookingId }) => {
+        return {
+          url: "/info",
+          method: "GET",
+          params: { bookingId },
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { booking: BookingI } }) => {
+        return res.data.booking
+      },
+    }),
     acceptCarePlan: builder.mutation<BookingI, UpdateBookingI>({
       query: ({ accessToken, ...body }) => {
         return {
@@ -40,4 +58,8 @@ export const bookingsApi = createApi({
   }),
 })
 
-export const { useGetBookingsQuery, useAcceptCarePlanMutation } = bookingsApi
+export const {
+  useGetBookingsQuery,
+  useAcceptCarePlanMutation,
+  useGetBookingQuery,
+} = bookingsApi
