@@ -1,6 +1,7 @@
 import { appointmentApi } from "@/services/appointment.service"
 import { authApi } from "@/services/auth.service"
 import { blogApi } from "@/services/blog.service"
+import { bookingsApi } from "@/services/bookings.service"
 import { preferenceApi } from "@/services/preference.service"
 import { roleApi } from "@/services/role.service"
 import { serviceApi } from "@/services/services.service"
@@ -13,6 +14,7 @@ export const store = configureStore({
     [roleApi.reducerPath]: roleApi.reducer,
     [serviceApi.reducerPath]: serviceApi.reducer,
     [appointmentApi.reducerPath]: appointmentApi.reducer,
+    [bookingsApi.reducerPath]: bookingsApi.reducer,
     [blogApi.reducerPath]: blogApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [preferenceApi.reducerPath]: preferenceApi.reducer,
@@ -23,6 +25,7 @@ export const store = configureStore({
       roleApi.middleware,
       serviceApi.middleware,
       appointmentApi.middleware,
+      bookingsApi.middleware,
       blogApi.middleware,
       userApi.middleware,
       preferenceApi.middleware
