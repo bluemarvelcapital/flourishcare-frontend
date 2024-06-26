@@ -15,7 +15,21 @@ const columns: TableColumnsType<BookingI> = [
   {
     title: "Booking ID",
     dataIndex: "id",
-    responsive: ["md", "lg"],
+    render: (value, record) => {
+      return (
+        <span>
+          <Link
+            href={record.id ? `/care-plan/${record.id}` : ""}
+            className="underline text-success"
+          >
+            <span className="md:hidden block">
+              {record?.id?.slice(0, 7)}...
+            </span>
+            <span className="md:block hidden">{record.id}</span>
+          </Link>
+        </span>
+      )
+    },
   },
 
   {

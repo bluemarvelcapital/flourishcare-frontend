@@ -10,7 +10,7 @@ export interface BookingI {
   presignedContract: string
   signedContract: string
   invoice: string
-  documents: string[]
+  documents: { url: string; type: string; date: string }[]
   approvalTimestamps: string[]
   approvalStatus: {
     carePlan: boolean
@@ -19,4 +19,14 @@ export interface BookingI {
   }
   paid: boolean
   updatedAt: string
+}
+
+export interface UpdateBookingI {
+  bookingId: string
+  approvalStatus: {
+    contract?: boolean // restricted to USER
+    carePlan?: boolean // restricted to USER
+    personalizedAssessmentReport?: boolean // restricted to ADMIN
+  }
+  accessToken: string
 }

@@ -1,9 +1,36 @@
 "use client"
+import { useAuth } from "@/hooks/useAuth"
+import { useToastify } from "@/hooks/useToastify"
+import { useAcceptCarePlanMutation } from "@/services/bookings.service"
+import { LoadingOutlined } from "@ant-design/icons"
 import { Button, Divider } from "antd"
 import Link from "next/link"
-import React from "react"
+import { useParams, useRouter } from "next/navigation"
+import React, { useState } from "react"
 
 export const CarePlanInfo = () => {
+  const { booking_id } = useParams()
+  const { auth } = useAuth()
+  const [mutate, { isLoading }] = useAcceptCarePlanMutation()
+  const [open, setOpen] = useState(false)
+  const { errorToast, successToast } = useToastify()
+  const router = useRouter()
+  const handleAccept = async () => {
+    try {
+      await mutate({
+        accessToken: auth.accessToken,
+        bookingId: booking_id as string,
+        approvalStatus: {
+          carePlan: true,
+        },
+      }).unwrap()
+      successToast("Care Plan Accepted.")
+      router.push(`/care-plan/${booking_id}/contract`)
+      setOpen(!open)
+    } catch (error: any) {
+      errorToast(error?.message || error?.data?.message || "An Error Occured")
+    }
+  }
   return (
     <div>
       <div className="bg-white rounded-lg p-5 md:p-10">
@@ -97,11 +124,14 @@ export const CarePlanInfo = () => {
           </div>
         </div>
         <div className="md:w-[50%] mx-auto w-full md:mt-10">
-          <Link href={`/care-plan/${1}/contract`}>
-            <Button className="bg-success h-[2.5rem] w-full" type="primary">
-              Proceed To Accept
-            </Button>
-          </Link>
+          <Button
+            className="bg-success h-[2.5rem] w-full"
+            type="primary"
+            disabled={isLoading}
+            onClick={handleAccept}
+          >
+            {isLoading ? <LoadingOutlined /> : "Proceed To Accept"}
+          </Button>
         </div>
       </div>
     </div>
