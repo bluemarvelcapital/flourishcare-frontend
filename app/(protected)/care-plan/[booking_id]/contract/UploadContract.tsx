@@ -1,6 +1,7 @@
 "use client"
 import { Loader } from "@/components/Loader"
 import { useAuth } from "@/hooks/useAuth"
+import { useDownload } from "@/hooks/useDownload"
 import { useGetAppointmentQuery } from "@/services/appointment.service"
 import { useGetBookingQuery } from "@/services/bookings.service"
 import {
@@ -18,7 +19,7 @@ import { BiCloudUpload } from "react-icons/bi"
 
 export const UploadContract = () => {
   const { booking_id } = useParams()
-
+  const downloadFile = useDownload()
   const appointmentId = useSearchParams().get("appointment_id") as string
   const [file, setFile] = useState<File | null>(null)
   const handleFileChange = (file: File) => {
@@ -51,16 +52,18 @@ export const UploadContract = () => {
             </p>
 
             <div className="flex gap-2 items-center">
-              <Link
-                href={
-                  "https://images.unsplash.com/photo-1718963904724-d45712e7c864?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              <button
+                onClick={() =>
+                  downloadFile(
+                    data?.presignedContract as string,
+                    "Pre-Signed_Contract"
+                  )
                 }
-                download={"Pre-Signed_Contract"}
               >
                 <IconButton className="bg-success hover:bg-success text-white">
                   <DownloadOutlined />
                 </IconButton>
-              </Link>
+              </button>
               <span className="text-sm">Download Contract</span>
             </div>
             <div className="mt-7 grid md:grid-cols-3 md:gap-14 gap-10">
