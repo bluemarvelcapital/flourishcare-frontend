@@ -30,3 +30,15 @@ export interface UpdateBookingI {
   }
   accessToken: string
 }
+
+export interface UploadBookingDocI {
+  documentType:
+    | "carePlan"
+    | "personalizedAssessmentReport"
+    | "presignedContract"
+    | "signedContract"
+    | "invoice"
+  bookingId: string
+  document: Blob | File
+  accessToken: String
+}

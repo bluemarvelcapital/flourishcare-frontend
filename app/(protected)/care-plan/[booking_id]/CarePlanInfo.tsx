@@ -1,7 +1,7 @@
 "use client"
 import { useAuth } from "@/hooks/useAuth"
 import { useToastify } from "@/hooks/useToastify"
-import { useAcceptCarePlanMutation } from "@/services/bookings.service"
+import { useUpdateDocumentApprovalStatusMutation } from "@/services/bookings.service"
 import { LoadingOutlined } from "@ant-design/icons"
 import { Button, Divider } from "antd"
 import Link from "next/link"
@@ -12,7 +12,7 @@ export const CarePlanInfo = () => {
   const { booking_id } = useParams()
   const appointment_id = useSearchParams().get("appointment_id")
   const { auth } = useAuth()
-  const [mutate, { isLoading }] = useAcceptCarePlanMutation()
+  const [mutate, { isLoading }] = useUpdateDocumentApprovalStatusMutation()
   const [open, setOpen] = useState(false)
   const { errorToast, successToast } = useToastify()
   const router = useRouter()

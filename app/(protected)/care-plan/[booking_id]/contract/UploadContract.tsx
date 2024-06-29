@@ -2,12 +2,19 @@
 import { Loader } from "@/components/Loader"
 import { useAuth } from "@/hooks/useAuth"
 import { useDownload } from "@/hooks/useDownload"
+import { useToastify } from "@/hooks/useToastify"
 import { useGetAppointmentQuery } from "@/services/appointment.service"
-import { useGetBookingQuery } from "@/services/bookings.service"
+import {
+  useUpdateDocumentApprovalStatusMutation as useApproveContract,
+  useGetBookingQuery,
+  useGetBookingsQuery,
+  useUploadSignedContractMutation,
+} from "@/services/bookings.service"
 import {
   CheckCircleFilled,
   CloseCircleFilled,
   DownloadOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons"
 import { IconButton } from "@mui/material"
 import { Button } from "antd"
@@ -25,19 +32,50 @@ export const UploadContract = () => {
   const handleFileChange = (file: File) => {
     setFile(file)
   }
+  const [mutate, { isLoading: uploading }] = useUploadSignedContractMutation()
+  const [approveContract, { isLoading: approving }] = useApproveContract()
+  const { errorToast, successToast } = useToastify()
+
   const {
     auth: { accessToken, firstname, lastname, email },
   } = useAuth()
+  const { refetch: refetchBookings } = useGetBookingsQuery({ accessToken })
   const { data: appointment, isLoading: loadingAppointment } =
     useGetAppointmentQuery({
       accessToken,
       appointmentId,
     })
-  const { data, isLoading } = useGetBookingQuery({
+  const { data, isLoading, refetch } = useGetBookingQuery({
     accessToken,
     bookingId: booking_id as string,
   })
   const loading = loadingAppointment || isLoading
+  const handleUpload = async () => {
+    try {
+      if (file) {
+        if (!data?.approvalStatus?.contract) {
+          await approveContract({
+            accessToken,
+            bookingId: booking_id as string,
+            approvalStatus: {
+              contract: true,
+            },
+          })
+        }
+        await mutate({
+          accessToken,
+          bookingId: booking_id as string,
+          documentType: "signedContract",
+          document: file,
+        }).unwrap()
+        await refetch()
+        await refetchBookings()
+        successToast("Uploaded Signed Document.")
+      }
+    } catch (error: any) {
+      errorToast(error?.message || error?.data?.message || "An Error Occured")
+    }
+  }
   return (
     <div>
       {loading ? (
@@ -111,8 +149,10 @@ export const UploadContract = () => {
                   className="bg-success w-full mt-4"
                   type="primary"
                   size="large"
+                  onClick={handleUpload}
+                  disabled={uploading || approving}
                 >
-                  Proceed
+                  {uploading || approving ? <LoadingOutlined /> : "Proceed"}
                 </Button>
               </div>
               <div className="md:col-span-2 bg-[#fff] border-[1px] border-[#E4E7EC] rounded-md md:p-10 p-4">

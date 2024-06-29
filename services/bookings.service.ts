@@ -1,5 +1,9 @@
 import { API_URL } from "@/constants/config"
-import { BookingI, UpdateBookingI } from "@/interface/bookings"
+import {
+  BookingI,
+  UpdateBookingI,
+  UploadBookingDocI,
+} from "@/interface/bookings"
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 export const bookingsApi = createApi({
@@ -40,10 +44,30 @@ export const bookingsApi = createApi({
         return res.data.booking
       },
     }),
-    acceptCarePlan: builder.mutation<BookingI, UpdateBookingI>({
+    updateDocumentApprovalStatus: builder.mutation<BookingI, UpdateBookingI>({
       query: ({ accessToken, ...body }) => {
         return {
           url: "/doc/approval",
+          method: "PATCH",
+          body,
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { booking: BookingI } }) => {
+        return res.data.booking
+      },
+    }),
+    uploadSignedContract: builder.mutation<BookingI, UploadBookingDocI>({
+      query: ({ accessToken, ...body }) => {
+        const formData = new FormData()
+        formData.append("bookingId", body.bookingId)
+        formData.append("document", body.document)
+        formData.append("documentType", body.documentType)
+
+        return {
+          url: "/doc",
           method: "PATCH",
           body,
           headers: {
@@ -60,6 +84,7 @@ export const bookingsApi = createApi({
 
 export const {
   useGetBookingsQuery,
-  useAcceptCarePlanMutation,
+  useUpdateDocumentApprovalStatusMutation,
   useGetBookingQuery,
+  useUploadSignedContractMutation,
 } = bookingsApi
