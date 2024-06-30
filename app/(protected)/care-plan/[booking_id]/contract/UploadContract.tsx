@@ -8,7 +8,7 @@ import {
   useUpdateDocumentApprovalStatusMutation as useApproveContract,
   useGetBookingQuery,
   useGetBookingsQuery,
-  useUploadSignedContractMutation,
+  useSignContractMutation,
 } from "@/services/bookings.service"
 import {
   CheckCircleFilled,
@@ -32,7 +32,7 @@ export const UploadContract = () => {
   const handleFileChange = (file: File) => {
     setFile(file)
   }
-  const [mutate, { isLoading: uploading }] = useUploadSignedContractMutation()
+  const [mutate, { isLoading: uploading }] = useSignContractMutation()
   const [approveContract, { isLoading: approving }] = useApproveContract()
   const { errorToast, successToast } = useToastify()
 
@@ -65,12 +65,11 @@ export const UploadContract = () => {
         await mutate({
           accessToken,
           bookingId: booking_id as string,
-          documentType: "signedContract",
           document: file,
         }).unwrap()
         await refetch()
         await refetchBookings()
-        successToast("Uploaded Signed Document.")
+        successToast("Uploaded Signed Contract.")
       }
     } catch (error: any) {
       errorToast(error?.message || error?.data?.message || "An Error Occured")

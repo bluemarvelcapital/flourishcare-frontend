@@ -1,6 +1,7 @@
 import { API_URL } from "@/constants/config"
 import {
   BookingI,
+  SignContractI,
   UpdateBookingI,
   UploadBookingDocI,
 } from "@/interface/bookings"
@@ -69,7 +70,27 @@ export const bookingsApi = createApi({
         return {
           url: "/doc",
           method: "PATCH",
-          body,
+          body: formData,
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { booking: BookingI } }) => {
+        return res.data.booking
+      },
+    }),
+    signContract: builder.mutation<BookingI, SignContractI>({
+      query: ({ accessToken, ...body }) => {
+        const formData = new FormData()
+        formData.append("bookingId", body.bookingId)
+        formData.append("document", body.document, "contract")
+
+        return {
+          url: "/sign",
+          method: "POST",
+          redirect: "follow",
+          body: formData,
           headers: {
             authorization: `Bearer ${accessToken}`,
           },
@@ -87,4 +108,5 @@ export const {
   useUpdateDocumentApprovalStatusMutation,
   useGetBookingQuery,
   useUploadSignedContractMutation,
+  useSignContractMutation,
 } = bookingsApi

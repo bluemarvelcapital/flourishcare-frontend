@@ -42,3 +42,9 @@ export interface UploadBookingDocI {
   document: Blob | File
   accessToken: String
 }
+
+export interface SignContractI {
+  bookingId: string
+  document: Blob | File
+  accessToken: String
+}
