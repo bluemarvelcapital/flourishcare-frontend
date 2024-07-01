@@ -1,3 +1,8 @@
+import { AppointmentI } from "./appointment"
+import { ServiceI } from "./service"
+import { TransactionI } from "./transaction"
+import { UserI } from "./user"
+
 export interface BookingI {
   id: string
   userId: string
@@ -19,6 +24,9 @@ export interface BookingI {
   }
   paid: boolean
   updatedAt: string
+  user: UserI
+  appointment: AppointmentI
+  services: ServiceI[]
 }
 
 export interface UpdateBookingI {
@@ -47,4 +55,17 @@ export interface SignContractI {
   bookingId: string
   document: Blob | File
   accessToken: String
+}
+
+export interface PaymentInitI {
+  bookingId: string
+  accessToken: String
+}
+
+export interface PaymentInitResponse {
+  transaction: TransactionI
+  stripeData: {
+    clientSecret: string
+    publicKey: string
+  }
 }

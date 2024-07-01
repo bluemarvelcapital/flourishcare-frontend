@@ -10,7 +10,6 @@ import React, { useState } from "react"
 
 export const CarePlanInfo = () => {
   const { booking_id } = useParams()
-  const appointment_id = useSearchParams().get("appointment_id")
   const { auth } = useAuth()
   const [mutate, { isLoading }] = useUpdateDocumentApprovalStatusMutation()
   const [open, setOpen] = useState(false)
@@ -26,9 +25,7 @@ export const CarePlanInfo = () => {
         },
       }).unwrap()
       successToast("Care Plan Accepted.")
-      router.push(
-        `/care-plan/${booking_id}/contract?appointment_id=${appointment_id}`
-      )
+      router.push(`/care-plan/${booking_id}/contract`)
       setOpen(!open)
     } catch (error: any) {
       errorToast(error?.message || error?.data?.message || "An Error Occured")

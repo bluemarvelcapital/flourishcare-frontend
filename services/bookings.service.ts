@@ -1,6 +1,8 @@
 import { API_URL } from "@/constants/config"
 import {
   BookingI,
+  PaymentInitI,
+  PaymentInitResponse,
   SignContractI,
   UpdateBookingI,
   UploadBookingDocI,
@@ -100,6 +102,21 @@ export const bookingsApi = createApi({
         return res.data.booking
       },
     }),
+    initPayment: builder.mutation<PaymentInitResponse, PaymentInitI>({
+      query: ({ accessToken, ...body }) => {
+        return {
+          url: "/pay",
+          method: "POST",
+          body,
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: PaymentInitResponse }) => {
+        return res.data
+      },
+    }),
   }),
 })
 
@@ -109,4 +126,5 @@ export const {
   useGetBookingQuery,
   useUploadSignedContractMutation,
   useSignContractMutation,
+  useInitPaymentMutation,
 } = bookingsApi
