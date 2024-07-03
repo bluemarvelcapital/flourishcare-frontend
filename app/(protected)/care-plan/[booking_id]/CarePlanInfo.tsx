@@ -39,6 +39,7 @@ export const CarePlanInfo = () => {
       }).unwrap()
       successToast("Care Plan Accepted.")
       router.push(`/care-plan/${booking_id}/contract`)
+      refetch()
       setOpen(!open)
     } catch (error: any) {
       errorToast(error?.message || error?.data?.message || "An Error Occured")
@@ -151,14 +152,22 @@ export const CarePlanInfo = () => {
                   </div>
                 </div>
                 <div className="md:w-[50%] mx-auto w-full md:mt-10">
-                  <Button
-                    className="bg-success h-[2.5rem] w-full"
-                    type="primary"
-                    disabled={isLoading}
-                    onClick={handleAccept}
-                  >
-                    {isLoading ? <LoadingOutlined /> : "Proceed To Accept"}
-                  </Button>
+                  {data?.approvalStatus.carePlan ? (
+                    <Link href={`/care-plan/${booking_id}/contract`}>
+                      <Button className="h-[2.5rem] w-full text-success border-success">
+                        View Contract
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      className="bg-success h-[2.5rem] w-full"
+                      type="primary"
+                      disabled={isLoading}
+                      onClick={handleAccept}
+                    >
+                      {isLoading ? <LoadingOutlined /> : "Proceed To Accept"}
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>

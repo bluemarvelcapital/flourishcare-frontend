@@ -104,7 +104,7 @@ export const UploadContract = () => {
                     }
                   >
                     <IconButton className="bg-success hover:bg-success text-white">
-                      <DownloadOutlined />
+                      <DownloadOutlined className="text-success" />
                     </IconButton>
                   </button>
                   <span className="text-sm">Download Contract</span>
@@ -122,7 +122,7 @@ export const UploadContract = () => {
                         type="file"
                         onChange={(e) => handleFileChange(e.target.files![0])}
                       />
-                      <p className="text-sm">Upload contract</p>
+                      <p className="text-sm">Upload signed contract</p>
                       <div className="bg-[#fff] border-[1px] border-[#E4E7EC] h-[15rem] w-full rounded-md p-4 flex flex-col items-center gap-2 justify-center">
                         <BiCloudUpload className="text-[25px] text-success" />
                         <div>
@@ -150,15 +150,33 @@ export const UploadContract = () => {
                         </button>
                       </div>
                     )}
-                    <Button
-                      className="bg-success w-full mt-4"
-                      type="primary"
-                      size="large"
-                      onClick={handleUpload}
-                      disabled={uploading || approving}
-                    >
-                      {uploading || approving ? <LoadingOutlined /> : "Proceed"}
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button
+                        className="bg-success w-full mt-4"
+                        type="primary"
+                        size="large"
+                        onClick={handleUpload}
+                        disabled={uploading || approving}
+                      >
+                        {uploading || approving ? (
+                          <LoadingOutlined />
+                        ) : data?.approvalStatus?.contract ? (
+                          "Re-upload"
+                        ) : (
+                          "Proceed"
+                        )}
+                      </Button>
+                      {data?.approvalStatus.contract && (
+                        <Link href={`/care-plan/${booking_id}/payment`}>
+                          <Button
+                            className="text-success border-success w-full mt-4"
+                            size="large"
+                          >
+                            Payment
+                          </Button>
+                        </Link>
+                      )}
+                    </div>
                   </div>
                   <div className="md:col-span-2 bg-[#fff] border-[1px] border-[#E4E7EC] rounded-md md:p-10 p-4">
                     <>
