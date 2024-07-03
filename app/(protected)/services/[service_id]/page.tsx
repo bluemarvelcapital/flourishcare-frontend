@@ -7,6 +7,7 @@ import { ServiceI } from "@/interface/service"
 import { API_URL } from "@/constants/config"
 import axios from "axios"
 import { notFound } from "next/navigation"
+import { ReviewI } from "@/interface/review"
 
 export async function generateStaticParams() {
   const response = await axios.get(API_URL + "/service?page=1&limit=20")
@@ -53,9 +54,20 @@ async function fetchService(id: string) {
   return service
 }
 
+async function fetchReviews(id: string) {
+  // params contains the service `id`.
+  // If the route is like /services/1, then params.id is 1
+  const res = await axios.get(API_URL + `/review/?serviceId=${id}`)
+  const reviews: ReviewI[] = res.data.data.reviews
+
+  // Pass reviews data to the page via props
+  return reviews
+}
 const ServicePage = async ({ params }: { params: { service_id: string } }) => {
   const { service_id } = params
   const service = await fetchService(service_id)
+  const reviews = await fetchReviews(service_id)
+
   if (!service) {
     notFound()
   }
@@ -65,7 +77,7 @@ const ServicePage = async ({ params }: { params: { service_id: string } }) => {
         <Container>
           <PageTitle title="Service details" />
           <Service service={service} />
-          <RatingsAndReviews />
+          <RatingsAndReviews reviews={reviews} />
         </Container>
       </div>
     </div>

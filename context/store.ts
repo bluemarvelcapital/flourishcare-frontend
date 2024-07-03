@@ -3,6 +3,7 @@ import { authApi } from "@/services/auth.service"
 import { blogApi } from "@/services/blog.service"
 import { bookingsApi } from "@/services/bookings.service"
 import { preferenceApi } from "@/services/preference.service"
+import { reviewApi } from "@/services/reviews.service"
 import { roleApi } from "@/services/role.service"
 import { serviceApi } from "@/services/services.service"
 import { userApi } from "@/services/user.service"
@@ -18,6 +19,7 @@ export const store = configureStore({
     [blogApi.reducerPath]: blogApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [preferenceApi.reducerPath]: preferenceApi.reducer,
+    [reviewApi.reducerPath]: reviewApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -28,7 +30,8 @@ export const store = configureStore({
       bookingsApi.middleware,
       blogApi.middleware,
       userApi.middleware,
-      preferenceApi.middleware
+      preferenceApi.middleware,
+      reviewApi.middleware
     ),
 })
 
