@@ -157,7 +157,7 @@ export const BookingsTable: React.FC = () => {
       </div>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={data?.slice()?.reverse()}
         onChange={onChange}
         loading={isLoading}
       />
