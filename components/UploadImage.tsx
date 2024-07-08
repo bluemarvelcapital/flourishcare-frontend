@@ -18,9 +18,9 @@ export const UploadImage = ({ ...props }: propsI) => {
   }
   return (
     <div>
-      <div className="flex gap-5">
+      <div className="md:flex gap-5">
         {image && (
-          <div className="w-[50%] max-h-[10rem] relative">
+          <div className="md:w-[50%] md:mb-0 mb-5 max-h-[10rem] relative">
             <Image
               src={image}
               alt=""
