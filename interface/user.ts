@@ -4,6 +4,7 @@ export interface UserI {
     activated: boolean
   }
   _id: string
+  id: string
   firstname: string
   lastname: string
   email: string
@@ -18,11 +19,11 @@ export interface UserI {
   endUserId: string
   superAdminId: string
   accountManagerId: string
+  adminId: string
   gender: string
   address: string
   phone: string
   age: string
-  adminId: string
   __v: number
   createdAt: string
   updatedAt: string

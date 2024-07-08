@@ -1,12 +1,11 @@
 "use client"
-import { Avatar, Collapse, Divider, Popover } from "antd"
+import { Avatar, Divider, Popover } from "antd"
 import React, { useState } from "react"
 import { useAuth, useLogout } from "@/hooks/useAuth"
 import { PiCaretDownBold } from "react-icons/pi"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import type { CollapseProps } from "antd"
-import { AntDesignOutlined, UserOutlined } from "@ant-design/icons"
+import { ProfilesDrawer } from "../subuser/ProfilesDrawer"
 
 const paths = [
   { path: "/services", name: "Services" },
@@ -23,32 +22,6 @@ export const NavPopover = () => {
   const [open, setOpen] = useState(false)
   const togglePopover = () => setOpen(!open)
 
-  // Add Subusers view
-  const profiles: CollapseProps["items"] = [
-    {
-      key: "1",
-      label: <p className="">Profiles</p>,
-
-      children: (
-        <Avatar.Group
-          size="large"
-          maxCount={3}
-          maxStyle={{ background: "#66ACDC" }}
-        >
-          <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=3" />
-          <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
-          <Avatar
-            style={{ backgroundColor: "#87d068" }}
-            icon={<UserOutlined />}
-          />
-          <Avatar
-            style={{ backgroundColor: "#1677ff" }}
-            icon={<AntDesignOutlined />}
-          />
-        </Avatar.Group>
-      ),
-    },
-  ]
   return (
     <div>
       <Popover
@@ -80,7 +53,7 @@ export const NavPopover = () => {
 
               {/* Add Subusers view */}
               <li>
-                <Collapse ghost size="large" items={profiles} />
+                <ProfilesDrawer togglePopover={togglePopover} />
               </li>
               <Divider className="mt-0 mb-3" />
               <Link
