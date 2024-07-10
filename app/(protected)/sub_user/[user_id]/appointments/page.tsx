@@ -1,5 +1,5 @@
 import React from "react"
-import { AppointmentsTab } from "../../../appointments/AppointmentTab"
+import { UserBookingsTable } from "./UserBookingsTable"
 
 export const metadata = {
   title: "Appointments - Sub User",
@@ -8,7 +8,7 @@ export const metadata = {
 const SubUserAppointmentsPage = () => {
   return (
     <div className="">
-      <AppointmentsTab />
+      <UserBookingsTable />
     </div>
   )
 }

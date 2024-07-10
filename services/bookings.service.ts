@@ -15,11 +15,15 @@ export const bookingsApi = createApi({
     baseUrl: `${API_URL}/booking`,
   }),
   endpoints: (builder) => ({
-    getBookings: builder.query<BookingI[], { accessToken: string }>({
-      query: ({ accessToken }) => {
+    getBookings: builder.query<
+      BookingI[],
+      { accessToken: string; userId?: string }
+    >({
+      query: ({ accessToken, userId }) => {
         return {
           url: "/",
           method: "GET",
+          params: userId ? { userId } : {},
           headers: {
             authorization: `Bearer ${accessToken}`,
           },

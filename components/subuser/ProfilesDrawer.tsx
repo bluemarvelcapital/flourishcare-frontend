@@ -68,6 +68,7 @@ export const ProfilesDrawer = ({ ...props }: propsI) => {
                     href={`/sub_user/${client.user.id}/appointments`}
                     key={index}
                     className="block"
+                    onClick={toggleDrawer}
                   >
                     <div className="flex gap-3 items-center">
                       <Avatar
