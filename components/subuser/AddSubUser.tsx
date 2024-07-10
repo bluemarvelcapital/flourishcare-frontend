@@ -4,13 +4,69 @@ import { useForm } from "antd/es/form/Form"
 import React, { useState } from "react"
 import { IoMdCloseCircle } from "react-icons/io"
 import { UploadImage } from "../UploadImage"
+import {
+  useAddClientMutation,
+  useGetClientsQuery,
+} from "@/services/profiles.service"
+import { useToastify } from "@/hooks/useToastify"
+import { SuccessModalAlt } from "../SuccessModalAlt"
+import { LoadingOutlined } from "@ant-design/icons"
+import { AddClientRequestI } from "@/interface/profile"
+import { useAuth } from "@/hooks/useAuth"
 
 export const AddSubUser = () => {
+  const {
+    auth: { accessToken },
+  } = useAuth()
   const [open, setOpen] = useState(false)
+  const [openSuccessModal, setOpenSuccessModal] = useState(false)
   const toggleModal = () => setOpen(!open)
-  const [form] = useForm()
+  const [form] = useForm<AddClientRequestI>()
+  const [mutate, { isLoading }] = useAddClientMutation()
+  const { refetch } = useGetClientsQuery({ accessToken })
+  const { errorToast } = useToastify()
+  const [subMsg, setSubMsg] = useState("")
+
+  const addClient = async () => {
+    try {
+      await mutate({
+        email: form.getFieldsValue().email,
+        firstname: form.getFieldsValue().firstname,
+        lastname: form.getFieldsValue().lastname,
+        accessToken,
+      }).unwrap()
+      setSubMsg(
+        `${form.getFieldsValue().firstname} ${
+          form.getFieldsValue().lastname
+        } has been added.`
+      )
+      form.resetFields()
+      setOpenSuccessModal(true)
+      refetch()
+    } catch (error: any) {
+      errorToast(error?.data?.message || error?.message || "An Error Occured")
+    }
+  }
+
   return (
     <div>
+      <SuccessModalAlt
+        open={openSuccessModal}
+        setOpen={setOpenSuccessModal}
+        text="Add Another Client"
+        onOk={() => setOpenSuccessModal(false)}
+        minWidth="450px"
+        content={
+          <>
+            <div className="text-center">
+              <h3 className="text-lg text-center">
+                {"Client Added Successfully"}
+              </h3>
+              <p className="text-zinc-400">{subMsg}</p>
+            </div>
+          </>
+        }
+      />
       <Modal
         open={open}
         onCancel={toggleModal}
@@ -26,7 +82,12 @@ export const AddSubUser = () => {
             </p>
           </div>
           <div>
-            <Form layout="vertical" form={form}>
+            <Form
+              layout="vertical"
+              form={form}
+              onFinish={addClient}
+              disabled={isLoading}
+            >
               <div className="grid md:gap-7 md:grid-cols-2">
                 <Form.Item
                   name={"firstname"}
@@ -72,14 +133,14 @@ export const AddSubUser = () => {
                 label="Email"
                 rules={[{ required: true, type: "email" }]}
               >
-                <Input size="large" className="w-full" type="number" />
+                <Input size="large" className="w-full" />
               </Form.Item>
               <Form.Item
                 name={"address"}
                 label="Address/Location"
                 rules={[{ required: true }]}
               >
-                <Input size="large" className="w-full" type="number" />
+                <Input size="large" className="w-full" />
               </Form.Item>
               <Form.Item
                 name={"profile_image"}
@@ -94,7 +155,7 @@ export const AddSubUser = () => {
                 type="primary"
                 htmlType="submit"
               >
-                Create Profile
+                {isLoading ? <LoadingOutlined /> : "Create Profile"}
               </Button>
             </Form>
           </div>
