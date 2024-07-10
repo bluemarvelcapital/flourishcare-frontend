@@ -21,6 +21,9 @@ export const NavPopover = () => {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const togglePopover = () => setOpen(!open)
+  const {
+    auth: { role },
+  } = useAuth()
 
   return (
     <div>
@@ -52,10 +55,14 @@ export const NavPopover = () => {
               <Divider className="mb-0 mt-3" />
 
               {/* Add Subusers view */}
-              <li>
-                <ProfilesDrawer togglePopover={togglePopover} />
-              </li>
-              <Divider className="mt-0 mb-3" />
+              {role.toLowerCase().includes("manager") && (
+                <>
+                  <li>
+                    <ProfilesDrawer togglePopover={togglePopover} />
+                  </li>
+                  <Divider className="mt-0 mb-3" />
+                </>
+              )}
               <Link
                 href={"/settings"}
                 className={`${
