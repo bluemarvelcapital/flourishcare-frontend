@@ -1,3 +1,5 @@
+import { UserI } from "./user"
+
 export interface TransactionI {
   createdAt: string
   amount: string
@@ -11,4 +13,5 @@ export interface TransactionI {
   provider: string
   updatedAt: string
   orderNumber: number
+  user: UserI
 }

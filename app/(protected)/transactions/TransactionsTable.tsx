@@ -1,21 +1,70 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { Input, Table } from "antd"
+import { Input, Skeleton, Table } from "antd"
 import type { TableColumnsType, TableProps } from "antd"
-import { AppointmentI } from "@/interface/appointment"
 import moment from "moment"
 import { useAuth } from "@/hooks/useAuth"
-import { useGetAppointmentsQuery } from "@/services/appointment.service"
 import { RiSearch2Line } from "react-icons/ri"
 import { BsDot } from "react-icons/bs"
+import { useGetTransactionsQuery } from "@/services/transaction.service"
+import { TransactionI } from "@/interface/transaction"
+import { useGetBookingQuery } from "@/services/bookings.service"
+import Link from "next/link"
 
-const columns: TableColumnsType<AppointmentI> = [
+const RenderWithBookingId = ({
+  id,
+  key,
+}: {
+  id: string
+  key: "title" | "status" | "service"
+}) => {
+  const { auth } = useAuth()
+  const { data, isLoading } = useGetBookingQuery({
+    accessToken: auth.accessToken,
+    bookingId: id,
+  })
+  const text =
+    key === "service" ? data?.services[0]?.name : data?.appointment[key]
+  return (
+    <div>
+      {isLoading ? (
+        <Skeleton />
+      ) : (
+        <div>
+          <p>{text}</p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+const columns: TableColumnsType<TransactionI> = [
   {
-    title: "Name",
-    dataIndex: "title",
-    sorter: (a, b) => a.title.length - b.title.length,
-    sortDirections: ["descend"],
+    title: "Transaction ID",
+    dataIndex: "id",
+    render: (value, record) => {
+      return (
+        <span>
+          <Link
+            href={record.bookingId ? `/care-plan/${record.bookingId}` : ""}
+            className="underline text-success"
+          >
+            <span className="md:hidden block">
+              {record?.id?.slice(0, 7)}...
+            </span>
+            <span className="md:block hidden">{record.id}</span>
+          </Link>
+        </span>
+      )
+    },
   },
+  // {
+  //   title: "Name",
+  //   dataIndex: "id",
+  //   render: (value, record) => (
+  //     <RenderWithBookingId key="title" id={record.bookingId} />
+  //   ),
+  // },
   {
     title: "Date",
     dataIndex: "createdAt",
@@ -25,13 +74,13 @@ const columns: TableColumnsType<AppointmentI> = [
     sorter: (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
     defaultSortOrder: "descend",
   },
-  {
-    title: "Service",
-    dataIndex: "services",
-    render: (value, record) => {
-      return <span>{record.services[0].name}</span>
-    },
-  },
+  // {
+  //   title: "Service",
+  //   dataIndex: "services",
+  //   render: (value, record) => (
+  //     <RenderWithBookingId key="service" id={record.bookingId} />
+  //   ),
+  // },
   {
     title: "Amount",
     dataIndex: "services",
@@ -39,21 +88,15 @@ const columns: TableColumnsType<AppointmentI> = [
       return (
         <span>
           {Intl.NumberFormat("en-US", {
-            currency: record.services[0].currency,
+            currency: record.currency,
             style: "currency",
-          }).format(record.services[0].price)}
+          }).format(Number(record.amount))}
         </span>
       )
     },
-    sorter: (a, b) => a.services[0].price - b.services[0].price,
+    sorter: (a, b) => Number(a.amount) - Number(b.amount),
   },
-  {
-    title: "Transaction ID",
-    dataIndex: "id",
-    render: (value, record) => {
-      return <span>{record.id}</span>
-    },
-  },
+
   {
     title: "Status",
     dataIndex: "status",
@@ -73,14 +116,14 @@ const columns: TableColumnsType<AppointmentI> = [
     ],
     // specify the condition of filtering result
     // here is that finding the name started with `value`
-    onFilter: (value, record) => record.title.indexOf(value as string) === 0,
+    onFilter: (value, record) => record.status.indexOf(value as string) === 0,
     render: (value, record) => {
       return (
         <span
           className={`${
             record.status === "PENDING"
               ? "text-yellow-500 "
-              : record.status === "Approved"
+              : record.status.toUpperCase() === "APPROVED"
               ? "text-green-500 "
               : "text-red-500 "
           } flex items-center px-1 py-1 rounded-md capitalize font-semibold`}
@@ -93,7 +136,7 @@ const columns: TableColumnsType<AppointmentI> = [
   },
 ]
 
-const onChange: TableProps<AppointmentI>["onChange"] = (
+const onChange: TableProps<TransactionI>["onChange"] = (
   pagination,
   filters,
   sorter,
@@ -104,16 +147,14 @@ const onChange: TableProps<AppointmentI>["onChange"] = (
 
 export const TransactionsTable: React.FC = () => {
   const { auth } = useAuth()
-  const { data, isLoading } = useGetAppointmentsQuery({
+  const { data, isLoading } = useGetTransactionsQuery({
     accessToken: auth.accessToken,
   })
   const [dataState, setDataState] = useState(data)
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    const newStata = data?.filter(
-      (entry) =>
-        entry.title.toLowerCase().includes(value) ||
-        entry.id.toLowerCase().includes(value)
+    const newStata = data?.filter((entry) =>
+      entry.id.toLowerCase().includes(value)
     )
     setDataState(newStata)
   }
@@ -128,7 +169,7 @@ export const TransactionsTable: React.FC = () => {
         <Input
           className="md:w-[350px] w-full"
           size="large"
-          placeholder="Search name or id"
+          placeholder="Search by id"
           prefix={<RiSearch2Line />}
           onChange={onSearch}
         />

@@ -7,6 +7,7 @@ import { profilesApi } from "@/services/profiles.service"
 import { reviewApi } from "@/services/reviews.service"
 import { roleApi } from "@/services/role.service"
 import { serviceApi } from "@/services/services.service"
+import { transactionApi } from "@/services/transaction.service"
 import { userApi } from "@/services/user.service"
 import { configureStore } from "@reduxjs/toolkit"
 
@@ -16,6 +17,7 @@ export const store = configureStore({
     [roleApi.reducerPath]: roleApi.reducer,
     [serviceApi.reducerPath]: serviceApi.reducer,
     [appointmentApi.reducerPath]: appointmentApi.reducer,
+    [transactionApi.reducerPath]: transactionApi.reducer,
     [bookingsApi.reducerPath]: bookingsApi.reducer,
     [blogApi.reducerPath]: blogApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
@@ -29,6 +31,7 @@ export const store = configureStore({
       roleApi.middleware,
       serviceApi.middleware,
       appointmentApi.middleware,
+      transactionApi.middleware,
       bookingsApi.middleware,
       blogApi.middleware,
       userApi.middleware,
