@@ -1,5 +1,6 @@
 "use client"
 import { Loader } from "@/components/Loader"
+import { PDFViewer } from "@/components/PDFViewer"
 import { useAuth } from "@/hooks/useAuth"
 import { useToastify } from "@/hooks/useToastify"
 import {
@@ -8,6 +9,7 @@ import {
 } from "@/services/bookings.service"
 import { LoadingOutlined } from "@ant-design/icons"
 import { Alert, Button, Divider } from "antd"
+import moment from "moment"
 import Link from "next/link"
 import { useParams, useRouter, useSearchParams } from "next/navigation"
 import React, { useState } from "react"
@@ -74,31 +76,33 @@ export const CarePlanInfo = () => {
                 <div className="mb-5 flex flex-col gap-3 text-sm md:text-md">
                   <div className="flex justify-between items-center">
                     <p className="text-[#555656]">Full Name</p>
-                    <p>Akanbi Taiwo Mayowa</p>
+                    <p>
+                      {data.user.firstname} {data.user.lastname}
+                    </p>
                   </div>
                   <div className="flex justify-between items-center">
-                    <p className="text-[#555656]">Date of Birth</p>
-                    <p>July 6th, 2024</p>
+                    <p className="text-[#555656]">Age</p>
+                    <p>{data.user.age || "-"}</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-[#555656]">Home Address</p>
-                    <p>6391 Elgin St. Celina, Delaware 10299</p>
+                    <p>{data.user.address || "-"}</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-[#555656]">Email</p>
-                    <p>akanbitaiwomayowa@gmail.com</p>
+                    <p>{data.user.email || "-"}</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-[#555656]">Date</p>
-                    <p>July 6th, 2024</p>
+                    <p>{moment(data.appointment.date).format("LL") || "-"}</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-[#555656]">Duration</p>
-                    <p>6months</p>
+                    <p>{`${data.services[0].duration} months` || "-"}</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-[#555656]">Time</p>
-                    <p>6:45am</p>
+                    <p>{moment(data.appointment.date).format("LT") || "-"}</p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-[#555656]"></p>
@@ -120,42 +124,20 @@ export const CarePlanInfo = () => {
                       evaluation of last assessment.
                     </p>
                   </div>
-                  <div className="mb-5 flex flex-col gap-3 text-sm md:text-md">
-                    <div className="flex justify-between items-center">
-                      <p className="text-[#555656]">Care Services</p>
-                      <p>Personal Care Assistance</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-[#555656]">Frequency of Services</p>
-                      <p>Weekly</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-[#555656]">Schedule Visit Times</p>
-                      <p>Monday - Friday</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-[#555656]">Assigned Caregiver</p>
-                      <p>Akanbi Mayowa</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-[#555656]">Contact</p>
-                      <p>+234 8169 494 128</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-[#555656]">Medication</p>
-                      <p>Once</p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-[#555656]">Dietary</p>
-                      <p>3times daily</p>
-                    </div>
+
+                  <div>
+                    <PDFViewer
+                      pdf_url={
+                        "https://res.cloudinary.com/osaretinfrank/image/upload/v1721125327/test-pdf_xraoja.pdf"
+                      }
+                    />
                   </div>
                 </div>
                 <div className="md:w-[50%] mx-auto w-full md:mt-10">
                   {data?.approvalStatus.carePlan ? (
                     <Link href={`/care-plan/${booking_id}/contract`}>
                       <Button className="h-[2.5rem] w-full text-success border-success">
-                        View Contract
+                        Go to Contract
                       </Button>
                     </Link>
                   ) : (
