@@ -20,6 +20,8 @@ const Page = () => {
             <li>Senior Support Workers</li>
             <li>Recreational Support Workers</li>
             <li>Care Assitant</li>
+            <li>General Nurses</li>
+            <li>Mental Nurses</li>
           </ul>
           <p className="text-lg">
             If you&apos;re interested in any of this roles, please use the

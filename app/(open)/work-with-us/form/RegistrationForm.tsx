@@ -266,7 +266,6 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
               >
                 <Input
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
-                  type="number"
                   name="national_insurance_number"
                   onChange={handleChange}
                   onBlur={handleBlur}
