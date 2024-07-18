@@ -10,7 +10,7 @@ export const Hero = () => {
   return (
     <div className="relative w-full md:h-[95vh] h-[60vh] hero-h font-myriad-pro flex justify-center items-center flex-col">
       <div>
-        <div className="absolute w-full h-full top-0 left-0 z-[-2] ">
+        <div className="absolute w-full h-full top-0 left-0 z-[0] ">
           <Image
             src={"/faqs.jpg"}
             alt="Flourish Care Hero"
@@ -18,7 +18,7 @@ export const Hero = () => {
             objectFit="cover"
           />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[#0000009d] z-[-1]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[#0000009d] z-[0]"></div>
 
         <Fade left>
           <div className="text-center md:w-[100%] w-[95%] mx-[auto] md:py-[154px] md:px-[64px] py-[1.5rem] px-[16px]">
