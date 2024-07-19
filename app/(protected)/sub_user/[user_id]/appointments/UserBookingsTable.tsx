@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { Input, Table } from "antd"
+import { Button, Input, Table } from "antd"
 import type { TableColumnsType, TableProps } from "antd"
 import moment from "moment"
 import { useAuth } from "@/hooks/useAuth"
@@ -11,114 +11,96 @@ import { useGetBookingsQuery } from "@/services/bookings.service"
 import Link from "next/link"
 import { FaFilePdf } from "react-icons/fa"
 import { useParams } from "next/navigation"
+import { useGetAppointmentsQuery } from "@/services/appointment.service"
+import { AppointmentI } from "@/interface/appointment"
 
-const columns: TableColumnsType<BookingI> = [
+const columns: TableColumnsType<AppointmentI> = [
   {
-    title: "Booking ID",
-    dataIndex: "id",
-    render: (value, record) => {
-      return (
-        <span>
-          <Link
-            href={record.id ? `/care-plan/${record.id}` : ""}
-            className="underline text-success"
-          >
-            <span className="md:hidden block">
-              {record?.id?.slice(0, 7)}...
-            </span>
-            <span className="md:block hidden">{record.id}</span>
-          </Link>
-        </span>
-      )
-    },
-  },
-
-  {
-    title: "Appointment ID",
-    dataIndex: "appointmentId",
-    render: (value, record) => {
-      return <span>{record.appointmentId}</span>
-    },
-    responsive: ["md", "lg"],
-  },
-  {
-    title: "Contract",
-    dataIndex: "signedContract",
-    render: (value, record) => {
-      return (
-        <span>
-          <Link
-            href={record.signedContract || ""}
-            className="flex items-center gap-2 p-2 bg-[#F7F7F7] w-full"
-          >
-            <FaFilePdf className="text-red-500" />
-            <span>{record?.signedContract?.slice(0, 7) || "contract"}...</span>
-          </Link>
-        </span>
-      )
-    },
+    title: "Name",
+    dataIndex: "title",
+    sorter: (a, b) => a.title.length - b.title.length,
+    sortDirections: ["descend"],
   },
   {
     title: "Date",
-    dataIndex: "updatedAt",
+    dataIndex: "date",
     render: (text, record) => (
-      <span>{moment(record.updatedAt).format("LL LT")}</span>
+      <div>
+        <p>{moment(record.date).format("LL")}</p>
+        <p>{moment(record.date).format("LT")}</p>
+      </div>
     ),
-    sorter: (a, b) => Date.parse(a.updatedAt) - Date.parse(b.updatedAt),
+    sorter: (a, b) => Date.parse(a.date) - Date.parse(b.date),
     defaultSortOrder: "descend",
-    responsive: ["md", "lg"],
   },
   {
-    title: "Invoice",
-    dataIndex: "invoice",
+    title: "Service",
+    dataIndex: "services",
     render: (value, record) => {
-      return (
-        <span>
-          <Link
-            href={record.invoice || ""}
-            className="flex items-center gap-2 p-2 bg-[#F7F7F7] w-full"
-          >
-            <FaFilePdf className="text-red-500" />
-            <span>{record?.invoice?.slice(0, 7) || "invoice"}...</span>
-          </Link>
-        </span>
-      )
+      return <span>{record.services[0]?.name}</span>
     },
   },
   {
-    title: "Paid",
-    dataIndex: "paid",
+    title: "Amount",
+    dataIndex: "services",
+    render: (value, record) => {
+      return (
+        <span>
+          {Intl.NumberFormat("en-US", {
+            currency: record.services[0]?.currency || "GPB",
+            style: "currency",
+          }).format(record.services[0]?.price)}
+        </span>
+      )
+    },
+    sorter: (a, b) => a.services[0]?.price - b.services[0]?.price,
+  },
+  {
+    title: "Appointment ID",
+    dataIndex: "id",
+    render: (value, record) => {
+      return <span>{record.id}</span>
+    },
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
     filters: [
       {
-        text: "Paid",
-        value: true,
+        text: "Approved",
+        value: "APPROVED",
       },
       {
-        text: "Not Paid",
-        value: false,
+        text: "Pending",
+        value: "PENDING",
+      },
+      {
+        text: "Cancelled",
+        value: "CANCELLED",
       },
     ],
     // specify the condition of filtering result
     // here is that finding the name started with `value`
-    onFilter: (value, record) => record.paid,
+    onFilter: (value, record) => record.title.indexOf(value as string) === 0,
     render: (value, record) => {
       return (
         <span
           className={`${
-            record.paid ? "text-green-500 " : "text-red-500 "
-          } flex items-center px-1 py-1 rounded-md capitalize font-semibold`}
+            record.status === "PENDING"
+              ? "text-yellow-500 bg-yellow-50"
+              : record.status === "Approved"
+              ? "text-green-500 bg-green-50"
+              : "text-red-500 bg-red-50"
+          } block text-center px-1 py-1 rounded-md capitalize`}
         >
-          <BsDot className="text-2xl" />{" "}
-          <span className="text-xs">
-            {record.paid ? "PAID" : "NOT YET PAID"}
-          </span>
+          {record.status.toLowerCase()}
         </span>
       )
     },
   },
 ]
 
-const onChange: TableProps<BookingI>["onChange"] = (
+const onChange: TableProps<AppointmentI>["onChange"] = (
   pagination,
   filters,
   sorter,
@@ -130,7 +112,7 @@ const onChange: TableProps<BookingI>["onChange"] = (
 export const UserBookingsTable: React.FC = () => {
   const { user_id } = useParams() as { user_id: string }
   const { auth } = useAuth()
-  const { data, isLoading } = useGetBookingsQuery({
+  const { data, isLoading } = useGetAppointmentsQuery({
     accessToken: auth.accessToken,
     userId: user_id,
   })
@@ -148,22 +130,32 @@ export const UserBookingsTable: React.FC = () => {
     }
   }, [data])
   return (
-    <div className="bg-white p-7 rounded-xl">
-      <div className="mb-5">
-        <Input
-          className="md:w-[350px] w-full"
-          size="large"
-          placeholder="Search name or id"
-          prefix={<RiSearch2Line />}
-          onChange={onSearch}
+    <>
+      <div className="mb-4 md:flex">
+        <Link href={`/sub_user/${user_id}/appointments/create/`}>
+          <button className="md:w-auto w-full bg-primary h-[40px] rounded-md px-3 py-2 text-white">
+            Create appointment
+          </button>
+        </Link>
+      </div>
+      <div className="bg-white p-7 rounded-xl">
+        <div className="mb-5">
+          <Input
+            className="md:w-[350px] w-full"
+            size="large"
+            placeholder="Search name or id"
+            prefix={<RiSearch2Line />}
+            onChange={onSearch}
+          />
+        </div>
+        <Table
+          columns={columns}
+          dataSource={data?.slice()?.reverse()}
+          onChange={onChange}
+          loading={isLoading}
+          scroll={{ x: 1000 }}
         />
       </div>
-      <Table
-        columns={columns}
-        dataSource={data?.slice()?.reverse()}
-        onChange={onChange}
-        loading={isLoading}
-      />
-    </div>
+    </>
   )
 }

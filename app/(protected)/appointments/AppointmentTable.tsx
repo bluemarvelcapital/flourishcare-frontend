@@ -30,7 +30,7 @@ const columns: TableColumnsType<AppointmentI> = [
     title: "Service",
     dataIndex: "services",
     render: (value, record) => {
-      return <span>{record.services[0].name}</span>
+      return <span>{record.services[0]?.name}</span>
     },
   },
   {
@@ -40,13 +40,13 @@ const columns: TableColumnsType<AppointmentI> = [
       return (
         <span>
           {Intl.NumberFormat("en-US", {
-            currency: record.services[0].currency,
+            currency: record.services[0]?.currency || "GBP",
             style: "currency",
-          }).format(record.services[0].price)}
+          }).format(record.services[0]?.price)}
         </span>
       )
     },
-    sorter: (a, b) => a.services[0].price - b.services[0].price,
+    sorter: (a, b) => a.services[0]?.price - b.services[0]?.price,
   },
   {
     title: "Appointment ID",

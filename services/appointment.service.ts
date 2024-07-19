@@ -23,11 +23,15 @@ export const appointmentApi = createApi({
         return res.data.appointment
       },
     }),
-    getAppointments: builder.query<AppointmentI[], { accessToken: string }>({
-      query: ({ accessToken }) => {
+    getAppointments: builder.query<
+      AppointmentI[],
+      { accessToken: string; userId?: string }
+    >({
+      query: ({ accessToken, userId }) => {
         return {
           url: "/",
           method: "GET",
+          params: { userId },
           headers: {
             authorization: `Bearer ${accessToken}`,
           },

@@ -59,4 +59,5 @@ export interface CreateAppointmentReqI {
   time: string
   duration: string
   accessToken: string
+  userId?: string
 }

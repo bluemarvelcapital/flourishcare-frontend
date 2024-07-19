@@ -27,6 +27,22 @@ export const profilesApi = createApi({
       },
     }),
 
+    getClient: builder.query<ClientI, { accessToken: string; id: string }>({
+      query: ({ accessToken, id }) => {
+        return {
+          url: "/client/info",
+          method: "GET",
+          params: { clientId: id },
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        }
+      },
+      transformResponse: (res: { data: { client: ClientI } }) => {
+        return res.data.client
+      },
+    }),
+
     addClient: builder.mutation<AddClientResponseI, AddClientRequestI>({
       query: ({ accessToken, ...data }) => {
         return {
@@ -45,4 +61,5 @@ export const profilesApi = createApi({
   }),
 })
 
-export const { useGetClientsQuery, useAddClientMutation } = profilesApi
+export const { useGetClientsQuery, useAddClientMutation, useGetClientQuery } =
+  profilesApi

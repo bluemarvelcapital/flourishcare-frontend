@@ -115,7 +115,11 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
             <Input className="w-full" size="large" value={service.name} />
           </Form.Item>
           <Form.Item label="Duration">
-            <Input className="w-full" size="large" value={service.duration} />
+            <Input
+              className="w-full"
+              size="large"
+              value={`${service.duration} month(s)`}
+            />
           </Form.Item>
 
           <Form.Item
