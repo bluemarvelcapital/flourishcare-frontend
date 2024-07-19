@@ -47,7 +47,6 @@ const columns: TableColumnsType<AppointmentI> = [
       )
     },
     sorter: (a, b) => a.services[0].price - b.services[0].price,
-    responsive: ["md", "lg", "xl", "xxl"],
   },
   {
     title: "Appointment ID",
@@ -55,7 +54,6 @@ const columns: TableColumnsType<AppointmentI> = [
     render: (value, record) => {
       return <span>{record.id}</span>
     },
-    responsive: ["md", "lg", "xl", "xxl"],
   },
   {
     title: "Status",
@@ -136,7 +134,12 @@ export const AppointmentsTable: React.FC<TableI> = ({ data, isLoading }) => {
           onChange={onSearch}
         />
       </div>
-      <Table columns={columns} dataSource={dataState} loading={isLoading} />
+      <Table
+        columns={columns}
+        dataSource={dataState}
+        loading={isLoading}
+        scroll={{ x: 1200 }}
+      />
     </div>
   )
 }

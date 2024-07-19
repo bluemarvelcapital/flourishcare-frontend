@@ -38,7 +38,6 @@ const columns: TableColumnsType<BookingI> = [
     render: (value, record) => {
       return <span>{record.appointmentId}</span>
     },
-    responsive: ["md", "lg"],
   },
   {
     title: "Contract",
@@ -65,7 +64,6 @@ const columns: TableColumnsType<BookingI> = [
     ),
     sorter: (a, b) => Date.parse(a.updatedAt) - Date.parse(b.updatedAt),
     defaultSortOrder: "descend",
-    responsive: ["md", "lg"],
   },
   {
     title: "Invoice",
@@ -160,6 +158,7 @@ export const BookingsTable: React.FC = () => {
         dataSource={data?.slice()?.reverse()}
         onChange={onChange}
         loading={isLoading}
+        scroll={{ x: 1200 }}
       />
     </div>
   )

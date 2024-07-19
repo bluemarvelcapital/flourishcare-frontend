@@ -60,10 +60,8 @@ const columns: TableColumnsType<TransactionI> = [
   },
   // {
   //   title: "Name",
-  //   dataIndex: "id",
-  //   render: (value, record) => (
-  //     <RenderWithBookingId key="title" id={record.bookingId} />
-  //   ),
+  //   dataIndex: "booking",
+  //   render: (value, record) => <p>{record.booking.appointment.title}</p>,
   // },
   {
     title: "Date",
@@ -74,16 +72,14 @@ const columns: TableColumnsType<TransactionI> = [
     sorter: (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
     defaultSortOrder: "descend",
   },
-  // {
-  //   title: "Service",
-  //   dataIndex: "services",
-  //   render: (value, record) => (
-  //     <RenderWithBookingId key="service" id={record.bookingId} />
-  //   ),
-  // },
+  {
+    title: "Service",
+    dataIndex: "booking",
+    render: (value, record) => <p>{record.booking.services[0].name}</p>,
+  },
   {
     title: "Amount",
-    dataIndex: "services",
+    dataIndex: "amount",
     render: (value, record) => {
       return (
         <span>
@@ -179,6 +175,7 @@ export const TransactionsTable: React.FC = () => {
         dataSource={data}
         onChange={onChange}
         loading={isLoading}
+        scroll={{ x: 1200 }}
       />
     </div>
   )

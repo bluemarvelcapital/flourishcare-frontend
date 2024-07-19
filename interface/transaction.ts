@@ -1,3 +1,4 @@
+import { BookingI } from "./bookings"
 import { UserI } from "./user"
 
 export interface TransactionI {
@@ -14,4 +15,5 @@ export interface TransactionI {
   updatedAt: string
   orderNumber: number
   user: UserI
+  booking: BookingI
 }
