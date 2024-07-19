@@ -18,14 +18,14 @@ const SubUserContainer = ({ children }: { children: React.ReactNode }) => {
       route: `/sub_user/${user_id}/medical-records`,
       name: "Medical Records",
     },
-    {
-      route: `/sub_user/${user_id}/permissions`,
-      name: "Permissions",
-    },
-    {
-      route: `/sub_user/${user_id}/notifications`,
-      name: "Manage Notifications",
-    },
+    // {
+    //   route: `/sub_user/${user_id}/permissions`,
+    //   name: "Permissions",
+    // },
+    // {
+    //   route: `/sub_user/${user_id}/notifications`,
+    //   name: "Manage Notifications",
+    // },
   ]
   const title = paths.find(({ route }) => pathname === route)?.name as string
   return (
