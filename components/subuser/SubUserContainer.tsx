@@ -7,6 +7,7 @@ import { useParams, usePathname } from "next/navigation"
 
 const SubUserContainer = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname()
+  const lastPath = pathname.split("/")[pathname.split("/").length - 1]
   const { user_id } = useParams()
   const paths = [
     {
@@ -30,7 +31,7 @@ const SubUserContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Container>
-        <PageTitle title={title} />
+        <PageTitle title={title || lastPath.replace("-", " ")} />
         <div>
           <SettingsContainer paths={paths}>{children}</SettingsContainer>
         </div>

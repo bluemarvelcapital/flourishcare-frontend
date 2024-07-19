@@ -132,7 +132,7 @@ export const UserBookingsTable: React.FC = () => {
   return (
     <>
       <div className="mb-4 md:flex">
-        <Link href={`/sub_user/${user_id}/appointments/create/`}>
+        <Link href={`/sub_user/${user_id}/appointments/create-appointment`}>
           <button className="md:w-auto w-full bg-primary h-[40px] rounded-md px-3 py-2 text-white">
             Create appointment
           </button>
