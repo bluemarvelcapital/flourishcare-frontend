@@ -25,9 +25,10 @@ export const Service = ({ service }: { service: ServiceI }) => {
           <h2 className="lg:text-[2.5rem] md:text-[2rem] text-xl mb-7">
             {service?.name}
           </h2>
-          <p className="text-[14px] md:text-[16px] text-[#6A6B6C] mb-5">
-            {service?.description}
-          </p>
+          <div
+            className="text-[14px] md:text-[16px] text-[#6A6B6C] mb-5"
+            dangerouslySetInnerHTML={{ __html: service?.description }}
+          />
           <Link href={`/services/${service_id}/book-appointment`}>
             <Button>Book Appointment</Button>
           </Link>
@@ -39,21 +40,27 @@ export const Service = ({ service }: { service: ServiceI }) => {
                 <span>{service?.name}</span>
               </li>
               <li>
+                <span className="font-semibold">Price: </span>{" "}
+                <span>
+                  {Intl.NumberFormat("en-US", {
+                    currency: service?.currency,
+                    style: "currency",
+                  }).format(service?.price)}
+                </span>
+              </li>
+              <li>
                 <span className="font-semibold">Duration: </span>{" "}
-                <span>2 hours per session</span>
+                <span>{service?.duration} month(s)</span>
               </li>
-              <li>
-                <span className="font-semibold">Frequency: </span>{" "}
-                <span>3 sessions per week</span>
-              </li>
-              <li>
+
+              {/* <li>
                 <span className="font-semibold">Additional Features: </span>{" "}
                 <ul className="list-disc px-6 py-1  text-[#98999A]">
                   <li>Medication reminders</li>
                   <li>Meal preparation</li>
                   <li>Light housekeeping</li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

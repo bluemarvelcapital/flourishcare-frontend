@@ -66,18 +66,12 @@ export const OurServices = () => {
                     <h3 className="lg:text-[20px] text-[18px] text-primary mb-[10px]">
                       {service.name}
                     </h3>
-                    <p className="text-[14px]">
-                      {service.description?.length > 80 ? (
-                        <>
-                          {service.description?.slice(0, 80)}...{" "}
-                          <span className="text-primary underline cursor-pointer text-sm">
-                            Read more
-                          </span>
-                        </>
-                      ) : (
-                        service.description
-                      )}
-                    </p>
+                    <div
+                      className="text-[14px]"
+                      dangerouslySetInnerHTML={{
+                        __html: `${service.description?.slice(0, 80)} ...`,
+                      }}
+                    />
                     <div className="mt-2 flex gap-3 items-center text-[12px]">
                       <Rate
                         value={5}
