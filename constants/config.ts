@@ -3,5 +3,5 @@ export const MAILCHIMP_FORM_URL =
 export const CALENDLY_SCHEDULE_URL = "https://calendly.com/molunorichie/30min"
 // export const API_URL = "https://flourishcare-api.onrender.com/api/v1"
 // export const API_URL = "http://194.164.93.164:5000/api/v1"
-export const API_URL = "https://api.flourishadvancedcare.co.uk"
+export const API_URL = "https://api.flourishadvancedcare.co.uk/api/v1"
 export const API_URL_V1 = "https://bluemarvel-mail-server.onrender.com"
