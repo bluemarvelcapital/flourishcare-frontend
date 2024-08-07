@@ -26,11 +26,13 @@ export const CreateAppointmentForm = () => {
     accessToken: auth.accessToken,
     userId: user_id,
   })
+
   const [open, setOpen] = useState(false)
-  const { errorToast, successToast } = useToastify()
-  const { data: services, isLoading: laodingServices } = useGetServicesQuery({
+  const { errorToast } = useToastify()
+  const { data: services, isLoading: loadingServices } = useGetServicesQuery({
     limit: "50",
     page: "1",
+    status: "ACTIVE",
   })
   const { data: clients, isLoading: loadingClients } = useGetClientsQuery({
     accessToken: auth.accessToken,
@@ -40,13 +42,13 @@ export const CreateAppointmentForm = () => {
     try {
       await createAppointment({
         accessToken: auth.accessToken,
-        title: service?.name,
+        title: form.getFieldValue("title"),
         date: dayjs(form.getFieldValue("day")).toDate().toLocaleString(),
         note: form.getFieldValue("note"),
         address: form.getFieldValue("address"),
         time: dayjs(form.getFieldValue("day")).format("hh:mma"),
         duration: service?.duration,
-        serviceIds: [service?.id],
+        serviceIds: form.getFieldValue("services"),
         userId: user_id,
       }).unwrap()
       await refetch()
@@ -68,7 +70,7 @@ export const CreateAppointmentForm = () => {
         Fill in patient&apos;s information
       </p>
 
-      {laodingServices || loadingClients ? (
+      {loadingServices || loadingClients ? (
         <Loader name="services" />
       ) : (
         <div>
@@ -78,26 +80,7 @@ export const CreateAppointmentForm = () => {
             form={form}
             disabled={isLoading}
           >
-            <Form.Item label="Select Service" name={"service"}>
-              <Select
-                className="w-full"
-                size="large"
-                onChange={(value) => {
-                  setService(
-                    services?.find(({ id }) => id === value) as ServiceI
-                  )
-                }}
-              >
-                {services?.map((service) => {
-                  return (
-                    <Select.Option key={service.id} value={service.id}>
-                      <p className="">{service.name}</p>
-                    </Select.Option>
-                  )
-                })}
-              </Select>
-            </Form.Item>
-            <Form.Item label="Patient">
+            <Form.Item label="Patient Name">
               {/* <Select className="w-full" size="large" /> */}
               <Input
                 className="w-[100%]"
@@ -122,20 +105,6 @@ export const CreateAppointmentForm = () => {
                 <Input className="w-[100%]" size="large" />
               </Form.Item>
             </div> */}
-            <div className="grid grid-cols-1 gap-3 items-start w-full">
-              <Form.Item
-                label="Appointment Date"
-                name={"day"}
-                rules={[{ required: true }]}
-              >
-                <DatePicker
-                  showTime
-                  className="w-[100%]"
-                  size="large"
-                  placeholder=""
-                />
-              </Form.Item>
-            </div>
             <Form.Item
               label="Address/Location"
               // name={"address"}
@@ -148,8 +117,44 @@ export const CreateAppointmentForm = () => {
                 value={baseClient?.address as string}
               />
             </Form.Item>
-            <Form.Item label="Service">
-              <Input className="w-full" size="large" value={service.name} />
+            <div className="grid grid-cols-1 gap-3 items-start w-full">
+              <Form.Item
+                label="Appointment Date"
+                name={"day"}
+                rules={[{ required: true }]}
+              >
+                <DatePicker className="w-[100%]" size="large" placeholder="" />
+              </Form.Item>
+            </div>
+
+            <Form.Item
+              label="Select Services"
+              name={"services"}
+              rules={[{ required: true }]}
+            >
+              <Select
+                className="w-full"
+                size="large"
+                options={services
+                  ?.filter((service_) => service_.id !== service.id)
+                  ?.map((service) => ({
+                    value: service.id,
+                    label: service.name,
+                  }))}
+                loading={loadingServices}
+                mode="multiple"
+                allowClear
+                showSearch
+                optionFilterProp="label"
+                onChange={(value) => setService(value)}
+              />
+            </Form.Item>
+            <Form.Item
+              label="What will you like to call this appointment?"
+              rules={[{ required: true }]}
+              name={"title"}
+            >
+              <Input className="w-full" size="large" />
             </Form.Item>
             {/* <Form.Item label="Duration">
               <Input
@@ -231,18 +236,12 @@ export const CreateAppointmentForm = () => {
               <div className="flex justify-between items-center">
                 <p>Appointment Date</p>
                 <p>
-                  {dayjs(form.getFieldValue("day")).format(
-                    "ddd, DD-MM-YYYY hh:mma"
-                  )}
+                  {dayjs(form.getFieldValue("day")).format("ddd, DD-MM-YYYY")}
                 </p>
               </div>
               <div className="flex justify-between items-center">
-                <p>Service</p>
-                <p>{service.name}</p>
-              </div>
-              <div className="flex justify-between items-center">
-                <p>Duration</p>
-                <p>{service.duration} month(s)</p>
+                <p>Appointment</p>
+                <p>{form.getFieldValue("title")}</p>
               </div>
             </div>
           </div>

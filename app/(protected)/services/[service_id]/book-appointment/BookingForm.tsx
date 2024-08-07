@@ -35,13 +35,13 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
     accessToken: auth.accessToken,
   })
   const [open, setOpen] = useState(false)
-  const { errorToast, successToast } = useToastify()
+  const { errorToast } = useToastify()
   const [servicesToSend, setServicesToSend] = useState<string[]>([])
   const handleSubmit = async () => {
     try {
       await createAppointment({
         accessToken: auth.accessToken,
-        title: service.name,
+        title: form.getFieldValue("title"),
         date: dayjs(form.getFieldValue("day")).toDate().toLocaleString(),
         note: form.getFieldValue("note"),
         address: form.getFieldValue("address"),
@@ -50,7 +50,6 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
         serviceIds: [service.id, ...servicesToSend],
       }).unwrap()
       await refetch()
-      // successToast("Appointment Successfully booked.")
       setOpen(!open)
     } catch (error: any) {
       errorToast(error?.message || error?.data?.message || "An Error Occured")
@@ -151,6 +150,13 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
               optionFilterProp="label"
               onChange={(value) => setServicesToSend(value)}
             />
+          </Form.Item>
+          <Form.Item
+            label="What will you like to call this appointment?"
+            rules={[{ required: true }]}
+            name={"title"}
+          >
+            <Input className="w-full" size="large" />
           </Form.Item>
           {/* <Form.Item label="Duration">
             <Input

@@ -27,6 +27,16 @@ export interface ServiceI {
       }
     }
   ]
+  reviews: {
+    id: string
+    remarks: string
+    rating: number
+    serviceId: string
+    visible: boolean
+    createdAt: string
+    updatedAt: string
+    userId: string
+  }[]
 }
 
 export interface ServiceReqParams {
