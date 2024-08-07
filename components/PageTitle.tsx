@@ -21,7 +21,7 @@ export const PageTitle: React.FC<props> = ({ ...props }) => {
             <CiHome className="text-[16px]" />
           </Link>
           <PiCaretRightThin style={{ color: "#D1D5DB" }} />
-          <Link href={"/account"}>Account</Link>
+          <Link href={"/settings"}>Account</Link>
           <PiCaretRightThin style={{ color: "#D1D5DB" }} />
           <p className="text-primary">{link_text || title}</p>
         </div>

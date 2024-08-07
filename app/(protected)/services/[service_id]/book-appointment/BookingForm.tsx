@@ -21,11 +21,15 @@ import {
 import { useToastify } from "@/hooks/useToastify"
 import moment from "moment"
 import dayjs from "dayjs"
+import { useGetUserDataQuery } from "@/services/auth.service"
 
 export const BookingForm = ({ service }: { service: ServiceI }) => {
   const { auth } = useAuth()
   const [createAppointment, { isLoading }] = useCreateAppointmentMutation()
   const { refetch } = useGetAppointmentsQuery({ accessToken: auth.accessToken })
+  const { data: userData } = useGetUserDataQuery({
+    accessToken: auth.accessToken,
+  })
   const [open, setOpen] = useState(false)
   const { errorToast, successToast } = useToastify()
   const handleSubmit = async () => {
@@ -65,7 +69,7 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
           form={form}
           disabled={isLoading}
         >
-          <Form.Item label="Select Patient">
+          <Form.Item label="Patient Name">
             {/* <Select className="w-full" size="large" /> */}
             <Input
               className="w-[100%]"
@@ -75,52 +79,63 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
             />
           </Form.Item>
           <div className="grid grid-cols-2 gap-3 items-start w-full">
-            <Form.Item
+            {/* <Form.Item
               label="Date of Birth"
               name={"date_of_birth"}
               rules={[{ required: true }]}
             >
-              <DatePicker className="w-[100%]" size="large" placeholder="" />
-            </Form.Item>
+              <DatePicker
+                className="w-[100%]"
+                size="large"
+                placeholder=""
+              />
+            </Form.Item> */}
             <Form.Item
               label="Gender"
-              name={"gender"}
+              // name={"gender"}
               rules={[{ required: true }]}
             >
-              <Input className="w-[100%]" size="large" />
+              <Input
+                className="w-[100%]"
+                size="large"
+                value={userData?.gender}
+              />
             </Form.Item>
-          </div>
-          <div className="grid grid-cols-1 gap-3 items-start w-full">
             <Form.Item
               label="Appointment Date"
               name={"day"}
               rules={[{ required: true }]}
             >
               <DatePicker
-                showTime
+                // showTime
                 className="w-[100%]"
                 size="large"
                 placeholder=""
               />
             </Form.Item>
           </div>
+
           <Form.Item
             label="Address/Location"
-            name={"address"}
+            // name={"address"}
             rules={[{ required: true }]}
           >
-            <Input className="w-[100%]" size="large" />
+            <Input
+              className="w-[100%]"
+              size="large"
+              value={userData?.address}
+            />
           </Form.Item>
           <Form.Item label="Service">
             <Input className="w-full" size="large" value={service.name} />
           </Form.Item>
-          <Form.Item label="Duration">
+          {/* <Form.Item label="Duration">
             <Input
               className="w-full"
               size="large"
               value={`${service.duration} month(s)`}
             />
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item
             label="Special Requests/Instructions:"
@@ -198,9 +213,7 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
               <div className="flex justify-between items-center">
                 <p>Appointment Date</p>
                 <p>
-                  {dayjs(form.getFieldValue("day")).format(
-                    "ddd, DD-MM-YYYY hh:mma"
-                  )}
+                  {dayjs(form.getFieldValue("day")).format("ddd, DD-MM-YYYY")}
                 </p>
               </div>
             </div>

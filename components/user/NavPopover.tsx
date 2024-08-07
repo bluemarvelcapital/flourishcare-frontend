@@ -12,7 +12,7 @@ const paths = [
   { path: "/appointments", name: "Appointments" },
   { path: "/transactions", name: "Transactions" },
   { path: "/bookings", name: "Bookings" },
-  { path: "/blog", name: "Blog" },
+  // { path: "/blog", name: "Blog" },
 ]
 
 export const NavPopover = () => {

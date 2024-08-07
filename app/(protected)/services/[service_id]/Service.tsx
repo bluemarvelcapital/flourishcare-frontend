@@ -39,7 +39,7 @@ export const Service = ({ service }: { service: ServiceI }) => {
                 <span className="font-semibold">Service Type: </span>{" "}
                 <span>{service?.name}</span>
               </li>
-              <li>
+              {/* <li>
                 <span className="font-semibold">Price: </span>{" "}
                 <span>
                   {Intl.NumberFormat("en-US", {
@@ -47,11 +47,11 @@ export const Service = ({ service }: { service: ServiceI }) => {
                     style: "currency",
                   }).format(service?.price)}
                 </span>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <span className="font-semibold">Duration: </span>{" "}
                 <span>{service?.duration} month(s)</span>
-              </li>
+              </li> */}
 
               {/* <li>
                 <span className="font-semibold">Additional Features: </span>{" "}

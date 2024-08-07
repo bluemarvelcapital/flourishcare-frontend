@@ -9,22 +9,6 @@ import { RightOutlined } from "@ant-design/icons"
 
 const accordionItems = [
   {
-    title: "What services does Flourish Advanced Care produced?",
-    content: (
-      <ul className="coloured-disc px-5 mb-3">
-        <li>Personal care </li>
-        <li>Respite care </li>
-        <li>Live In Care</li>
-        <li>Companion care</li>
-        <li>Dementia care</li>
-        <li>Housekeeping care</li>
-        <li>Nursing care</li>
-        <li>End of life care/Palliative care</li>
-        <li>Supported living accommodation</li>
-      </ul>
-    ),
-  },
-  {
     title: "How can I request home care services?",
     content: (
       <ul className="coloured-disc px-5 mb-3">
@@ -44,6 +28,22 @@ const accordionItems = [
             <RightOutlined className="underline" />
           </Link>
         </li>
+      </ul>
+    ),
+  },
+  {
+    title: "What services does Flourish Advanced Care produced?",
+    content: (
+      <ul className="coloured-disc px-5 mb-3">
+        <li>Personal care </li>
+        <li>Respite care </li>
+        <li>Live In Care</li>
+        <li>Companion care</li>
+        <li>Dementia care</li>
+        <li>Housekeeping care</li>
+        <li>Nursing care</li>
+        <li>End of life care/Palliative care</li>
+        <li>Supported living accommodation</li>
       </ul>
     ),
   },

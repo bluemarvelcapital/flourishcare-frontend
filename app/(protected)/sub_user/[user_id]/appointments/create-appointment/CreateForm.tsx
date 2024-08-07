@@ -138,21 +138,26 @@ export const CreateAppointmentForm = () => {
             </div>
             <Form.Item
               label="Address/Location"
-              name={"address"}
+              // name={"address"}
+
               rules={[{ required: true }]}
             >
-              <Input className="w-[100%]" size="large" />
+              <Input
+                className="w-[100%]"
+                size="large"
+                value={baseClient?.address as string}
+              />
             </Form.Item>
             <Form.Item label="Service">
               <Input className="w-full" size="large" value={service.name} />
             </Form.Item>
-            <Form.Item label="Duration">
+            {/* <Form.Item label="Duration">
               <Input
                 className="w-full"
                 size="large"
                 value={`${service.duration} month(s)`}
               />
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               label="Special Requests/Instructions:"

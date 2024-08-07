@@ -69,7 +69,7 @@ export const OurServices = () => {
                     <div
                       className="text-[14px]"
                       dangerouslySetInnerHTML={{
-                        __html: `${service.description?.slice(0, 80)} ...`,
+                        __html: `${service?.description?.slice(0, 80)}`,
                       }}
                     />
                     <div className="mt-2 flex gap-3 items-center text-[12px]">
@@ -80,14 +80,14 @@ export const OurServices = () => {
                       />
                       {/* <span>2 Reviews</span> */}
                     </div>
-                    <div>
+                    {/* <div>
                       <p className="mt-3 text-md">
                         {Intl.NumberFormat("en-US", {
                           currency: service.currency,
                           style: "currency",
                         }).format(service.price)}
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </Link>
               </List.Item>

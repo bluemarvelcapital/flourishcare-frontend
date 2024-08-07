@@ -3,6 +3,15 @@ import { Hero } from "./Hero"
 import { Button } from "@/components/Button"
 import Link from "next/link"
 
+const vacancies = [
+  "Support Workers",
+  "Senior Support Workers",
+  "Recreational Support Workers",
+  "Care Assitant",
+  "General Nurses",
+  "Mental Nurses",
+]
+
 const Page = () => {
   return (
     <div>
@@ -16,12 +25,12 @@ const Page = () => {
           </h3>
           <p className="text-lg">We are recruiting for the following roles:</p>
           <ul className="list-disc my-3">
-            <li>Support Workers</li>
-            <li>Senior Support Workers</li>
-            <li>Recreational Support Workers</li>
-            <li>Care Assitant</li>
-            <li>General Nurses</li>
-            <li>Mental Nurses</li>
+            {vacancies
+              .slice()
+              .sort()
+              .map((vacancy, index) => {
+                return <li key={index}>{vacancy}</li>
+              })}
           </ul>
           <p className="text-lg">
             If you&apos;re interested in any of this roles, please use the
