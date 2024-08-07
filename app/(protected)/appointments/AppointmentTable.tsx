@@ -33,21 +33,21 @@ const columns: TableColumnsType<AppointmentI> = [
       return <span>{record.services[0]?.name}</span>
     },
   },
-  {
-    title: "Amount",
-    dataIndex: "services",
-    render: (value, record) => {
-      return (
-        <span>
-          {Intl.NumberFormat("en-US", {
-            currency: record.services[0]?.currency || "GBP",
-            style: "currency",
-          }).format(record.services[0]?.price)}
-        </span>
-      )
-    },
-    sorter: (a, b) => a.services[0]?.price - b.services[0]?.price,
-  },
+  // {
+  //   title: "Amount",
+  //   dataIndex: "services",
+  //   render: (value, record) => {
+  //     return (
+  //       <span>
+  //         {Intl.NumberFormat("en-US", {
+  //           currency: record.services[0]?.currency || "GBP",
+  //           style: "currency",
+  //         }).format(record.services[0]?.price)}
+  //       </span>
+  //     )
+  //   },
+  //   sorter: (a, b) => a.services[0]?.price - b.services[0]?.price,
+  // },
   {
     title: "Appointment ID",
     dataIndex: "id",

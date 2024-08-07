@@ -10,7 +10,7 @@ import { ProfilesDrawer } from "../subuser/ProfilesDrawer"
 const paths = [
   { path: "/services", name: "Services" },
   { path: "/appointments", name: "Appointments" },
-  { path: "/transactions", name: "Transactions" },
+  { path: "/transactions", name: "Invoice History" },
   { path: "/bookings", name: "Bookings" },
   // { path: "/blog", name: "Blog" },
 ]

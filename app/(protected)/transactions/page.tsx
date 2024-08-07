@@ -12,7 +12,7 @@ const Transactions = () => {
   return (
     <div>
       <Container>
-        <PageTitle title="Transactions" />
+        <PageTitle title="Invoice History" />
         <TransactionsTable />
       </Container>
     </div>
