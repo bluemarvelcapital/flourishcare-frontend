@@ -22,16 +22,21 @@ import { useToastify } from "@/hooks/useToastify"
 import moment from "moment"
 import dayjs from "dayjs"
 import { useGetUserDataQuery } from "@/services/auth.service"
+import { useGetServicesQuery } from "@/services/services.service"
 
 export const BookingForm = ({ service }: { service: ServiceI }) => {
   const { auth } = useAuth()
   const [createAppointment, { isLoading }] = useCreateAppointmentMutation()
+  const { data: services, isLoading: loadingServices } = useGetServicesQuery({
+    status: "ACTIVE",
+  })
   const { refetch } = useGetAppointmentsQuery({ accessToken: auth.accessToken })
   const { data: userData } = useGetUserDataQuery({
     accessToken: auth.accessToken,
   })
   const [open, setOpen] = useState(false)
   const { errorToast, successToast } = useToastify()
+  const [servicesToSend, setServicesToSend] = useState<string[]>([])
   const handleSubmit = async () => {
     try {
       await createAppointment({
@@ -42,7 +47,7 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
         address: form.getFieldValue("address"),
         time: dayjs(form.getFieldValue("day")).format("hh:mma"),
         duration: service.duration,
-        serviceIds: [service.id],
+        serviceIds: [service.id, ...servicesToSend],
       }).unwrap()
       await refetch()
       // successToast("Appointment Successfully booked.")
@@ -128,6 +133,24 @@ export const BookingForm = ({ service }: { service: ServiceI }) => {
           </Form.Item>
           <Form.Item label="Service">
             <Input className="w-full" size="large" value={service.name} />
+          </Form.Item>
+          <Form.Item label="Add More Services">
+            <Select
+              className="w-full"
+              size="large"
+              options={services
+                ?.filter((service_) => service_.id !== service.id)
+                ?.map((service) => ({
+                  value: service.id,
+                  label: service.name,
+                }))}
+              loading={loadingServices}
+              mode="multiple"
+              allowClear
+              showSearch
+              optionFilterProp="label"
+              onChange={(value) => setServicesToSend(value)}
+            />
           </Form.Item>
           {/* <Form.Item label="Duration">
             <Input
