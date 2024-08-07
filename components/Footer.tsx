@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { Logo } from "./Logo";
+import React from "react"
+import Link from "next/link"
+import { Logo } from "./Logo"
 import {
   FacebookFilled,
   InstagramOutlined,
@@ -9,8 +9,8 @@ import {
   PhoneOutlined,
   MailOutlined,
   HomeOutlined,
-} from "@ant-design/icons";
-import { Avatar } from "antd";
+} from "@ant-design/icons"
+import { Avatar } from "antd"
 
 export const Footer = () => {
   return (
@@ -19,8 +19,10 @@ export const Footer = () => {
         <Link href="https://www.facebook.com/people/Flourish-Advanced-Care/61554189911700/">
           <FacebookFilled className="text-white text-[40px]" />
         </Link>
-        <Link href="
-https://www.linkedin.com/company/flourish-advanced-care/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BtAogmRPpRTidyt%2B5bJObWA%3D%3D">
+        <Link
+          href="
+https://www.linkedin.com/company/flourish-advanced-care/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BtAogmRPpRTidyt%2B5bJObWA%3D%3D"
+        >
           <LinkedinFilled className="text-white text-[40px]" />
         </Link>
         <Link href="https://www.instagram.com/flourishadvancedcare/">
@@ -113,13 +115,20 @@ https://www.linkedin.com/company/flourish-advanced-care/?lipi=urn%3Ali%3Apage%3A
         </div>
         <div className="bg-[#F9FAF9] pt-[2rem]">
           <div className="w-[90%] h-[1px] bg-[#C9C9C9] container_xl w-[85%] mx-auto" />
-          <div className="md:py-[30px] py-[30px] text-center">
+          <div className="md:py-[30px] py-[30px] text-center flex items-center justify-between flex-wrap md:w-[85%] mx-auto">
             <p className="font-[500] text-center px-[1rem]">
               © Copyright Flourish Advanced Care. All Rights Reserved
             </p>
+            <Link
+              href={"https://bluemarvelgroup.com/"}
+              target="_blank"
+              className="text-success"
+            >
+              - Built by Blue Marvel Group
+            </Link>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
