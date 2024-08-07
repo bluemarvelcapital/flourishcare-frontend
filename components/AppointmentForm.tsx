@@ -30,7 +30,7 @@ export const AppointmentForm = () => {
   const [openCalendly, setOpenCalendly] = useState(false)
 
   return (
-    <div className="md:mb-[60px] mb-[24px] text-white" id="book-consultation">
+    <div className="md:mb-[60px] mb-[24px] text-black" id="book-consultation">
       <div className="relative md:px-[140px] px-[16px] md:py-[80px] py-[20px]">
         <div className="absolute z-[-1] top-0 left-0 w-full md:h-[300px] h-[150px]">
           <Image
