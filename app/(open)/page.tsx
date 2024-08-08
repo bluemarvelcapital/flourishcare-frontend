@@ -12,10 +12,6 @@ import { LicensedBy } from "./LicensedBy"
 import { Reviews } from "./Reviews"
 import { GuestSignUp } from "@/components/auth/GuestSignUp"
 
-export const metadata: Metadata = {
-  title: "Flourish Care",
-}
-
 const Home = () => {
   return (
     <div>
