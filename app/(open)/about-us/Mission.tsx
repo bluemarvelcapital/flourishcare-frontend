@@ -24,7 +24,7 @@ const statements = [
 export const Mission = () => {
   return (
     <div className="lg:p-[60px] p-[20px]">
-      <h3 className="text-base text-center md:text-[35px] text-[25px] font-bold mb-[2.5rem]">
+      <h3 className="text-base text-center md:text-[30px] text-[25px] font-bold mb-[2.5rem]">
         Mission, Aim and Commitment
       </h3>
       <Fade right>

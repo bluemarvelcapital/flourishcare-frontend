@@ -2,6 +2,16 @@ import Link from "next/link"
 import React from "react"
 
 export const LicensedBy = () => {
+  const cqc = [
+    "Personal care.",
+    "Treatment of disease, disorder or injury.",
+    "Caring for adults over 65 yrs.",
+    "Caring for adults under 65 yrs.",
+    "Caring for children (0 - 18yrs).",
+    "Dementia.",
+    "Mental health conditions.",
+    "Physical disabilities.",
+  ]
   return (
     <div className="py-[2rem] md:py-[5rem] bg-white">
       <h3 className="text-[24px] font-[600] text-center text-[#ACACAC] mb-[2rem]">
@@ -19,11 +29,14 @@ export const LicensedBy = () => {
         </Link>
         <Link href={"https://www.cqc.org.uk/"} target="_blank">
           <img src="/license3.png" alt="" />
-          <ul className="flex flex-wrap gap-5 lg:w-[450px] md:w-[450px] font-semibold">
-            Personal care. Treatment of disease, disorder or injury. Caring for
-            adults over 65 yrs. Caring for adults under 65 yrs. Caring for
-            children (0 - 18yrs). Dementia. Mental health conditions. Physical
-            disabilities.
+          <ul className="flex flex-wrap gap-5 gap-y-1 lg:w-[450px] md:w-[450px] list-disc">
+            {cqc.sort().map((value, index) => {
+              return (
+                <li key={index} className="font-medium">
+                  {value}
+                </li>
+              )
+            })}
           </ul>
         </Link>
         <Link href={"https://www.hcpa.info/"} target="_blank">

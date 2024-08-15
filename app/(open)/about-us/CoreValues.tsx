@@ -20,16 +20,16 @@ const content = [
 export const CoreValues = () => {
   return (
     <div className="md:p-[60px] p-[20px] mb-[40px]">
-      <div className="container_xl md:mx-auto flex xl:flex-row flex-col gap-[30px] justify-between lg:w-[80%]">
+      <div className="container_xl md:mx-auto flex xl:flex-row flex-col gap-[30px] justify-between items-center lg:w-[80%]">
         <Fade left>
           <div className="">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="md:w-[80%] md:text-[64px] mb-[20px] text-[24px] text-primary">
+              <h3 className="md:w-[80%] md:text-[64px] leading-tight mb-[20px] text-[24px] text-primary">
                 Our Core Values
               </h3>
               <Image src={"/star_.svg"} width={80} height={80} alt="star" />
             </div>
-            <div className="relative xl:w-[550px] w-full md:h-[625px] h-[360px]">
+            <div className="relative xl:w-[550px] w-full md:h-[555px] h-[360px]">
               <Image
                 fill
                 src={"/img12.jpeg"}
@@ -46,10 +46,10 @@ export const CoreValues = () => {
             {content.map((item, index) => (
               <div
                 key={index}
-                className="flex md:gap-[49px] gap-[10px] justify-start items-start"
+                className="flex md:gap-[30px] gap-[10px] justify-start items-start"
               >
                 <div className="min-w-[29px] h-[8px] rounded-[11px] bg-primary"></div>
-                <div className="text-[16px] md:text-[22px]">
+                <div className="text-[16px] md:text-[18px]">
                   <h3 className="font-[600] mb-[10px] text-primary">
                     {headers[index]}
                   </h3>
