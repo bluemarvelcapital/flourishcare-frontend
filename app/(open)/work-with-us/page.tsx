@@ -16,12 +16,7 @@ const Page = () => {
           </h3>
           <p className="text-lg">We are recruiting for the following roles:</p>
           <ul className="list-disc my-3">
-            <li>Support Workers</li>
-            <li>Senior Support Workers</li>
-            <li>Recreational Support Workers</li>
-            <li>Care Assistant</li>
-            <li>General Nurses</li>
-            <li>Mental Nurses</li>
+            <li>Senior Care Workers / Nurses</li>
           </ul>
           <div className="mt-8">
             <h4 className="text-2xl font-semibold">
