@@ -1,7 +1,7 @@
-"use client"
-import { Button } from "@/components/Button"
-import { countries } from "@/constants/countries"
-import { UploadOutlined } from "@ant-design/icons"
+"use client";
+import { Button } from "@/components/Button";
+import { countries } from "@/constants/countries";
+import { UploadOutlined } from "@ant-design/icons";
 import {
   DatePicker,
   Form,
@@ -11,26 +11,26 @@ import {
   Space,
   Upload,
   Button as AntButton,
-} from "antd"
-import React, { FC } from "react"
-import { Formik } from "formik"
-import { useInternationalFormData } from "@/hooks/useInternationalFormData"
-import { step1Validation } from "@/validations/internationalCandidateForm/step1.validation"
+} from "antd";
+import React, { FC } from "react";
+import { Formik } from "formik";
+import { useInternationalFormData } from "@/hooks/useInternationalFormData";
+import { step1Validation } from "@/validations/internationalCandidateForm/step1.validation";
 
 export const InternationalStep1: FC<{
-  next: () => void
-  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+  next: () => void;
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>;
 }> = ({ next, setAttachments }) => {
-  const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
-  const { formData, setFormData } = useInternationalFormData()
+  const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("");
+  const { formData, setFormData } = useInternationalFormData();
 
   return (
     <Formik
       initialValues={formData}
       validate={step1Validation}
       onSubmit={(values, { setSubmitting }) => {
-        setFormData((prev) => ({ ...prev, ...values }))
-        next()
+        setFormData((prev) => ({ ...prev, ...values }));
+        next();
       }}
     >
       {({
@@ -305,11 +305,11 @@ export const InternationalStep1: FC<{
                       className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                       name="dob"
                       onChange={(date, dateStr) => {
-                        console.log(date, dateStr)
-                        setValues((prev) => ({
+                        console.log(date, dateStr);
+                        setValues((prev: any) => ({
                           ...prev,
                           dob: dateStr,
-                        }))
+                        }));
                       }}
                       onBlur={handleBlur}
                       // value={dayjs(values.dob)}
@@ -472,14 +472,14 @@ export const InternationalStep1: FC<{
                         setValues({
                           ...values,
                           passport: e.target.value,
-                        })
+                        });
                         setAttachments((prev) => [
                           ...prev,
                           {
                             filename: "Valid Passport",
                             content: e.target.files![0],
                           },
-                        ])
+                        ]);
                       }}
                       name="passport"
                       // value={values.passport}
@@ -502,14 +502,14 @@ export const InternationalStep1: FC<{
                         setValues({
                           ...values,
                           photo_passport: e.target.value,
-                        })
+                        });
                         setAttachments((prev) => [
                           ...prev,
                           {
                             filename: "Passport Photograph",
                             content: e.target.files![0],
                           },
-                        ])
+                        ]);
                       }}
                       name="photo_passport"
                       // value={values.photo_passport}
@@ -534,14 +534,14 @@ export const InternationalStep1: FC<{
                         setValues({
                           ...values,
                           ielts_result: e.target.value,
-                        })
+                        });
                         setAttachments((prev) => [
                           ...prev,
                           {
                             filename: "IELTS Result And Grade",
                             content: e.target.files![0],
                           },
-                        ])
+                        ]);
                       }}
                       name="ielts_result"
                       // value={values.ielts_result}
@@ -568,14 +568,14 @@ export const InternationalStep1: FC<{
                         setValues({
                           ...values,
                           proof_of_covid_vaccination: e.target.value,
-                        })
+                        });
                         setAttachments((prev) => [
                           ...prev,
                           {
                             filename: "Proof Of Covid Vaccination",
                             content: e.target.files![0],
                           },
-                        ])
+                        ]);
                       }}
                       name="proof_of_covid_vaccination"
                       // value={values.proof_of_covid_vaccination}
@@ -600,14 +600,14 @@ export const InternationalStep1: FC<{
                         setValues({
                           ...values,
                           evidence_of_TB_test_result: e.target.value,
-                        })
+                        });
                         setAttachments((prev) => [
                           ...prev,
                           {
                             filename: "TB Test Result",
                             content: e.target.files![0],
                           },
-                        ])
+                        ]);
                       }}
                       name="evidence_of_TB_test_result"
                       // value={values.evidence_of_TB_test_result}
@@ -639,5 +639,5 @@ export const InternationalStep1: FC<{
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};

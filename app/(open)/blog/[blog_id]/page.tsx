@@ -1,38 +1,38 @@
-import React from "react"
-import { notFound } from "next/navigation"
-import { API_URL } from "@/constants/config"
-import axios from "axios"
-import { BlogI } from "@/interface/blog"
-import { Container } from "@/components/Container"
-import Image from "next/image"
-import { BsClockHistory } from "react-icons/bs"
-import moment from "moment"
-import { GoBack } from "@/components/GoBack"
+import React from "react";
+import { notFound } from "next/navigation";
+import { API_URL } from "@/constants/config";
+import axios from "axios";
+import { BlogI } from "@/interface/blog";
+import { Container } from "@/components/Container";
+import Image from "next/image";
+import { BsClockHistory } from "react-icons/bs";
+import moment from "moment";
+import { GoBack } from "@/components/GoBack";
 
 export const generateStaticParams = async () => {
-  const response = await axios.get(API_URL + "/blog")
-  const blogs: BlogI[] = response.data.data.blogPosts
+  const response = await axios.get(API_URL + "/blog");
+  const blogs: BlogI[] = response.data.data.blogPosts;
   return blogs.map((blog) => {
     return {
       id: blog.id,
-    }
-  })
-}
+    };
+  });
+};
 
 export async function generateMetadata({
   params,
 }: {
-  params: { blog_id: string }
+  params: { blog_id: string };
 }) {
-  const { blog_id } = params
+  const { blog_id } = params;
   // params contains the blog `blog_id`.
   // If the route is like /blogs/1, then params.blog_id is 1
-  const res = await axios.get(API_URL + `/blog/info/?blogPostId=${blog_id}`)
-  const blog: BlogI = res.data.data.blogPost
+  const res = await axios.get(API_URL + `/blog/info/?blogPostId=${blog_id}`);
+  const blog: BlogI = res.data.data.blogPost;
   if (!blog) {
     return {
       title: "404",
-    }
+    };
   }
   // Pass blog data to the page via props
   return {
@@ -48,27 +48,30 @@ export async function generateMetadata({
         },
       ],
     },
-  }
+  };
 }
 
 // This also gets called at build time
 async function fetchBlogPost(id: string) {
   // params contains the blog `id`.
   // If the route is like /blogs/1, then params.id is 1
-  const res = await axios.get(API_URL + `/blog/info/?blogPostId=${id}`)
-  const blogPost: BlogI = res.data.data.blogPost
+  const res = await axios.get(API_URL + `/blog/info/?blogPostId=${id}`);
+  const blogPost: BlogI = res.data.data.blogPost;
 
   // Pass blog data to the page via props
-  return blogPost
+  return blogPost;
 }
 
 const BlogPage = async ({ params }: { params: { blog_id: string } }) => {
-  const { blog_id } = params
-  const blogPost = await fetchBlogPost(blog_id)
+  const { blog_id } = params;
+  const blogPost = await fetchBlogPost(blog_id);
   const colors = [
     { bg: "bg-[#04BD4B1A]", text: "text-[#04BD4B]" },
     { bg: "bg-[#66ACDC1A]", text: "text-[#66ACDC]" },
-  ]
+  ];
+
+  console.log({ blogPost });
+  console.log({ content: blogPost.content });
 
   return (
     <div className="max-w-[1680px] mx-auto">
@@ -94,7 +97,7 @@ const BlogPage = async ({ params }: { params: { blog_id: string } }) => {
                     >
                       {tag.name}
                     </span>
-                  )
+                  );
                 })}
               </div>
               <div>
@@ -119,7 +122,7 @@ const BlogPage = async ({ params }: { params: { blog_id: string } }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;

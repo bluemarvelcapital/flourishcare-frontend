@@ -123,7 +123,7 @@ export const InternationalStep3: FC<{
                     className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                     onChange={(date, dateStr) => {
                       console.log(date, dateStr)
-                      setValues((prev) => ({
+                      setValues((prev: any) => ({
                         ...prev,
                         previous_employement_start_date: dateStr,
                       }))
@@ -143,7 +143,7 @@ export const InternationalStep3: FC<{
                     className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                     onChange={(date, dateStr) => {
                       console.log(date, dateStr)
-                      setValues((prev) => ({
+                      setValues((prev: any) => ({
                         ...prev,
                         previous_employement_end_date: dateStr,
                       }))

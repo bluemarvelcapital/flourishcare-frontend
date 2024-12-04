@@ -1,35 +1,37 @@
-"use client"
-import React, { useEffect, useState } from "react"
-import { Select, List, Col, Row } from "antd"
-import { BlogCard } from "@/components/BlogCard"
-import { useGetBlogPostsQuery } from "@/services/blog.service"
-import { BlogI } from "@/interface/blog"
+"use client";
+import React, { useEffect, useState } from "react";
+import { Select, List, Col, Row } from "antd";
+import { BlogCard } from "@/components/BlogCard";
+import { useGetBlogPostsQuery } from "@/services/blog.service";
+import { BlogI } from "@/interface/blog";
 
 const filterOptions = [
   { label: "Most Recent", value: "recent" },
   { label: "Oldest", value: "oldest" },
   // { label: "Most Popular", value: "most-popular" },
-]
+];
 
 export const Content = () => {
-  const { data, isLoading } = useGetBlogPostsQuery({})
-  const [dataState, setDataState] = useState(data)
+  const { data, isLoading } = useGetBlogPostsQuery({});
+  const [dataState, setDataState] = useState(data);
   const sort = (value: string) => {
     const newState = data
       ?.slice()
-      ?.sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
+      ?.sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
     if (value === "oldest") {
-      setDataState(newState)
+      setDataState(newState);
     }
     if (value === "recent") {
-      setDataState(newState?.slice().reverse())
+      setDataState(newState?.slice().reverse());
     }
-  }
-  useEffect(() => {
-    if (data) {
-      setDataState(data)
-    }
-  }, [data])
+  };
+
+  console.log({ blogData: data }),
+    useEffect(() => {
+      if (data) {
+        setDataState(data);
+      }
+    }, [data]);
   return (
     <div className="md:px-[2rem] px-[1.5rem]">
       <div className="py-5 pt-9 flex justify-between items-center">
@@ -56,10 +58,10 @@ export const Content = () => {
               <List.Item>
                 <BlogCard {...item} />
               </List.Item>
-            )
+            );
           }}
         />
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-"use client"
-import { Button } from "@/components/Button"
-import { UploadOutlined } from "@ant-design/icons"
+"use client";
+import { Button } from "@/components/Button";
+import { UploadOutlined } from "@ant-design/icons";
 import {
   DatePicker,
   Form,
@@ -9,28 +9,28 @@ import {
   Space,
   Upload,
   Button as AntButton,
-} from "antd"
-import React, { FC } from "react"
-import { Formik } from "formik"
-import { useInternationalFormData } from "@/hooks/useInternationalFormData"
-import { step4Validation } from "@/validations/internationalCandidateForm/step4.validation"
+} from "antd";
+import React, { FC } from "react";
+import { Formik } from "formik";
+import { useInternationalFormData } from "@/hooks/useInternationalFormData";
+import { step4Validation } from "@/validations/internationalCandidateForm/step4.validation";
 
 export const InternationalStep4: FC<{
-  next: () => void
-  back: () => void
+  next: () => void;
+  back: () => void;
   setAttachments: React.Dispatch<
     React.SetStateAction<{ filename: string; content: File }[]>
-  >
+  >;
 }> = ({ next, back, setAttachments }) => {
-  const { formData, setFormData } = useInternationalFormData()
+  const { formData, setFormData } = useInternationalFormData();
 
   return (
     <Formik
       initialValues={formData}
       validate={step4Validation}
       onSubmit={(values, { setSubmitting }) => {
-        setFormData((prev) => ({ ...prev, ...values }))
-        next()
+        setFormData((prev) => ({ ...prev, ...values }));
+        next();
       }}
     >
       {({
@@ -483,11 +483,11 @@ export const InternationalStep4: FC<{
                   <DatePicker
                     className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                     onChange={(date, dateStr) => {
-                      console.log(date, dateStr)
-                      setValues((prev) => ({
+                      console.log(date, dateStr);
+                      setValues((prev: any) => ({
                         ...prev,
                         sign_date: dateStr,
-                      }))
+                      }));
                     }}
                     onBlur={handleBlur}
                     name="sign_date"
@@ -541,14 +541,14 @@ export const InternationalStep4: FC<{
                       setValues({
                         ...values,
                         cv: e.target.value,
-                      })
+                      });
                       setAttachments((prev) => [
                         ...prev,
                         {
                           filename: "CV",
                           content: e.target.files![0],
                         },
-                      ])
+                      ]);
                     }}
                     name="cv"
                     // value={values.cv}
@@ -591,5 +591,5 @@ export const InternationalStep4: FC<{
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};

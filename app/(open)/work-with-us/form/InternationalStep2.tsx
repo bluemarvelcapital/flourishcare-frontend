@@ -1,24 +1,24 @@
-"use client"
-import { Button } from "@/components/Button"
-import { DatePicker, Form, Input, Radio, Space } from "antd"
-import React, { FC } from "react"
-import { Formik } from "formik"
-import { useInternationalFormData } from "@/hooks/useInternationalFormData"
-import { step2Validation } from "@/validations/internationalCandidateForm/step2.validation"
+"use client";
+import { Button } from "@/components/Button";
+import { DatePicker, Form, Input, Radio, Space } from "antd";
+import React, { FC } from "react";
+import { Formik } from "formik";
+import { useInternationalFormData } from "@/hooks/useInternationalFormData";
+import { step2Validation } from "@/validations/internationalCandidateForm/step2.validation";
 
 export const InternationalStep2: FC<{
-  next: () => void
-  back: () => void
-  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+  next: () => void;
+  back: () => void;
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>;
 }> = ({ next, back, setAttachments }) => {
-  const { formData, setFormData } = useInternationalFormData()
+  const { formData, setFormData } = useInternationalFormData();
   return (
     <Formik
       initialValues={formData}
       validate={step2Validation}
       onSubmit={(values, { setSubmitting }) => {
-        setFormData((prev) => ({ ...prev, ...values }))
-        next()
+        setFormData((prev) => ({ ...prev, ...values }));
+        next();
       }}
     >
       {({
@@ -138,11 +138,11 @@ export const InternationalStep2: FC<{
                   <DatePicker
                     className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                     onChange={(date, dateStr) => {
-                      console.log(date, dateStr)
-                      setValues((prev) => ({
+                      console.log(date, dateStr);
+                      setValues((prev: any) => ({
                         ...prev,
                         education_date_obtained: dateStr,
-                      }))
+                      }));
                     }}
                     onBlur={handleBlur}
                     name="education_date_obtained"
@@ -203,11 +203,11 @@ export const InternationalStep2: FC<{
                   <DatePicker
                     className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                     onChange={(date, dateStr) => {
-                      console.log(date, dateStr)
-                      setValues((prev) => ({
+                      console.log(date, dateStr);
+                      setValues((prev: any) => ({
                         ...prev,
                         other_qualification_date_obtained: dateStr,
-                      }))
+                      }));
                     }}
                     onBlur={handleBlur}
                     name="other_qualification_date_obtained"
@@ -283,5 +283,5 @@ export const InternationalStep2: FC<{
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};

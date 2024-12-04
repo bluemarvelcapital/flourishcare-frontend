@@ -1,9 +1,6 @@
-import * as React from "react"
-import { Html } from "@react-email/html"
-import { Button } from "@react-email/button"
-import { Body, Container, Head, Tailwind, Text } from "@react-email/components"
-import { NationalFormI } from "@/interface/nationalCandidateForm"
-import { InternationalCandidateFormI } from "@/interface/internationalCandidateForm"
+import * as React from "react";
+import { Html } from "@react-email/html";
+import { Body, Container, Head, Tailwind, Text } from "@react-email/components";
 
 export function Email(data: [string, string][], name: string, region: string) {
   return (
@@ -35,11 +32,11 @@ export function Email(data: [string, string][], name: string, region: string) {
                     </>
                   )}
                 </Container>
-              )
+              );
             })}
           </Container>
         </Tailwind>
       </Body>
     </Html>
-  )
+  );
 }

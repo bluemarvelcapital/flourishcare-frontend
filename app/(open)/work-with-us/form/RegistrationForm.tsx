@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Button as AntButton,
   DatePicker,
@@ -8,29 +8,29 @@ import {
   Select,
   Space,
   Upload,
-} from "antd"
-import React from "react"
-import { countries } from "@/constants/countries"
-import { UploadOutlined } from "@ant-design/icons"
-import { Button } from "@/components/Button"
-import { Formik } from "formik"
-import { Nstep1 } from "@/validations/nationalCandidateForm/Nstep1.validation"
-import { Nstep1I } from "@/interface/nationalCandidateForm"
-import { useNationalFormData } from "@/hooks/useNationalFormData"
-import moment from "moment"
-import dayjs from "dayjs"
+} from "antd";
+import React from "react";
+import { countries } from "@/constants/countries";
+import { UploadOutlined } from "@ant-design/icons";
+import { Button } from "@/components/Button";
+import { Formik } from "formik";
+import { Nstep1 } from "@/validations/nationalCandidateForm/Nstep1.validation";
+import { Nstep1I } from "@/interface/nationalCandidateForm";
+import { useNationalFormData } from "@/hooks/useNationalFormData";
+import moment from "moment";
+import dayjs from "dayjs";
 
 interface RegistrationFormProps {
-  next: () => void
-  setAttachments: React.Dispatch<React.SetStateAction<any[]>>
+  next: () => void;
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   next,
   setAttachments,
 }) => {
-  const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("")
-  const { formData, setFormData } = useNationalFormData()
+  const [hasOtherName, setHasOtherName] = React.useState<"yes" | "no" | "">("");
+  const { formData, setFormData } = useNationalFormData();
   return (
     <div className="py-10 px-6 bg-white transition-all">
       <h3 className="text-2xl font-semibold mb-4">Personal Details</h3>
@@ -38,8 +38,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         initialValues={formData}
         validate={Nstep1}
         onSubmit={(values, { setSubmitting }) => {
-          setFormData((prev) => ({ ...prev, ...values }))
-          next()
+          setFormData((prev) => ({ ...prev, ...values }));
+          next();
         }}
       >
         {({
@@ -225,11 +225,11 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                   className="border-[#00000060] p-[0.8rem] w-full focus:border-success hover:border-success"
                   name="dob"
                   onChange={(date, dateStr) => {
-                    console.log(date, dateStr)
-                    setValues((prev) => ({
+                    console.log(date, dateStr);
+                    setValues((prev: any) => ({
                       ...prev,
                       dob: dateStr,
-                    }))
+                    }));
                   }}
                   onBlur={handleBlur}
                   // value={dayjs(values.dob)}
@@ -519,14 +519,14 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     setValues({
                       ...values,
                       proof_of_address1: e.target.value,
-                    })
+                    });
                     setAttachments((prev) => [
                       ...prev,
                       {
                         filename: "Proof of address 1",
                         content: e.target.files![0],
                       },
-                    ])
+                    ]);
                   }}
                 />
                 <p className="text-error">
@@ -550,14 +550,14 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     setValues({
                       ...values,
                       proof_of_address2: e.target.value,
-                    })
+                    });
                     setAttachments((prev) => [
                       ...prev,
                       {
                         filename: "Proof of address 2",
                         content: e.target.files![0],
                       },
-                    ])
+                    ]);
                   }}
                 />
                 <p className="text-error">
@@ -586,5 +586,5 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         )}
       </Formik>
     </div>
-  )
-}
+  );
+};
