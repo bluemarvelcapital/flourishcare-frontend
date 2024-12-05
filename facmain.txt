@@ -1,0 +1,78 @@
+
+## HTTPS Server Block
+#server {
+#    server_name flourishadvancedcare.co.uk www.flourishadvancedcare.co.uk;
+#
+#    location / {
+#        proxy_pass https://flourish-landing-page.vercel.app; # Redirect to another website
+#        proxy_http_version 1.1;
+#        proxy_set_header Upgrade $http_upgrade;
+#        proxy_set_header Connection 'upgrade';
+#        proxy_set_header Host $host;
+#        proxy_set_header X-Real-IP $remote_addr;
+#        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#        proxy_set_header X-Forwarded-Proto $scheme;
+#        proxy_cache_bypass $http_upgrade;
+#    }
+#
+#    listen 80;
+#
+#    #listen 443 ssl; # managed by Certbot
+#    #ssl_certificate /etc/letsencrypt/live/flourishadvancedcare.co.uk/fullchain.pem; # managed by Certbot
+#    #ssl_certificate_key /etc/letsencrypt/live/flourishadvancedcare.co.uk/privkey.pem; # managed by Certbot
+#    #include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+#    #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+#}
+#
+## HTTP Redirect to HTTPS
+#server {
+#       #if ($host = www.flourishadvancedcare.co.uk) {
+#       #    return 301 https://$host$request_uri;
+#       #} # managed by Certbot
+#
+#    listen 80;
+#    server_name flourishadvancedcare.co.uk www.flourishadvancedcare.co.uk;
+#
+#    location / {
+#        return 301 https://flourishadvancedcare.co.uk$request_uri; # Redirect HTTP to HTTPS
+#    }
+#}
+#
+server {
+    server_name flourishadvancedcare.co.uk www.flourishadvancedcare.co.uk;
+
+    location / {
+        proxy_pass http://blue-marvel-technologies-dami-opt.fly.dev; # Use HTTPS
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+
+        # Optional: Disable SSL verification if the backend uses a self-signed certificate
+        proxy_ssl_verify off;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/flourishadvancedcare.co.uk/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/flourishadvancedcare.co.uk/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+# HTTP Redirect to HTTPS
+server {
+    if ($host = www.flourishadvancedcare.co.uk) {
+        return 301 https://$host$request_uri;
+    }
+    if ($host = flourishadvancedcare.co.uk) {
+        return 301 https://$host$request_uri;
+    }
+
+    listen 80;
+    server_name flourishadvancedcare.co.uk www.flourishadvancedcare.co.uk;
+    return 301 https://$host$request_uri;
+}
