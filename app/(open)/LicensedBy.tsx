@@ -1,5 +1,5 @@
-import Link from "next/link"
-import React from "react"
+import Link from "next/link";
+import React from "react";
 
 export const LicensedBy = () => {
   const cqc = [
@@ -11,7 +11,7 @@ export const LicensedBy = () => {
     "Dementia.",
     "Mental health conditions.",
     "Physical disabilities.",
-  ]
+  ];
   return (
     <div className="py-[2rem] md:py-[5rem] bg-white">
       <h3 className="text-[24px] font-[600] text-center text-[#ACACAC] mb-[2rem]">
@@ -28,21 +28,15 @@ export const LicensedBy = () => {
           <img src="/license2.svg" alt="" />
         </Link>
         <Link href={"https://www.cqc.org.uk/"} target="_blank">
-          <img src="/license3.png" alt="" />
-          <ul className="flex flex-wrap gap-5 gap-y-1 lg:w-[450px] md:w-[450px] list-disc">
-            {cqc.sort().map((value, index) => {
-              return (
-                <li key={index} className="font-medium">
-                  {value}
-                </li>
-              )
-            })}
-          </ul>
+          <img src="/cqc.png" alt="" />
         </Link>
         <Link href={"https://www.hcpa.info/"} target="_blank">
           <img src="/license.png" alt="" />
         </Link>
+        <Link href={"https://www.trustedcare.co.uk/"} target="_blank">
+          <img src="/trustedcare.png" alt="" style={{ maxWidth: "300px" }} />
+        </Link>
       </div>
     </div>
-  )
-}
+  );
+};
