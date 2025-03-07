@@ -1,29 +1,29 @@
-"use client"
-import React from "react"
-import { Logo } from "./Logo"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Button, Divider, Drawer } from "antd"
-import { CloseCircleOutlined, MenuFoldOutlined } from "@ant-design/icons"
-import { Button as MyButton } from "./Button"
-import { useAuth } from "@/hooks/useAuth"
-import { NavPopover } from "./user/NavPopover"
+"use client";
+import React from "react";
+import { Logo } from "./Logo";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button, Divider, Drawer } from "antd";
+import { CloseCircleOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import { Button as MyButton } from "./Button";
+import { useAuth } from "@/hooks/useAuth";
+import { NavPopover } from "./user/NavPopover";
 
 const paths = [
   { path: "/", name: "Home" },
   { path: "/about-us", name: "About Us" },
   { path: "/our-services", name: "Our Services" },
   { path: "/work-with-us", name: "Work With Us" },
-  { path: "/our-home", name: "Our Homes" },
+  // { path: "/our-home", name: "Our Homes" },
   { path: "/blog", name: "Blog" },
   { path: "/faqs", name: "FAQs" },
 
   { path: "/contact-us", name: "Contact Us" },
-]
+];
 export const Header = () => {
-  const pathname = usePathname()
-  const [open, setOpen] = React.useState(false)
-  const { auth } = useAuth()
+  const pathname = usePathname();
+  const [open, setOpen] = React.useState(false);
+  const { auth } = useAuth();
   return (
     <header className="md:px-[60px] md:py-[24px] px-[16px] py-[10px] shadow-md">
       <div className="flex justify-between items-center flex-wrap container_xl w-full">
@@ -121,5 +121,5 @@ export const Header = () => {
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};
